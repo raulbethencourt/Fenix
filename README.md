@@ -1,4 +1,4 @@
-# Fenix
+# Fenix 🔥
 
 ![fenix image](./fenix.png)
 
@@ -11,3 +11,10 @@ You will need you use this command that I haven't created jet 😅
 ```
 ./script.py
 ```
+
+## TODO
+
+List of things that I would like to add to this repo:
+
+- Continue my packages list
+- Get all dotfiles from differents programs

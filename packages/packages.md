@@ -1,32 +1,32 @@
 # Programs and packages list that I have installed 🦊
 
-vscode
-chrome
-devilbox
-zsh
-oh-my-zsh
-tmux
-ranger
-midnightcommander
-virtualbox
-docker
-youtube-dl
-delta
-composer
-symfony
-nvm
-node
-java
-lunarVim
-ueberzug
-gruvbox
-neovim
-vue-cli
-yarn
-python
-libreSprite
-discord
-htop
-Envy24control
-filezilla
-gitkraken
+- vscode
+- chrome
+- devilbox
+- zsh
+- oh-my-zsh
+- tmux
+- ranger
+- midnightcommander
+- virtualbox
+- docker
+- youtube-dl
+- delta
+- composer
+- symfony
+- nvm
+- node
+- java
+- lunarVim
+- ueberzug
+- gruvbox
+- neovim
+- vue-cli
+- yarn
+- python
+- libreSprite
+- discord
+- htop
+- Envy24control
+- filezilla
+- gitkraken
