@@ -2,11 +2,11 @@
 
 ![fenix image](./fenix.png)
 
-This repo it's a backup and also the objectif it's to have a fast setup for reinstallation or migration.
+This repository it's a system backup and also the objective it's to have fast setup for migration.
 
 ## Install
 
-You will need you use this command that I haven't created jet 😅
+You will need to use this command that I haven't created jet 😅 to set everything up
 
 ```
 ./script.py
