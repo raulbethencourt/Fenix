@@ -6,7 +6,7 @@ This repo it's a backup and also the objectif it's to have a fast setup for rein
 
 ## Install
 
-You will need you use this command that I haven't create jet 😅
+You will need you use this command that I haven't created jet 😅
 
 ```
 ./script.py
