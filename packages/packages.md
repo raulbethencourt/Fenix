@@ -30,3 +30,6 @@
 - Envy24control
 - filezilla
 - gitkraken
+- ffmpeg
+- neofetch
+- meld
