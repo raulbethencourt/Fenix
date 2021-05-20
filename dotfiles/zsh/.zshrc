@@ -77,10 +77,18 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#--------------------------------------------------------------
+#                     PLUGINS
+#--------------------------------------------------------------
 plugins=(git docker-compose ubuntu)
 
+PLUGIN_DIR=~/zsh/plugins
+
 source $ZSH/oh-my-zsh.sh
-source ~/Git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $PLUGIN_DIR/alias-tips/alias-tips.plugin.zsh
+source $PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -102,22 +110,11 @@ source ~/Git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="vi ~/.zshrc"
-alias ohmyzsh="vi ~/.oh-my-zsh"
-alias sc="symfony console"
-alias devil="cd devilbox/"
-alias dcupd="docker-compose up -d php mysql httpd bind"
-alias dv="devil && dcupd && cd && c"
-alias dvs="cd && devil && dcstop && dcrm -f && cd && c"
-alias c="clear"
-alias po="poweroff"
-alias rb="reboot"
-alias unity="cd && cd games/ && ./UnityHub.AppImage"
-alias python="/usr/bin/python3.9"
-alias gitt="git log --graph --pretty=oneline --abbrev-commit"
-alias tor="cd && cd tor-browser-linux64-10.0.8_en-US/tor-browser_en-US/ && ./start-tor-browser.desktop"
+#-------------------------------------------------------
+#        aliases
+#-------------------------------------------------------
+
+source ~/zsh/alias.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
