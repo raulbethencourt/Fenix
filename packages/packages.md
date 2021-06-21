@@ -9,7 +9,9 @@
 - Envy24control
 - ffmpeg
 - filezilla
+- fuck
 - gitkraken
+- glances
 - gruvbox
 - htop
 - java
@@ -26,10 +28,15 @@
 - ranger
 - symfony
 - tmux
+- terminal xfce
+- tor
 - ueberzug
+- vieb
+- vim
 - virtualbox
 - vscode
 - vue-cli
 - yarn
 - youtube-dl
+- zeplin
 - zsh
