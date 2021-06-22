@@ -40,3 +40,11 @@
 - youtube-dl
 - zeplin
 - zsh
+
+## Extensiones de gnome:
+
+- ArcMenu
+- Dash to Panel
+- Lock screen background
+- Reminder Alarm Clock
+- User themes
