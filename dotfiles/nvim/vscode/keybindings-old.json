@@ -1,0 +1,162 @@
+[
+    {
+        "key": "ctrl+shift+q",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "extension.wrapTag",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-extension.wrapTag",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "extension.advancedNewFile"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "-extension.advancedNewFile"
+    },
+    {
+        "key": "shift+alt+r",
+        "command": "workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "phpAddProperty.add"
+    },
+    {
+        "key": "ctrl+[Backslash]",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+[Comma]",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "-code-runner.run"
+    },
+    {
+        "key": "ctrl+shift+[KeyM]",
+        "command": "docthis.documentThis"
+    },
+    {
+        "key": "ctrl+alt+d ctrl+alt+d",
+        "command": "-docthis.documentThis"
+    },
+    {
+        "key": "shift+alt+t",
+        "command": "extension.surroundWithTry"
+    },
+    {
+        "key": "shift+alt+i",
+        "command": "extension.surroundWithIf"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.openSettingsJson"
+    },
+    {
+        "key": "ctrl+alt+[Slash]",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+[IntlBackslash] ctrl+right",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+right",
+        "command": "-workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+[IntlBackslash] ctrl+left",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+left",
+        "command": "-workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+s ctrl+w",
+        "command": "liveSass.command.watchMySass"
+    },
+    {
+        "key": "ctrl+s ctrl+s",
+        "command": "liveSass.command.donotWatchMySass"
+    },
+    {
+        "key": "alt+a alt+t",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "ctrl+alt+f",
+        "command": "vue3snippets.format",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'vue'"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-vue3snippets.format",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'vue'"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "extension.splitHTMLAttributes",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+a",
+        "command": "-extension.splitHTMLAttributes",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+[Slash]",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+[Slash]",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+alt+m",
+        "command": "editor.action.toggleMinimap"
+    },
+    {
+        "key": "ctrl+alt+numpad1",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+alt+numpad3",
+        "command": "workbench.action.decreaseViewSize"
+    }
+]
