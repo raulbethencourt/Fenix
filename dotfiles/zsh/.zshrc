@@ -16,7 +16,7 @@ export ZSH="/home/raulbethencourt/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="spaceship"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
 # Set list of themes to pick from when loading at random
@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 source $PLUGIN_DIR/alias-tips/alias-tips.plugin.zsh
 source $PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $PLUGIN_DIR/zsh-autopair/zsh-autopair.plugin.zsh
 
 # User configuration
 
@@ -130,4 +131,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
  
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-neofetch
+. "$HOME/.cargo/env"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
