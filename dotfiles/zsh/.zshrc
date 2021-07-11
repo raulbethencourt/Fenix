@@ -84,11 +84,12 @@ plugins=(git docker-compose ubuntu)
 
 PLUGIN_DIR=~/zsh/plugins
 
-source $ZSH/oh-my-zsh.sh
+source ~/zsh/spaceship.zsh
 source $PLUGIN_DIR/alias-tips/alias-tips.plugin.zsh
 source $PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $PLUGIN_DIR/zsh-autopair/zsh-autopair.plugin.zsh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
