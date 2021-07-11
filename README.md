@@ -1,6 +1,6 @@
 # Fenix 🔥
 
-![fenix image](./fenix.png)
+![fenix image](./fenix-style.png)
 
 This repository it's a system backup and also the objective it's to have fast setup for migration.
 
