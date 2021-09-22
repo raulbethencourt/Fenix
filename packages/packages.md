@@ -1,5 +1,6 @@
 # Programs and packages list that I have installed 🦊
 
+- alacrity
 - chrome
 - composer
 - delta
@@ -9,16 +10,11 @@
 - Envy24control
 - ffmpeg
 - filezilla
-- fuck
-- gitkraken
-- glances
 - gruvbox
+- gtop
 - htop
-- java
 - libreSprite
-- lunarVim
 - meld
-- midnightcommander
 - neofetch
 - neovim
 - node
@@ -28,7 +24,6 @@
 - ranger
 - symfony
 - tmux
-- terminal xfce
 - tor
 - ueberzug
 - vieb
@@ -41,10 +36,4 @@
 - zeplin
 - zsh
 
-## Extensiones de gnome:
-
-- ArcMenu
-- Dash to Panel
-- Lock screen background
-- Reminder Alarm Clock
-- User themes
+## Install regolith, not ubunutu
