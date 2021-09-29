@@ -80,7 +80,7 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 #--------------------------------------------------------------
 #                     PLUGINS
 #--------------------------------------------------------------
-plugins=(git docker-compose ubuntu)
+plugins=(git docker-compose ubuntu cargo)
 
 PLUGIN_DIR=~/zsh/plugins
 
@@ -134,3 +134,7 @@ export NVM_DIR="$HOME/.nvm"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+eval "$(mcfly init zsh)"
+
+
+source /home/raulbethencourt/.config/broot/launcher/bash/br
