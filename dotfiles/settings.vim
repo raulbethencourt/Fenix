@@ -41,7 +41,6 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon150
 set guicursor+=i:blinkon150
-set notimeout ttimeout ttimeoutlen=10
 
 " New stuff
 " set notimeout nottimeout
