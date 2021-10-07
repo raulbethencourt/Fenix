@@ -10,12 +10,11 @@
 - Envy24control
 - ffmpeg
 - filezilla
+- github-cli
 - gruvbox
-- gtop
 - htop
 - libreSprite
 - meld
-- neofetch
 - neovim
 - node
 - nvm
