@@ -9,7 +9,7 @@ This repository it's a system backup and also the objective it's to have fast se
 You will need to use this command that I haven't created jet 😅 to set everything up
 
 ```
-./script.sh
+./install.sh
 ```
 
 ## TODO
