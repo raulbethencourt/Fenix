@@ -21,6 +21,7 @@
 - oh-my-zsh
 - python
 - ranger
+- spaceship
 - symfony
 - tmux
 - tor

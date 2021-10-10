@@ -80,7 +80,7 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 #--------------------------------------------------------------
 #                     PLUGINS
 #--------------------------------------------------------------
-plugins=(git docker-compose ubuntu cargo)
+plugins=(git docker-compose ubuntu vi-mode)
 
 PLUGIN_DIR=~/zsh/plugins
 
