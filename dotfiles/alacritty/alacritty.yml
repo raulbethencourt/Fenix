@@ -138,3 +138,12 @@ key_bindings:
 
 # Background opacity
 background_opacity: 1.0
+
+shell:
+  program: /usr/bin/tmux
+  args:
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main
