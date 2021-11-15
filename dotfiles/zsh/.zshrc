@@ -80,7 +80,7 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 #--------------------------------------------------------------
 #                     PLUGINS
 #--------------------------------------------------------------
-plugins=(git docker-compose ubuntu vi-mode)
+plugins=(git docker-compose ubuntu)
 
 PLUGIN_DIR=~/zsh/plugins
 
@@ -124,9 +124,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval $(thefuck --alias)
-eval $(thefuck --alias hp)
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -135,6 +132,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 eval "$(mcfly init zsh)"
-
 
 source /home/raulbethencourt/.config/broot/launcher/bash/br
