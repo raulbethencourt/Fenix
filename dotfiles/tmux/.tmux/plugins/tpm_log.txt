@@ -1,8 +1,0 @@
-Already installed "tpm"
-Already installed "tmux-jump"
-  "tmux-jump" update success
-Updating all plugins!
-
-  "tpm" update success
-  "tmux-jump" update success
-  "tpm" update success
