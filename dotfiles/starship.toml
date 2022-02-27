@@ -1,0 +1,123 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+scan_timeout = 10
+format = "$all"
+
+[username]
+style_user = "yellow bold"
+style_root = "black bold"
+format = '\[[$user]($style)\] [ ](bold red) '
+disabled = false
+show_always = true
+
+[cmd_duration]
+min_time = 500
+format = "[$duration](bold yellow) "
+
+[character]
+success_symbol = "[➜](bold green)" 
+error_symbol = "[✖](bold red)" 
+
+# Languague symbol
+[aws]
+disabled = true
+symbol = "  "
+
+[conda]
+disabled = true
+symbol = " "
+
+[dart]
+disabled = true
+symbol = " "
+
+[directory]
+truncation_length = 5
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+read_only = " "
+
+[docker_context]
+format = '[$symbol$context]($style) '
+symbol = " "
+
+[elixir]
+disabled = true
+symbol = " "
+
+[elm]
+disabled = true
+symbol = " "
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+symbol = " "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style)) '
+
+[golang]
+symbol = " "
+
+[hg_branch]
+format = '[$symbol$branch]($style) '
+symbol = " "
+
+[java]
+disabled = true
+symbol = " "
+
+[julia]
+disabled = true
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+disabled = true
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+disabled = true
+symbol = " "
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+symbol = " "
+
+[lua]
+format = '[$symbol($version)]($style) '
+
+[php]
+format = '[$symbol($version)]($style) '
+symbol = " "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
+symbol = " "
+
+[ruby]
+disabled = true
+symbol = " "
+
+[rust]
+format = '[$symbol($version)]($style) '
+symbol = " "
+
+[scala]
+disabled = true
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+disabled = true
+symbol = "ﯣ "
+
