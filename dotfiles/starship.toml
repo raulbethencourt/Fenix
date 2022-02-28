@@ -6,7 +6,7 @@ format = "$all"
 [username]
 style_user = "yellow bold"
 style_root = "black bold"
-format = '\[[$user]($style)\] [ ](bold red) '
+format = '\[[$user]($style)\]ﲖ '
 disabled = false
 show_always = true
 
@@ -15,7 +15,7 @@ min_time = 500
 format = "[$duration](bold yellow) "
 
 [character]
-success_symbol = "[➜](bold green)" 
+success_symbol = "[](bold green)" 
 error_symbol = "[✖](bold red)" 
 
 # Languague symbol
@@ -49,11 +49,11 @@ disabled = true
 symbol = " "
 
 [git_branch]
-format = '[$symbol$branch]($style) '
+format = '\([$symbol$branch]($style)\) '
 symbol = " "
 
 [git_status]
-format = '([$all_status$ahead_behind]($style)) '
+format = '[$all_status$ahead_behind]($style) '
 
 [golang]
 symbol = " "
