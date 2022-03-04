@@ -6,7 +6,7 @@ format = "$all"
 [username]
 style_user = "yellow bold"
 style_root = "black bold"
-format = '\[[$user]($style)\]ﲖ '
+format = '\[[$user]($style)\] '
 disabled = false
 show_always = true
 
@@ -59,7 +59,7 @@ format = '[$all_status$ahead_behind]($style) '
 symbol = " "
 
 [hg_branch]
-format = '[$symbol$branch]($style) '
+format = '\([$symbol$branch]($style)\) '
 symbol = " "
 
 [java]
