@@ -37,3 +37,12 @@ lvim.builtin.which_key.mappings["t"] = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 }
+lvim.builtin.which_key.mappings["x"] = {
+    name = "Trouble",
+    x = { "<cmd>Trouble<cr>", "trouble" },
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "workspace diagnostics" },
+    d = { "<cmd>Trouble document_diagnostics<cr>", "document diagnostics" },
+    l = { "<cmd>Trouble loclist<cr>", "loclist" },
+    q = { "<cmd>Trouble quickfix<cr>", "quickfix" },
+    r = { "<cmd>Trouble lsp_references<cr>", "references" },
+}

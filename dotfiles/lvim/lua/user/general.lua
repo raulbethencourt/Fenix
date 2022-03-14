@@ -23,3 +23,9 @@ vim.opt.wrap = false
 -- lvim config
 lvim.log.level = "warn"
 lvim.format_on_save = false
+
+-- livm autocommands
+lvim.autocommands.custom_groups = {
+  { "BufWinEnter", "*", "set fcs=eob:\\ " }, --no tilde left
+}
+

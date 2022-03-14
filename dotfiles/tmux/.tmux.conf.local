@@ -47,22 +47,22 @@ tmux_conf_new_session_prompt=false
 tmux_conf_24b_colour=false
 
 # default theme
-tmux_conf_theme_colour_1="#282828"    # dark gray
-tmux_conf_theme_colour_2="#32302f"    # gray
-tmux_conf_theme_colour_3="#7c6f64"    # light gray
-tmux_conf_theme_colour_4="#458588"    # light blue
-tmux_conf_theme_colour_5="#d79921"    # yellow
-tmux_conf_theme_colour_6="#282828"    # dark gray
+tmux_conf_theme_colour_1="#06080A"    # dark gray
+tmux_conf_theme_colour_2="#11121D"    # gray
+tmux_conf_theme_colour_3="#212234"    # light gray
+tmux_conf_theme_colour_4="#d7A65F"    # light blue
+tmux_conf_theme_colour_5="#F6955B"    # yellow
+tmux_conf_theme_colour_6="#11121D"    # dark gray
 tmux_conf_theme_colour_7="#ebdbb2"    # white
-tmux_conf_theme_colour_8="#3c3836"    # dark gray
-tmux_conf_theme_colour_9="#fabd2f"    # yellow
+tmux_conf_theme_colour_8="#212234"    # dark gray
+tmux_conf_theme_colour_9="#EE6D85"    # yellow
 tmux_conf_theme_colour_10="#b16286"   # pink
-tmux_conf_theme_colour_11="#689d6a"   # green
+tmux_conf_theme_colour_11="#95C561"   # green
 tmux_conf_theme_colour_12="#d5c4a1"   # light gray
 tmux_conf_theme_colour_13="#fbf1c7"   # white
-tmux_conf_theme_colour_14="#a89984"   # dark gray
-tmux_conf_theme_colour_15="#665c54"   # dark gray
-tmux_conf_theme_colour_16="#cc241d"   # red V
+tmux_conf_theme_colour_14="#11121D"   # dark gray
+tmux_conf_theme_colour_15="#11121D"   # dark gray
+tmux_conf_theme_colour_16="#EE6D85"   # red V
 tmux_conf_theme_colour_17="#ebdbb2"   # white
 
 # default theme (ansi)
@@ -108,6 +108,9 @@ tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_11"
 # pane indicator colours (when you hit <prefix> + q)
 tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
 tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
+
+# hide status line
+set -g status on
 
 # status line style
 tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"

@@ -1,7 +1,13 @@
--- Additional Plugins
+--- Additional Plugins
 lvim.plugins = {
   {"mg979/vim-visual-multi", branch = "master"},
   {"sainnhe/gruvbox-material"},
+  {'marko-cerovac/material.nvim'},
+  {'tiagovla/tokyodark.nvim'},
+  {'shaunsingh/nord.nvim'},
+  {'EdenEast/nightfox.nvim'},
+  {'sainnhe/everforest'},
+  {"folke/tokyonight.nvim"},
   {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}},
   {
     "phaazon/hop.nvim",
@@ -152,5 +158,5 @@ lvim.plugins = {
       })
     end
   },
-  { "rcarriga/nvim-notify" }
+  { "rcarriga/nvim-notify" },
 }
