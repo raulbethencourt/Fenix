@@ -13,7 +13,11 @@ vim.g.nord_contrast = true
 -- lvim.colorscheme = "nord"
 
 -- tokyodark
-lvim.colorscheme = "tokyodark"
+-- lvim.colorscheme = "tokyodark"
+
+-- ayu
+vim.g.ayucolor = "dark"
+lvim.colorscheme = "ayu"
 
 -- tokyonight
 vim.g.tokyonight_style = "night"

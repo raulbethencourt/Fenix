@@ -23,6 +23,5 @@ lvim.builtin.dashboard.custom_header = {
 --   "  8 8888     `88. .8'       `8. `88888. `8.`           8 8888 ,8'         `         `8.`8888.",
 }
 
-lvim.builtin.dashboard.custom_footer = "https://raulbethencourt.com"
 
 

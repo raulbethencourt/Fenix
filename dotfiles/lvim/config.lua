@@ -13,6 +13,7 @@ require "user.nvimtree"
 require "user.toggle_terminal"
 require "user.treesitter"
 require "user.which_key"
+require "user.null_ls"
 
 
 

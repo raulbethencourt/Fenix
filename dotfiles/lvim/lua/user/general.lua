@@ -28,4 +28,3 @@ lvim.format_on_save = false
 lvim.autocommands.custom_groups = {
   { "BufWinEnter", "*", "set fcs=eob:\\ " }, --no tilde left
 }
-
