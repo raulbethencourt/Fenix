@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V164.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V143.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<path fill="#EDEDED" d="M465.5,362.667c0,48.6-39.399,88-88,88h-246c-48.604,0-88-39.4-88-88V146c0-48.601,39.396-88,88-88h246
+		c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<path id="path39" inkscape:connector-curvature="0" fill="#EDEDED" d="M242.874,82.561h0.047
+	c96.789,0,175.274,78.485,175.274,175.32v0.047c0,96.789-78.485,175.273-175.274,175.273h-0.047
+	c-96.835,0-175.32-78.484-175.32-175.273v-0.047C67.554,161.046,146.039,82.561,242.874,82.561"/>
+<path id="path41" inkscape:connector-curvature="0" fill="#098DEB" d="M184.434,141.001v233.761l175.321-116.881 M242.874,211.129
+	c28.402,0.14,46.705,25.387,46.752,46.752c0,35.064-35.063,46.753-46.752,46.753v-23.377c39.214-3.927,26.392-56.932-11.688-46.752
+	v70.129h-23.376v-75.248c0-6.394,11.688-18.269,35.063-18.269"/>
+</svg>

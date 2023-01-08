@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_2_">
+	<g id="Layer_1_1_">
+		<g id="Layer_2" display="none">
+		</g>
+		<g id="shadows">
+			<g opacity="0.9">
+				<g>
+					<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V164.833c0-48.601,39.396-88,88-88h246
+						c48.6,0,88,39.399,88,88V381.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V143.833c0-48.601,39.396-88,88-88h246
+						c48.6,0,88,39.399,88,88V360.5z"/>
+				</g>
+			</g>
+		</g>
+		<path fill="#5CBA47" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88h-246
+			c-48.604,0-88-39.4-88-88V146c0-48.601,39.396-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+	</g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="64.22" y1="468.3906" x2="64.22" y2="468.3906" gradientTransform="matrix(1 0 0 1 -16.7197 -280.8906)">
+		<stop  offset="0" style="stop-color:#D471AD"/>
+		<stop  offset="0.5" style="stop-color:#C7158C"/>
+		<stop  offset="1" style="stop-color:#9D248E"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M47.5,187.5"/>
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="92.22" y1="813.3906" x2="92.22" y2="813.3906" gradientTransform="matrix(1 0 0 1 -16.7197 -280.8906)">
+		<stop  offset="0" style="stop-color:#D471AD"/>
+		<stop  offset="0.5" style="stop-color:#C7158C"/>
+		<stop  offset="1" style="stop-color:#9D248E"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M75.5,532.5"/>
+</g>
+<g id="Layer_2_1_">
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="64.22" y1="479.3906" x2="64.22" y2="479.3906" gradientTransform="matrix(1 0 0 1 -16.7197 -280.8906)">
+		<stop  offset="0" style="stop-color:#D471AD"/>
+		<stop  offset="0.5" style="stop-color:#C7158C"/>
+		<stop  offset="1" style="stop-color:#9D248E"/>
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M47.5,198.5"/>
+</g>
+<g id="g2986" transform="translate(-22,0)">
+	<g id="g2988" transform="translate(16,-2)">
+		
+			<rect id="rect3284" x="151.85" y="261.706" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 521.391 411.0004)" fill="#ECF0F1" width="47.455" height="103.549"/>
+		<path id="path4149" inkscape:connector-curvature="0" fill="#ECF0F1" d="M365.259,133.335L163.572,335.024l33.553,33.552
+			l201.688-201.688L365.259,133.335L365.259,133.335z"/>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{opacity:0.9;}
+	.st2{fill:#B7B7B7;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:url(#SVGID_1_);stroke:#E2E2E2;stroke-width:10;stroke-miterlimit:10;}
+	.st5{display:none;fill:#2EA1E3;}
+	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#E1BC3A;}
+	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#F9E3D4;fill-opacity:0.235;}
+	.st8{fill:#034C77;}
+	.st9{fill:#F9F9F9;}
+</style>
+<g id="Layer_1_1_">
+	<g id="Layer_2_1_" class="st0">
+	</g>
+	<g id="shadows">
+		<g class="st1">
+			<g>
+				<path class="st2" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V164.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st3" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V143.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="271.2197" cy="-858.2241" r="203.7987" gradientTransform="matrix(1 0 0 -1 -16.7197 -603.8906)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFE7A3"/>
+		<stop  offset="0.5" style="stop-color:#FFCA05"/>
+		<stop  offset="1" style="stop-color:#FAAC18"/>
+	</radialGradient>
+	<path class="st4" d="M465.5,362.7c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V146c0-48.6,39.4-88,88-88h246
+		c48.6,0,88,39.4,88,88V362.7z"/>
+</g>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" pagecolor="#ffffff" showgrid="false" showguides="false" units="px">
+	</sodipodi:namedview>
+<g id="layer1" transform="translate(0,-540.36216)">
+	<circle id="path4142" class="st5" cx="254.5" cy="762.4" r="213.6"/>
+	<circle id="path4346" class="st3" cx="339.9" cy="774.5" r="85.8"/>
+	<circle id="circle4348" class="st3" cx="169.9" cy="774.5" r="85.8"/>
+	<path id="path4350" class="st6" d="M254.1,784.6l-63.3,71.8l63.3,70.3l63.3-70.3L254.1,784.6z"/>
+	<path id="path4391" class="st7" d="M254.1,784.6l-63.3,71.8l63.3,70.3V784.6z"/>
+	<circle id="path4360" class="st8" cx="339.9" cy="774.5" r="43.6"/>
+	<circle id="circle3558" class="st9" cx="339.9" cy="774.5" r="8"/>
+	<circle id="circle4387" class="st8" cx="169.9" cy="774.5" r="43.6"/>
+	<circle id="circle4390" class="st9" cx="169.9" cy="774.5" r="8"/>
+</g>
+</svg>

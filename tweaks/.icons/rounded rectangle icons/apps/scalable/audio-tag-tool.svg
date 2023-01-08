@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.601-39.4,88-88,88h-246c-48.603,0-88-39.399-88-88V164.833c0-48.601,39.397-88,88-88
+					h246c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.601-39.4,88-88,88h-246c-48.603,0-88-39.399-88-88V143.833c0-48.601,39.397-88,88-88
+					h246c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="260.4153" y1="490.9199" x2="682.4153" y2="490.9199" gradientTransform="matrix(1 0 0 1 -216.915 -236.5859)">
+		<stop  offset="0" style="stop-color:#2BC4F3"/>
+		<stop  offset="0.5" style="stop-color:#00AEEE"/>
+		<stop  offset="1" style="stop-color:#0095DA"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.668c0,48.6-39.399,88-88,88
+		h-246c-48.603,0-88-39.4-88-88V146c0-48.601,39.397-88,88-88h246c48.601,0,88,39.399,88,88V362.668z"/>
+</g>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="176.5002" y1="258.5" x2="335.5002" y2="258.5">
+	<stop  offset="0" style="stop-color:#2BC4F3"/>
+	<stop  offset="0.5" style="stop-color:#00AEEE"/>
+	<stop  offset="1" style="stop-color:#0095DA"/>
+</linearGradient>
+<rect x="176.5" y="141.5" fill="url(#SVGID_2_)" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" width="159" height="234"/>
+<g id="g45" transform="matrix(17.962606,0,0,17.962606,-137.2329,-187.8265)">
+	<g id="g47">
+		<g id="g49">
+			<path id="path51" inkscape:connector-curvature="0" fill="#244051" d="M25.447,22.114c0,0-0.546,0.819-1.365,0.819
+				c-0.764-0.147-1.067-0.022-1.092,0v3.304c-0.036,0.697-0.607,1.394-1.457,1.715c-1.078,0.407-2.219,0.053-2.548-0.793
+				c-0.331-0.846,0.273-1.87,1.352-2.277c0.835-0.316,1.602-0.238,2.107,0.236V21.84C23.535,21.114,24.551,22.103,25.447,22.114"/>
+		</g>
+	</g>
+</g>
+<path id="path3859" sodipodi:nodetypes="cccccccccccccccc" inkscape:connector-curvature="0" inkscape:transform-center-y="-15.223226" fill="#FFFFFF" d="
+	M257.745,90.27l3.868,6.615l3.869,6.617l3.867,6.617l3.869,6.615l3.869,6.617l3.867,6.616l3.869,6.616l-53.648,0.295l3.795-6.659
+	l3.796-6.658l3.795-6.659l3.795-6.658l3.795-6.659l3.795-6.658L257.745,90.27z"/>
+</svg>
