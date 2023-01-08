@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466,392c0,48.6-39.4,88-88,88H132c-48.602,0-88-39.4-88-88V175.333c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V392z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466,371c0,48.6-39.4,88-88,88H132c-48.602,0-88-39.4-88-88V154.333c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V371z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="262.3596" cy="-565.7788" r="203.7987" gradientTransform="matrix(1 0 0 -1 -8.3599 -300.9453)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#2BC4F3"/>
+		<stop  offset="0.5" style="stop-color:#00AEEE"/>
+		<stop  offset="1" style="stop-color:#0095DA"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465,373.167c0,48.6-39.399,88-88,88
+		H131c-48.602,0-88-39.4-88-88V156.5c0-48.601,39.398-88,88-88h246c48.601,0,88,39.399,88,88V373.167z"/>
+</g>
+<g id="layer1" transform="translate(0,-924.3622)" inkscape:label="Capa 1" inkscape:groupmode="layer">
+	<path id="rect3262" fill="#2C3E50" d="M247.323,1056.529L247.323,1056.529c72.071,0,130.5,58.426,130.5,130.5l0,0
+		c0,72.074-58.429,130.5-130.5,130.5l0,0c-72.074,0-130.501-58.426-130.501-130.5l0,0
+		C116.823,1114.955,175.249,1056.529,247.323,1056.529z"/>
+	
+		<path id="path3015" sodipodi:type="star" inkscape:transform-center-y="-0.00016121862" inkscape:transform-center-x="-7.866666" inkscape:randomized="0" inkscape:rounded="0" inkscape:flatsided="true" sodipodi:cx="14.999999" sodipodi:r1="9.9733171" sodipodi:r2="4.9866581" sodipodi:sides="3" sodipodi:arg1="0" sodipodi:cy="14.999983" sodipodi:arg2="1.0471976" fill="#ECF0F1" d="
+		M306.047,1187.027l-104.4,58.727v-117.456L306.047,1187.027z"/>
+</g>
+</svg>

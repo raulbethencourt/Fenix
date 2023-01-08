@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_2_">
+	<g id="Layer_1_1_">
+		<g id="Layer_2" display="none">
+		</g>
+		<g id="shadows">
+			<g opacity="0.9">
+				<g>
+					<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V164.833c0-48.601,39.398-88,88-88h246
+						c48.6,0,88,39.399,88,88V381.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V143.833c0-48.601,39.398-88,88-88h246
+						c48.6,0,88,39.399,88,88V360.5z"/>
+				</g>
+			</g>
+		</g>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="43.5002" y1="254.335" x2="465.5002" y2="254.335">
+			<stop  offset="0" style="stop-color:#2BC4F3"/>
+			<stop  offset="0.5" style="stop-color:#00AEEE"/>
+			<stop  offset="1" style="stop-color:#0095DA"/>
+		</linearGradient>
+		<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M465.5,146v216.67
+			c0,42.08-29.53,77.26-69,85.94c-6.12,1.35-12.48,2.06-19,2.06h-246c-30.22,0-56.89-15.24-72.72-38.45
+			c-9.65-14.109-15.28-31.17-15.28-49.55V146c0-48.6,39.4-88,88-88h246c6.52,0,12.88,0.71,19,2.06
+			C435.97,68.74,465.5,103.92,465.5,146z"/>
+	</g>
+</g>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="254.5002" y1="434" x2="254.5002" y2="434">
+	<stop  offset="0" style="stop-color:#5B57A5"/>
+	<stop  offset="0.5" style="stop-color:#2E3092"/>
+	<stop  offset="1" style="stop-color:#474374"/>
+</linearGradient>
+<radialGradient id="SVGID_3_" cx="254.5002" cy="434" r="0" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#F37E5F"/>
+	<stop  offset="0.5" style="stop-color:#EC1C24"/>
+	<stop  offset="1" style="stop-color:#CF232A"/>
+</radialGradient>
+<path fill="url(#SVGID_2_)" stroke="url(#SVGID_3_)" stroke-width="16" stroke-miterlimit="10" d="M254.5,434"/>
+<radialGradient id="SVGID_4_" cx="2.441406e-004" cy="222.5" r="0.9429" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#6D583F"/>
+	<stop  offset="0.5" style="stop-color:#483318"/>
+	<stop  offset="1" style="stop-color:#282913"/>
+</radialGradient>
+<ellipse fill="url(#SVGID_4_)" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" cx="0" cy="222.5" rx="0" ry="1.333"/>
+<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-6.1663" y1="335.167" x2="-6.1663" y2="335.167">
+	<stop  offset="0" style="stop-color:#5B57A5"/>
+	<stop  offset="0.5" style="stop-color:#2E3092"/>
+	<stop  offset="1" style="stop-color:#474374"/>
+</linearGradient>
+<path fill="#231F20" stroke="url(#SVGID_5_)" stroke-width="7" stroke-miterlimit="10" d="M-6.166,335.167"/>
+<path fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M465.5,146v2.5h-422V146c0-48.6,39.4-88,88-88h246
+	C426.1,58,465.5,97.4,465.5,146z"/>
+<rect x="43.5" y="148.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" width="422" height="100"/>
+<rect x="43.5" y="248.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" width="422" height="109.33"/>
+<path fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M465.5,357.83v4.84c0,48.6-39.4,88-88,88h-246
+	c-30.22,0-56.89-15.24-72.72-38.45c-9.65-14.109-15.28-31.17-15.28-49.55v-4.84H465.5z"/>
+<path opacity="0.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M132.5,58v392.67h-1
+	c-30.22,0-56.89-15.24-72.72-38.45c-9.65-14.109-15.28-31.17-15.28-49.55V146c0-48.6,39.4-88,88-88H132.5z"/>
+<rect x="132.5" y="58" opacity="0.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" width="92" height="392.67"/>
+<rect x="224.5" y="58" opacity="0.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" width="87.33" height="392.67"/>
+<path opacity="0.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M396.5,60.06v388.55
+	c-6.12,1.35-12.48,2.06-19,2.06h-65.67V58h65.67C384.02,58,390.38,58.71,396.5,60.06z"/>
+<path opacity="0.5" fill="none" stroke="#E2E2E2" stroke-width="7" stroke-miterlimit="10" d="M465.5,146v216.67
+	c0,42.08-29.53,77.26-69,85.94V60.06C435.97,68.74,465.5,103.92,465.5,146z"/>
+<rect x="68.5" y="166.5" fill="none" width="52" height="60"/>
+<text transform="matrix(1 0 0 1 68.5002 200.5796)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">3</text>
+<rect x="162.5" y="164.5" fill="none" width="52" height="60"/>
+<text transform="matrix(1 0 0 1 162.5002 198.5796)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">8</text>
+<rect x="337.33" y="164.5" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 337.3303 198.5796)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">5</text>
+<rect x="337.661" y="283.834" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 337.6604 317.9131)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">3</text>
+<rect x="159.661" y="291.168" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 159.6609 325.2471)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">2</text>
+<rect x="253.326" y="373.834" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 253.3259 407.9131)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">5</text>
+<rect x="165.159" y="86.584" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 165.1589 120.6631)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">2</text>
+<rect x="410.493" y="95.167" fill="none" width="51.999" height="60"/>
+<text transform="matrix(1 0 0 1 410.4924 129.2466)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="48">9</text>
+</svg>

@@ -1,0 +1,39 @@
+[user]
+	email = raul.bethencourt.pro@gmail.com
+	name = Raul Bethencourt
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+    
+[add.interactive]
+    useBuiltin = false # required for git 2.37.0
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    ; features = collared-trogon
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    ; line-numbers-left-format = ""
+    ; line-numbers-right-format = "│ "
+    line-numbers = true
+    minus-style                   = syntax "#37222c"
+    minus-non-emph-style          = syntax "#37222c"
+    minus-emph-style              = syntax "#713137"
+    minus-empty-line-marker-style = syntax "#37222c"
+    line-numbers-minus-style      = "#c25d64"
+    plus-style                    = syntax "#20303b"
+    plus-non-emph-style           = syntax "#20303b"
+    plus-emph-style               = syntax "#2c5a66"
+    plus-empty-line-marker-style  = syntax "#20303b"
+    line-numbers-plus-style       = "#399a96"
+    line-numbers-zero-style       = "#3b4261"
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Turquoise Nights II
+Comment=Dark Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Turquoise Nights II
+MetacityTheme=Turquoise Nights II
+IconTheme=nuoveXT.2.2
+CursorTheme=Shere_Khan_X
