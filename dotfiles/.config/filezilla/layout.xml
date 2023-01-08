@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<FileZilla3 version="3.46.3" platform="*nix">
+	<Layout Builddate="2020-02-08" Buildtime="10:59:12">
+		<Resources>
+			<xrc file="netconfwizard.xrc" date="1581159552" />
+			<xrc file="certificate.xrc" date="1581159552" />
+			<xrc file="settings.xrc" date="1581159552" />
+			<xrc file="storj.xrc" date="1581159552" />
+			<xrc file="dialogs.xrc" date="1581159552" />
+		</Resources>
+		<Language id="fr_FR" date="1581159552">
+			<Font font="Ubuntu 11" width="851" height="17" />
+		</Language>
+	</Layout>
+</FileZilla3>

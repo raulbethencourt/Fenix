@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V164.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V143.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<path fill="#202513" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88h-246
+		c-48.604,0-88-39.4-88-88V146c0-48.601,39.396-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<g id="g59" transform="matrix(3.956922,0,0,3.956922,-30.978196,-30.379612)">
+	<path id="path65" inkscape:connector-curvature="0" fill="#FFA500" d="M82.354,28.287l-11.03,31.028l43.504-7.222
+		C108.404,39.892,96.539,30.912,82.354,28.287"/>
+	<path id="path67" inkscape:connector-curvature="0" fill="#F1E527" d="M116.188,58.264L83.369,64.34l28.116,33.559
+		c7.509-11.605,9.444-26.242,4.667-39.638"/>
+	<path id="path69" inkscape:connector-curvature="0" fill="#32CD32" d="M106.775,102.154L85.01,77.201l-15.435,40.784
+		c13.955,0.596,27.782-5.062,37.153-15.832"/>
+	<path id="path71" inkscape:connector-curvature="0" fill="#4169E1" d="M63.533,116.063l11.055-31.028l-43.529,7.223
+		C37.505,104.47,49.385,113.45,63.533,116.063"/>
+	<path id="path73" inkscape:connector-curvature="0" fill="#BA55D3" d="M29.699,86.108l32.807-6.076L34.39,46.472
+		c-7.497,11.618-9.444,26.242-4.667,39.639"/>
+	<path id="path75" inkscape:connector-curvature="0" fill="#FF0000" d="M39.094,42.242l21.765,24.952L76.293,26.41
+		c-13.946-0.596-27.782,5.061-37.141,15.832"/>
+	<path id="path77" inkscape:connector-curvature="0" fill="#F9F9F9" d="M79.328,72.174c0,3.475-2.854,6.293-6.375,6.293
+		c-3.521,0-6.388-2.818-6.388-6.293c0-3.475,2.867-6.293,6.388-6.293C76.473,65.881,79.328,68.699,79.328,72.174"/>
+</g>
+</svg>
