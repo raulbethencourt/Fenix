@@ -9,6 +9,10 @@
             {
                 "language": "rust",
                 "path": "./rust.json"
+            },
+            {
+                "language": "php",
+                "path": "./php.json"
             }
         ]
     }
