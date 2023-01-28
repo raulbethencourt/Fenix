@@ -46,17 +46,19 @@ local options = {
 }
 
 vim.opt.shortmess:append "c"
-
+ 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
-
+ 
+vim.g.VM_theme = 'purplegray'
+ 
 -- Neovide
-vim.g.neovide_remember_window_size = true
-vim.g.neovide_remember_window_position = true
-vim.g.neovide_cursor_antialiasing = true
-vim.g.neovide_fullscreen = false
+vim.g.fsdneovide_remember_window_size = false
+vim.g.fsdneovide_remember_window_position = false
+vim.g.fsdneovide_cursor_antialiasing = true
+vim.g.fsdneovide_fullscreen = false
 
--- Lvim
+-- Lvifsdm 
 lvim.log.level = "warn"
 lvim.format_on_save = false
