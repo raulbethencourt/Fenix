@@ -42,7 +42,7 @@ local options = {
     spell = false,
     spelllang = "en",
     background = "dark", -- triggers dark colorscheme
-    guifont = { "FiraCode Nerd Font", ":h11" },
+    guifont = { "FiraCode Nerd Font", ":h10" },
 }
 
 vim.opt.shortmess:append "c"

@@ -7,10 +7,12 @@ nls.setup({
         nls.builtins.formatting.fish_indent,
         nls.builtins.formatting.shfmt,
         nls.builtins.diagnostics.markdownlint,
+        nls.builtins.diagnostics.phpstan,
         nls.builtins.formatting.prettierd.with({
             filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
         }),
         nls.builtins.formatting.isort,
+        nls.builtins.formatting.rustfmt,
         nls.builtins.formatting.phpcsfixer,
         nls.builtins.formatting.black,
         nls.builtins.diagnostics.flake8,
