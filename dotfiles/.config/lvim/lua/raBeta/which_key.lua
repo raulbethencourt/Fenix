@@ -1,5 +1,7 @@
 -- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.timeoutlen = 100
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+
 lvim.builtin.which_key.setup = {
 	layout = {
 		height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -21,7 +23,6 @@ lvim.builtin.which_key.setup = {
 	},
 	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
-lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
 lvim.builtin.which_key.mappings["o"] = {
 	name = "Replace",
 	r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
@@ -34,7 +35,7 @@ lvim.builtin.which_key.mappings["t"] = {
 	h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 	v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 }
-lvim.builtin.which_key.mappings["x"] = {
+lvim.builtin.which_key.mappings["Y"] = {
 	name = "Trouble",
 	x = { "<cmd>TroubleToggle<cr>", "trouble" },
 	w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
