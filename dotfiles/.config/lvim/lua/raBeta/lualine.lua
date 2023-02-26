@@ -1,17 +1,18 @@
 local lineLengthWarning = 80
 local lineLengthError = 120
 local colors = {
-  bg       = '#202328',
+  bg       = '#32302f',
   fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
+  yellow   = '#d8a657',
+  cyan     = '#ddc7a1',
   darkblue = '#081633',
   green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+  orange   = '#b47109',
+  violet   = '#d3869b',
+  magenta  = '#c14a4a',
+  blue     = '#7daea3',
+  red      = '#ea6962',
+  border   = '#a89984',  
 }
 
 lvim.builtin.lualine.sections = {
@@ -169,16 +170,16 @@ local conditions = {
 
 ins_left({
 	function()
-		return "▊"
+		return ""
 	end,
-	color = { fg = colors.blue }, -- Sets highlighting of component
+	color = { fg = colors.border }, -- Sets highlighting of component
 	padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
 ins_left({
 	-- mode component
 	function()
-		return ""
+		return " "
 	end,
 	color = function()
 		-- auto change color according to neovims mode
@@ -238,13 +239,13 @@ ins_left({
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left({
-	function()
-		return "%="
-	end,
-})
+-- ins_left({
+-- 	function()
+-- 		return "%="
+-- 	end,
+-- })
 
-ins_left({
+ins_right({
 	-- Lsp server name .
 	function()
 		local msg = "No Active Lsp"
@@ -300,8 +301,8 @@ ins_right({
 
 ins_right({
 	function()
-		return "▊"
+		return ""
 	end,
-	color = { fg = colors.blue },
+	color = { fg = colors.border },
 	padding = { left = 1 },
 })
