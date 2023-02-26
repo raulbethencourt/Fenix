@@ -1,5 +1,27 @@
 -- Additional Plugins
 lvim.plugins = {
+	"is0n/fm-nvim",
+	"stevearc/dressing.nvim",
+	"MunifTanjim/nui.nvim",
+	"simrat39/rust-tools.nvim",
+	"eddyekofo94/gruvbox-flat.nvim",
+	{
+		"jiaoshijie/undotree",
+		config = function()
+			require("undotree").setup()
+		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+	{
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup({
+				width = 20,
+			})
+		end,
+	},
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
@@ -17,12 +39,6 @@ lvim.plugins = {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	"jiaoshijie/undotree",
-	"stevearc/dressing.nvim",
-	"Shatur/neovim-ayu",
-	"MunifTanjim/nui.nvim",
-	"simrat39/rust-tools.nvim",
-	"eddyekofo94/gruvbox-flat.nvim",
 	{
 		"ggandor/leap.nvim",
 		config = function()
@@ -40,7 +56,6 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "wittyjudge/gruvbox-material.nvim" },
 	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
@@ -117,9 +132,7 @@ lvim.plugins = {
 	{
 		"kylechui/nvim-surround",
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("nvim-surround").setup({})
 		end,
 	},
 }

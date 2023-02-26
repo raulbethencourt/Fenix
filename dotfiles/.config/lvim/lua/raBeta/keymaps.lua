@@ -2,36 +2,6 @@ M = {}
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
--- use tmux
-local Terminal = require("toggleterm.terminal").Terminal
-local tmux = Terminal:new({
-	cmd = "tmux",
-	direction = "float",
-	float_opts = {
-		border = "curved",
-		-- width = <value>,
-		-- height = <value>,
-		winblend = 0,
-		highlights = {
-			border = "Normal",
-			background = "Normal",
-		},
-	},
-	-- function to run on opening the terminal
-	on_open = function(term)
-		vim.cmd("startinsert!")
-		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-	end,
-	-- function to run on closing the terminal
-	on_close = function(term)
-		vim.cmd("startinsert!")
-	end,
-})
-
-function _tmux_toggle()
-	tmux:toggle()
-end
-
 -- Toogle neovide fullscreen
 function Neovide_fullscreen()
 	if vim.g.neovide_fullscreen == true then
@@ -45,10 +15,13 @@ lvim.keys.normal_mode["<F11>"] = "<cmd>lua Neovide_fullscreen()<CR>"
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
-lvim.keys.normal_mode["<leader>tt"] = "<cmd>lua _tmux_toggle()<CR>"
-
 -- TAB in general mode will move to text buffer
 lvim.keys.normal_mode["<TAB>"] = "<cmd>bnext<CR>"
+
+lvim.keys.normal_mode["<leader>u"] = "<cmd>UndotreeToggle<CR>"
+lvim.keys.normal_mode["<leader>r"] = "<cmd>Ranger<CR>"
+lvim.keys.normal_mode["<leader>i"] = "<cmd>SymbolsOutline<CR>"
+lvim.keys.normal_mode["<leader>v"] = "<cmd>vsplit<CR>"
 
 -- SHIFT-TAB will go back
 lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
