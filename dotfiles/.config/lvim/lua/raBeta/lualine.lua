@@ -1,18 +1,18 @@
 local lineLengthWarning = 80
 local lineLengthError = 120
 local colors = {
-  bg       = '#32302f',
-  fg       = '#bbc2cf',
-  yellow   = '#d8a657',
-  cyan     = '#ddc7a1',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#b47109',
-  violet   = '#d3869b',
-  magenta  = '#c14a4a',
-  blue     = '#7daea3',
-  red      = '#ea6962',
-  border   = '#a89984',  
+	bg = "#32302f",
+	fg = "#bbc2cf",
+	yellow = "#d8a657",
+	cyan = "#ddc7a1",
+	darkblue = "#081633",
+	green = "#98be65",
+	orange = "#b47109",
+	violet = "#d3869b",
+	magenta = "#c14a4a",
+	blue = "#7daea3",
+	red = "#ea6962",
+	border = "#a89984",
 }
 
 lvim.builtin.lualine.sections = {
@@ -42,7 +42,7 @@ lvim.builtin.lualine.options = {
 		-- are just setting default looks o statusline
 		normal = { c = { fg = colors.fg, bg = colors.bg } },
 		inactive = { c = { fg = colors.fg, bg = colors.bg } },
-	}
+	},
 }
 
 -- highlight, Insert and Rag status functions {{{2
@@ -167,7 +167,6 @@ local conditions = {
 	end,
 }
 
-
 ins_left({
 	function()
 		return ""
@@ -245,6 +244,16 @@ ins_left({
 -- 	end,
 -- })
 
+local client_name = {
+	lua_ls = "",
+	rust_analyzer = "",
+	intelephense = "",
+	jsonls = "",
+	pyright = "",
+	bashls = "",
+	html = "",
+}
+
 ins_right({
 	-- Lsp server name .
 	function()
@@ -257,12 +266,17 @@ ins_right({
 		for _, client in ipairs(clients) do
 			local filetypes = client.config.filetypes
 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				return client.name
+				local icon = client_name[client.name]
+				if icon ~= nil then
+		            return icon .. " " .. client.name
+                else
+				    return "  " .. client.name
+				end
 			end
 		end
-		return msg
+		return "  " .. msg
 	end,
-	icon = " LSP:",
+	-- icon = ,
 	color = { fg = "#ffffff", gui = "bold" },
 })
 
