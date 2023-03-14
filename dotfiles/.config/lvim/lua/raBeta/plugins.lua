@@ -3,24 +3,26 @@ lvim.plugins = {
 	"is0n/fm-nvim",
 	"stevearc/dressing.nvim",
 	"MunifTanjim/nui.nvim",
-	"simrat39/rust-tools.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
 	{
+		"saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
+		version = "v0.3.0",
+		config = true,
+	},
+	{
+		"simrat39/rust-tools.nvim",
+		ft = "rust",
+	},
+	{
 		"jiaoshijie/undotree",
-		config = function()
-			require("undotree").setup()
-		end,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
+		cmd = "UndotreeToggle",
+		config = true,
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("symbols-outline").setup({
-				width = 20,
-			})
-		end,
+		cmd = "SymbolsOutline",
+		opts = { width = 20 },
 	},
 	{
 		"folke/persistence.nvim",
@@ -45,7 +47,11 @@ lvim.plugins = {
 			require("leap").add_default_mappings(true)
 		end,
 	},
-	{ "mg979/vim-visual-multi", branch = "master" },
+	{
+		"mg979/vim-visual-multi",
+		branch = "master",
+		event = "VeryLazy",
+	},
 	{
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
@@ -75,9 +81,7 @@ lvim.plugins = {
 	{
 		"folke/todo-comments.nvim",
 		event = "BufRead",
-		config = function()
-			require("todo-comments").setup()
-		end,
+		config = true,
 	},
 	{
 		"windwp/nvim-spectre",
