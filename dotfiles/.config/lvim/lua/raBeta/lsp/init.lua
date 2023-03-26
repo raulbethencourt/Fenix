@@ -1,6 +1,8 @@
 reload("raBeta.lsp.languages.rust")
 reload("raBeta.lsp.languages.python")
 reload("raBeta.lsp.languages.emmet")
+reload("raBeta.lsp.languages.html_css")
+reload("raBeta.lsp.languages.sh")
 reload("raBeta.lsp.null-ls")
 
 lvim.format_on_save = false
@@ -18,6 +20,7 @@ lvim.builtin.treesitter.ensure_installed = {
     "typescript",
     "css",
     "rust",
+    "toml",
     "yaml",
     "vue",
     "html",

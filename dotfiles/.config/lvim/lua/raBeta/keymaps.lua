@@ -17,14 +17,13 @@ local keymap = vim.keymap.set
 
 -- TAB in general mode will move to text buffer
 lvim.keys.normal_mode["<TAB>"] = "<cmd>bnext<CR>"
+lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
 
 lvim.keys.normal_mode["<leader>u"] = "<cmd>UndotreeToggle<CR>"
 lvim.keys.normal_mode["<leader>r"] = "<cmd>Ranger<CR>"
 lvim.keys.normal_mode["<leader>i"] = "<cmd>SymbolsOutline<CR>"
 lvim.keys.normal_mode["<leader>v"] = "<cmd>vsplit<CR>"
 
--- SHIFT-TAB will go back
-lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
 lvim.keys.normal_mode["<leader>y"] = [["+y]]
 lvim.keys.normal_mode["<leader>Y"] = [["+Y]]
 lvim.keys.normal_mode["<leader>d"] = [["_d]]

@@ -1,5 +1,8 @@
 -- Cmp
-table.insert(lvim.builtin.cmp.sources, { name = "crates" })
+table.insert(lvim.builtin.cmp.sources, {
+	{ name = "crates" },
+	{ name = "neorg" },
+})
 
 -- Dap
 lvim.builtin.dap.active = true
