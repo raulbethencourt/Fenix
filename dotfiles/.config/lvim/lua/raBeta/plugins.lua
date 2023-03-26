@@ -4,20 +4,64 @@ lvim.plugins = {
 	"stevearc/dressing.nvim",
 	"MunifTanjim/nui.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
+    'ThePrimeagen/harpoon',
+    "mbbill/undotree",
+	{
+		"folke/zen-mode.nvim",
+		config = true,
+	},
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		opts = {
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.integrations.telescope"] = {},
+				["core.presenter"] = {
+					config = {
+						zen_mode = "zen-mode",
+					},
+				},
+				["core.norg.completion"] = {
+					config = {
+						engine = "nvim-cmp",
+						name = "[Neorg]",
+					},
+				}, -- Adds completion engine
+				["core.norg.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							notes = "~/notes",
+						},
+					},
+				},
+			},
+		},
+		dependencies = { { "nvim-neorg/neorg-telescope" } },
+	},
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
-		version = "v0.3.0",
+		config = function()
+			require("crates").setup({
+				null_ls = {
+					enabled = true,
+					name = "crates.nvim",
+				},
+				popup = {
+					border = "rounded",
+				},
+			})
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
 		config = true,
 	},
 	{
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
-	},
-	{
-		"jiaoshijie/undotree",
-		cmd = "UndotreeToggle",
-		config = true,
 	},
 	{
 		"simrat39/symbols-outline.nvim",

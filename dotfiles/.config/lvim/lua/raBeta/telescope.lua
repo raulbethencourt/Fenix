@@ -236,3 +236,4 @@ require("telescope-tabs").setup({
 	theme = "dropdown",
 	-- Your custom config :^)
 })
+
