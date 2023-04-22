@@ -4,6 +4,9 @@ table.insert(lvim.builtin.cmp.sources, {
 	{ name = "neorg" },
 })
 
+-- Nvimtree
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+
 -- Dap
 lvim.builtin.dap.active = true
 
