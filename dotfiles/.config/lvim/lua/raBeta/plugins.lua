@@ -4,41 +4,11 @@ lvim.plugins = {
 	"stevearc/dressing.nvim",
 	"MunifTanjim/nui.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
-    'ThePrimeagen/harpoon',
-    "mbbill/undotree",
+	"ThePrimeagen/harpoon",
+	"mbbill/undotree",
 	{
 		"folke/zen-mode.nvim",
 		config = true,
-	},
-	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		opts = {
-			load = {
-				["core.defaults"] = {}, -- Loads default behaviour
-				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-				["core.integrations.telescope"] = {},
-				["core.presenter"] = {
-					config = {
-						zen_mode = "zen-mode",
-					},
-				},
-				["core.norg.completion"] = {
-					config = {
-						engine = "nvim-cmp",
-						name = "[Neorg]",
-					},
-				}, -- Adds completion engine
-				["core.norg.dirman"] = { -- Manages Neorg workspaces
-					config = {
-						workspaces = {
-							notes = "~/notes",
-						},
-					},
-				},
-			},
-		},
-		dependencies = { { "nvim-neorg/neorg-telescope" } },
 	},
 	{
 		"saecki/crates.nvim",
@@ -86,9 +56,99 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"ggandor/leap.nvim",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
 		config = function()
-			require("leap").add_default_mappings(true)
+			require("neo-tree").setup({
+				close_if_last_window = true,
+				window = {
+					width = 30,
+					mappings = {
+						["<space>"] = {
+							"toggle_node",
+							nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+						},
+						["<esc>"] = "revert_preview",
+						["P"] = { "toggle_preview", config = { use_float = true } },
+						["l"] = "focus_preview",
+						["S"] = "open_split",
+						["s"] = "open_vsplit",
+						-- ["S"] = "split_with_window_picker",
+						-- ["s"] = "vsplit_with_window_picker",
+						["t"] = "open_tabnew",
+						-- ["<cr>"] = "open_drop",
+						-- ["t"] = "open_tab_drop",
+						["w"] = "open_with_window_picker",
+						--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+						["C"] = "close_node",
+						-- ['C'] = 'close_all_subnodes',
+						["z"] = "close_all_nodes",
+						--["Z"] = "expand_all_nodes",
+						["a"] = {
+							"add",
+							-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
+							-- some commands may take optional config options, see `:h neo-tree-mappings` for details
+							config = {
+								show_path = "none", -- "none", "relative", "absolute"
+							},
+						},
+						["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+						["d"] = "delete",
+						["r"] = "rename",
+						["y"] = "copy_to_clipboard",
+						["x"] = "cut_to_clipboard",
+						["p"] = "paste_from_clipboard",
+						["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
+						-- ["c"] = {
+						--  "copy",
+						--  config = {
+						--    show_path = "none" -- "none", "relative", "absolute"
+						--  }
+						--}
+						["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+						["q"] = "close_window",
+						["R"] = "refresh",
+						["?"] = "show_help",
+						["<"] = "prev_source",
+						[">"] = "next_source",
+					},
+				},
+				buffers = {
+					follow_current_file = true,
+				},
+				filesystem = {
+					follow_current_file = true,
+					filtered_items = {
+						hide_dotfiles = false,
+						hide_gitignored = false,
+						hide_by_name = {
+							"node_modules",
+						},
+						never_show = {
+							".DS_Store",
+							"thumbs.db",
+						},
+					},
+				},
+			})
+		end,
+	},
+	{
+		"phaazon/hop.nvim",
+		event = "BufRead",
+		config = function()
+			require("hop").setup({
+				multi_windows = true,
+			})
+			vim.api.nvim_set_keymap("n", "s", "<cmd>HopChar2<cr>", { silent = true })
+			vim.api.nvim_set_keymap("n", "S", "<cmd>HopWord<cr>", { silent = true })
+			vim.api.nvim_set_keymap("v", "s", "<cmd>HopChar2<cr>", { silent = true })
+			vim.api.nvim_set_keymap("v", "S", "<cmd>HopWord<cr>", { silent = true })
 		end,
 	},
 	{
@@ -170,7 +230,7 @@ lvim.plugins = {
 		"max397574/better-escape.nvim",
 		config = function()
 			require("better_escape").setup({
-				mapping = { "jk", "jj" }, -- a table with mappings to use
+				mapping = { "jk" }, -- a table with mappings to use
 				timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
 				clear_empty_lines = false, -- clear line after escaping if there is only whitespace
 				keys = "<Esc>", -- keys used for escaping
@@ -183,4 +243,41 @@ lvim.plugins = {
 			require("nvim-surround").setup({})
 		end,
 	},
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	build = ":Neorg sync-parsers",
+	-- 	event = { "BufRead Cargo.toml" },
+	-- 	opts = {
+	-- 		load = {
+	-- 			["core.defaults"] = {}, -- Loads default behaviour
+	-- 			["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+	-- 			["core.integrations.telescope"] = {},
+	-- 			["core.presenter"] = {
+	-- 				config = {
+	-- 					zen_mode = "zen-mode",
+	-- 				},
+	-- 			},
+	-- 			["core.norg.completion"] = {
+	-- 				config = {
+	-- 					engine = "nvim-cmp",
+	-- 					name = "[Neorg]",
+	-- 				},
+	-- 			}, -- Adds completion engine
+	-- 			["core.norg.dirman"] = { -- Manages Neorg workspaces
+	-- 				config = {
+	-- 					workspaces = {
+	-- 						notes = "~/notes",
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	dependencies = { { "nvim-neorg/neorg-telescope" } },
+	-- },
+	-- {
+	-- 	"ggandor/leap.nvim",
+	-- 	config = function()
+	-- 		require("leap").add_default_mappings(true)
+	-- 	end,
+	-- },
 }

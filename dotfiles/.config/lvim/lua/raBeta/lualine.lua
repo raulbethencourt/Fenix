@@ -252,6 +252,7 @@ local client_name = {
 	pyright = "",
 	bashls = "",
 	html = "",
+	tsserver = "",
 }
 
 ins_right({

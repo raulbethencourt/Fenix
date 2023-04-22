@@ -23,6 +23,7 @@ lvim.keys.normal_mode["<leader>u"] = "<cmd>UndotreeToggle<CR>"
 lvim.keys.normal_mode["<leader>r"] = "<cmd>Ranger<CR>"
 lvim.keys.normal_mode["<leader>i"] = "<cmd>SymbolsOutline<CR>"
 lvim.keys.normal_mode["<leader>v"] = "<cmd>vsplit<CR>"
+lvim.keys.normal_mode["<leader>a"] = ":q!<CR>"
 
 lvim.keys.normal_mode["<leader>y"] = [["+y]]
 lvim.keys.normal_mode["<leader>Y"] = [["+Y]]

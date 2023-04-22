@@ -32,8 +32,6 @@ lvim.builtin.treesitter.highlight.enable = true
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-    { command = "phpcsfixer", filetypes = { "php" } },
-    { command = "stylua", filetypes = { "lua" } },
     {
         -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
         command = "prettier",
@@ -45,12 +43,3 @@ formatters.setup({
     },
 })
 
--- -- set additional linters
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({
-    { command = "phpstan", filetypes = { "php" } },
-    {
-        command = "codespell",
-        filetypes = { "javascript", "python", "rust", "python", "php" },
-    },
-})
