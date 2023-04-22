@@ -23,6 +23,7 @@ lvim.builtin.which_key.setup = {
 	},
 	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
+lvim.builtin.which_key.mappings["e"] = { "<cmd>NeoTreeFocusToggle<CR>", "NeoTree" }
 lvim.builtin.which_key.mappings["o"] = {
 	name = "Replace",
 	r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
@@ -44,7 +45,7 @@ lvim.builtin.which_key.mappings["Y"] = {
 	l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
 	r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
-lvim.builtin.which_keymappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["S"] = {
 	name = "Session",
 	c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
