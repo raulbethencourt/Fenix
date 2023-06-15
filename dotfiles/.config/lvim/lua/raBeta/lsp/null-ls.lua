@@ -6,19 +6,29 @@ nls.setup({
 		-- Formatting
 		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.fish_indent,
-		nls.builtins.formatting.shfmt,
+		nls.builtins.formatting.shfmt.with({
+			filetypes = { "sh", "zsh", "bash" },
+		}),
 		nls.builtins.formatting.isort,
 		nls.builtins.formatting.rustfmt,
 		nls.builtins.formatting.phpcsfixer,
 		nls.builtins.formatting.black,
+		nls.builtins.formatting.clang_format,
+		nls.builtins.formatting.prettier.with({
+			filetypes = { "html" },
+		}),
 
 		-- Lintings
 		nls.builtins.diagnostics.markdownlint,
+		nls.builtins.diagnostics.shellcheck.with({
+			filetypes = { "sh", "zsh", "bash" },
+		}),
 		nls.builtins.diagnostics.flake8,
 		nls.builtins.diagnostics.phpstan,
 		nls.builtins.diagnostics.codespell.with({
-            filetypes = { "javascript", "python", "rust", "python", "php" },
+			filetypes = { "javascript", "python", "rust", "python", "php" },
 		}),
+		nls.builtins.diagnostics.cpplint,
 	},
 	root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
 })

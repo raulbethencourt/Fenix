@@ -1,9 +1,3 @@
-local formatters = require("lvim.lsp.null-ls.formatters")
-
-formatters.setup({
-	{ command = "shfmt", filetypes = { "sh", "zsh", "bash" } },
-})
-
 vim.filetype.add({
 	extension = {
 		zsh = "zsh",
