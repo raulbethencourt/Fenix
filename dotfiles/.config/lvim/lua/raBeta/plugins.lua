@@ -1,11 +1,20 @@
 -- Additional Plugins
 lvim.plugins = {
-	"is0n/fm-nvim",
+	"ChristianChiarulli/swenv.nvim",
+	"mfussenegger/nvim-dap-python",
+	"nvim-neotest/neotest",
+	"nvim-neotest/neotest-python",
+	"sainnhe/gruvbox-material",
 	"stevearc/dressing.nvim",
 	"MunifTanjim/nui.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
 	"ThePrimeagen/harpoon",
+	"ThePrimeagen/vim-be-good",
 	"mbbill/undotree",
+	{
+		"aserowy/tmux.nvim",
+		config = true,
+	},
 	{
 		"folke/zen-mode.nvim",
 		config = true,
@@ -27,6 +36,7 @@ lvim.plugins = {
 	},
 	{
 		"j-hui/fidget.nvim",
+		version = "legacy",
 		config = true,
 	},
 	{
@@ -243,41 +253,4 @@ lvim.plugins = {
 			require("nvim-surround").setup({})
 		end,
 	},
-	-- {
-	-- 	"nvim-neorg/neorg",
-	-- 	build = ":Neorg sync-parsers",
-	-- 	event = { "BufRead Cargo.toml" },
-	-- 	opts = {
-	-- 		load = {
-	-- 			["core.defaults"] = {}, -- Loads default behaviour
-	-- 			["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-	-- 			["core.integrations.telescope"] = {},
-	-- 			["core.presenter"] = {
-	-- 				config = {
-	-- 					zen_mode = "zen-mode",
-	-- 				},
-	-- 			},
-	-- 			["core.norg.completion"] = {
-	-- 				config = {
-	-- 					engine = "nvim-cmp",
-	-- 					name = "[Neorg]",
-	-- 				},
-	-- 			}, -- Adds completion engine
-	-- 			["core.norg.dirman"] = { -- Manages Neorg workspaces
-	-- 				config = {
-	-- 					workspaces = {
-	-- 						notes = "~/notes",
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	dependencies = { { "nvim-neorg/neorg-telescope" } },
-	-- },
-	-- {
-	-- 	"ggandor/leap.nvim",
-	-- 	config = function()
-	-- 		require("leap").add_default_mappings(true)
-	-- 	end,
-	-- },
 }
