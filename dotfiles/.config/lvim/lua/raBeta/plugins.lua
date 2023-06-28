@@ -1,6 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
 	"ChristianChiarulli/swenv.nvim",
+	"tiagovla/tokyodark.nvim",
 	"mfussenegger/nvim-dap-python",
 	"nvim-neotest/neotest",
 	"nvim-neotest/neotest-python",
@@ -11,6 +12,15 @@ lvim.plugins = {
 	"ThePrimeagen/harpoon",
 	"ThePrimeagen/vim-be-good",
 	"mbbill/undotree",
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{
 		"aserowy/tmux.nvim",
 		config = true,
@@ -42,11 +52,6 @@ lvim.plugins = {
 	{
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
-	},
-	{
-		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
-		opts = { width = 20 },
 	},
 	{
 		"folke/persistence.nvim",

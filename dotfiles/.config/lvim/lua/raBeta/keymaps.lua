@@ -20,7 +20,6 @@ lvim.keys.normal_mode["<TAB>"] = "<cmd>bnext<CR>"
 lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
 
 lvim.keys.normal_mode["<leader>u"] = "<cmd>UndotreeToggle<CR>"
-lvim.keys.normal_mode["<leader>r"] = "<cmd>Ranger<CR>"
 lvim.keys.normal_mode["<leader>i"] = "<cmd>SymbolsOutline<CR>"
 lvim.keys.normal_mode["<leader>v"] = "<cmd>vsplit<CR>"
 lvim.keys.normal_mode["<leader>a"] = ":q!<CR>"
@@ -28,11 +27,12 @@ lvim.keys.normal_mode["<leader>a"] = ":q!<CR>"
 lvim.keys.normal_mode["<leader>y"] = [["+y]]
 lvim.keys.normal_mode["<leader>Y"] = [["+Y]]
 lvim.keys.normal_mode["<leader>d"] = [["_d]]
-lvim.keys.normal_mode["<leader>s"] = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 lvim.keys.normal_mode["<C-Up>"] = ":resize +2<CR>"
 lvim.keys.normal_mode["<C-Down>"] = ":resize -2<CR>"
 lvim.keys.normal_mode["<C-Left>"] = ":vertical resize -2<CR>"
 lvim.keys.normal_mode["<C-Right>"] = ":vertical resize +2<CR>"
+
+vim.api.nvim_set_keymap("n", "<m-d>", "<cmd>RustOpenExternalDocs<Cr>", { noremap = true, silent = true })
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
