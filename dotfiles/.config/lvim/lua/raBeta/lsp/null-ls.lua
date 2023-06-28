@@ -13,7 +13,9 @@ nls.setup({
 		nls.builtins.formatting.rustfmt,
 		nls.builtins.formatting.phpcsfixer,
 		nls.builtins.formatting.black,
-		nls.builtins.formatting.clang_format,
+		nls.builtins.formatting.clang_format.with({
+			extra_args = { "-style", "{IndentWidth: 4}" },
+		}),
 		nls.builtins.formatting.prettier.with({
 			filetypes = { "html" },
 		}),

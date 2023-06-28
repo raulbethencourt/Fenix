@@ -4,8 +4,18 @@ table.insert(lvim.builtin.cmp.sources, {
 	{ name = "neorg" },
 })
 
--- Nvimtree
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+-- lualine
+local mode = {
+	function()
+		return "   "
+	end,
+	padding = { left = 0, right = 0 },
+	color = {},
+	cond = nil,
+}
+lvim.builtin.lualine.sections.lualine_a = {
+	mode,
+}
 
 -- Dap
 lvim.builtin.dap.active = true
@@ -17,6 +27,7 @@ lvim.builtin.terminal.direction = "float"
 lvim.builtin.terminal.size = 80
 
 -- nvimtree
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 

@@ -181,52 +181,48 @@ lvim.builtin.telescope.defaults = {
 		n = { ["q"] = require("telescope.actions").close },
 	},
 }
-
--- lvim.builtin.telescope.pickers.live_grep = {
--- 	theme = "dropdown",
--- }
-
--- lvim.builtin.telescope.pickers.grep_string = {
--- 	theme = "dropdown",
--- }
-
--- lvim.builtin.telescope.pickers.find_files = {
--- 	theme = "dropdown",
--- }
-
+lvim.builtin.telescope.pickers.live_grep = {
+	theme = "dropdown",
+	enable_preview = true,
+}
+lvim.builtin.telescope.pickers.grep_string = {
+	theme = "dropdown",
+	enable_preview = true,
+}
+lvim.builtin.telescope.pickers.find_files = {
+	enable_preview = true,
+}
 lvim.builtin.telescope.pickers.buffers = {
 	theme = "dropdown",
 	previewer = false,
 	initial_mode = "normal",
 }
-
 lvim.builtin.telescope.pickers.planets = {
 	show_pluto = true,
 	show_moon = true,
 }
-
 lvim.builtin.telescope.pickers.colorscheme = {
 	enable_preview = true,
 }
-
 lvim.builtin.telescope.pickers.lsp_references = {
-	theme = "dropdown",
+	theme = "cursor",
 	initial_mode = "normal",
 }
-
 lvim.builtin.telescope.pickers.lsp_definitions = {
-	theme = "dropdown",
+	theme = "cursor",
 	initial_mode = "normal",
 }
-
 lvim.builtin.telescope.pickers.lsp_declarations = {
-	theme = "dropdown",
+	theme = "cursor",
 	initial_mode = "normal",
 }
-
 lvim.builtin.telescope.pickers.lsp_implementations = {
-	theme = "dropdown",
+	theme = "cursor",
 	initial_mode = "normal",
+}
+lvim.builtin.telescope.pickers.lsp_document_symbols = {
+	theme = "dropdown",
+	previewer = false,
 }
 
 require("telescope-tabs").setup({
@@ -236,4 +232,3 @@ require("telescope-tabs").setup({
 	theme = "dropdown",
 	-- Your custom config :^)
 })
-

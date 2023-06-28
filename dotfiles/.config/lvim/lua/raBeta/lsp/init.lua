@@ -3,10 +3,18 @@ reload("raBeta.lsp.languages.python")
 reload("raBeta.lsp.languages.emmet")
 reload("raBeta.lsp.languages.html_css")
 reload("raBeta.lsp.languages.sh")
+reload("raBeta.lsp.languages.php")
+reload("raBeta.lsp.languages.c")
 reload("raBeta.lsp.null-ls")
 
+-- disabled inline diagnostic
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
 lvim.format_on_save = false
-lvim.lsp.diagnostic.config({ virtual_text = false })
+
 -- vim.lsp.handlers
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -42,3 +50,4 @@ formatters.setup({
 		filetypes = { "typescript", "typescriptreact", "scss", "css", "html", "twig", "javascript" },
 	},
 })
+
