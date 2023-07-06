@@ -1,8 +1,10 @@
 -- Cmp
 table.insert(lvim.builtin.cmp.sources, {
 	{ name = "crates" },
-	{ name = "neorg" },
 })
+
+-- bufferline
+lvim.builtin.bufferline.active = false
 
 -- lualine
 local mode = {
@@ -21,13 +23,13 @@ lvim.builtin.lualine.sections.lualine_a = {
 lvim.builtin.dap.active = true
 
 -- toggleterm opts
-lvim.builtin.terminal.active = true
+lvim.builtin.terminal.active = false
 lvim.builtin.terminal.open_mapping = "<c-t>"
 lvim.builtin.terminal.direction = "float"
 lvim.builtin.terminal.size = 80
 
 -- nvimtree
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+lvim.builtin.nvimtree.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 

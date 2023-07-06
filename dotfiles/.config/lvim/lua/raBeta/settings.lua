@@ -53,6 +53,7 @@ for k, v in pairs(options) do
 end
 
 vim.g.VM_theme = "purplegray"
+vim.g.showtabline = 0
 
 -- Neovide
 vim.g.fsdneovide_remember_window_size = false
