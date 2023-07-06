@@ -11,3 +11,9 @@ vim.api.nvim_create_autocmd("FileType", {
         require("nvim-treesitter.highlight").attach(0, "bash")
     end,
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*", },
+    -- hidde vim tabline
+    command = "set showtabline=0 ",
+})
+

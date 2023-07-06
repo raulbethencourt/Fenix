@@ -20,7 +20,6 @@ lvim.keys.normal_mode["<TAB>"] = "<cmd>bnext<CR>"
 lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
 
 lvim.keys.normal_mode["<leader>u"] = "<cmd>UndotreeToggle<CR>"
-lvim.keys.normal_mode["<leader>i"] = "<cmd>SymbolsOutline<CR>"
 lvim.keys.normal_mode["<leader>v"] = "<cmd>vsplit<CR>"
 lvim.keys.normal_mode["<leader>a"] = ":q!<CR>"
 

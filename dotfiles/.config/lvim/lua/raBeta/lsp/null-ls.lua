@@ -17,7 +17,8 @@ nls.setup({
 			extra_args = { "-style", "{IndentWidth: 4}" },
 		}),
 		nls.builtins.formatting.prettier.with({
-			filetypes = { "html" },
+			extra_args = { "--print-with=100", "--tab-width=4" },
+			filetypes = { "typescript", "typescriptreact", "scss", "css", "html", "twig", "javascript" },
 		}),
 
 		-- Lintings
