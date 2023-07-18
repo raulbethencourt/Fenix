@@ -1,0 +1,4 @@
+set ignorecase
+set incsearch
+set number
+imap jk <ESC>
