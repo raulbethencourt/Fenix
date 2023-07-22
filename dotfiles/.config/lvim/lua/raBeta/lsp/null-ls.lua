@@ -29,7 +29,7 @@ nls.setup({
 		nls.builtins.diagnostics.flake8,
 		nls.builtins.diagnostics.phpstan,
 		nls.builtins.diagnostics.codespell.with({
-			filetypes = { "javascript", "python", "rust", "python", "php" },
+			filetypes = { "javascript", "python", "rust", "python", "php", "sh", "zsh", "bash" },
 		}),
 		nls.builtins.diagnostics.cpplint,
 	},

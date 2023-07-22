@@ -8,11 +8,9 @@ reload("raBeta.lsp.languages.c")
 reload("raBeta.lsp.null-ls")
 
 -- disabled inline diagnostic
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+})
 lvim.format_on_save = false
 
 lvim.builtin.treesitter.ensure_installed = {
@@ -34,3 +32,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
+-- disblae inline hints
+vim.diagnostic.config({
+	virtual_text = false,
+})
