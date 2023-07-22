@@ -1,12 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
-	"ChristianChiarulli/swenv.nvim",
 	"tiagovla/tokyodark.nvim",
-	"mfussenegger/nvim-dap-python",
-	"nvim-neotest/neotest",
-	"nvim-neotest/neotest-python",
 	"sainnhe/gruvbox-material",
-	"stevearc/dressing.nvim",
 	"MunifTanjim/nui.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
 	"ThePrimeagen/harpoon",
@@ -23,10 +18,6 @@ lvim.plugins = {
 		"aserowy/tmux.nvim",
 		config = true,
 	},
-	-- {
-	-- 	"folke/zen-mode.nvim",
-	-- 	config = true,
-	-- },
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
@@ -93,6 +84,7 @@ lvim.plugins = {
 			require("trouble").setup({
 				auto_open = false, -- automatically open the list when you have diagnostics
 				use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+                mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
 			})
 		end,
 	},
@@ -116,13 +108,6 @@ lvim.plugins = {
 		"folke/todo-comments.nvim",
 		event = "BufRead",
 		config = true,
-	},
-	{
-		"windwp/nvim-spectre",
-		event = "BufRead",
-		config = function()
-			require("spectre").setup()
-		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",

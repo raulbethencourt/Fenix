@@ -24,7 +24,7 @@ lvim.builtin.which_key.setup = {
 	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
 
-lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "NeoTree" }
+lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "NvimTree" }
 lvim.builtin.which_key.mappings["o"] = {
 	name = "Replace",
 	r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
