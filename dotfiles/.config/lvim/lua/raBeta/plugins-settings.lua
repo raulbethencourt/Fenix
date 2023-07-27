@@ -6,6 +6,9 @@ table.insert(lvim.builtin.cmp.sources, {
 -- bufferline
 lvim.builtin.bufferline.active = false
 
+-- indentlines
+lvim.builtin.indentlines.options.show_current_context = false
+
 -- lualine
 local mode = {
 	function()
@@ -23,8 +26,7 @@ lvim.builtin.lualine.sections.lualine_a = {
 lvim.builtin.dap.active = true
 
 -- toggleterm opts
-lvim.builtin.terminal.active = false
-lvim.builtin.terminal.open_mapping = "<c-t>"
+lvim.builtin.terminal.active = true
 lvim.builtin.terminal.direction = "float"
 lvim.builtin.terminal.size = 80
 

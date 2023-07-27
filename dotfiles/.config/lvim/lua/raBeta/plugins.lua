@@ -1,4 +1,4 @@
--- Additional Plugins
+-- Aditional Plugins
 lvim.plugins = {
 	"tiagovla/tokyodark.nvim",
 	"sainnhe/gruvbox-material",
@@ -6,6 +6,13 @@ lvim.plugins = {
 	"eddyekofo94/gruvbox-flat.nvim",
 	"ThePrimeagen/harpoon",
 	"mbbill/undotree",
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+		cond = function()
+			return vim.fn.executable("make") == 1
+		end,
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -76,17 +83,6 @@ lvim.plugins = {
 		"mg979/vim-visual-multi",
 		branch = "master",
 		event = "VeryLazy",
-	},
-	{
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
-		config = function()
-			require("trouble").setup({
-				auto_open = false, -- automatically open the list when you have diagnostics
-				use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
-                mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-			})
-		end,
 	},
 	{
 		"ethanholz/nvim-lastplace",
