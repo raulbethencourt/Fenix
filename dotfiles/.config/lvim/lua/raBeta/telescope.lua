@@ -132,6 +132,10 @@ lvim.builtin.telescope.defaults.mappings = {
 	},
 }
 
+table.insert(lvim.builtin.telescope.extensions, {
+	"fzf",
+})
+
 lvim.builtin.telescope.defaults = {
 	vimgrep_arguments = {
 		"rg",
@@ -232,3 +236,4 @@ require("telescope-tabs").setup({
 	theme = "dropdown",
 	-- Your custom config :^)
 })
+
