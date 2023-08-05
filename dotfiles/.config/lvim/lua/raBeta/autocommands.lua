@@ -2,12 +2,7 @@
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*", },
     -- hidde lualine
-    callback = function()
-		vim.cmd("set noshowmode")
-		vim.cmd("set noruler")
-		vim.cmd("set laststatus=0")
-		vim.cmd("set noshowcmd")
-    end,
+    command = "set ls=0",
 })
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*", },
@@ -21,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
         require("nvim-treesitter.highlight").attach(0, "bash")
     end,
 })
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("VimEnter", {
     pattern = { "*", },
     -- hidde vim tabline
     command = "set showtabline=0 ",
