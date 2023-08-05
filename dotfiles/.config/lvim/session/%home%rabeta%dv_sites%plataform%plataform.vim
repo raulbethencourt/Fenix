@@ -13,10 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +29 src/Controller/StudentController.php
+badd +20 src/Controller/StudentController.php
+badd +60 src/Controller/UserController.php
+badd +1 src/Entity/User.php
 argglobal
 %argdel
-edit src/Controller/StudentController.php
+edit src/Controller/UserController.php
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -25,12 +27,13 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-let s:l = 29 - ((28 * winheight(0) + 28) / 56)
+balt src/Controller/StudentController.php
+let s:l = 60 - ((29 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 29
-normal! 0
+keepjumps 60
+normal! 042|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

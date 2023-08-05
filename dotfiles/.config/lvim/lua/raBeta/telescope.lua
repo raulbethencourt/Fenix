@@ -206,11 +206,11 @@ lvim.builtin.telescope.pickers.colorscheme = {
 	enable_preview = true,
 }
 lvim.builtin.telescope.pickers.lsp_references = {
-	theme = "cursor",
+	theme = "dropdown",
 	initial_mode = "normal",
 }
 lvim.builtin.telescope.pickers.lsp_definitions = {
-	theme = "cursor",
+	theme = "dropdown",
 	initial_mode = "normal",
 }
 lvim.builtin.telescope.pickers.lsp_declarations = {
