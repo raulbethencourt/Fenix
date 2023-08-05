@@ -1,6 +1,16 @@
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*", },
+    -- hidde lualine
+    callback = function()
+		vim.cmd("set noshowmode")
+		vim.cmd("set noruler")
+		vim.cmd("set laststatus=0")
+		vim.cmd("set noshowcmd")
+    end,
+})
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*", },
     -- enable wrap mode for json files only
     command = "set fcs=eob:\\ ",
 })
@@ -16,4 +26,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
     -- hidde vim tabline
     command = "set showtabline=0 ",
 })
-

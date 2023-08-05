@@ -2,15 +2,24 @@ M = {}
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
--- Toogle neovide fullscreen
-function Neovide_fullscreen()
-	if vim.g.neovide_fullscreen == true then
-		vim.g.neovide_fullscreen = false
+-- toogle lualine
+local hidden_all = 0
+function Toggle_Hidden_All()
+	if hidden_all == 0 then
+		hidden_all = 1
+		vim.cmd("set noshowmode")
+		vim.cmd("set noruler")
+		vim.cmd("set laststatus=0")
+		vim.cmd("set noshowcmd")
 	else
-		vim.g.neovide_fullscreen = true
+		hidden_all = 0
+		vim.cmd("set showmode")
+		vim.cmd("set ruler")
+		vim.cmd("set laststatus=2")
+		vim.cmd("set showcmd")
 	end
 end
-lvim.keys.normal_mode["<F11>"] = "<cmd>lua Neovide_fullscreen()<CR>"
+lvim.keys.normal_mode["<F11>"] = "<cmd>lua Toggle_Hidden_All()<CR>"
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
@@ -52,7 +61,6 @@ function _G.set_terminal_keymaps()
 	vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-
 
 M.show_documentation = function()
 	local filetype = vim.bo.filetype

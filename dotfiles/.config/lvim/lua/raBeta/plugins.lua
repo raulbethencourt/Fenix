@@ -7,6 +7,12 @@ lvim.plugins = {
 	"ThePrimeagen/harpoon",
 	"mbbill/undotree",
 	{
+		"gbprod/php-enhanced-treesitter.nvim",
+		dependencies = {
+			{ "derekstride/tree-sitter-sql", run = ":TSInstall sql" },
+		},
+	},
+	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
 		cond = function()
@@ -41,13 +47,77 @@ lvim.plugins = {
 		end,
 	},
 	{
+		"echasnovski/mini.ai",
+		event = "VeryLazy",
+		verion = "*",
+		config = true,
+	},
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
+	{
 		"j-hui/fidget.nvim",
 		version = "legacy",
 		config = true,
 	},
 	{
+		"nvim-neotest/neotest",
+		optional = true,
+		dependencies = {
+			"rouge8/neotest-rust",
+		},
+		opts = {
+			adapters = {
+				["neotest-rust"] = {},
+			},
+		},
+	},
+	{
 		"simrat39/rust-tools.nvim",
-		ft = "rust",
+		lazy = true,
+		opts = function()
+			local ok, mason_registry = pcall(require, "mason-registry")
+			local adapter ---@type any
+			if ok then
+				-- rust tools configuration for debugging support
+				local codelldb = mason_registry.get_package("codelldb")
+				local extension_path = codelldb:get_install_path() .. "/extension/"
+				local codelldb_path = extension_path .. "adapter/codelldb"
+				local liblldb_path = vim.fn.has("mac") == 1 and extension_path .. "lldb/lib/liblldb.dylib"
+					or extension_path .. "lldb/lib/liblldb.so"
+				adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
+			end
+			return {
+				dap = {
+					adapter = adapter,
+				},
+				tools = {
+					on_initialized = function()
+						vim.cmd([[
+                augroup RustLSP
+                  autocmd CursorHold                      *.rs silent! lua vim.lsp.buf.document_highlight()
+                  autocmd CursorMoved,InsertEnter         *.rs silent! lua vim.lsp.buf.clear_references()
+                  autocmd BufEnter,CursorHold,InsertLeave *.rs silent! lua vim.lsp.codelens.refresh()
+                augroup END
+              ]])
+					end,
+				},
+			}
+		end,
+		config = function() end,
 	},
 	{
 		"folke/persistence.nvim",
@@ -67,18 +137,66 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"phaazon/hop.nvim",
-		event = "BufRead",
-		config = function()
-			require("hop").setup({
-				multi_windows = true,
-			})
-			vim.api.nvim_set_keymap("n", "s", "<cmd>HopChar2<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "S", "<cmd>HopWord<cr>", { silent = true })
-			vim.api.nvim_set_keymap("v", "s", "<cmd>HopChar2<cr>", { silent = true })
-			vim.api.nvim_set_keymap("v", "S", "<cmd>HopWord<cr>", { silent = true })
-		end,
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		vscode = true,
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Treesitter Search",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
 	},
+	-- {
+	-- 	"phaazon/hop.nvim",
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("hop").setup({
+	-- 			multi_windows = true,
+	-- 		})
+	-- 		vim.api.nvim_set_keymap("n", "s", "<cmd>HopChar2<cr>", { silent = true })
+	-- 		vim.api.nvim_set_keymap("n", "S", "<cmd>HopWord<cr>", { silent = true })
+	-- 		vim.api.nvim_set_keymap("v", "s", "<cmd>HopChar2<cr>", { silent = true })
+	-- 		vim.api.nvim_set_keymap("v", "S", "<cmd>HopWord<cr>", { silent = true })
+	-- 	end,
+	-- },
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",

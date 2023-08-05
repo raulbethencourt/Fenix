@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~
+cd ~/sites/rust/rust_starts
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,11 +13,10 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 .wezterm.lua
+badd +1 restaurant/src/front_of_house.rs
 argglobal
 %argdel
-$argadd .wezterm.lua
-edit .wezterm.lua
+edit restaurant/src/front_of_house.rs
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
