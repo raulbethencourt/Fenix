@@ -13,11 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 src/main.rs
-badd +16 src/tui.rs
+badd +1 src/tui.rs
+badd +50 src/event.rs
 argglobal
 %argdel
-edit src/tui.rs
+edit src/event.rs
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -26,13 +26,13 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt src/main.rs
-let s:l = 16 - ((12 * winheight(0) + 27) / 54)
+balt src/tui.rs
+let s:l = 50 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 028|
+keepjumps 50
+normal! 073|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

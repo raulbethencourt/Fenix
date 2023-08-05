@@ -4,7 +4,7 @@ vim.filetype.add({
 	},
 })
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "bashls" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "bashls" })
 
 local lsp_manager = require("lvim.lsp.manager")
 lsp_manager.setup("bashls", {

@@ -48,6 +48,12 @@ local options = {
 
 vim.opt.shortmess:append("c")
 
+vim.o.guicursor = table.concat({
+	"n-v-c:block-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50",
+	"i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50",
+	"r:hor50-Cursor/lCursor-blinkwait50-blinkon50-blinkoff80",
+}, ",")
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
