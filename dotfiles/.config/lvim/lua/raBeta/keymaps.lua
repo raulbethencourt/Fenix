@@ -7,16 +7,10 @@ local hidden_all = 0
 function Toggle_Hidden_All()
 	if hidden_all == 0 then
 		hidden_all = 1
-		vim.cmd("set noshowmode")
-		vim.cmd("set noruler")
-		vim.cmd("set laststatus=0")
-		vim.cmd("set noshowcmd")
+		vim.cmd("set ls=0")
 	else
 		hidden_all = 0
-		vim.cmd("set showmode")
-		vim.cmd("set ruler")
-		vim.cmd("set laststatus=2")
-		vim.cmd("set showcmd")
+		vim.cmd("set ls=2")
 	end
 end
 lvim.keys.normal_mode["<F11>"] = "<cmd>lua Toggle_Hidden_All()<CR>"
