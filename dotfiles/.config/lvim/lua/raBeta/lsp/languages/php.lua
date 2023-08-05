@@ -8,13 +8,27 @@ local get_intelephense_license = function()
 	return string.gsub(content, "%s+", "")
 end
 
-lsp.configure("intelephense", {
-    on_attach = on_attach,
-    init_options = {
-        licenceKey = get_intelephense_license()
-    }
-})
+local on_attach = function(client, buffer)
+	require("lsp_signature").on_attach()
+end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
+
+require("lspconfig").intelephense.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	init_options = {
+		licenceKey = get_intelephense_license(),
+	},
+})
 
 local dap = require("dap")
 local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
