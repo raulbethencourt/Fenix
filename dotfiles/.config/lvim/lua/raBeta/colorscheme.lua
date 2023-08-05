@@ -6,7 +6,8 @@
 
 vim.g.gruvbox_flat_style = "hard"
 lvim.colorscheme = "gruvbox-flat"
-lvim.builtin.lualine.options.theme = "rose-pine"
+lvim.builtin.lualine.options.theme = "gruvbox-material"
 
 -- lvim.colorscheme = "rose-pine"
+-- lvim.builtin.lualine.options.theme = "rose-pine"
 -- lvim.colorscheme = "ayu-mirage"

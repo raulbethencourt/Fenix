@@ -76,13 +76,8 @@ lvim.builtin.telescope.defaults.mappings = {
 
 		["<c-d>"] = require("telescope.actions").delete_buffer,
 
-		-- ["<C-u>"] = actions.preview_scrolling_up,
-		-- ["<C-d>"] = actions.preview_scrolling_down,
-
-		-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 		["<Tab>"] = actions.close,
 		["<S-Tab>"] = actions.close,
-		-- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 		["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 		["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 		["<C-l>"] = actions.complete_tag,
@@ -101,8 +96,6 @@ lvim.builtin.telescope.defaults.mappings = {
 
 		["<Tab>"] = actions.close,
 		["<S-Tab>"] = actions.close,
-		-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-		-- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 		["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 		["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
@@ -163,8 +156,8 @@ lvim.builtin.telescope.defaults = {
 		vertical = {
 			mirror = false,
 		},
-		width = 0.87,
-		height = 0.80,
+		width = 0.80,
+		height = 0.75,
 		preview_cutoff = 120,
 	},
 	file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -173,7 +166,11 @@ lvim.builtin.telescope.defaults = {
 	path_display = { "truncate" },
 	winblend = 0,
 	border = {},
-	borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+	-- borderchars = { "", "", "", "", "", "", "", "" },
+	previewer = {
+		results_title = false,
+		preview_title = false,
+	},
 	color_devicons = true,
 	set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 	file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -236,4 +233,3 @@ require("telescope-tabs").setup({
 	theme = "dropdown",
 	-- Your custom config :^)
 })
-
