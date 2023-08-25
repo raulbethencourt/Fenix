@@ -21,9 +21,9 @@ local keymap = vim.keymap.set
 -- TAB in general mode will move to text buffer
 lvim.keys.normal_mode["<TAB>"] = "<cmd>bnext<CR>"
 lvim.keys.normal_mode["<S-TAB>"] = "<cmd>bprev<CR>"
-lvim.lsp.buffer_mappings.normal_mode['gr'] = nil
 
 -- use telescop for references and definitions
+lvim.lsp.buffer_mappings.normal_mode['gr'] = nil
 lvim.keys.normal_mode["gr"] = "<cmd>Telescope lsp_references<CR>"
 lvim.lsp.buffer_mappings.normal_mode['gd'] = nil
 lvim.keys.normal_mode["gd"] = "<cmd>Telescope lsp_definitions<CR>"

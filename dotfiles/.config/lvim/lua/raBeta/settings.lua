@@ -44,6 +44,8 @@ local options = {
 	background = "dark", -- triggers dark colorscheme
 	guifont = { "FiraCode Nerd Font", ":h10" },
 	shell = "zsh",
+	timeout = true,
+	timeoutlen = 500,
 }
 
 vim.opt.shortmess:append("c")
