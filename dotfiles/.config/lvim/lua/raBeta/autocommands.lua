@@ -1,9 +1,3 @@
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*" },
-	-- hidde lualine
-	command = "set ls=0",
-})
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*" },
 	-- enable wrap mode for json files only
@@ -20,4 +14,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*" },
 	-- hidde vim tabline
 	command = "set showtabline=0 ",
+})
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "VimEnter", "FocusGained" }, {
+	pattern = { "*" },
+	-- hidde lualine
+	command = "set ls=0",
 })

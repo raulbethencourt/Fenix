@@ -26,17 +26,17 @@ lvim.builtin.lualine.sections.lualine_a = {
 lvim.builtin.dap.active = true
 
 -- toggleterm opts
-lvim.builtin.terminal.active = true
+lvim.builtin.terminal.active = false
 lvim.builtin.terminal.direction = "float"
 lvim.builtin.terminal.size = 80
 
 -- nvimtree
-lvim.builtin.nvimtree.active = true
+lvim.builtin.nvimtree.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- alpha
-lvim.builtin.alpha.active = true
+lvim.builtin.alpha.active = false
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.alpha.dashboard.section.header.val = {
 	-- [[                   __     __ __              ]],
