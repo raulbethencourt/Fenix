@@ -1,11 +1,19 @@
 -- Aditional Plugins
 lvim.plugins = {
-	"tiagovla/tokyodark.nvim",
-	"sainnhe/gruvbox-material",
-	"MunifTanjim/nui.nvim",
 	"eddyekofo94/gruvbox-flat.nvim",
 	"ThePrimeagen/harpoon",
 	"mbbill/undotree",
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = true,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = true,
+	},
 	{
 		"gbprod/php-enhanced-treesitter.nvim",
 		dependencies = {
@@ -19,14 +27,6 @@ lvim.plugins = {
 			return vim.fn.executable("make") == 1
 		end,
 	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-	},
-	{ "rose-pine/neovim", name = "rose-pine" },
 	{
 		"aserowy/tmux.nvim",
 		config = true,
@@ -47,43 +47,10 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"echasnovski/mini.ai",
-		event = "VeryLazy",
-		verion = "*",
-		config = true,
-	},
-	{
-		"stevearc/dressing.nvim",
-		lazy = true,
-		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
-		end,
-	},
-	{
 		"j-hui/fidget.nvim",
 		version = "legacy",
+        event = "LspAttach",
 		config = true,
-	},
-	{
-		"nvim-neotest/neotest",
-		optional = true,
-		dependencies = {
-			"rouge8/neotest-rust",
-		},
-		opts = {
-			adapters = {
-				["neotest-rust"] = {},
-			},
-		},
 	},
 	{
 		"simrat39/rust-tools.nvim",
@@ -118,17 +85,6 @@ lvim.plugins = {
 			}
 		end,
 		config = function() end,
-	},
-	{
-		"folke/persistence.nvim",
-		event = "BufReadPre", -- this will only start session saving when an actual file was opened
-		lazy = true,
-		config = function()
-			require("persistence").setup({
-				dir = vim.fn.expand(vim.fn.stdpath("config") .. "/session/"),
-				options = { "buffers", "curdir", "tabpages", "winsize" },
-			})
-		end,
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -184,39 +140,10 @@ lvim.plugins = {
 			},
 		},
 	},
-	-- {
-	-- 	"phaazon/hop.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("hop").setup({
-	-- 			multi_windows = true,
-	-- 		})
-	-- 		vim.api.nvim_set_keymap("n", "s", "<cmd>HopChar2<cr>", { silent = true })
-	-- 		vim.api.nvim_set_keymap("n", "S", "<cmd>HopWord<cr>", { silent = true })
-	-- 		vim.api.nvim_set_keymap("v", "s", "<cmd>HopChar2<cr>", { silent = true })
-	-- 		vim.api.nvim_set_keymap("v", "S", "<cmd>HopWord<cr>", { silent = true })
-	-- 	end,
-	-- },
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
 		event = "VeryLazy",
-	},
-	{
-		"ethanholz/nvim-lastplace",
-		event = "BufRead",
-		config = function()
-			require("nvim-lastplace").setup({
-				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-				lastplace_ignore_filetype = {
-					"gitcommit",
-					"gitrebase",
-					"svn",
-					"hgcommit",
-				},
-				lastplace_open_folds = true,
-			})
-		end,
 	},
 	{
 		"folke/todo-comments.nvim",

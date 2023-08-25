@@ -27,6 +27,10 @@ require("lspconfig").intelephense.setup({
 	on_attach = on_attach,
 	init_options = {
 		licenceKey = get_intelephense_license(),
+		clearCache = true,
+	},
+	flags = {
+		debounce_text_changes = 150,
 	},
 })
 
@@ -62,7 +66,6 @@ vim.opt.keywordprg = "php --rf"
 vim.cmd("compiler phpcs")
 
 -- LSP.
--- See https://github.com/bmewburn/intelephense-docs
 local lsp_path = "/home/rabeta/.local/share/lvim/mason/bin/intelephense"
 if vim.fn.filereadable(lsp_path) == 1 then
 	vim.lsp.start({
@@ -70,8 +73,4 @@ if vim.fn.filereadable(lsp_path) == 1 then
 		cmd = { "intelephense", "--stdio" },
 		root_dir = vim.fs.dirname(vim.fs.find({ "composer.json", "index.php", ".git" })[1]),
 	})
-	-- The settings only work by putting the licence key in
-	-- ~/intelephense/licence.txt. Note the UK spelling.
 end
-
--- vim:fdm=marker ft=lua et sts=4 sw=4
