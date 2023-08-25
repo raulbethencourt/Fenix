@@ -4,19 +4,24 @@
 # History
 HISTFILE=~/.zsh_history
 
-# Zap plugins
-plug "zap-zsh/supercharge"
-plug "zap-zsh/exa"
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "hlissner/zsh-autopair"
-plug "zap-zsh/vim"
+autoload -Uz compinit
+compinit
 
-# Example theme
+# Zap plugins
+plug "Aloxaf/fzf-tab"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/vim"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/exa"
+plug "hlissner/zsh-autopair"
+plug "MichaelAquilina/zsh-you-should-use"
+plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/zap-prompt"
 
 # Aliases
+source ~/zsh/exports.zsh
 source ~/zsh/alias/general.zsh
+source ~/zsh/alias/bns.zsh
 source ~/zsh/alias/git.zsh
 source ~/zsh/alias/ubuntu.zsh
-source ~/zsh/exports.zsh
+source ~/zsh/alias/docker.zsh
