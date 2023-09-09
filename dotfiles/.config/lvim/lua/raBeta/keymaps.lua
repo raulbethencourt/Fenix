@@ -37,8 +37,8 @@ lvim.keys.normal_mode["<leader>Y"] = [["+Y]]
 lvim.keys.normal_mode["<leader>d"] = [["_d]]
 lvim.keys.normal_mode["<C-Up>"] = ":resize +2<CR>"
 lvim.keys.normal_mode["<C-Down>"] = ":resize -2<CR>"
-lvim.keys.normal_mode["<C-Left>"] = ":vertical resize -2<CR>"
-lvim.keys.normal_mode["<C-Right>"] = ":vertical resize +2<CR>"
+lvim.keys.normal_mode["<C-Left>"] = ":vertical resize +2<CR>"
+lvim.keys.normal_mode["<C-Right>"] = ":vertical resize -2<CR>"
 
 vim.api.nvim_set_keymap("n", "<m-d>", "<cmd>RustOpenExternalDocs<Cr>", { noremap = true, silent = true })
 
