@@ -102,9 +102,22 @@ function Telescope(builtin, opts)
 end
 
 table.insert(lvim.builtin.which_key.mappings["s"], {
-	{ k = { Telescope("live_grep"), "Grep (root dir)" } },
+	{ n = { Telescope("live_grep"), "Grep (root dir)" } },
 })
 lvim.builtin.which_key.mappings["f"] = { Telescope("find_files"), "Find Files (root dir)" }
 lvim.builtin.which_key.mappings["e"] = { "<cmd>Explore<cr>", "Explore" }
 lvim.builtin.which_key.mappings["c"] = { ":bd<cr>", "Delete buffer" }
+lvim.builtin.which_key.mappings["<space>"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find" }
 lvim.builtin.which_key.mappings[";"] = {}
+lvim.builtin.which_key.mappings["b"]["f"] = {}
+lvim.builtin.which_key.mappings["r"] = {
+    h = { "<Plug>RestNvim", "Query" },
+    p = { "<Plug>RestNvimPreview", "Query preview" },
+    l = { "<Plug>RestNvimLast", "Last query" },
+}
+lvim.builtin.which_key.mappings["z"] = {
+    t = { "<cmd>DBUIToggle<cr>", "DBUIToggle" },
+    c = { "<cmd>DBUIClose<cr>", "DBUIClose" },
+    h = { "<cmd>DBUILastQueryInfo<cr>", "DBUILastQueryInfo" },
+}
+
