@@ -1,7 +1,6 @@
 -- Cmp
 table.insert(lvim.builtin.cmp.sources, {
 	{ name = "crates" },
-	{ name = "vim-dadbod-completion" },
 })
 
 -- bufferline

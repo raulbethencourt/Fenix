@@ -3,9 +3,14 @@ lvim.plugins = {
 	"eddyekofo94/gruvbox-flat.nvim",
 	"ThePrimeagen/harpoon",
 	"mbbill/undotree",
-    "tpope/vim-dadbod",
-    "kristijanhusak/vim-dadbod-ui",
-    "kristijanhusak/vim-dadbod-completion",
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", lazy = true, ft = { "sql", "mysql", "plsql" } },
+		},
+		cmd = { "DBUIToggle", "DBUI", "DBUIFindBuffer" },
+	},
 	{
 		"rest-nvim/rest.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -49,17 +54,17 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = true,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
-		config = true,
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = true,
+	-- },
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = true,
+	-- },
 	{
 		"gbprod/php-enhanced-treesitter.nvim",
 		dependencies = {
