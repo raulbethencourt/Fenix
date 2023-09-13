@@ -2,6 +2,7 @@
 
 # General
 export TERM="alacritty"
+export GIT_EDITOR="lvim"
 export NVCHAD_CACHE_DIR="$HOME/.cache/nvim/project_nvim"
 export GOPATH=$HOME/go
 
@@ -55,6 +56,9 @@ fi
 
 # FZF integration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
 
 LFCD="$GOPATH/src/github.com/gokcehan/lf/etc/lfcd.sh" # source
 LFCD="/home/rabeta/.config/lf/lfcd.sh"                #  pre-built binary, make sure to use absolute path
