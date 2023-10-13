@@ -5,9 +5,9 @@ require 'raBeta.configs.lsp.conform'
 local conform = require 'conform'
 
 local on_attach = function(_, bufnr)
-  local nmap = function(keys, func, dMasonesc)
+  local nmap = function(keys, func, desc)
     if desc then
-      desc = 'LSP: ' .. dMasonesc
+      desc = 'LSP: ' .. desc
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
@@ -87,9 +87,13 @@ local servers = {
     },
   },
   intelephense = {
+    filetypes = { 'php' },
     init_options = {
       licenceKey = get_intelephense_license(),
       clearCache = true,
+    },
+    diagnostics = {
+      enable = true,
     },
     flags = {
       debounce_text_changes = 150,
