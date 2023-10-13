@@ -15,6 +15,5 @@ conform.setup {
     bash = { 'shfmt' },
     zsh = { 'shfmt' },
     php = { 'php_cs_fixer' },
-    ['*'] = { 'codespell' },
   },
 }

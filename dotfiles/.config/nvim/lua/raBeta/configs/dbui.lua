@@ -1,5 +1,9 @@
 vim.g.dbs = {
 	{
+		name = "localhost:bns",
+		url = "mysql://root@127.0.0.1:3310",
+	},
+	{
 		name = "localhost:home",
 		url = "mysql://root@127.0.0.1:3306",
 	},
