@@ -1,13 +1,14 @@
 return {
-  {
-    'eddyekofo94/gruvbox-flat.nvim',
-    priority = 1000,
-    enabled = true,
-    config = function()
-      vim.g.gruvbox_flat_style = "hard"
-      vim.cmd([[colorscheme gruvbox-flat]])
-    end,
-  },
+  -- {
+  --   'eddyekofo94/gruvbox-flat.nvim',
+  --   priority = 1000,
+  --   enabled = true,
+  --   config = function()
+  --     vim.g.gruvbox_flat_style = "hard"
+  --     vim.cmd([[colorscheme gruvbox-flat]])
+  --   end,
+  -- },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   -- {
   --   'nvim-lualine/lualine.nvim',
   --   opts = {
