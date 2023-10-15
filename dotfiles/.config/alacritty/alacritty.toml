@@ -1,0 +1,165 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[colors.indexed_colors]]
+color = "#FAB387"
+index = 16
+
+[[colors.indexed_colors]]
+color = "#F5E0DC"
+index = 17
+
+[colors.bright]
+black= "#585B70" # surface2
+red= "#F38BA8" # red
+green= "#A6E3A1" # green
+yellow= "#F9E2AF" # yellow
+blue= "#89B4FA" # blue
+magenta= "#F5C2E7" # pink
+cyan= "#94E2D5" # teal
+white= "#A6ADC8" # subtext0
+
+[colors.normal]
+black = "#45475A" # surface1
+red = "#F38BA8" # red
+green = "#A6E3A1" # green
+yellow = "#F9E2AF" # yellow
+blue = "#89B4FA" # blue
+magenta = "#F5C2E7" # pink
+cyan = "#94E2D5" # teal
+white = "#BAC2DE" # subtext1
+
+[colors.dim]
+black = "#45475A" # surface1
+red = "#F38BA8" # red
+green = "#A6E3A1" # green
+yellow = "#F9E2AF" # yellow
+blue = "#89B4FA" # blue
+magenta = "#F5C2E7" # pink
+cyan = "#94E2D5" # teal
+white = "#BAC2DE" # subtext1
+
+[colors.selection]
+text = "#1E1E2E" # base
+background = "#F5E0DC" # rosewater
+
+[colors.hints.start]
+foreground = "#1E1E2E" # base
+background = "#F9E2AF" # yellow
+
+[colors.hints.end]
+foreground = "#1E1E2E" # base
+background = "#A6ADC8" # subtext0
+
+[colors.search.matches]
+foreground = "#1E1E2E" # base
+background = "#A6ADC8" # subtext0
+
+[colors.search.focused_match]
+foreground = "#1E1E2E" # base
+background = "#A6E3A1" # green
+
+[colors.cursor]
+text = "#1E1E2E" # base
+cursor = "#F5E0DC" # rosewater
+ 
+[colors.primary]
+background = "#1E1E2E" # base
+foreground = "#CDD6F4" # text
+dim_foreground = "#CDD6F4" # text
+bright_foreground = "#CDD6F4" # text
+
+[cursor.style]
+blinking = "Always"
+shape = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Victor Mono"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mods = "Shift"
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[shell]
+program = "/usr/local/bin/tmux"
+
+[window]
+decorations = "none"
+opacity = 1.0
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 100
+lines = 85
+
+[window.padding]
+x = 5
+y = 5
