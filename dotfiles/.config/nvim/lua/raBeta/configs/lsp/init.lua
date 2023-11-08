@@ -1,6 +1,7 @@
 require 'raBeta.configs.lsp.cmp'
 require 'raBeta.configs.lsp.linter'
 require 'raBeta.configs.lsp.conform'
+require 'raBeta.configs.lsp.languages.php'
 
 local conform = require 'conform'
 
@@ -86,11 +87,19 @@ local servers = {
       },
     },
   },
+  -- psalm = {
+  --   filetypes = { 'php' },
+  -- },
   intelephense = {
     filetypes = { 'php' },
     init_options = {
       licenceKey = get_intelephense_license(),
-      clearCache = true,
+      storagePath = '/home/rabeta/.intelephense',
+      clearCache = false,
+      files = {
+        maxSize = 5000000,
+      },
+      phpMemoryLimit = '4096M',
     },
     diagnostics = {
       enable = true,
@@ -99,7 +108,15 @@ local servers = {
       debounce_text_changes = 150,
     },
   },
-  sqlls = {},
+  eslint = {},
+  sqlls = {
+    sql = {
+      'sql-language-server',
+      'up',
+      '--method',
+      'stdio',
+    },
+  },
 }
 
 -- disblae inline hints
