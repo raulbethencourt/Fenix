@@ -21,7 +21,7 @@ return {
           timeout = 150,
         },
         result = {
-          show_url = true,
+          show_url = false,
           show_curl_command = false,
           show_http_info = true,
           show_headers = true,
@@ -78,13 +78,6 @@ return {
     },
   },
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
-  {
     'folke/flash.nvim',
     event = 'VeryLazy',
     vscode = true,
@@ -132,8 +125,5 @@ return {
       },
     },
   },
-  {
-    'max397574/better-escape.nvim',
-    config = true,
-  },
+  { 'max397574/better-escape.nvim', config = true },
 }

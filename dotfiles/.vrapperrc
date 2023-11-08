@@ -1,4 +1,15 @@
+set smartindent
 set ignorecase
-set incsearch
+set smartcase
 set number
+set relativenumber
+set cursorline
+set shiftwidth=4
+set clipboard=unnamed
 imap jk <ESC>
+
+-- sneak
+nmap s <Plug>(sneak_s)
+nmap S <Plug>(sneak_S)
+nmap ; <Plug>(sneak-next)
+nmap , <Plug>(sneak-prev)

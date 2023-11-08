@@ -1,5 +1,5 @@
 return {
-  { 'mfussenegger/nvim-lint', event = { 'BufReadPre', 'BufNewFile' } },
+  { 'mfussenegger/nvim-lint' },
   { 'stevearc/conform.nvim', event = { 'BufWritePre' } },
   {
     'neovim/nvim-lspconfig',

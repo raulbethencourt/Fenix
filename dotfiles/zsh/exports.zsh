@@ -1,16 +1,11 @@
-#!/bin/sh
-
 # General
-export TERM="alacritty"
-export GIT_EDITOR="lvim"
-export NVCHAD_CACHE_DIR="$HOME/.cache/nvim/project_nvim"
-export GOPATH=$HOME/go
+export OPENAI_API_KEY="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"
 
 # FZF color theme
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
---color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
---color info:150,prompt:110,spinner:150,pointer:167,marker:174
---height 80% --layout=reverse --info=inline --border --margin=1 --padding=1'
+export FZF_DEFAULT_OPTS=" \
+  --height 80% --layout=reverse --info=inline --margin=1 --padding=1
+  --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+  --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
 
 # FZF CTRL-R
 export FZF_CTRL_R_OPTS="
@@ -21,24 +16,23 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
+export GIT_EDITOR="lvim"
+export TERM="alacritty"
+export BNS_USER="raul-bns"
+export BROWSER="lynx"
+# export BAT_THEME="gruvbox-dark"
+
 # PATHS
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/joshuto:$PATH"
-export PATH="$HOME/tools/scripts:$PATH"
-export PATH="$HOME/tools/scripts/wcss:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
-export PATH="$HOME/apps/liquibase:$PATH"
+export PATH="$HOME/dev/bns/tools/bin:$PATH"
+export PATH="$HOME/.local/share/nvim:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/tools/scripts:$PATH"
+export PATH="$HOME/dev/bnstools/tools/scripts:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-
-# Man with bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Nvm
 export NVM_DIR="$HOME/.nvm"
@@ -54,14 +48,22 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 fi
 
+eval "$(zoxide init zsh)"
+export _ZO_ECHO='1'
+
 # FZF integration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+. /usr/share/doc/fzf/examples/key-bindings.zsh
+. /usr/share/doc/fzf/examples/completion.zsh
 
+# Icons in terminal
+. ~/.local/share/icons-in-terminal/icons_bash.sh
 
-LFCD="$GOPATH/src/github.com/gokcehan/lf/etc/lfcd.sh" # source
-LFCD="/home/rabeta/.config/lf/lfcd.sh"                #  pre-built binary, make sure to use absolute path
-if [ -f "$LFCD" ]; then
-	source "$LFCD"
-fi
+# Change user name in ssh/config file
+export SSH_USER="raul-bns"
+cat ~/.ssh/config.tmp | sed -e "s/\${SSH_USER}/${SSH_USER}/g" >~/.ssh/config
+
+# Man pager in color
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+
+. ~/dev/bns/tools/bin/.autocompletion
