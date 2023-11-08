@@ -1,39 +1,82 @@
 [user]
 	email = raul.bethencourt.pro@gmail.com
-	name = Raul Bethencourt
+	name = raulbethencourt
 
 [core]
     pager = delta
+    fileMode = false
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --features=interactive
     
 [add.interactive]
     useBuiltin = false # required for git 2.37.0
 
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[pack]
+    threads = 1
+    deltaCacheSize = 128m
+    packSizeLimit = 128m
+    windowMemory = 128m
+
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    ; features = collared-trogon
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-    side-by-side = true
-    ; line-numbers-left-format = ""
-    ; line-numbers-right-format = "│ "
+    dark = true
     line-numbers = true
-    minus-style                   = syntax "#37222c"
-    minus-non-emph-style          = syntax "#37222c"
-    minus-emph-style              = syntax "#713137"
-    minus-empty-line-marker-style = syntax "#37222c"
-    line-numbers-minus-style      = "#c25d64"
-    plus-style                    = syntax "#20303b"
-    plus-non-emph-style           = syntax "#20303b"
-    plus-emph-style               = syntax "#2c5a66"
-    plus-empty-line-marker-style  = syntax "#20303b"
-    line-numbers-plus-style       = "#399a96"
-    line-numbers-zero-style       = "#3b4261"
+    side-by-side = true
+    keep-plus-minus-markers = false
+    syntax-theme = Nord
+    file-style = "#434C5E" bold
+    file-decoration-style = "#434C5E" ul
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    hunk-header-style = omit
+    line-numbers-left-format = " {nm:>3} │"
+    line-numbers-left-style = red
+    line-numbers-right-format = " {np:>3} │"
+    line-numbers-right-style = green
+    line-numbers-minus-style = red italic black
+    line-numbers-plus-style = green italic black
+    line-numbers-zero-style = "#434C5E" italic
+    minus-style = bold red
+    minus-emph-style = bold "#202020" "#FF5555"
+    minus-non-emph-style = bold
+    plus-style = bold green
+    plus-emph-style = bold "#202020" "#50FA7B"
+    plus-non-emph-style = bold
+    zero-style = syntax
+    blame-code-style = syntax
+    blame-format = "{author:<18} ({commit:>9}) {timestamp:^16}"
+    blame-palette = "#2E3440" "#3B4252" "#434C5E" "#4C566A"
+    merge-conflict-begin-symbol = ~
+    merge-conflict-end-symbol = ~
+    merge-conflict-ours-diff-header-style = "#F1FA8C" bold
+    merge-conflict-ours-diff-header-decoration-style = "#434C5E" box
+    merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
+    merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box
+    navigate = true    # use n and N to move between diff sections
 
 [merge]
-    conflictstyle = diff3
+	tool = nvimdiff
+
+[mergetool]
+	keepBackup = false
+	prompt = false
+    
+[mergetool "nvimdiff"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 
 [diff]
     colorMoved = default
 
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+    
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

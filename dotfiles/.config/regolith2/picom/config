@@ -1,26 +1,19 @@
 #################################
 #             Corners           #
 #################################
-corner-radius = 12;
+corner-radius = 5;
 rounded-corners-exclude = [
   "class_g = 'i3bar'",
   "class_g = 'eww-bar'",
   "class_g = 'eww-powermenu'",
-  "name = 'Notification area'",
-  "class_g = 'code-oss'",
-  "class_g = 'firefox'",
-  "class_g = 'Thunderbird'",
-  "class_g = 'Eww'"
+  "class_g = 'code-oss'"
 ];
 round-borders = 1;
 
 round-borders-rule = [
   "3:class_g      = 'XTerm'",
   "3:class_g      = 'URxvt'",
-  "3:class_g     = 'Alacritty'",
-  "3:class_g     = 'neovide'",
-  "10:class_g     = 'Polybar'",
-  "15:class_g     = 'Signal'"
+  "3:class_g     = 'Alacritty'"
 ];
 
 #################################
@@ -31,10 +24,7 @@ shadow = false;
 #################################
 #           Fading              #
 #################################
-fading = true;
-fade-in-step = 0.05;
-fade-out-step = 0.1;
-fade-delta = 10
+fading = false;
 
 #################################
 #   Transparency / Opacity      #
@@ -50,18 +40,18 @@ focus-exclude = [
 ];
 
 opacity-rule = [
-   "100:name     = 'Dunst'",             # lemonbar
+  "100:name      = 'Dunst'",             # lemonbar
   "10:class_g    = 'eww-blur_full'",            # maim
   "95:class_g    = 'Alacritty'",
+  "95:class_g    = 'DBeaver'",
   "95:class_g    = 'Postman'",
-  "95:class_g    = 'neovide'",
   "95:class_g    = 'Filezilla'",
-  "95:class_g    = 'sleek'",
-  "95:class_g    = 'Gedit'",
+  "95:class_g    = 'teams-for-linux'",
+   "95:class_g    = 'Gedit'",
   "95:class_g    = 'Org.gnome.Nautilus'",
-  "100:class_g    = 'Tint2'",
-  "80:class_g     = 'i3bar'",
-  "90:class_g     = 'Polybar'"
+  "100:class_g   = 'Tint2'",
+  "80:class_g    = 'i3bar'",
+  "90:class_g    = 'Ilia'"
 ];
 
 #################################

@@ -1,8 +1,14 @@
 # gruvbox Alacritty Colors
+# import:
+  # uncomment the flavour you want below:
+    # - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
 colors:
   # Default colors
   primary:
-    background: '0x1d2021'
+    background: '#0F0F11'
     foreground: '0xd4be98'
 
   # Normal colors
@@ -38,18 +44,18 @@ draw_bold_text_with_bright_colors: true
 cursor:
   style:
     blinking: Always
-    shape: Beam
+    shape: Block
 
 font:
   # The normal (roman) font face to use.
   normal:
-    family: 'Fira Code Nerd Font'
-    style: Regular
+    family: 'CaskaydiaCove Nerd Font'
+    style: Light
     # Style can be specified to pick a specific face.
 
   # The bold font face
   bold:
-    family: 'Fira Code Nerd Font'
+    family: 'CaskaydiaCove Nerd Font'
     # Style can be specified to pick a specific face.
     style: Bold
 
@@ -156,8 +162,7 @@ env:
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: xterm-256color
 
 shell:
-  program: /usr/bin/tmux
+  program: /usr/local/bin/tmux

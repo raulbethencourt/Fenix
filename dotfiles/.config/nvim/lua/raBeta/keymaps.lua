@@ -25,12 +25,15 @@ function Toggle_Hidden_All()
     vim.cmd 'set ls=2'
   end
 end
-
 keymap('n', '<F11>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]tatusline')
 
 -- TAB in general mode will move to text buffer
 keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', '[B]prev')
+
+-- GenNvim
+keymap('v', '<leader>g', ':Gen<CR>')
+keymap('n', '<leader>g', ':Gen<CR>')
 
 -- UndoTree
 keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
@@ -39,8 +42,9 @@ keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', '[C]omments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', '[C]omments')
 keymap('n', '<leader>e', '<cmd>Explore<CR>', '[E]xplore')
-keymap('n', '<leader>c', '<cmd>bd!<CR>', '[C]lose [B]uffer')
+keymap('n', '<leader>c', '<cmd>bdelete!<CR>', '[C]lose [B]uffer')
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
+keymap('n', '<leader>h', '<cmd>split<CR>', '[S]plit')
 keymap('n', '<leader>w', '<cmd>w<CR>', '[S]ave')
 keymap('n', '<leader>a', ':q!<CR>', '[Q]uit')
 
@@ -60,9 +64,9 @@ keymap('n', '<leader>zt', '<cmd>DBUIToggle<CR>')
 keymap('n', '<leader>zc', '<cmd>DBUIClose<CR>')
 keymap('n', '<leader>zh', '<cmd>DBUILastQueryInfo<CR>')
 
-keymap('n', '<leader>y', [["+y]])
-keymap('n', '<leader>Y', [["+Y]])
-keymap('n', '<leader>d', [["_d]])
+-- keymap('n', '<leader>y', [["+y]])
+-- keymap('n', '<leader>Y', [["+Y]])
+-- keymap('n', '<leader>d', [["_d]])
 keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')
 keymap('n', '<C-Left>', ':vertical resize +2<CR>')
@@ -83,16 +87,7 @@ keymap('n', '<C-u>', '<C-u>zz')
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
 
--- Normal --
-function _G.set_terminal_keymaps()
-  vim.api.nvim_buf_set_keymap(0, 't', '<m-h>', [[<C-\><C-n><C-W>h]])
-  vim.api.nvim_buf_set_keymap(0, 't', '<m-j>', [[<C-\><C-n><C-W>j]])
-  vim.api.nvim_buf_set_keymap(0, 't', '<m-k>', [[<C-\><C-n><C-W>k]])
-  vim.api.nvim_buf_set_keymap(0, 't', '<m-l>', [[<C-\><C-n><C-W>l]])
-end
-
-vim.cmd 'autocmd! TermOpen term://* lua set_terminal_keymaps()'
-
+-- Documentations
 M.show_documentation = function()
   local filetype = vim.bo.filetype
   if vim.tbl_contains({ 'vim', 'help' }, filetype) then
