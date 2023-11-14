@@ -16,7 +16,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
-export GIT_EDITOR="lvim"
+export GIT_EDITOR="nvim"
 export TERM="alacritty"
 export BNS_USER="raul-bns"
 export BROWSER="lynx"
