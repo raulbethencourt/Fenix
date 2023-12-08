@@ -87,9 +87,7 @@ local servers = {
       },
     },
   },
-  -- psalm = {
-  --   filetypes = { 'php' },
-  -- },
+  htmx = { filetypes = { 'html', 'twig', 'php' } },
   intelephense = {
     filetypes = { 'php' },
     init_options = {

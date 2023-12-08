@@ -7,44 +7,8 @@ return {
       vim.g.gruvbox_flat_style = 'hard'
       vim.g.gruvbox_transparent = true
       vim.g.gruvbox_dark_float = true
-      vim.g.gruvbox_sidebars = { "qf", "vista_kind", "terminal", "packer", "" }
+      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', '' }
       vim.cmd [[colorscheme gruvbox-flat]]
-    end,
-  },
-  {
-    'marko-cerovac/material.nvim',
-    priority = 1000,
-    enabled = true,
-    config = function()
-      vim.g.material_style = 'darker'
-      -- vim.cmd [[colorscheme material]]
-    end,
-  },
-  {
-    'EdenEast/nightfox.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme nightfox]]
-    end,
-  },
-  {
-    'kvrohit/mellow.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme mellow]]
-    end,
-  },
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme tokyonight-night]]
     end,
   },
   {
