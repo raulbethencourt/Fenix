@@ -10,6 +10,8 @@ return {
   {
     'rest-nvim/rest.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    -- latest commit breaks formatting
+    commit = '8b62563',
     config = function()
       require('rest-nvim').setup {
         result_split_horizontal = false,
@@ -45,24 +47,24 @@ return {
   { 'folke/which-key.nvim', opts = true },
   { 'numToStr/Comment.nvim', opts = true, lazy = false },
   { 'aserowy/tmux.nvim', config = true },
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '▎' },
-        change = { text = '▎' },
-        delete = { text = '󰐊' },
-        topdelete = { text = '󰐊' },
-        changedelete = { text = '▎' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-
-        vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
+  -- {
+  --   'lewis6991/gitsigns.nvim',
+  --   opts = {
+  --     signs = {
+  --       add = { text = '▎' },
+  --       change = { text = '▎' },
+  --       delete = { text = '󰐊' },
+  --       topdelete = { text = '󰐊' },
+  --       changedelete = { text = '▎' },
+  --     },
+  --     on_attach = function(bufnr)
+  --       vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+  --       vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+  --
+  --       vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+  --     end,
+  --   },
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
