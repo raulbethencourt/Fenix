@@ -25,7 +25,7 @@
     "body": [
       "if (\\$bean->load_relationship('${1:relation}'))",
       "{",
-      "   \\$${2:variable} = $bean->${1:relation}->${3:fn}();",
+      "   \\$${2:variable} = \\$bean->${1:relation}->${3:fn}();",
       "}"
     ],
     "description": "load relationship to get ids."

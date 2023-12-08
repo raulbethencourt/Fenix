@@ -1,7 +1,7 @@
 local lint = require 'lint'
 
 lint.linters_by_ft = {
-  -- javascript = { 'eslint_d' },
+  javascript = { 'eslint_d' },
   markdown = { 'markdownlint' },
   -- php = { 'phpcs' },
   -- php = { 'phpstan' },
