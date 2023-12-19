@@ -10,6 +10,8 @@ return {
   {
     'rest-nvim/rest.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    -- latest commit breaks formatting
+    commit = '8b62563',
     config = function()
       require('rest-nvim').setup {
         result_split_horizontal = false,
