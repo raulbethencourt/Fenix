@@ -1,6 +1,6 @@
-require "raBeta.settings"
-require "raBeta.autocommands"
-require "raBeta.keymaps"
+require 'raBeta.settings'
+require 'raBeta.autocommands'
+require 'raBeta.keymaps'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -19,9 +19,9 @@ require('lazy').setup({
   { import = 'raBeta.plugins' },
 }, {})
 
-require "raBeta.configs.lsp"
-require "raBeta.configs.telescope"
-require "raBeta.configs.treesitter"
-require "raBeta.configs.harpoon"
-require "raBeta.configs.inlay-hints"
-require "raBeta.configs.dbui"
+require 'raBeta.configs.lsp'
+require 'raBeta.configs.telescope'
+require 'raBeta.configs.treesitter'
+require 'raBeta.configs.harpoon'
+require 'raBeta.configs.inlay-hints'
+require 'raBeta.configs.dbui'

@@ -1,4 +1,4 @@
--- general VIM
+-- options --
 local options = {
   backup = false, -- creates a backup file
   clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
@@ -45,25 +45,32 @@ local options = {
   timeout = true,
   timeoutlen = 500,
   ruler = false,
+  equalalways = true,
+  guicursor = table.concat({
+    'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
+    'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
+    'r:hor50-Cursor/lCursor-blinkwait50-blinkon50-blinkoff80',
+  }, ','),
 }
-
-vim.opt.shortmess:append 'c'
-
-vim.o.guicursor = table.concat({
-  'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
-  'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
-  'r:hor50-Cursor/lCursor-blinkwait50-blinkon50-blinkoff80',
-}, ',')
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.g.VM_theme = 'purplegray'
-vim.g.showtabline = 0
-vim.g.netrw_banner = 0
+vim.opt.shortmess:append 'c'
 
--- style folding
+-- globals --
+local globals = {
+  VM_theme = 'purplegray',
+  showtabline = 0,
+  netrw_banner = 0,
+  netrw_liststyle = 0,
+  db_ui_auto_execute_table_helpers = 1, -- dadbod-ui
+}
+for k, v in pairs(globals) do
+  vim.g[k] = v
+end
+
+-- style folding --
 function MyFoldtext()
   local text = {}
   local n_lines = vim.v.foldend - vim.v.foldstart
