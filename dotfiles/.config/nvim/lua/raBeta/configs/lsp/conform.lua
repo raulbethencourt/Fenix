@@ -12,6 +12,7 @@ conform.setup {
     html = { 'prettier' },
     css = { 'prettier' },
     javascript = { 'prettier' },
+    vue = { 'prettier' },
     json = { 'prettier' },
     yaml = { 'prettier' },
     markdown = { 'prettier' },
@@ -20,7 +21,6 @@ conform.setup {
     sh = { 'shfmt' },
     bash = { 'shfmt' },
     zsh = { 'shfmt' },
-    -- php = { 'phpcbf' },
     php = { 'pretty-php' },
   },
 }
