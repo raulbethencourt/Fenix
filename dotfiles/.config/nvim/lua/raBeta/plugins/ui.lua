@@ -12,42 +12,6 @@ return {
     end,
   },
   {
-    'marko-cerovac/material.nvim',
-    priority = 1000,
-    enabled = true,
-    config = function()
-      vim.g.material_style = 'darker'
-      -- vim.cmd [[colorscheme material]]
-    end,
-  },
-  {
-    'EdenEast/nightfox.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme nightfox]]
-    end,
-  },
-  {
-    'kvrohit/mellow.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme mellow]]
-    end,
-  },
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = true,
-    config = function()
-      -- vim.cmd[[colorscheme tokyonight-night]]
-    end,
-  },
-  {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,

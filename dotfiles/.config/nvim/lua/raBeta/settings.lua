@@ -44,7 +44,6 @@ local options = {
   shell = 'zsh',
   timeout = true,
   timeoutlen = 500,
-  foldcolumn = '1',
   ruler = false,
 }
 
