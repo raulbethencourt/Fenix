@@ -24,6 +24,13 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   command = 'set showtabline=0 ',
 })
 
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = 'sql,mysql,plsql',
+  callback = function()
+    require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
+  end,
+})
+
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
