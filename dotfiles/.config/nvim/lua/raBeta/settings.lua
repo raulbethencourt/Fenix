@@ -64,7 +64,6 @@ local globals = {
   showtabline = 0,
   netrw_banner = 0,
   netrw_liststyle = 0,
-  db_ui_auto_execute_table_helpers = 1, -- dadbod-ui
 }
 for k, v in pairs(globals) do
   vim.g[k] = v

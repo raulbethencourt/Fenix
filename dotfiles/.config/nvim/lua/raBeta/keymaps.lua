@@ -42,11 +42,11 @@ keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', '[C]omments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', '[C]omments')
 keymap('n', '<leader>e', '<cmd>Explore<CR>', '[E]xplore')
-keymap('n', '<leader>c', '<cmd>bdelete!<CR>', '[C]lose [B]uffer')
+keymap('n', '<leader>c', '<cmd>bdelete<CR>', '[C]lose [B]uffer')
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
 keymap('n', '<leader>h', '<cmd>split<CR>', '[S]plit')
 keymap('n', '<leader>w', '<cmd>w<CR>', '[S]ave')
-keymap('n', '<leader>a', ':q!<CR>', '[Q]uit')
+keymap('n', '<leader>q', '<cmd>q<CR>', '[Q]uit')
 
 -- Lazy
 keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>')
