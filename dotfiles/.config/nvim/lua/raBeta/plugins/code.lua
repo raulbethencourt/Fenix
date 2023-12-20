@@ -3,9 +3,14 @@ return {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
       { 'tpope/vim-dadbod', lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', lazy = true, ft = { 'sql', 'mysql', 'plsql' } },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
     },
-    cmd = { 'DBUIToggle', 'DBUI', 'DBUIFindBuffer' },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
   },
   {
     'rest-nvim/rest.nvim',
@@ -41,30 +46,15 @@ return {
       }
     end,
   },
-  'ThePrimeagen/harpoon',
+  {
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+  },
   'tpope/vim-sleuth',
   'mbbill/undotree',
   { 'folke/which-key.nvim', opts = true },
   { 'numToStr/Comment.nvim', opts = true, lazy = false },
   { 'aserowy/tmux.nvim', config = true },
-  -- {
-  --   'lewis6991/gitsigns.nvim',
-  --   opts = {
-  --     signs = {
-  --       add = { text = '▎' },
-  --       change = { text = '▎' },
-  --       delete = { text = '󰐊' },
-  --       topdelete = { text = '󰐊' },
-  --       changedelete = { text = '▎' },
-  --     },
-  --     on_attach = function(bufnr)
-  --       vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-  --       vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-  --
-  --       vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-  --     end,
-  --   },
-  -- },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -82,6 +72,7 @@ return {
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
+    vscode = true,
     opts = {},
     keys = {
       {

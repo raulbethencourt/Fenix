@@ -1,6 +1,5 @@
 require 'raBeta.configs.lsp.cmp'
 require 'raBeta.configs.lsp.linter'
-require 'raBeta.configs.lsp.conform'
 require 'raBeta.configs.lsp.languages.php'
 
 local conform = require 'conform'
@@ -24,13 +23,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', 'Telescope [D]iagnostics')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  nmap('<leader>lf', function()
-    conform.format {
-      lsp_callback = true,
-      async = false,
-      timeout_ms = 500,
-    }
-  end, 'Format current buffer with LSP')
   nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('<leader>ln', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')

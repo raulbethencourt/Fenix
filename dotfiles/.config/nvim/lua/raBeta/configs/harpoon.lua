@@ -1,38 +1,13 @@
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+local harpoon = require("harpoon")
 
-local keymap = vim.keymap.set
-keymap('n', '<leader>qs', mark.add_file, { desc = 'Add file' })
-keymap('n', '<leader>qd', ui.toggle_quick_menu, { desc = 'Menu' })
-keymap(
-    'n',
-    '<leader>qj',
-    function()
-        ui.nav_file(1)
-    end,
-    { desc = 'File 1' }
-)
-keymap(
-    'n',
-    '<leader>qk',
-    function()
-        ui.nav_file(2)
-    end,
-    { desc = 'File 2' }
-)
-keymap(
-    'n',
-    '<leader>ql',
-    function()
-        ui.nav_file(3)
-    end,
-    { desc = 'File 3' }
-)
-keymap(
-    'n',
-    '<leader>qm',
-    function()
-        ui.nav_file(4)
-    end,
-    { desc = 'File 4' }
-)
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>fs", function() harpoon:list():append() end, { desc = 'Add file' })
+vim.keymap.set("n", "<leader>fd", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Menu' })
+
+vim.keymap.set("n", "<leader>fj", function() harpoon:list():select(1) end,{ desc = 'File 1' })
+vim.keymap.set("n", "<leader>fk", function() harpoon:list():select(2) end,{ desc = 'File 2' })
+vim.keymap.set("n", "<leader>fl", function() harpoon:list():select(3) end,{ desc = 'File 3' })
+vim.keymap.set("n", "<leader>fm", function() harpoon:list():select(4) end,{ desc = 'File 4' })
