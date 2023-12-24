@@ -1,46 +1,50 @@
 # Programs and packages list that I have installed 🦊
 
+- [ ] nala
+- [ ] deb-get
 - [ ] exa
 - [ ] alacrity
+- [ ] tmux
 - [ ] biblitoque calibre
 - [ ] zathura
 - [ ] vlc
 - [ ] git
+- [ ] sxiv
+- [ ] jq
+- [ ] tldr
+- [ ] dragon
 - [ ] keepass2
 - [ ] lazygit
-- [ ] chrome
+- [ ] dbeaver
+- [ ] postman
+- [ ] brave
+- [ ] vivaldi
 - [ ] composer
 - [ ] ruby
 - [ ] delta
 - [ ] devilbox
-- [ ] discord
 - [ ] docker
 - [ ] ffmpeg
 - [ ] filezilla
 - [ ] github-cli
 - [ ] gruvbox
-- [ ] htop
+- [ ] btop
 - [ ] neovim
 - [ ] node
 - [ ] nvm
 - [ ] zap
 - [ ] python
 - [ ] rust
-- [ ] ranger
-- [ ] spaceship
 - [ ] symfony
-- [ ] tmux
-- [ ] ueberzug
 - [ ] vim
 - [ ] vscode
-- [ ] vue-cli
-- [ ] yarn
 - [ ] youtube-dl
 - [ ] zsh
 - [ ] steam
 - [ ] neofetch
 - [ ] fd (linux - modern unix)
+- [ ] duf (linux - modern unix)
+- [ ] dust (linux - modern unix)
 - [ ] fzf
-- [ ] xplr
 
 ## Install regolith, not ubunutu
