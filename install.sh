@@ -21,6 +21,11 @@ while read -r p; do sudo apt install -y $p; done < <(
     filezilla
     steam
     neofetch
+	bat
+	duf
+	fzf
+	zoxide
+	ripgrep
     fd-find
     exa 
     zathura
