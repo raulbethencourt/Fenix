@@ -3,6 +3,9 @@
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
 
+# keepass2 package
+sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
+
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
@@ -31,6 +34,8 @@ while read -r p; do sudo apt install -y $p; done < <(
     zathura
     ascii-image-converter
     gim
+	keepass2
+	tweaks
 EOF
 )
 
@@ -44,4 +49,8 @@ sleep 6
 sudo apt install -y tig
 
 # link fd bin
-ln -s $(which fdfind) ~/.local/bin/fd
+ln -s "$(which fdfind)" ~/.local/bin/fd
+
+cp -fr "$HOME"/Fenix/dotfiles/* "$HOME"/
+cp -fr "$HOME"/Fenix/dotfiles/.config/* "$HOME"/.config/
+
