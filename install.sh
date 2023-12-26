@@ -6,6 +6,15 @@ echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee
 # keepass2 package
 sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
 
+# github cli
+type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+
+# alacritty
+sudo add-apt-repository ppa:aslatter/ppa -y
+
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
@@ -16,10 +25,14 @@ sudo apt update -y
 echo installing the must-have pre-requisites
 while read -r p; do sudo apt install -y $p; done < <(
 	cat <<"EOF"
+	nala
+	alacritty
     curl
+	tmux
     wget
     ffmpeg
     code
+	gh
     vlc
     filezilla
     steam
@@ -36,6 +49,7 @@ while read -r p; do sudo apt install -y $p; done < <(
     gim
 	keepass2
 	tweaks
+	tig
 EOF
 )
 
@@ -46,11 +60,23 @@ echo hit Ctrl+C to quit
 echo -e "\n"
 sleep 6
 
-sudo apt install -y tig
+# Recover config from Fenix repo
+gh repo clone raulbethencourt/Fenix
+cp -fr "$HOME"/Fenix/dotfiles/* "$HOME"/
+cp -fr "$HOME"/Fenix/dotfiles/.config/* "$HOME"/.config/
+
+# Dragon
+gh repo clone mwh/dragon "$HOME"/git_apps/dragon
+cd "$HOME"/git_apps/dragon
+make install
+cd
+
+# sxiv
+gh repo clone xyb3rt/sxiv "$HOME"/git_apps/sxiv
+cd "$HOME"/git_apps/sxiv
+make install
+cd
 
 # link fd bin
 ln -s "$(which fdfind)" ~/.local/bin/fd
-
-cp -fr "$HOME"/Fenix/dotfiles/* "$HOME"/
-cp -fr "$HOME"/Fenix/dotfiles/.config/* "$HOME"/.config/
 
