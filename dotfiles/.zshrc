@@ -23,9 +23,7 @@ plug "zap-zsh/zap-prompt"
 # Aliases
 source ~/zsh/exports.zsh
 source ~/zsh/keymaps.zsh
-source ~/zsh/options.zsh
 source ~/zsh/alias/general.zsh
-source ~/zsh/alias/bns.zsh
 source ~/zsh/alias/git.zsh
 source ~/zsh/alias/ubuntu.zsh
 source ~/zsh/alias/docker.zsh
