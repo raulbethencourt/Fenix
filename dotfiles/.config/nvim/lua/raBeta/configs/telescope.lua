@@ -45,7 +45,7 @@ require('telescope').setup {
     },
     preview = {
       filesize_limit = 0.1, -- MB
-      treesitter = false, -- treesitter freezes on big files
+      treesitter = false,   -- treesitter freezes on big files
     },
     color_devicons = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
@@ -66,10 +66,23 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {},
+    },
+    fzf = {
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
 require('telescope').load_extension 'fzf'
+require('telescope').load_extension 'live_grep_args'
+require('telescope').load_extension 'ui-select'
 
 local function is_git_repo()
   vim.fn.system 'git rev-parse --is-inside-work-tree'
@@ -104,7 +117,9 @@ keymap('n', '<leader><space>', function()
   })
 end, { desc = 'Buffers' })
 
-keymap('n', '<leader>sl', "<cmd>lua Git_root('live_grep', { max_results = 4000 })<cr>", { desc = 'Grep (root dir)' })
+keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { desc = 'Grep Args' })
+-- keymap('n', '<leader>sl', "<cmd>lua Git_root('live_grep', { max_results = 4000 })<cr>", { desc = 'Grep (root dir)' })
 keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = 'Files (root dir)' })
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Recently opened files' })
 keymap('n', '<leader>sg', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
@@ -113,4 +128,5 @@ keymap('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S
 keymap('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 keymap('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 keymap('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
-keymap('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[S]earch in current [B]uffer' })
+keymap('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find,
+  { desc = '[S]earch in current [B]uffer' })
