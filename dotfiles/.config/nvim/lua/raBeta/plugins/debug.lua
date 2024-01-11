@@ -4,7 +4,6 @@ return {
     'rcarriga/nvim-dap-ui',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
-    'leoluz/nvim-dap-go',
   },
   config = function()
     local dap = require 'dap'
@@ -105,8 +104,5 @@ return {
     vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'WarningMsg', linehl = '', numhl = '' })
     vim.fn.sign_define('DapStopped', { text = '', texthl = 'FloatFooter', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'ErrorMsg', linehl = '', numhl = '' })
-
-    -- Install golang specific config
-    require('dap-go').setup()
   end,
 }

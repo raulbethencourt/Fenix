@@ -1,8 +1,6 @@
 require 'raBeta.configs.lsp.cmp'
-require 'raBeta.configs.lsp.linter'
+require 'raBeta.configs.lsp.none-ls'
 require 'raBeta.configs.lsp.languages.php'
-
-local conform = require 'conform'
 
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
@@ -20,6 +18,9 @@ local on_attach = function(_, bufnr)
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
   nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', 'Show line diagnostics')
   nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap('<leader>lf', function()
+    vim.lsp.buf.format { async = true }
+  end, '[F]ormat')
   nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', 'Telescope [D]iagnostics')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')

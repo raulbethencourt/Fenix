@@ -2,7 +2,7 @@ return {
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      { 'tpope/vim-dadbod', lazy = true },
+      { 'tpope/vim-dadbod',                     lazy = true },
       { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
     },
     cmd = {
@@ -13,48 +13,15 @@ return {
     },
   },
   {
-    'rest-nvim/rest.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    -- latest commit breaks formatting
-    commit = '8b62563',
-    config = function()
-      require('rest-nvim').setup {
-        result_split_horizontal = false,
-        result_split_in_place = true,
-        skip_ssl_verification = false,
-        encode_url = true,
-        highlight = {
-          enabled = true,
-          timeout = 150,
-        },
-        result = {
-          show_url = false,
-          show_curl_command = false,
-          show_http_info = true,
-          show_headers = true,
-          formatters = {
-            json = 'jq',
-            html = function(body)
-              return vim.fn.system({ 'tidy', '-i', '-q', '-' }, body)
-            end,
-          },
-        },
-        jump_to_request = false,
-        env_file = '.env',
-        custom_dynamic_variables = {},
-        yank_dry_run = true,
-      }
-    end,
-  },
-  {
     'ThePrimeagen/harpoon',
-    branch = "harpoon2",
+    branch = 'harpoon2',
+    dependencies = { { 'nvim-lua/plenary.nvim' } },
   },
   'tpope/vim-sleuth',
   'mbbill/undotree',
-  { 'folke/which-key.nvim', opts = true },
-  { 'numToStr/Comment.nvim', opts = true, lazy = false },
-  { 'aserowy/tmux.nvim', config = true },
+  { 'folke/which-key.nvim',  opts = true },
+  { 'numToStr/Comment.nvim', opts = true,  lazy = false },
+  { 'aserowy/tmux.nvim',     config = true },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -67,6 +34,11 @@ return {
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        version = '^1.0.0',
+      },
+      'nvim-telescope/telescope-ui-select.nvim',
     },
   },
   {

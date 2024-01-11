@@ -31,7 +31,6 @@ while read -r p; do sudo apt install -y $p; done < <(
 	tmux
     wget
     ffmpeg
-    code
 	gh
     vlc
     filezilla
@@ -46,9 +45,9 @@ while read -r p; do sudo apt install -y $p; done < <(
     exa 
     zathura
     ascii-image-converter
-    gim
+    gimp
 	keepass2
-	tweaks
+	gnome-tweaks
 	tig
 EOF
 )
