@@ -1,7 +1,7 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/snippets' } }
 luasnip.config.setup {}
 
 cmp.setup {
@@ -42,6 +42,16 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'codeium' },
     { name = 'crates' },
+  },
+  experimental = { ghost_text = true },
+  formatting = {
+    format = require('lspkind').cmp_format {
+      mode = 'symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Codeium = '' },
+    },
   },
 }

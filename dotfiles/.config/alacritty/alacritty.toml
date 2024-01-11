@@ -2,42 +2,42 @@
 draw_bold_text_with_bright_colors = true
 
 [[colors.indexed_colors]]
-color = "#FAB387"
+color = "#e78a4e"
 index = 16
 
 [[colors.indexed_colors]]
-color = "#F5E0DC"
+color = "#c14a4a"
 index = 17
 
 [colors.bright]
-black= "#585B70" # surface2
-red= "#F38BA8" # red
-green= "#A6E3A1" # green
-yellow= "#F9E2AF" # yellow
-blue= "#89B4FA" # blue
-magenta= "#F5C2E7" # pink
-cyan= "#94E2D5" # teal
-white= "#A6ADC8" # subtext0
+black = '#7c6f64'
+red = '#ea6962'
+green = '#a9b665'
+yellow = '#d8a657'
+blue = '#7daea3'
+magenta = '#d3869b'
+cyan = '#89b482'
+white = '#d4be98'
 
 [colors.normal]
-black = "#45475A" # surface1
-red = "#F38BA8" # red
-green = "#A6E3A1" # green
-yellow = "#F9E2AF" # yellow
-blue = "#89B4FA" # blue
-magenta = "#F5C2E7" # pink
-cyan = "#94E2D5" # teal
-white = "#BAC2DE" # subtext1
+black = '#1D2021'
+red = '#ea6962'
+green = '#a9b665'
+yellow = '#d8a657'
+blue = '#7daea3'
+magenta = '#d3869b'
+cyan = '#89b482'
+white = '#d4be98'
 
 [colors.dim]
-black = "#45475A" # surface1
-red = "#F38BA8" # red
-green = "#A6E3A1" # green
-yellow = "#F9E2AF" # yellow
-blue = "#89B4FA" # blue
-magenta = "#F5C2E7" # pink
-cyan = "#94E2D5" # teal
-white = "#BAC2DE" # subtext1
+black = '#1D2021'
+red = '#ea6962'
+green = '#a9b665'
+yellow = '#d8a657'
+blue = '#7daea3'
+magenta = '#d3869b'
+cyan = '#89b482'
+white = '#d4be98'
 
 [colors.selection]
 text = "#1E1E2E" # base
@@ -64,36 +64,36 @@ text = "#1E1E2E" # base
 cursor = "#F5E0DC" # rosewater
  
 [colors.primary]
-background = "#1E1E2E" # base
-foreground = "#CDD6F4" # text
+background = "#0F0F11" # base
+foreground = "#d4be98" # text
 dim_foreground = "#CDD6F4" # text
 bright_foreground = "#CDD6F4" # text
 
 [cursor.style]
 blinking = "Always"
-shape = "Beam"
+shape = "Block"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 11.0
+size = 10.0
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
 
 [font.bold]
 family = "CaskaydiaCove Nerd Font"
 style = "Bold"
 
-[font.glyph_offset]
-x = 0
-y = 0
-
 [font.italic]
 family = "Victor Mono"
 style = "Italic"
 
-[font.normal]
-family = "CaskaydiaCove Nerd Font"
-style = "Regular"
+[font.glyph_offset]
+x = 0
+y = 0
 
 [font.offset]
 x = 0

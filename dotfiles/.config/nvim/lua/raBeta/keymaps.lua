@@ -25,6 +25,7 @@ function Toggle_Hidden_All()
     vim.cmd 'set ls=2'
   end
 end
+
 keymap('n', '<F11>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]tatusline')
 
 -- TAB in general mode will move to text buffer
@@ -47,6 +48,8 @@ keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
 keymap('n', '<leader>h', '<cmd>split<CR>', '[S]plit')
 keymap('n', '<leader>w', '<cmd>w<CR>', '[S]ave')
 keymap('n', '<leader>q', '<cmd>q<CR>', '[Q]uit')
+keymap('n', '<leader>i', '<C-w>|', '[M]aximize')
+keymap('n', '<leader>o', '<C-w>=', '[E]quilify')
 
 -- Lazy
 keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>')
