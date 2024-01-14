@@ -68,19 +68,3 @@ local globals = {
 for k, v in pairs(globals) do
   vim.g[k] = v
 end
-
--- style folding --
-function MyFoldtext()
-  local text = {}
-  local n_lines = vim.v.foldend - vim.v.foldstart
-  local text_lines = ' lines'
-
-  if n_lines == 1 then
-    text_lines = ' line'
-  end
-
-  table.insert(text, { '  ' .. n_lines .. text_lines, { 'Folded' } })
-
-  return text
-end
-vim.opt.foldtext = 'v:lua.MyFoldtext()'

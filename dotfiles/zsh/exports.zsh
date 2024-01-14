@@ -1,5 +1,10 @@
+#!/bin/zsh
+
 # General
-export OPENAI_API_KEY="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"
+export TERM="xterm-256color"
+export GOPATH=$HOME/go
+export BROWSER="brave"
+export GIT_EDITOR="nvim"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
@@ -16,23 +21,24 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
-export GIT_EDITOR="nvim"
-export TERM="alacritty"
-export BNS_USER="raul-bns"
-export BROWSER="lynx"
-# export BAT_THEME="gruvbox-dark"
-
 # PATHS
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/joshuto:$PATH"
+export PATH="$HOME/tools/scripts:$PATH"
+export PATH="$HOME/tools/scripts/wcss:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
-export PATH="$HOME/dev/bns/tools/bin:$PATH"
-export PATH="$HOME/.local/share/nvim:$PATH"
+export PATH="$HOME/apps/liquibase:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-export PATH="$HOME/dev/bnstools/tools/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/tools/scripts:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# Man with bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Nvm
 export NVM_DIR="$HOME/.nvm"
@@ -48,22 +54,19 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# FZF integration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+LFCD="$GOPATH/src/github.com/gokcehan/lf/etc/lfcd.sh" # source
+LFCD="/home/rabeta/.config/lf/lfcd.sh"                #  pre-built binary, make sure to use absolute path
+if [ -f "$LFCD" ]; then
+  source "$LFCD"
+fi
+
 eval "$(zoxide init zsh)"
 export _ZO_ECHO='1'
 
-# FZF integration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /usr/share/doc/fzf/examples/key-bindings.zsh
-. /usr/share/doc/fzf/examples/completion.zsh
-
 # Icons in terminal
 . ~/.local/share/icons-in-terminal/icons_bash.sh
-
-# Change user name in ssh/config file
-export SSH_USER="raul-bns"
-cat ~/.ssh/config.tmp | sed -e "s/\${SSH_USER}/${SSH_USER}/g" >~/.ssh/config
-
-# Man pager in color
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-
-. ~/dev/bns/tools/bin/.autocompletion

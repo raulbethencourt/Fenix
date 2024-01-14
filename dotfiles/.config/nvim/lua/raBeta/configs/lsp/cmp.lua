@@ -40,10 +40,21 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+
+    { name = 'path' },
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'codeium' },
     { name = 'crates' },
+    {
+      name = 'nvim_lua',
+      keyword_length = 2,
+    },
+    {
+      name = 'vsnip',
+      keyword_length = 2,
+    },
   },
   experimental = { ghost_text = true },
   formatting = {

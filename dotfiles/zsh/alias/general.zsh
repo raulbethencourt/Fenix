@@ -1,25 +1,24 @@
-alias zshconfig="vi ~/.zshrc"
-alias ohmyzsh="vi ~/.oh-my-zsh"
+#!/bin/sh
+
 alias sc="symfony console"
-alias devil="cd apps/devilbox/"
-alias dcupd="docker-compose up -d php mysql httpd bind"
-alias dv="cd && devil && dcupd"
-alias dvs="cd && devil && dcstop && dcrm -f && cd && c"
+alias docker-compose="docker compose"
+alias dvupd="dcupd php mysql httpd bind mailhog"
 alias c="clear"
 alias po="ascii-image-converter ~/Images/Wallpapers/IMG-PHOTO-ART-1171027209.jpg -C && sleep 2 && poweroff"
 alias rb="ascii-image-converter ~/Images/Wallpapers/IMG-PHOTO-ART-1171027209.jpg -C && sleep 2 && reboot"
-alias pythobject="/usr/bin/python3.8"
-alias pip="pip3"
-alias python="python3"
-alias py="python3"
-alias pylvim="pipenv run lvim ."
-alias gt="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias gmc="gitmoji -c"
 alias ydl-mp3="youtube-dl -x --audio-format mp3"
 alias l="exa -laa --icons  --color-scale"
 alias lt="exa -laT --icons  --color-scale"
-alias rng="ranger"
 alias cp="cp -i"
 alias mv="mv -i"
 alias cg="cargo"
-alias _="sudo"
+alias jo='joshuto'
+alias zt='zathura'
+alias bt='btop'
+alias sv='sxiv'
+alias dg='dragon'
+alias aic='ascii-image-converter'
+alias cdf='. cdf'
+alias vim="nvim"
+alias cd="z"
+
