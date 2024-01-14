@@ -1,4 +1,18 @@
 return {
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+  },
+  {
+    'kosayoda/nvim-lightbulb',
+    event = 'LspAttach',
+    config = function()
+      require('nvim-lightbulb').setup {
+        autocmd = { enabled = true },
+      }
+    end,
+  },
   { 'nvimtools/none-ls.nvim' },
   {
     'neovim/nvim-lspconfig',
@@ -9,18 +23,17 @@ return {
     },
   },
   {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    event = 'LspAttach',
-    opts = true,
-  },
-  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
       'rafamadriz/friendly-snippets',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-vsnip',
     },
   },
   {
@@ -39,6 +52,11 @@ return {
   {
     'saecki/crates.nvim',
     event = { 'BufRead Cargo.toml' },
+    opts = {
+      src = {
+        cmp = { enabled = true },
+      },
+    },
     config = function()
       require('crates').setup {
         null_ls = {
@@ -62,7 +80,14 @@ return {
         local codelldb = mason_registry.get_package 'codelldb'
         local extension_path = codelldb:get_install_path() .. '/extension/'
         local codelldb_path = extension_path .. 'adapter/codelldb'
-        local liblldb_path = vim.fn.has 'mac' == 1 and extension_path .. 'lldb/lib/liblldb.dylib' or extension_path .. 'lldb/lib/liblldb.so'
+        local liblldb_path = ''
+        if vim.loop.os_uname().sysname:find 'Windows' then
+          liblldb_path = extension_path .. 'lldb\\bin\\liblldb.dll'
+        elseif vim.fn.has 'mac' == 1 then
+          liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+        else
+          liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+        end
         adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
       end
       return {

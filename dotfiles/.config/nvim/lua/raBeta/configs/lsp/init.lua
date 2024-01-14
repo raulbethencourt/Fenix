@@ -64,7 +64,31 @@ local servers = {
     filetypes = { 'sh', 'zsh' },
   },
   clangd = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = {
+          allFeatures = true,
+          loadOutDirsFromCheck = true,
+          runBuildScripts = true,
+        },
+        checkOnSave = {
+          allFeatures = true,
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+        },
+        procMacro = {
+          enable = true,
+          ignored = {
+            ["async-trait"] = { "async_trait" },
+            ["napi-derive"] = { "napi" },
+            ["async-recursion"] = { "async_recursion" },
+          },
+        },
+      },
+    },
+  },
+  taplo = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = {},
   lua_ls = {
@@ -112,6 +136,15 @@ local servers = {
 
 -- disblae inline hints
 vim.diagnostic.config {
+  update_in_insert = true,
+  underline = true,
+  severity_sort = false,
+  float = {
+    border = 'none',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
   virtual_text = false,
   signs = {
     text = {
@@ -142,8 +175,22 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local mason_lspconfig = require 'mason-lspconfig'
 
+local function rust_opts(name)
+  local plugin = require("lazy.core.config").plugins[name]
+  if not plugin then
+    return {}
+  end
+  local Plugin = require("lazy.core.plugin")
+  return Plugin.values(plugin, "opts", false)
+end
+
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+  rust_analyzer = function(_, opts)
+    local rust_tools_opts = rust_opts("rust-tools.nvim")
+    require("rust-tools").setup(vim.tbl_deep_extend("force", rust_tools_opts or {}, { server = opts }))
+    return true
+  end,
 }
 
 mason_lspconfig.setup_handlers {

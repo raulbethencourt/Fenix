@@ -32,6 +32,14 @@ keymap('n', '<F11>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]ta
 keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', '[B]prev')
 
+-- Truble
+keymap("n", "<leader>xx", function() require("trouble").toggle() end, '[T]rouble')
+keymap("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, '[W]orkspace [D]iagnostics')
+keymap("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, '[D]ocument [D]iagnostics')
+keymap("n", "<leader>xq", function() require("trouble").toggle("quickfix") end, '[Q]uickfix')
+keymap("n", "<leader>xl", function() require("trouble").toggle("loclist") end, '[L]oclist')
+keymap("n", "gR", function() require("trouble").toggle("lsp_references") end, '[L]sp [R]eferences')
+
 -- GenNvim
 keymap('v', '<leader>g', ':Gen<CR>')
 keymap('n', '<leader>g', ':Gen<CR>')
@@ -71,8 +79,6 @@ keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')
 keymap('n', '<C-Left>', ':vertical resize +2<CR>')
 keymap('n', '<C-Right>', ':vertical resize -2<CR>')
-
-keymap('n', '<m-d>', '<cmd>RustOpenExternalDocs<Cr>')
 
 keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
