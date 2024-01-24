@@ -1,8 +1,5 @@
 M = {}
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 local keymap = function(mode, keys, func, desc)
   if desc then
     desc = desc
@@ -33,19 +30,39 @@ keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', '[B]prev')
 
 -- Truble
-keymap("n", "<leader>xx", function() require("trouble").toggle() end, '[T]rouble')
-keymap("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, '[W]orkspace [D]iagnostics')
-keymap("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, '[D]ocument [D]iagnostics')
-keymap("n", "<leader>xq", function() require("trouble").toggle("quickfix") end, '[Q]uickfix')
-keymap("n", "<leader>xl", function() require("trouble").toggle("loclist") end, '[L]oclist')
-keymap("n", "gR", function() require("trouble").toggle("lsp_references") end, '[L]sp [R]eferences')
-
--- GenNvim
-keymap('v', '<leader>g', ':Gen<CR>')
-keymap('n', '<leader>g', ':Gen<CR>')
+keymap('n', '<leader>xx', function()
+  require('trouble').toggle()
+end, '[T]rouble')
+keymap('n', '<leader>xw', function()
+  require('trouble').toggle 'workspace_diagnostics'
+end, '[W]orkspace [D]iagnostics')
+keymap('n', '<leader>xd', function()
+  require('trouble').toggle 'document_diagnostics'
+end, '[D]ocument [D]iagnostics')
+keymap('n', '<leader>xq', function()
+  require('trouble').toggle 'quickfix'
+end, '[Q]uickfix')
+keymap('n', '<leader>xl', function()
+  require('trouble').toggle 'loclist'
+end, '[L]oclist')
+keymap('n', '<leader>xt', '<cmd>TodoTrouble<CR>', '[T]odo [T]rouble')
+keymap('n', 'gR', function()
+  require('trouble').toggle 'lsp_references'
+end, '[L]sp [R]eferences')
 
 -- UndoTree
 keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
+
+-- Lazy
+keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>')
+keymap('n', '<leader>pi', '<cmd>Lazy install<CR>')
+keymap('n', '<leader>pu', '<cmd>Lazy update<CR>')
+keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>')
+
+-- Dbui
+keymap('n', '<leader>zt', '<cmd>DBUIToggle<CR>')
+keymap('n', '<leader>zc', '<cmd>DBUIClose<CR>')
+keymap('n', '<leader>zh', '<cmd>DBUILastQueryInfo<CR>')
 
 -- Gnereral
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', '[C]omments')
@@ -58,22 +75,7 @@ keymap('n', '<leader>w', '<cmd>w<CR>', '[S]ave')
 keymap('n', '<leader>q', '<cmd>q<CR>', '[Q]uit')
 keymap('n', '<leader>i', '<C-w>|', '[M]aximize')
 keymap('n', '<leader>o', '<C-w>=', '[E]quilify')
-
--- Lazy
-keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>')
-keymap('n', '<leader>pi', '<cmd>Lazy install<CR>')
-keymap('n', '<leader>pu', '<cmd>Lazy update<CR>')
-keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>')
-
--- Rest
-keymap('n', '<leader>rh', '<Plug>RestNvim<CR>', '[R]est [N]vim')
-keymap('n', '<leader>rp', '<Plug>RestNvimPreview<CR>', '[R]est [N]vim [P]review')
-keymap('n', '<leader>rl', '<Plug>RestNvimLast<CR>', '[R]est [N]vim [L]ast')
-
--- Dbui
-keymap('n', '<leader>zt', '<cmd>DBUIToggle<CR>')
-keymap('n', '<leader>zc', '<cmd>DBUIClose<CR>')
-keymap('n', '<leader>zh', '<cmd>DBUILastQueryInfo<CR>')
+keymap('n', '<leader>n', ':nohlsearch<CR>', '[N]o highlights')
 
 keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')

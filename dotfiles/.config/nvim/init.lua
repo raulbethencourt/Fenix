@@ -1,7 +1,8 @@
-require 'raBeta.settings'
-require 'raBeta.autocommands'
-require 'raBeta.keymaps'
+-- NOTE: need to set leader before lazy
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
+-- NOTE: install lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -9,20 +10,16 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',
     lazypath,
   }
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'raBeta.plugins' },
 }, {})
 
-require 'raBeta.configs.lsp'
-require 'raBeta.configs.telescope'
-require 'raBeta.configs.treesitter'
-require 'raBeta.configs.harpoon'
-require 'raBeta.configs.inlay-hints'
-require 'raBeta.configs.dbui'
-require 'raBeta.configs.notify'
+-- NOTE: load configs
+require 'raBeta.configs'

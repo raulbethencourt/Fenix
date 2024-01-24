@@ -4,38 +4,36 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       ---@diagnostic disable-next-line: missing-parameter
-      require('lualine').setup({
+      require('lualine').setup {
         options = {
           theme = 'gruvbox',
           fmt = string.lower,
           section_separators = { left = '', right = '' },
-          component_separators = { left = '', right = '' }
+          component_separators = { left = '', right = '' },
         },
-      })
+      }
     end,
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {},
     dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
     },
     config = function()
-      require("noice").setup({
+      require('noice').setup {
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
+            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+            ['vim.lsp.util.stylize_markdown'] = true,
+            ['cmp.entry.get_documentation'] = true,
           },
           signature = {
             enabled = false,
-          }
+          },
         },
         -- you can enable a preset for easier configuration
         presets = {
@@ -48,42 +46,42 @@ return {
         views = {
           cmdline_popup = {
             border = {
-              style = "none",
+              style = 'none',
               padding = { 2, 3 },
             },
             filter_options = {},
             win_options = {
-              winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+              winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
             },
             position = {
               row = 10,
-              col = "50%",
+              col = '50%',
             },
             size = {
-              width = 60,
-              height = "auto",
+              width = 100,
+              height = 'auto',
             },
           },
           popupmenu = {
-            relative = "editor",
+            relative = 'editor',
             position = {
               row = 15,
-              col = "50%",
+              col = '50%',
             },
             size = {
-              width = 60,
+              width = 100,
               height = 10,
             },
             border = {
-              style = "none",
+              style = 'none',
               padding = { 2, 3 },
             },
             win_options = {
-              winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+              winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
             },
           },
         },
-      })
+      }
     end,
   },
   {
