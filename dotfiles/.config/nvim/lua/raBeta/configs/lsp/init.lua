@@ -2,6 +2,9 @@ require 'raBeta.configs.lsp.cmp'
 require 'raBeta.configs.lsp.none-ls'
 require 'raBeta.configs.lsp.languages.php'
 
+-- NOTE: stop saving lsp logs, change to 'debug' to see them
+vim.lsp.set_log_level("off")
+
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -125,6 +128,7 @@ local servers = {
   },
   eslint = {},
   sqlls = {
+    filetypes = { 'sql' },
     sql = {
       'sql-language-server',
       'up',

@@ -19,9 +19,8 @@ return {
   },
   'tpope/vim-sleuth',
   'mbbill/undotree',
-  { 'folke/which-key.nvim',  opts = true },
-  { 'numToStr/Comment.nvim', opts = true,  lazy = false },
-  { 'aserowy/tmux.nvim',     config = true },
+  { 'folke/which-key.nvim', opts = true },
+  { 'aserowy/tmux.nvim',    config = true },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -44,7 +43,6 @@ return {
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
-    vscode = true,
     opts = {},
     keys = {
       {
@@ -89,5 +87,4 @@ return {
       },
     },
   },
-  { 'max397574/better-escape.nvim', config = true },
 }

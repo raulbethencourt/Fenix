@@ -2,7 +2,16 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/snippets' } }
+
 luasnip.config.setup {}
+
+-- when cmp completion is loaded, clear the virtual text from codium
+-- cmp.event:on('menu_opened', function()
+--   vim.fn['codeium#Clear']()
+-- end)
+
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 cmp.setup {
   snippet = {
@@ -41,11 +50,11 @@ cmp.setup {
   },
   sources = {
 
-    { name = 'path' },
     { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'codeium' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'path' },
     { name = 'crates' },
     {
       name = 'nvim_lua',
@@ -56,7 +65,7 @@ cmp.setup {
       keyword_length = 2,
     },
   },
-  experimental = { ghost_text = true },
+---@diagnostic disable-next-line: missing-fields
   formatting = {
     format = require('lspkind').cmp_format {
       mode = 'symbol',
