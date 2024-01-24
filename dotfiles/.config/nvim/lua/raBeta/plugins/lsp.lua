@@ -1,5 +1,15 @@
 return {
   {
+    'Exafunction/codeium.nvim',
+    event = 'BufEnter',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+      'onsails/lspkind.nvim',
+    },
+    config = true,
+  },
+  {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
@@ -46,7 +56,7 @@ return {
   {
     'gbprod/php-enhanced-treesitter.nvim',
     dependencies = {
-      { 'derekstride/tree-sitter-sql', run = ':TSInstall sql' },
+      { 'derekstride/tree-sitter-sql', build = ':TSInstall sql' },
     },
   },
   {

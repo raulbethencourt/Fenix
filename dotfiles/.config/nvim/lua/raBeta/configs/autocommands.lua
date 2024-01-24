@@ -40,13 +40,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- Save folds
-vim.api.nvim_create_autocmd({ 'ExitPre' }, {
-  pattern = { '*' },
-  command = 'mkview',
-})
-vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  pattern = { '*' },
-  command = 'silent! loadview',
-})

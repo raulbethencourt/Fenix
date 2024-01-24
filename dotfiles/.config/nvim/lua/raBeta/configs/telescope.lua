@@ -83,7 +83,7 @@ require('telescope').setup {
 require('telescope').load_extension 'fzf'
 require('telescope').load_extension 'live_grep_args'
 require('telescope').load_extension 'ui-select'
-require("telescope").load_extension 'noice'
+require('telescope').load_extension 'noice'
 
 local function is_git_repo()
   vim.fn.system 'git rev-parse --is-inside-work-tree'
@@ -131,3 +131,4 @@ keymap('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]ear
 keymap('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
 keymap('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find,
   { desc = '[S]earch in current [B]uffer' })
+keymap('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[T]odo [T]elescope' })
