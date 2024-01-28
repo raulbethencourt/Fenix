@@ -3,8 +3,7 @@ require 'raBeta.configs.lsp.none-ls'
 require 'raBeta.configs.lsp.languages.php'
 
 -- NOTE: stop saving lsp logs, change to 'debug' to see them
-vim.lsp.set_log_level("off")
-
+vim.lsp.set_log_level 'off'
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -21,10 +20,22 @@ local on_attach = function(_, bufnr)
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
   nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', 'Show line diagnostics')
   nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
+
   nmap('<leader>lf', function()
     vim.lsp.buf.format { async = true }
   end, '[F]ormat')
-  nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', 'Telescope [D]iagnostics')
+
+  nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', '[T]elescope [W]orkspace [D]iagnostics')
+
+  nmap('<leader>lb', function()
+    require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
+      winblend = 0,
+      previewer = true,
+      bufnr = 0,
+      no_sign = true,
+    })
+  end, '[T]elescope [B]uffer [D]iagnostics')
+
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -33,6 +44,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
   nmap('<leader>lI', '<cmd>Mason<cr>', '[M]ason')
   nmap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp[I]nfo')
+
   nmap('<leader>ll', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
@@ -63,13 +75,16 @@ local servers = {
       },
     },
   },
+  jqls = {
+    filetypes = { 'json', 'jsonc' },
+  },
   bashls = {
     filetypes = { 'sh', 'zsh' },
   },
   clangd = {},
   rust_analyzer = {
     settings = {
-      ["rust-analyzer"] = {
+      ['rust-analyzer'] = {
         cargo = {
           allFeatures = true,
           loadOutDirsFromCheck = true,
@@ -77,15 +92,15 @@ local servers = {
         },
         checkOnSave = {
           allFeatures = true,
-          command = "clippy",
-          extraArgs = { "--no-deps" },
+          command = 'clippy',
+          extraArgs = { '--no-deps' },
         },
         procMacro = {
           enable = true,
           ignored = {
-            ["async-trait"] = { "async_trait" },
-            ["napi-derive"] = { "napi" },
-            ["async-recursion"] = { "async_recursion" },
+            ['async-trait'] = { 'async_trait' },
+            ['napi-derive'] = { 'napi' },
+            ['async-recursion'] = { 'async_recursion' },
           },
         },
       },
@@ -138,6 +153,7 @@ local servers = {
   },
 }
 
+local icons = require 'icons'
 -- disblae inline hints
 vim.diagnostic.config {
   update_in_insert = true,
@@ -152,10 +168,10 @@ vim.diagnostic.config {
   virtual_text = false,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = ' ',
-      [vim.diagnostic.severity.WARN] = ' ',
-      [vim.diagnostic.severity.HINT] = ' ',
-      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error .. ' ',
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning .. ' ',
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint .. ' ',
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Information .. ' ',
     },
     linehl = {
       [vim.diagnostic.severity.ERROR] = '',
@@ -180,19 +196,19 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 local function rust_opts(name)
-  local plugin = require("lazy.core.config").plugins[name]
+  local plugin = require('lazy.core.config').plugins[name]
   if not plugin then
     return {}
   end
-  local Plugin = require("lazy.core.plugin")
-  return Plugin.values(plugin, "opts", false)
+  local Plugin = require 'lazy.core.plugin'
+  return Plugin.values(plugin, 'opts', false)
 end
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
   rust_analyzer = function(_, opts)
-    local rust_tools_opts = rust_opts("rust-tools.nvim")
-    require("rust-tools").setup(vim.tbl_deep_extend("force", rust_tools_opts or {}, { server = opts }))
+    local rust_tools_opts = rust_opts 'rust-tools.nvim'
+    require('rust-tools').setup(vim.tbl_deep_extend('force', rust_tools_opts or {}, { server = opts }))
     return true
   end,
 }
