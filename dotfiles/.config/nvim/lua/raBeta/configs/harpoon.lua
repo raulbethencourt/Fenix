@@ -2,9 +2,10 @@ local harpoon = require 'harpoon'
 
 harpoon:setup {
     settings = {
-        save_on_toggle = fals,
+        save_on_toggle = true,
         sync_on_ui_close = false,
         key = function()
+            ---@diagnostic disable-next-line: return-type-mismatch
             return vim.loop.cwd()
         end,
     },

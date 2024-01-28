@@ -1,3 +1,6 @@
+-- NOTE: recover icons
+local icons = require "icons"
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -8,8 +11,8 @@ return {
         options = {
           theme = 'gruvbox',
           fmt = string.lower,
-          section_separators = { left = '', right = '' },
-          component_separators = { left = '', right = '' },
+          section_separators = { left = icons.ui.HalfCircleRight, right = icons.ui.HalfCircleLeft },
+          component_separators = { left = icons.ui.GrowingMoon, right = icons.ui.DecreasingMoon },
         },
       }
     end,
@@ -92,7 +95,10 @@ return {
       vim.g.gruvbox_flat_style = 'hard'
       vim.g.gruvbox_transparent = true
       vim.g.gruvbox_dark_float = true
-      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', '' }
+      vim.g.gruvbox_hide_inactive_statusline = true
+      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'lazy', 'telescope' }
+      vim.g.gruvbox_dark_sidebar = true
+      vim.g.gruvbox_dark_float = true
       vim.cmd [[colorscheme gruvbox-flat]]
     end,
   },

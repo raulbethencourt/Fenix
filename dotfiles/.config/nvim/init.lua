@@ -14,9 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-
 vim.opt.rtp:prepend(lazypath)
 
+-- NOTE: load plugins
 require('lazy').setup({
   { import = 'raBeta.plugins' },
 }, {})

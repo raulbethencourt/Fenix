@@ -8,6 +8,7 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local icons = require 'icons'
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
@@ -30,8 +31,14 @@ return {
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
+    ---@diagnostic disable-next-line: missing-fields
     dapui.setup {
-      icons = { expanded = '', collapsed = '', circular = '' },
+      ---@diagnostic disable-next-line: missing-fields
+      icons = {
+        expanded = icons.ui.TriangleShortArrowDown,
+        collapsed = icons.ui.TriangleShortArrowRight,
+        circular = icons.ui.circular,
+      },
       mappings = {
         -- Use a table to apply multiple mappings
         expand = { '<CR>', '<2-LeftMouse>' },
@@ -47,17 +54,17 @@ return {
       layouts = {
         {
           elements = {
-            { id = 'scopes', size = 0.55 },
+            { id = 'scopes',      size = 0.55 },
             { id = 'breakpoints', size = 0.10 },
-            { id = 'stacks', size = 0.25 },
-            { id = 'watches', size = 0.10 },
+            { id = 'stacks',      size = 0.25 },
+            { id = 'watches',     size = 0.10 },
           },
           size = 0.25,
           position = 'right',
         },
         {
           elements = {
-            { id = 'repl', size = 0.45 },
+            { id = 'repl',    size = 0.45 },
             { id = 'console', size = 0.55 },
           },
           size = 0.10,
@@ -69,14 +76,14 @@ return {
         -- Display controls in this element
         element = 'repl',
         icons = {
-          pause = '',
-          play = '',
-          step_into = '',
-          step_over = '',
-          step_out = '',
-          step_back = '',
-          run_last = '',
-          terminate = '',
+          pause = icons.dap.pause,
+          play = icons.dap.play,
+          step_into = icons.dap.step_into,
+          step_over = icons.dap.step_over,
+          step_out = icons.dap.step_out,
+          step_back = icons.dap.step_back,
+          run_last = icons.dap.run_last,
+          terminate = icons.dap.terminate,
         },
       },
       floating = {
@@ -88,6 +95,7 @@ return {
         },
       },
       windows = { indent = 1 },
+      ---@diagnostic disable-next-line: missing-fields
       render = {
         max_type_length = nil, -- Can be integer or nil.
         max_value_lines = 100, -- Can be integer or nil.
@@ -101,8 +109,23 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'WarningMsg', linehl = '', numhl = '' })
-    vim.fn.sign_define('DapStopped', { text = '', texthl = 'FloatFooter', linehl = '', numhl = '' })
-    vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'ErrorMsg', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', {
+      text = icons.dap.breakpoint,
+      texthl = 'WarningMsg',
+      linehl = '',
+      numhl = '',
+    })
+    vim.fn.sign_define('DapStopped', {
+      text = icons.ui.BoldArrowRight,
+      texthl = 'FloatFooter',
+      linehl = '',
+      numhl = '',
+    })
+    vim.fn.sign_define('DapBreakpointRejected', {
+      text = icons.ui.BoldClose,
+      texthl = 'ErrorMsg',
+      linehl = '',
+      numhl = '',
+    })
   end,
 }

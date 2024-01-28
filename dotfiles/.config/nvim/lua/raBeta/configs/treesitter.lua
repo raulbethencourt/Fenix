@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'php', 'html', 'css' },
 
@@ -59,7 +60,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
+-- NOTE: Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>te', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })

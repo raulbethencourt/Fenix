@@ -1,4 +1,5 @@
 local action_layout = require 'telescope.actions.layout'
+local icons = require 'icons'
 
 require('telescope').setup {
   defaults = {
@@ -11,9 +12,9 @@ require('telescope').setup {
       '--line-number',
       '--column',
       '--smart-case',
-      '--trim', -- add this value
+      '--trim',
     },
-    prompt_prefix = '   ',
+    prompt_prefix = ' ' .. icons.ui.Target .. ' ',
     selection_caret = '  ',
     entry_prefix = '  ',
     initial_mode = 'insert',
@@ -34,7 +35,7 @@ require('telescope').setup {
       preview_cutoff = 120,
     },
     file_sorter = require('telescope.sorters').get_fuzzy_file,
-    file_ignore_patterns = { 'node_modules', 'vendor', 'upgrades', 'upload' },
+    file_ignore_patterns = { 'node_modules', 'vendor', 'upgrades', 'upload', 'cache' },
     generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     path_display = { 'truncate' },
     winblend = 0,
@@ -113,14 +114,13 @@ keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', { desc = '[G]o to [D]def
 
 keymap('n', '<leader><space>', function()
   require('telescope.builtin').buffers(require('telescope.themes').get_dropdown {
-    winblend = 10,
+    winblend = 0,
     previewer = false,
   })
 end, { desc = 'Buffers' })
 
 keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   { desc = 'Grep Args' })
--- keymap('n', '<leader>sl', "<cmd>lua Git_root('live_grep', { max_results = 4000 })<cr>", { desc = 'Grep (root dir)' })
 keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = 'Files (root dir)' })
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Recently opened files' })
 keymap('n', '<leader>sg', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
