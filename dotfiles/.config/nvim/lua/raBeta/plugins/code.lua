@@ -2,8 +2,15 @@ return {
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+      {
+        'tpope/vim-dadbod',
+        lazy = true,
+      },
+      {
+        'kristijanhusak/vim-dadbod-completion',
+        ft = { 'sql', 'mysql', 'plsql' },
+        lazy = true,
+      },
     },
     cmd = {
       'DBUI',
@@ -15,12 +22,18 @@ return {
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
-    dependencies = { { 'nvim-lua/plenary.nvim' } },
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   'tpope/vim-sleuth',
   'mbbill/undotree',
-  { 'folke/which-key.nvim', opts = true },
-  { 'aserowy/tmux.nvim',    config = true },
+  {
+    'folke/which-key.nvim',
+    opts = true,
+  },
+  {
+    'aserowy/tmux.nvim',
+    config = true,
+  },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',

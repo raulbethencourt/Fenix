@@ -86,8 +86,10 @@
       "",
       "\\$db = &\\$GLOBALS['db']->getConnection();",
       "\\$result = \\$db->executeQuery(\\$query);",
-      "while (\\$row = \\$result->fetch()) {",
-      "    ${4:// code...}",
+      "if (\\$result->rowCount() >= 1) {",
+      "    while (\\$row = \\$result->fetch()) {",
+      "        ${4:// code...}",
+      "    }",
       "}"
     ],
     "description": "Snippets pour la creation d'un requete."

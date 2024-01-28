@@ -10,16 +10,16 @@ return {
     config = true,
   },
   {
-    'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {},
-  },
-  {
     'kosayoda/nvim-lightbulb',
     event = 'LspAttach',
     config = function()
       require('nvim-lightbulb').setup {
         autocmd = { enabled = true },
+        sign = {
+          enabled = true,
+          text = require('icons').diagnostics.BoldHint,
+          hl = 'LightBulbSign',
+        },
       }
     end,
   },
