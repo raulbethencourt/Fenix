@@ -121,6 +121,7 @@ end, { desc = 'Buffers' })
 
 keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   { desc = 'Grep Args' })
+
 keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = 'Files (root dir)' })
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Recently opened files' })
 keymap('n', '<leader>sg', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
@@ -129,6 +130,12 @@ keymap('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S
 keymap('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 keymap('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 keymap('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
-keymap('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find,
-  { desc = '[S]earch in current [B]uffer' })
+
+keymap('n', '<leader>sb', function()
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 0,
+    previewer = true,
+  })
+end, { desc = '[S]earch in current [B]uffer' })
+
 keymap('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[T]odo [T]elescope' })

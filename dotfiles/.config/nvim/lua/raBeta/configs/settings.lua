@@ -62,7 +62,7 @@ vim.opt.shortmess:append 'c'
 local globals = {
   showtabline = 0,
   netrw_banner = 0,
-  netrw_liststyle = 3,
+  netrw_liststyle = 0,
 }
 for k, v in pairs(globals) do
   vim.g[k] = v
