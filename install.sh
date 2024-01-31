@@ -29,6 +29,18 @@ sudo add-apt-repository ppa:neovim-ppa/unstable -y
 # keevault
 sudo add-apt-repository ppa:dlech/keepass2-plugins
 
+# eza
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# php
+LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
+
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
@@ -41,12 +53,18 @@ sudo nala update
 echo installing the must-have pre-requisites
 while read -r p; do sudo nala install -y $p; done < <(
   cat <<"EOF"
+	cmake 
+	libfreetype6-dev 
+	libexif-dev
+	libfontconfig1-dev 
+	xclip
 	wget 
 	make
 	gnupg2 
 	ubuntu-keyring
 	alacritty
 	zsh
+	gpg
 	curl
 	tmux
 	brave-browser
@@ -85,6 +103,19 @@ while read -r p; do sudo nala install -y $p; done < <(
 	eza
 	golang-go
 	keepass2-plugin-rpc
+	python3-pip
+	python3.10-venv
+	ruby-full
+	luarocks
+	software-properties-common 
+	ca-certificates 
+	lsb-release 
+	apt-transport-https 
+	php 
+	php-cli 
+	unzip
+	libapache2-mod-php 
+	php-mysql
 EOF
 )
 
@@ -99,16 +130,30 @@ sleep 6
 chsh -s $(which zsh)
 
 # zap !!!
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+zsh <(curl -s https:/raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# link fd bin
-ln -s "$(which fdfind)" ~/.local/bin/fd
-
 # bat
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
+
+# link fd bin
+ln -s "$(which fdfind)" ~/.local/bin/fd
+
+# composer
+cd ~
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+HASH=$(curl -sS https://composer.github.io/installer.sig)
+php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+# delta
+curl https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb -o delta_amb64.deb -s
+sudo dpkg -i delta_amb64.deb
+
+# install configs
+cp -r Fenix/dotfiles/* "$HOME"/
 
 echo "Finish first install, reboot your system to persiste changes..."
