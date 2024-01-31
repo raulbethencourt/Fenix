@@ -1,3 +1,21 @@
+-- NOTE: need to set leader before lazy
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- NOTE: install lazy
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- NOTE: vscode nvim settings
 if vim.g.vscode then
   require 'vscode.mappings_vscode'
@@ -5,10 +23,6 @@ if vim.g.vscode then
   local cmd = {
     [[source $HOME/.config/nvim/vscode/vim_settings.vim]],
     [[source $HOME/.config/nvim/vscode/functions.vim]],
-    [[source $HOME/.config/nvim/plug-config/highlightyank.vim]],
-    [[source $HOME/.config/nvim/plug-config/polyglot.vim]],
-    [[source $HOME/.config/nvim/plug-config/quickscope.vim]],
-    [[source $HOME/.config/nvim/vim-plug/plugins.vim]],
     [[source $HOME/.config/nvim/vscode/settings.vim]],
     [[nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>]],
   }
@@ -18,27 +32,13 @@ if vim.g.vscode then
     vim.cmd(v)
   end
 
-  require 'vscode.hop'
-  require 'vscode.nvim-surround'
+  -- NOTE: load vscode plugins
+  require('lazy').setup({
+    { import = 'vscode.plugins' },
+  }, {})
+
+  require 'vscode.configs'
 else
-  -- NOTE: need to set leader before lazy
-  vim.g.mapleader = ' '
-  vim.g.maplocalleader = ' '
-
-  -- NOTE: install lazy
-  local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-  if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system {
-      'git',
-      'clone',
-      '--filter=blob:none',
-      'https://github.com/folke/lazy.nvim.git',
-      '--branch=stable',
-      lazypath,
-    }
-  end
-  vim.opt.rtp:prepend(lazypath)
-
   -- NOTE: load plugins
   require('lazy').setup({
     { import = 'raBeta.plugins' },
