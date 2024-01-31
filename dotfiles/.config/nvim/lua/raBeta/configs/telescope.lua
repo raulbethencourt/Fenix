@@ -14,7 +14,7 @@ require('telescope').setup {
       '--smart-case',
       '--trim',
     },
-    prompt_prefix = ' ' .. icons.ui.Target .. ' ',
+    prompt_prefix = '  ' .. icons.ui.Target .. '  ',
     selection_caret = '  ',
     entry_prefix = '  ',
     initial_mode = 'insert',
