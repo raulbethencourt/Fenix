@@ -5,7 +5,7 @@ vim.g.dbs = {
 	},
 	{
 		name = "localhost:devilbox",
-		url = "mysql://root@127.0.0.1:3306",
+		url = "mysql://root@172.16.238.12:3306",
 	},
 }
 
