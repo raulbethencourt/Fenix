@@ -153,6 +153,12 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 curl https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb -o delta_amb64.deb -s
 sudo dpkg -i delta_amb64.deb
 
+# lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+
 # install configs
 cp -r Fenix/dotfiles/* "$HOME"/
 
