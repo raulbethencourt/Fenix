@@ -107,6 +107,7 @@ local servers = {
     },
   },
   taplo = {},
+  marksman = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = {},
   lua_ls = {
@@ -114,7 +115,7 @@ local servers = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       format = {
-        enable = true,
+        enable = false,
         defaultConfig = {
           indent_style = 'space',
           indent_size = '4',
@@ -141,7 +142,7 @@ local servers = {
       debounce_text_changes = 150,
     },
   },
-  eslint = {},
+  tsserver = {},
   sqlls = {
     filetypes = { 'sql' },
     sql = {
