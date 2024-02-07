@@ -1,6 +1,7 @@
--- NOTE: need to set leader before lazy
+-- NOTE: need to set leader and termguicolors before lazy
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.opt.termguicolors = true
 
 -- NOTE: install lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

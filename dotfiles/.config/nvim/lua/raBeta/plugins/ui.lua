@@ -1,7 +1,46 @@
 -- NOTE: recover icons
-local icons = require "icons"
+local icons = require 'icons'
 
 return {
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  { 'catppuccin/nvim', lazy = false, name = 'catppuccin', priority = 1000, enabled = true },
+  { 'CantoroMC/ayu-nvim', lazy = false, priority = 1000, enabled = true },
+  {
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
+    enabled = true,
+    config = function()
+      vim.g.everforest_background = 'hard'
+      vim.g.everforest_better_performance = true
+      vim.g.everforest_transparent_background = 2
+      vim.g.everforest_cursor = 'orange'
+      vim.g.everforest_ui_contrast = 'low'
+      vim.g.everforest_float_style = 'dim'
+      vim.cmd [[colorscheme everforest]]
+    end,
+  },
+  {
+    'eddyekofo94/gruvbox-flat.nvim',
+    lazy = false,
+    priority = 1000,
+    enabled = true,
+    config = function()
+      vim.g.gruvbox_flat_style = 'hard'
+      vim.g.gruvbox_transparent = true
+      vim.g.gruvbox_dark_float = true
+      vim.g.gruvbox_hide_inactive_statusline = true
+      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'lazy', 'telescope' }
+      vim.g.gruvbox_dark_sidebar = true
+      vim.g.gruvbox_dark_float = true
+      -- vim.cmd [[colorscheme gruvbox-flat]]
+    end,
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -9,7 +48,7 @@ return {
       ---@diagnostic disable-next-line: missing-parameter
       require('lualine').setup {
         options = {
-          theme = 'gruvbox',
+          theme = 'everforest',
           fmt = string.lower,
           section_separators = { left = icons.ui.HalfCircleRight, right = icons.ui.HalfCircleLeft },
           component_separators = { left = icons.ui.GrowingMoon, right = icons.ui.DecreasingMoon },
@@ -40,11 +79,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = false,      -- position the cmdline and popupmenu together
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = false, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
         },
         views = {
           cmdline_popup = {
@@ -88,21 +127,6 @@ return {
     end,
   },
   {
-    'eddyekofo94/gruvbox-flat.nvim',
-    priority = 1000,
-    enabled = true,
-    config = function()
-      vim.g.gruvbox_flat_style = 'hard'
-      vim.g.gruvbox_transparent = true
-      vim.g.gruvbox_dark_float = true
-      vim.g.gruvbox_hide_inactive_statusline = true
-      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'lazy', 'telescope' }
-      vim.g.gruvbox_dark_sidebar = true
-      vim.g.gruvbox_dark_float = true
-      vim.cmd [[colorscheme gruvbox-flat]]
-    end,
-  },
-  {
     'folke/lsp-colors.nvim',
     config = function()
       require('lsp-colors').setup {
@@ -117,13 +141,13 @@ return {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup({ '*' }, {
-        RGB = true,      -- #RGB hex codes
-        RRGGBB = true,   -- #RRGGBB hex codes
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
         RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true,   -- CSS rgb() and rgba() functions
-        hsl_fn = true,   -- CSS hsl() and hsla() functions
-        css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       })
     end,
   },
