@@ -10,37 +10,61 @@ color = "#c14a4a"
 index = 17
 
 [colors.bright]
-black = '#7c6f64'
-red = '#ea6962'
-green = '#a9b665'
-yellow = '#d8a657'
-blue = '#7daea3'
-magenta = '#d3869b'
-cyan = '#89b482'
-white = '#d4be98'
+black = '#475258'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+# black = '#7c6f64'
+# red = '#ea6962'
+# green = '#a9b665'
+# yellow = '#d8a657'
+# blue = '#7daea3'
+# magenta = '#d3869b'
+# cyan = '#89b482'
+# white = '#d4be98'
 
 [colors.normal]
-black = '#1D2021'
-red = '#ea6962'
-green = '#a9b665'
-yellow = '#d8a657'
-blue = '#7daea3'
-magenta = '#d3869b'
-cyan = '#89b482'
-white = '#d4be98'
+black = '#414b50'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+# black = '#1D2021'
+# red = '#ea6962'
+# green = '#a9b665'
+# yellow = '#d8a657'
+# blue = '#7daea3'
+# magenta = '#d3869b'
+# cyan = '#89b482'
+# white = '#d4be98'
 
 [colors.dim]
-black = '#1D2021'
-red = '#ea6962'
-green = '#a9b665'
-yellow = '#d8a657'
-blue = '#7daea3'
-magenta = '#d3869b'
-cyan = '#89b482'
-white = '#d4be98'
+black = '#414b50'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+# black = '#1D2021'
+# red = '#ea6962'
+# green = '#a9b665'
+# yellow = '#d8a657'
+# blue = '#7daea3'
+# magenta = '#d3869b'
+# cyan = '#89b482'
+# white = '#d4be98'
 
 [colors.selection]
-text = "#1E1E2E" # base
+text = "#1E1E2E"       # base
 background = "#F5E0DC" # rosewater
 
 [colors.hints.start]
@@ -60,13 +84,15 @@ foreground = "#1E1E2E" # base
 background = "#A6E3A1" # green
 
 [colors.cursor]
-text = "#1E1E2E" # base
+text = "#1E1E2E"   # base
 cursor = "#F5E0DC" # rosewater
- 
+
 [colors.primary]
+# background= '#272e33'
+foreground = '#d3c6aa'
 background = "#0F0F11" # base
-foreground = "#d4be98" # text
-dim_foreground = "#CDD6F4" # text
+# foreground = "#d4be98" # text
+dim_foreground = "#CDD6F4"    # text
 bright_foreground = "#CDD6F4" # text
 
 [cursor.style]
