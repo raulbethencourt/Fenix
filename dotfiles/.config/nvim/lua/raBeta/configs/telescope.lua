@@ -39,14 +39,14 @@ require('telescope').setup {
     generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     path_display = { 'truncate' },
     winblend = 0,
-    border = {},
+    border = false,
     previewer = {
       results_title = false,
       preview_title = false,
     },
     preview = {
       filesize_limit = 0.1, -- MB
-      treesitter = false,   -- treesitter freezes on big files
+      treesitter = false, -- treesitter freezes on big files
     },
     color_devicons = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
@@ -72,10 +72,10 @@ require('telescope').setup {
       require('telescope.themes').get_dropdown {},
     },
     fzf = {
-      fuzzy = true,                   -- false will only do exact matching
+      fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true,    -- override the file sorter
-      case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
+      override_file_sorter = true, -- override the file sorter
+      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
     },
   },
 }
@@ -116,11 +116,11 @@ keymap('n', '<leader><space>', function()
   require('telescope.builtin').buffers(require('telescope.themes').get_dropdown {
     winblend = 0,
     previewer = false,
+    border = false,
   })
 end, { desc = 'Buffers' })
 
-keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-  { desc = 'Grep Args' })
+keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = 'Grep Args' })
 
 keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = 'Files (root dir)' })
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Recently opened files' })
@@ -135,6 +135,7 @@ keymap('n', '<leader>sb', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 0,
     previewer = true,
+    border = false,
   })
 end, { desc = '[S]earch in current [B]uffer' })
 
