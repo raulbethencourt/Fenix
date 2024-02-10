@@ -53,7 +53,6 @@ require('telescope').setup {
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
     mappings = {
       n = {
@@ -117,6 +116,12 @@ keymap('n', '<leader><space>', function()
     winblend = 0,
     previewer = false,
     border = false,
+    layout_strategy = 'vertical',
+    layout_config = {
+      height = 0.2,
+      prompt_position = 'top',
+      width = 0.3,
+    },
   })
 end, { desc = 'Buffers' })
 
@@ -136,6 +141,13 @@ keymap('n', '<leader>sb', function()
     winblend = 0,
     previewer = true,
     border = false,
+    layout_strategy = 'vertical',
+    layout_config = {
+      height = 0.5,
+      prompt_position = 'top',
+      width = 0.4,
+      preview_height = 0.6,
+    },
   })
 end, { desc = '[S]earch in current [B]uffer' })
 
