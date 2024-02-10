@@ -31,12 +31,36 @@ local on_attach = function(_, bufnr)
     require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
       winblend = 0,
       previewer = true,
+      border = false,
+      layout_strategy = 'vertical',
+      layout_config = {
+        height = 0.5,
+        prompt_position = 'top',
+        width = 0.4,
+        preview_height = 0.6,
+      },
       bufnr = 0,
       no_sign = true,
     })
   end, '[T]elescope [B]uffer [D]iagnostics')
 
-  nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>ls', function()
+    require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
+      winblend = 0,
+      previewer = true,
+      border = false,
+      layout_strategy = 'vertical',
+      layout_config = {
+        height = 0.5,
+        prompt_position = 'top',
+        width = 0.4,
+        preview_height = 0.6,
+      },
+      bufnr = 0,
+      no_sign = true,
+    })
+  end, '[D]ocument [S]ymbols')
+  
   nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -44,7 +68,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
   nmap('<leader>lI', '<cmd>Mason<cr>', '[M]ason')
   nmap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp[I]nfo')
-
   nmap('<leader>ll', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
@@ -224,3 +247,11 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- require('lspconfig').clangd.setup {
+--   on_attach = function(client, bufnr)
+--     client.server_capabilities.signatureHelpProvider = false
+--     on_attach(client, bufnr)
+--   end,
+--   capabilities = capabilities,
+-- }
