@@ -28,7 +28,7 @@ color_yellow = '#dbbc7f'
 
 [os]
 disabled = true
-style = "bg:color_aqua fg:color_bg1"
+format = '[󱐋 ](color_yellow)'
 
 [directory]
 style = "color_blue"
@@ -51,10 +51,27 @@ format = '[ $symbol $branch ]($style)'
 [git_status]
 style = "color_fg0"
 format = '[($all_status$ahead_behind)]($style)'
+conflicted = '[🏳](color_red)'
+ahead = '[⇡](color_green)'
+behind = '[⇣](color_red)'
+diverged = '[⇕](color_red)'
+up_to_date = '[✓](color_green)'
+untracked = '[?](color_red)'
+stashed = '[📦](color_green)'
+modified = '[!](color_red)'
+staged = '[++](color_green)'
+renamed = '[»](color_red)'
+deleted = '[✘](color_red)' 
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "color_fg0"
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[](bold color_red)'
+rebase = '[󰞬](bold color_green)'
+merge = '[](bold color_green)'
+revert = '[](bold color_red)'
+bisect = '[](bold color_red)'
+am = '[󰶍](bold color_green)'
+am_or_rebase = '[󰆎](bold color_red)'
 
 [line_break]
 disabled = false
@@ -64,6 +81,3 @@ disabled = false
 success_symbol = "[❯](color_green)"
 error_symbol = "[❯](color_red)"
 vimcmd_symbol = "[❯](color_yellow)"
-# success_symbol = '[](bold fg:color_green)'
-# error_symbol = '[](bold fg:color_red)'
-# vimcmd_symbol = '[](bold fg:color_green)'
