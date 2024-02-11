@@ -27,7 +27,7 @@ color_red = '#e67e80'
 color_yellow = '#dbbc7f'
 
 [os]
-disabled = true
+disabled = false
 format = '[󱐋 ](color_yellow)'
 
 [directory]
@@ -38,10 +38,14 @@ truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+"Téléchargements" = " "
+"Musique" = "󰝚 "
+"Images" = " "
+"sites" = "󰲋 "
+"dvsites" = "󰲋 "
+"tools" = " "
+".config/nvim" = " "
+"Fenix" = "󰈸 "
 
 [git_branch]
 style = "color_fg0"
