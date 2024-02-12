@@ -68,7 +68,17 @@ require('telescope').setup {
   },
   extensions = {
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown {},
+      require('telescope.themes').get_dropdown {
+        winblend = 0,
+        previewer = false,
+        border = false,
+        layout_strategy = 'vertical',
+        layout_config = {
+          height = 0.2,
+          prompt_position = 'top',
+          width = 0.3,
+        },
+      },
     },
     fzf = {
       fuzzy = true, -- false will only do exact matching
