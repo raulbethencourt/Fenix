@@ -1,5 +1,6 @@
 return {
   'mfussenegger/nvim-dap',
+  event = 'VeryLazy',
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'williamboman/mason.nvim',
@@ -12,11 +13,10 @@ return {
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
-
       handlers = {},
-
       ensure_installed = {
         'codelldb',
+        'php-debug-adapter',
       },
     }
 
@@ -54,17 +54,17 @@ return {
       layouts = {
         {
           elements = {
-            { id = 'scopes',      size = 0.55 },
+            { id = 'scopes', size = 0.55 },
             { id = 'breakpoints', size = 0.10 },
-            { id = 'stacks',      size = 0.25 },
-            { id = 'watches',     size = 0.10 },
+            { id = 'stacks', size = 0.25 },
+            { id = 'watches', size = 0.10 },
           },
           size = 0.25,
           position = 'right',
         },
         {
           elements = {
-            { id = 'repl',    size = 0.45 },
+            { id = 'repl', size = 0.45 },
             { id = 'console', size = 0.55 },
           },
           size = 0.10,
