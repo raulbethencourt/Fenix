@@ -23,7 +23,10 @@ return {
       }
     end,
   },
-  { 'nvimtools/none-ls.nvim' },
+  {
+    'nvimtools/none-ls.nvim',
+    event = 'VeryLazy',
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
