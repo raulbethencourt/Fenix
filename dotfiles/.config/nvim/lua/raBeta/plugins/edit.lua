@@ -8,9 +8,17 @@ return {
     'kylechui/nvim-surround',
     config = true,
   },
-  -- {
-  --   'windwp/nvim-autopairs',
-  -- },
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
+    config = function()
+      vim.g.mkdp_browser = '/usr/bin/vivaldi'
+    end,
+  },
   {
     'numToStr/Comment.nvim',
     opts = true,
