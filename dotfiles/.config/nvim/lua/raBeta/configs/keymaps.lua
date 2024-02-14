@@ -28,6 +28,9 @@ keymap('n', '<F11>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]ta
 keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', '[B]prev')
 
+-- NOTE: MarkDownPreview
+keymap('n', '<leader>m', '<cmd>MarkdownPreviewToggle<CR>', '[M]arkdown [P]review [T]oggle')
+
 -- NOTE: UndoTree
 keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
 
