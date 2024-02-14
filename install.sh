@@ -41,6 +41,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # php
 LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
 
+# copyq
+sudo apt install software-properties-common python-software-properties
+sudo add-apt-repository ppa:hluk/copyq
+
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
@@ -61,8 +65,10 @@ while read -r p; do sudo nala install -y $p; done < <(
 	wget 
 	make
 	gnupg2 
+	flameshot
 	ubuntu-keyring
 	alacritty
+	copyq
 	zsh
 	gpg
 	curl
