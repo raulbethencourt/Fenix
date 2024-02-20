@@ -36,17 +36,6 @@ format = "[$path]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Téléchargements" = " "
-"Musique" = "󰝚 "
-"Images" = " "
-"sites" = "󰲋 "
-"dvsites" = "󰲋 "
-"tools" = " "
-".config/nvim" = " "
-"Fenix" = "󰈸 "
-
 [git_branch]
 style = "color_fg0"
 symbol = ""
