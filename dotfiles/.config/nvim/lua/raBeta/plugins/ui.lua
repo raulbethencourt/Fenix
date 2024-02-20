@@ -3,13 +3,14 @@ local icons = require 'icons'
 
 return {
   {
-    'folke/tokyonight.nvim',
+    'CantoroMC/ayu-nvim',
     lazy = false,
     priority = 1000,
-    opts = {},
+    enabled = false,
+    config = function()
+      -- vim.cmd [[colorscheme ayu]]
+    end,
   },
-  { 'catppuccin/nvim', lazy = false, name = 'catppuccin', priority = 1000, enabled = true },
-  { 'CantoroMC/ayu-nvim', lazy = false, priority = 1000, enabled = true },
   {
     'sainnhe/everforest',
     lazy = false,
@@ -29,7 +30,7 @@ return {
     'eddyekofo94/gruvbox-flat.nvim',
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     config = function()
       vim.g.gruvbox_flat_style = 'hard'
       vim.g.gruvbox_transparent = true
