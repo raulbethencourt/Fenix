@@ -2,15 +2,7 @@
 local icons = require 'icons'
 
 return {
-  {
-    'CantoroMC/ayu-nvim',
-    lazy = false,
-    priority = 1000,
-    enabled = false,
-    config = function()
-      -- vim.cmd [[colorscheme ayu]]
-    end,
-  },
+  { 'CantoroMC/ayu-nvim', lazy = false, priority = 1000, enabled = false },
   {
     'sainnhe/everforest',
     lazy = false,
@@ -44,7 +36,7 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
     config = function()
       ---@diagnostic disable-next-line: missing-parameter
       require('lualine').setup {
@@ -58,12 +50,44 @@ return {
     end,
   },
   {
+    'stevearc/dressing.nvim',
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.input(...)
+      end
+    end,
+  },
+  {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {},
     dependencies = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
+      { 'MunifTanjim/nui.nvim', lazy = true },
+      {
+        'rcarriga/nvim-notify',
+        keys = {
+          {
+            '<leader>un',
+            function()
+              require('notify').dismiss { silent = true, pending = true }
+            end,
+            desc = 'Dismiss all Notifications',
+          },
+        },
+        opts = {
+          timeout = 3500,
+          background_colour = '#000000',
+          render = 'compact',
+        },
+      },
     },
     config = function()
       require('noice').setup {
@@ -76,6 +100,23 @@ return {
           },
           signature = {
             enabled = false,
+          },
+        },
+        messages = {
+          enabled = true, -- enables the Noice messages UI
+          view = 'notify', -- default view for messages
+        },
+        routes = {
+          {
+            filter = {
+              event = 'msg_show',
+              any = {
+                { find = '%d+L, %d+B' },
+                { find = '; after #%d+' },
+                { find = '; before #%d+' },
+              },
+            },
+            view = 'mini',
           },
         },
         -- you can enable a preset for easier configuration

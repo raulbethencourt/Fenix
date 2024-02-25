@@ -1,6 +1,5 @@
 return {
   'mfussenegger/nvim-dap',
-  event = 'VeryLazy',
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'williamboman/mason.nvim',
@@ -13,18 +12,19 @@ return {
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
+
       handlers = {},
+
       ensure_installed = {
         'codelldb',
-        'php-debug-adapter',
       },
     }
 
-    vim.keymap.set('n', '<leader>ds', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<leader>dj', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<leader>dl', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<leader>dk', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>dm', dap.step_back, { desc = 'Debug: Step Back' })
+    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<s-F11>', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<s-F10>', dap.step_back, { desc = 'Debug: Step Back' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>dc', dap.clear_breakpoints, { desc = 'Debug: Cleaer Breakpoints' })
     vim.keymap.set('n', '<leader>dB', function()
@@ -59,7 +59,7 @@ return {
             { id = 'stacks', size = 0.25 },
             { id = 'watches', size = 0.10 },
           },
-          size = 0.25,
+          size = 0.33,
           position = 'right',
         },
         {

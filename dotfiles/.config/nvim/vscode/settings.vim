@@ -88,11 +88,6 @@ xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 vnoremap im aBoV
 vnoremap am aBjoV
 
-"Fix ctrl+d and u not affecting selection in visual mode
-nnoremap <C-d> 27j
-vnoremap <C-d> 27j
-nnoremap <C-u> 27k
-vnoremap <C-u> 27k
 
 "Keep it centered
 nnoremap n nzzzv

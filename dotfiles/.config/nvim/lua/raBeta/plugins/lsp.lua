@@ -26,6 +26,7 @@ return {
   {
     'nvimtools/none-ls.nvim',
     event = 'VeryLazy',
+    requires = { 'nvim-lua/plenary.nvim' },
   },
   {
     'neovim/nvim-lspconfig',
