@@ -13,19 +13,19 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('gr', '<cmd>Telescope lsp_references<CR>', '[G]oto [D]definition')
+  nmap('gr', '<cmd>Telescope lsp_references<CR>', '[G]oto [R]eferences')
   nmap('gd', '<cmd>Telescope lsp_definitions<CR>', '[G]oto [D]definition')
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', 'Show line diagnostics')
-  nmap('<leader>ld', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', '[G]oto [L]ine diagnostics')
+  nmap('<leader>ld', vim.lsp.buf.type_definition, '[L]sp Type [D]efinition')
 
   nmap('<leader>lf', function()
     vim.lsp.buf.format { async = true }
-  end, '[F]ormat')
+  end, '[L]sp [F]ormat')
 
-  nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', '[T]elescope [W]orkspace [D]iagnostics')
+  nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', '[L]sp Telescope Workspace [D]iagnostics')
 
   nmap('<leader>lb', function()
     require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
@@ -42,7 +42,7 @@ local on_attach = function(_, bufnr)
       bufnr = 0,
       no_sign = true,
     })
-  end, '[T]elescope [B]uffer [D]iagnostics')
+  end, '[L]sp Telescope [B]uffer Diagnostics')
 
   nmap('<leader>ls', function()
     require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
@@ -59,18 +59,18 @@ local on_attach = function(_, bufnr)
       bufnr = 0,
       no_sign = true,
     })
-  end, '[D]ocument [S]ymbols')
-  
-  nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  nmap('<leader>ln', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>lI', '<cmd>Mason<cr>', '[M]ason')
-  nmap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp[I]nfo')
+  end, '[L]sp Document [S]ymbols')
+
+  nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[L]sp [W]orkspace symbols')
+  nmap('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
+  nmap('<leader>la', vim.lsp.buf.code_action, '[L]sp code [A]ction')
+  nmap('<leader>ln', vim.lsp.buf.add_workspace_folder, '[L]sp [W]orkspace [A]dd Folder')
+  nmap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[L]sp [W]orkspace [R]emove Folder')
+  nmap('<leader>lI', '<cmd>Mason<cr>', '[L]sp [I]nstall with mason')
+  nmap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp [I]nfo')
   nmap('<leader>ll', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, '[L]sp [W]orkspace [L]ist Folders')
 end
 
 vim.filetype.add {
@@ -102,7 +102,7 @@ local servers = {
     filetypes = { 'json', 'jsonc' },
   },
   bashls = {
-    filetypes = { 'sh', 'zsh' },
+    filetypes = { 'sh', 'zsh', 'bash' },
   },
   clangd = {},
   rust_analyzer = {
@@ -134,15 +134,21 @@ local servers = {
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = {},
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      format = {
-        enable = false,
-        defaultConfig = {
-          indent_style = 'space',
-          indent_size = '4',
+    settings = {
+      Lua = {
+        runtime = { version = 'LuaJIT' },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            '${3rd}/luv/library',
+            unpack(vim.api.nvim_get_runtime_file('', true)),
+          },
         },
+        telemetry = { enable = false },
+        format = {
+          enable = false,
+        },
+        -- diagnostics = { disable = { 'missing-fields' } },
       },
     },
   },
@@ -247,11 +253,3 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
--- require('lspconfig').clangd.setup {
---   on_attach = function(client, bufnr)
---     client.server_capabilities.signatureHelpProvider = false
---     on_attach(client, bufnr)
---   end,
---   capabilities = capabilities,
--- }
