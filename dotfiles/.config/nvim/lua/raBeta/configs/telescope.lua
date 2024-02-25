@@ -129,7 +129,7 @@ keymap('n', '<leader><space>', function()
     layout_strategy = 'vertical',
     layout_config = {
       height = 0.2,
-      prompt_position = 'top',
+      prompt_position = 'bottom',
       width = 0.3,
     },
   })
@@ -153,10 +153,10 @@ keymap('n', '<leader>sb', function()
     border = false,
     layout_strategy = 'vertical',
     layout_config = {
-      height = 0.5,
+      height = 0.6,
       prompt_position = 'top',
       width = 0.4,
-      preview_height = 0.6,
+      preview_height = 0.5,
     },
   })
 end, { desc = '[S]earch in current [B]uffer' })

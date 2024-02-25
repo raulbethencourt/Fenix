@@ -1,10 +1,10 @@
 return {
-  { 'tpope/vim-commentary', lazy = false },
-  { 'tpope/vim-speeddating', lazy = false },
-  { 'glts/vim-radical', lazy = false },
-  { 'tpope/vim-repeat', lazy = false },
-  { 'suy/vim-context-commentstring', lazy = false },
-  { 'folke/flash.nvim', lazy = false },
-  { 'machakann/vim-highlightedyank', lazy = false },
-  { 'kylechui/nvim-surround', lazy = false },
+    'tpope/vim-commentary',
+    'tpope/vim-speeddating',
+    'glts/vim-radical',
+    'tpope/vim-repeat',
+    'suy/vim-context-commentstring',
+    'folke/flash.nvim',
+    'machakann/vim-highlightedyank',
+    'kylechui/nvim-surround',
 }

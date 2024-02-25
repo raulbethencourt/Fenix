@@ -16,16 +16,6 @@ local mappings = {
     -- Simulate same TAB behavior in VSCode
     [[nmap <Tab> :Tabnext<CR>]],
     [[nmap <S-Tab> :Tabprev<CR>]],
-
-    -- Fix ctrl+d and u not affecting selection in visual mode
-    -- [[nnoremap <C-d> 27j]],
-    -- [[vnoremap <C-d> 27j]],
-    -- [[nnoremap <C-u> 27k]],
-    -- [[vnoremap <C-u> 27k]],
-    [[nnoremap <C-d> zz]],
-    [[vnoremap <C-d> zz]],
-    [[nnoremap <C-u> zz]],
-    [[vnoremap <C-u> zz]],
 }
 
 ---@diagnostic disable-next-line: unused-local
