@@ -22,7 +22,8 @@ function Toggle_Hidden_All()
     vim.cmd 'set ls=2'
   end
 end
-keymap('n', '<F11>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]tatusline')
+
+keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]tatusline')
 
 -- NOTE: TAB in general mode will move to text buffer
 keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
@@ -46,10 +47,10 @@ keymap('n', '<leader>zc', '<cmd>DBUIClose<CR>')
 keymap('n', '<leader>zh', '<cmd>DBUILastQueryInfo<CR>')
 
 -- NOTE: Gnereral
+keymap('n', '<leader>g', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', '[F]ull [P]ath')
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', '[C]omments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', '[C]omments')
 keymap('n', '<leader>e', '<cmd>Explore<CR>', '[E]xplore')
-keymap('n', '<leader>c', '<cmd>bdelete<CR>', '[C]lose [B]uffer')
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
 keymap('n', '<leader>h', '<cmd>split<CR>', '[S]plit')
 keymap('n', '<leader>i', '<C-w>|', '[M]aximize')
