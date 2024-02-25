@@ -36,6 +36,7 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
+    event = 'VeryLazy',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -51,6 +52,7 @@ return {
         version = '^1.0.0',
       },
       'nvim-telescope/telescope-ui-select.nvim',
+      'nvim-tree/nvim-web-devicons',
     },
   },
   {
