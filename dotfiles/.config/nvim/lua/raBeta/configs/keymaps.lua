@@ -23,38 +23,37 @@ function Toggle_Hidden_All()
   end
 end
 
-keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', '[T]oggle [H]idde [S]tatusline')
+keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline')
 
 -- NOTE: TAB in general mode will move to text buffer
-keymap('n', '<TAB>', '<cmd>bnext<CR>', '[B]next')
-keymap('n', '<S-TAB>', '<cmd>bprev<CR>', '[B]prev')
+keymap('n', '<TAB>', '<cmd>bnext<CR>', 'Bnext')
+keymap('n', '<S-TAB>', '<cmd>bprev<CR>', 'Bprev')
+
+-- NOTE: Gitsigns
+keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
+keymap('n', '<leader>gd', '<cmd>Gitsigns diff_this<CR>', '[G]itsigns [D]iff this')
 
 -- NOTE: MarkDownPreview
-keymap('n', '<leader>m', '<cmd>MarkdownPreviewToggle<CR>', '[M]arkdown [P]review [T]oggle')
+keymap('n', '<leader>m', '<cmd>MarkdownPreviewToggle<CR>', '[M]arkdown preview toggle')
 
 -- NOTE: UndoTree
-keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', '[T]oggle [U]ndoTree')
+keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', 'Toggle [U]ndoTree')
 
 -- NOTE: Lazy
-keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>')
-keymap('n', '<leader>pi', '<cmd>Lazy install<CR>')
-keymap('n', '<leader>pu', '<cmd>Lazy update<CR>')
-keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>')
-
--- NOTE: Dbui
-keymap('n', '<leader>zt', '<cmd>DBUIToggle<CR>')
-keymap('n', '<leader>zc', '<cmd>DBUIClose<CR>')
-keymap('n', '<leader>zh', '<cmd>DBUILastQueryInfo<CR>')
+keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>', 'Lazy [S]ync')
+keymap('n', '<leader>pi', '<cmd>Lazy install<CR>', 'Lazy [I]nstall')
+keymap('n', '<leader>pu', '<cmd>Lazy update<CR>', 'Lazy [U]update')
+keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>', 'Lazy [C]lean')
 
 -- NOTE: Gnereral
-keymap('n', '<leader>g', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', '[F]ull [P]ath')
-keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', '[C]omments')
-keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', '[C]omments')
+keymap('n', '<leader>z', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', 'Full path')
+keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', 'Comments')
+keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', 'Comments')
 keymap('n', '<leader>e', '<cmd>Explore<CR>', '[E]xplore')
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
-keymap('n', '<leader>h', '<cmd>split<CR>', '[S]plit')
-keymap('n', '<leader>i', '<C-w>|', '[M]aximize')
-keymap('n', '<leader>o', '<C-w>=', '[E]quilify')
+keymap('n', '<leader>h', '<cmd>split<CR>', 'Split')
+keymap('n', '<leader>i', '<C-w>|', 'Maximize')
+keymap('n', '<leader>o', '<C-w>=', 'Equilify')
 keymap('n', '<leader>n', ':nohlsearch<CR>', '[N]o highlights')
 
 keymap('n', '<C-Up>', ':resize +2<CR>')
