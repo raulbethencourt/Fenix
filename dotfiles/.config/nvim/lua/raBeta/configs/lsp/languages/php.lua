@@ -1,3 +1,4 @@
+--[[
 local dap = require 'dap'
 local mason_path = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/')
 
@@ -29,3 +30,4 @@ dap.configurations.php = {
     },
   },
 }
+--]]

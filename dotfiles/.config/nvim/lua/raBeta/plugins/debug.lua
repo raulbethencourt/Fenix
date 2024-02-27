@@ -12,24 +12,24 @@ return {
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
-
       handlers = {},
-
       ensure_installed = {
         'codelldb',
       },
     }
 
+    -- NOTE: keymaps
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<s-F11>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<s-F10>', dap.step_back, { desc = 'Debug: Step Back' })
-    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>dc', dap.clear_breakpoints, { desc = 'Debug: Cleaer Breakpoints' })
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = '[D]ebug Toggle [B]reakpoint' })
+    vim.keymap.set('n', '<leader>dc', dap.clear_breakpoints, { desc = '[D]ebug [C]lear Breakpoints' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    end, { desc = '[D]ebug Set [B]reakpoint' })
+    vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = '[D]ebug [T]oggle Ui' })
 
     ---@diagnostic disable-next-line: missing-fields
     dapui.setup {
@@ -54,17 +54,17 @@ return {
       layouts = {
         {
           elements = {
-            { id = 'scopes', size = 0.55 },
+            { id = 'scopes',      size = 0.55 },
             { id = 'breakpoints', size = 0.10 },
-            { id = 'stacks', size = 0.25 },
-            { id = 'watches', size = 0.10 },
+            { id = 'stacks',      size = 0.25 },
+            { id = 'watches',     size = 0.10 },
           },
           size = 0.33,
           position = 'right',
         },
         {
           elements = {
-            { id = 'repl', size = 0.45 },
+            { id = 'repl',    size = 0.45 },
             { id = 'console', size = 0.55 },
           },
           size = 0.10,
@@ -101,14 +101,11 @@ return {
         max_value_lines = 100, -- Can be integer or nil.
       },
     }
-
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = 'Debug: See last session result.' })
-
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+    -- NOTE: set up signs style
     vim.fn.sign_define('DapBreakpoint', {
       text = icons.dap.breakpoint,
       texthl = 'WarningMsg',
