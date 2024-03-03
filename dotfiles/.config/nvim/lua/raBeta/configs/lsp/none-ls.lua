@@ -6,14 +6,12 @@ nls.setup {
   sources = {
     -- NOTE: Formatting
     nls.builtins.formatting.stylua,
-    nls.builtins.formatting.fish_indent,
     nls.builtins.formatting.shfmt.with {
       filetypes = { 'sh', 'zsh', 'bash' },
       extra_args = { '-i', '2' },
     },
     nls.builtins.formatting.isort,
     nls.builtins.formatting.markdownlint,
-    -- nls.builtins.formatting.phpcsfixer,
     nls.builtins.formatting.pretty_php,
     nls.builtins.formatting.prettier.with {
       extra_args = { '--print-with=100', '--tab-width=4' },
@@ -30,10 +28,8 @@ nls.setup {
         'php',
       },
     },
-
     -- NOTE: Lintings
     nls.builtins.diagnostics.markdownlint,
-    -- nls.builtins.diagnostics.phpcs,
     nls.builtins.diagnostics.phpstan,
     nls.builtins.diagnostics.codespell,
   },

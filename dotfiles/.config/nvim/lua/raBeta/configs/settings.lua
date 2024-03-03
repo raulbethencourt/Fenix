@@ -66,6 +66,7 @@ local globals = {
   netrw_liststyle = 0,
   netrw_localcopycmd = 'cp',
   netrw_localcopydircmd = 'cp -r',
+  loaded_perl_provider = 0,
 }
 for k, v in pairs(globals) do
   vim.g[k] = v
