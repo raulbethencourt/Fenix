@@ -42,7 +42,6 @@ local options = {
   spelllang = 'en',                              -- language of spellcheck
   background = 'dark',                           -- triggers dark colorscheme
   shell = 'zsh',
-  inccommand = 'split',                          -- Preview substitutions live, as you type!
   timeout = true,
   timeoutlen = 500,
   ruler = false,
