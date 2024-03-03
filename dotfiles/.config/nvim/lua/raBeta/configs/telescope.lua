@@ -149,8 +149,9 @@ keymap('n', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_wor
 keymap('n', '<leader>sv', require('telescope-live-grep-args.shortcuts').grep_visual_selection, { desc = '[S]earch [V]isual selection' })
 keymap('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 keymap('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
-keymap('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
-
+keymap('n', '<leader>sm', function()
+  require('telescope.builtin').man_pages { sections = { 'ALL' } }
+end, { desc = '[S]earch [M]an pages' })
 keymap('n', '<leader>sb', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 0,
