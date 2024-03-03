@@ -46,7 +46,7 @@ require('telescope').setup {
     },
     preview = {
       filesize_limit = 0.1, -- MB
-      treesitter = false, -- treesitter freezes on big files
+      treesitter = false,   -- treesitter freezes on big files
     },
     color_devicons = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
@@ -67,6 +67,9 @@ require('telescope').setup {
     },
   },
   extensions = {
+    live_grep_args = {
+      auto_quoting = true,
+    },
     ['ui-select'] = {
       require('telescope.themes').get_dropdown {
         winblend = 0,
@@ -81,10 +84,10 @@ require('telescope').setup {
       },
     },
     fzf = {
-      fuzzy = true, -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
     },
   },
 }
@@ -135,13 +138,15 @@ keymap('n', '<leader><space>', function()
   })
 end, { desc = 'Buffers' })
 
-keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = '[S]earch [L]ive Grep Args' })
+keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { desc = '[S]earch [L]ive Grep Args' })
 
 keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = '[S]earch [F]iles' })
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecently opened files' })
 keymap('n', '<leader>sg', require('telescope.builtin').git_files, { desc = '[S]earch [G]it Files' })
 keymap('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-keymap('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+keymap('n', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor, { desc = '[S]earch current [W]ord' })
+keymap('n', '<leader>sv', require('telescope-live-grep-args.shortcuts').grep_visual_selection, { desc = '[S]earch [V]isual selection' })
 keymap('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 keymap('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 keymap('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
