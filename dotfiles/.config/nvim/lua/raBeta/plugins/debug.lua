@@ -4,6 +4,16 @@ return {
     'rcarriga/nvim-dap-ui',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      config = {
+        highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+        highlight_new_as_changed = false,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+        show_stop_reason = true,            -- show stop reason when stopped for exceptions
+        commented = false,                  -- prefix virtual text with comment string
+        only_first_definition = false,      -- only show virtual text at first definition (if there are multiple)
+      },
+    },
   },
   config = function()
     local dap = require 'dap'
