@@ -31,10 +31,7 @@ keymap('n', '<S-TAB>', '<cmd>bprev<CR>', 'Bprev')
 
 -- NOTE: Gitsigns
 keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
-keymap('n', '<leader>gd', '<cmd>Gitsigns diff_this<CR>', '[G]itsigns [D]iff this')
-
--- NOTE: MarkDownPreview
-keymap('n', '<leader>m', '<cmd>MarkdownPreviewToggle<CR>', '[M]arkdown preview toggle')
+keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', '[G]itsigns [D]iff this')
 
 -- NOTE: UndoTree
 keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', 'Toggle [U]ndoTree')
