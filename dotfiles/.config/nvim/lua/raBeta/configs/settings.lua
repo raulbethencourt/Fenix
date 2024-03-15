@@ -65,6 +65,8 @@ local globals = {
   netrw_liststyle = 0,
   netrw_localcopycmd = 'cp',
   netrw_localcopydircmd = 'cp -r',
+  netrw_browsex_viewer = 'setsid xdg-open',
+  netrw_browser_viewer = 'open',
   loaded_perl_provider = 0,
 }
 for k, v in pairs(globals) do
