@@ -1,11 +1,11 @@
 M = {}
 
 local keymap = function(mode, keys, func, desc)
-  if desc then
-    desc = desc
-  end
+    if desc then
+        desc = desc
+    end
 
-  vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
 end
 
 -- NOTE: stop space normal
@@ -14,13 +14,13 @@ keymap({ 'n', 'v' }, '<Space>', '<Nop>')
 -- NOTE: toogle lualine
 local hidden_all = 0
 function Toggle_Hidden_All()
-  if hidden_all == 0 then
-    hidden_all = 1
-    vim.cmd 'set ls=0'
-  else
-    hidden_all = 0
-    vim.cmd 'set ls=2'
-  end
+    if hidden_all == 0 then
+        hidden_all = 1
+        vim.cmd 'set ls=0'
+    else
+        hidden_all = 0
+        vim.cmd 'set ls=2'
+    end
 end
 
 keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline')
@@ -28,6 +28,21 @@ keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline
 -- NOTE: TAB in general mode will move to text buffer
 keymap('n', '<TAB>', '<cmd>bnext<CR>', 'Bnext')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', 'Bprev')
+
+-- NOTE: PHP Easy
+keymap('n', '<space>mr', '<CMD>PHPEasyReplica<CR>', 'PHPEasy[R]eplica')
+keymap('n', '<space>mc', '<CMD>PHPEasyCopy<CR>', 'PHPEasy[C]opy')
+keymap('n', '<space>md', '<CMD>PHPEasyDelete<CR>', 'PHPEasy[D]elete')
+keymap('n', '<space>mii', '<CMD>PHPEasyInitInterface<CR>', 'PHPEasy[I]nit[I]nterface')
+keymap('n', '<space>mic', '<CMD>PHPEasyInitClass<CR>', 'PHPEasy[I]nit[C]lass')
+keymap('n', '<space>miac', '<CMD>PHPEasyInitAbstractClass<CR>', 'PHPEasy[I]nit[A]bstract[C]lass')
+keymap('n', '<space>mit', '<CMD>PHPEasyInitTrait<CR>', 'PHPEasy[I]nit[T]rait')
+keymap('n', '<space>mie', '<CMD>PHPEasyInitEnum<CR>', 'PHPEasy[I]nit[E]num')
+keymap({ 'n', 'v' }, '<space>mC', '<CMD>PHPEasyAppendConstant<CR>', 'PHPEasyAppend[C]onstant')
+keymap({ 'n', 'v' }, '<space>mp', '<CMD>PHPEasyAppendProperty<CR>', 'PHPEasyAppend[P]roperty')
+keymap({ 'n', 'v' }, '<space>mm', '<CMD>PHPEasyAppendMethod<CR>', 'PHPEasyAppend[M]ethod')
+keymap('n', '<space>m_', '<CMD>PHPEasyAppendConstruct<CR>', 'PHPEasyAppendConstruct')
+keymap('n', '<space>ma', '<CMD>PHPEasyAppendArgument<CR>', 'PHPEasyAppend[A]ragument')
 
 -- NOTE: Gitsigns
 keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
@@ -73,16 +88,16 @@ keymap('n', 'N', 'Nzzzv')
 
 -- NOTE: Documentations
 M.show_documentation = function()
-  local filetype = vim.bo.filetype
-  if vim.tbl_contains({ 'vim', 'help' }, filetype) then
-    vim.cmd('h ' .. vim.fn.expand '<cword>')
-  elseif vim.tbl_contains({ 'man' }, filetype) then
-    vim.cmd('Man ' .. vim.fn.expand '<cword>')
-  elseif vim.fn.expand '%:t' == 'Cargo.toml' then
-    require('crates').show_popup()
-  else
-    vim.lsp.buf.hover()
-  end
+    local filetype = vim.bo.filetype
+    if vim.tbl_contains({ 'vim', 'help' }, filetype) then
+        vim.cmd('h ' .. vim.fn.expand '<cword>')
+    elseif vim.tbl_contains({ 'man' }, filetype) then
+        vim.cmd('Man ' .. vim.fn.expand '<cword>')
+    elseif vim.fn.expand '%:t' == 'Cargo.toml' then
+        require('crates').show_popup()
+    else
+        vim.lsp.buf.hover()
+    end
 end
 keymap('n', 'K', ":lua require('raBeta.configs.keymaps').show_documentation()<CR>")
 
