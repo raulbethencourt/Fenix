@@ -4,22 +4,8 @@ local icons = require 'icons'
 return {
     {
         'ta-tikoma/php.easy.nvim',
+        event = 'VeryLazy',
         config = true,
-        keys = {
-            { '<space>mr',   '<CMD>PHPEasyReplica<CR>' },
-            { '<space>mc',   '<CMD>PHPEasyCopy<CR>' },
-            { '<space>md',   '<CMD>PHPEasyDelete<CR>' },
-            { '<space>mii',  '<CMD>PHPEasyInitInterface<CR>' },
-            { '<space>mic',  '<CMD>PHPEasyInitClass<CR>' },
-            { '<space>miac', '<CMD>PHPEasyInitAbstractClass<CR>' },
-            { '<space>mit',  '<CMD>PHPEasyInitTrait<CR>' },
-            { '<space>mie',  '<CMD>PHPEasyInitEnum<CR>' },
-            { '<space>mC',   '<CMD>PHPEasyAppendConstant<CR>',   mode = { 'n', 'v' } },
-            { '<space>mp',   '<CMD>PHPEasyAppendProperty<CR>',   mode = { 'n', 'v' } },
-            { '<space>mm',   '<CMD>PHPEasyAppendMethod<CR>',     mode = { 'n', 'v' } },
-            { '<space>m_',   '<CMD>PHPEasyAppendConstruct<CR>' },
-            { '<space>ma',   '<CMD>PHPEasyAppendArgument<CR>' },
-        },
     },
     {
         'lewis6991/gitsigns.nvim',
