@@ -29,20 +29,8 @@ keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline
 keymap('n', '<TAB>', '<cmd>bnext<CR>', 'Bnext')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', 'Bprev')
 
--- NOTE: PHP Easy
-keymap('n', '<space>mr', '<CMD>PHPEasyReplica<CR>', 'PHPEasy[R]eplica')
-keymap('n', '<space>mc', '<CMD>PHPEasyCopy<CR>', 'PHPEasy[C]opy')
-keymap('n', '<space>md', '<CMD>PHPEasyDelete<CR>', 'PHPEasy[D]elete')
-keymap('n', '<space>mii', '<CMD>PHPEasyInitInterface<CR>', 'PHPEasy[I]nit[I]nterface')
-keymap('n', '<space>mic', '<CMD>PHPEasyInitClass<CR>', 'PHPEasy[I]nit[C]lass')
-keymap('n', '<space>miac', '<CMD>PHPEasyInitAbstractClass<CR>', 'PHPEasy[I]nit[A]bstract[C]lass')
-keymap('n', '<space>mit', '<CMD>PHPEasyInitTrait<CR>', 'PHPEasy[I]nit[T]rait')
-keymap('n', '<space>mie', '<CMD>PHPEasyInitEnum<CR>', 'PHPEasy[I]nit[E]num')
-keymap({ 'n', 'v' }, '<space>mC', '<CMD>PHPEasyAppendConstant<CR>', 'PHPEasyAppend[C]onstant')
-keymap({ 'n', 'v' }, '<space>mp', '<CMD>PHPEasyAppendProperty<CR>', 'PHPEasyAppend[P]roperty')
-keymap({ 'n', 'v' }, '<space>mm', '<CMD>PHPEasyAppendMethod<CR>', 'PHPEasyAppend[M]ethod')
-keymap('n', '<space>m_', '<CMD>PHPEasyAppendConstruct<CR>', 'PHPEasyAppendConstruct')
-keymap('n', '<space>ma', '<CMD>PHPEasyAppendArgument<CR>', 'PHPEasyAppend[A]ragument')
+-- NOTE: Codeium 
+keymap('n', '<leader>c', '<cmd>Codeium Chat<CR>', '[C]odeium Chat')
 
 -- NOTE: Gitsigns
 keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
@@ -58,15 +46,17 @@ keymap('n', '<leader>pu', '<cmd>Lazy update<CR>', 'Lazy [U]update')
 keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>', 'Lazy [C]lean')
 
 -- NOTE: Gnereral
-keymap('n', '<leader>z', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', 'Full path')
+keymap('n', '<leader>zb', ':bp<bar>sp<bar>bn<bar>bd<cr>', '[B]uffer delete')
+keymap('n', '<leader>zf', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', 'Full path')
+keymap('n', '<leader>zp', ':lua print(unpack(vim.api.nvim_win_get_cursor(0)))<cr>', 'Cursor [P]osition')
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', 'Comments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', 'Comments')
 keymap('n', '<leader>e', '<cmd>Explore<CR>', '[E]xplore')
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
 keymap('n', '<leader>h', '<cmd>split<CR>', 'Split')
-keymap('n', '<leader>i', '<C-w>|', 'Maximize')
-keymap('n', '<leader>o', '<C-w>=', 'Equilify')
-keymap('n', '<leader>n', ':nohlsearch<CR>', '[N]o highlights')
+keymap('n', '<leader>zi', '<C-w>|', 'Maximize')
+keymap('n', '<leader>zo', '<C-w>=', 'Equilify')
+keymap('n', '<leader>zn', ':nohlsearch<CR>', '[N]o highlights')
 
 keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')
