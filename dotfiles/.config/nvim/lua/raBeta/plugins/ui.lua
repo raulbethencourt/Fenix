@@ -1,263 +1,161 @@
--- NOTE: recover icons
-local icons = require 'icons'
-
 return {
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = {
-          hl = 'GitSignsAdd',
-          text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsAddNr',
-          linehl = 'GitSignsAddLn',
-        },
-        change = {
-          hl = 'GitSignsChange',
-          text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
-        },
-        delete = {
-          hl = 'GitSignsDelete',
-          text = icons.ui.Triangle,
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
-        },
-        topdelete = {
-          hl = 'GitSignsDelete',
-          text = icons.ui.Triangle,
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
-        },
-        changedelete = {
-          hl = 'GitSignsChange',
-          text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
-        },
-      },
-      signcolumn = true,
-      numhl = false,
-      linehl = false,
-      word_diff = false,
-      watch_gitdir = {
-        interval = 1000,
-        follow_files = true,
-      },
-      attach_to_untracked = true,
-      current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-      current_line_blame_opts = {
-        virt_text = true,
-        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-        delay = 1000,
-        ignore_whitespace = false,
-      },
-      current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-      sign_priority = 6,
-      status_formatter = nil, -- Use default
-      update_debounce = 200,
-      max_file_length = 40000,
-      preview_config = {
-        -- Options passed to nvim_open_win
-        border = 'rounded',
-        style = 'minimal',
-        relative = 'cursor',
-        row = 0,
-        col = 1,
-      },
-      yadm = { enable = false },
+    {
+        'sainnhe/everforest',
+        lazy = false,
+        priority = 1000,
+        enabled = true,
+        config = function()
+            vim.g.everforest_background = 'hard'
+            vim.g.everforest_better_performance = true
+            vim.g.everforest_transparent_background = 2
+            vim.g.everforest_cursor = 'orange'
+            vim.g.everforest_ui_contrast = 'low'
+            vim.g.everforest_float_style = 'dim'
+            vim.cmd [[colorscheme everforest]]
+        end,
     },
-  },
-  { 'CantoroMC/ayu-nvim', lazy = false, priority = 1000, enabled = false },
-  {
-    'sainnhe/everforest',
-    lazy = false,
-    priority = 1000,
-    enabled = true,
-    config = function()
-      vim.g.everforest_background = 'hard'
-      vim.g.everforest_better_performance = true
-      vim.g.everforest_transparent_background = 2
-      vim.g.everforest_cursor = 'orange'
-      vim.g.everforest_ui_contrast = 'low'
-      vim.g.everforest_float_style = 'dim'
-      vim.cmd [[colorscheme everforest]]
-    end,
-  },
-  {
-    'eddyekofo94/gruvbox-flat.nvim',
-    lazy = false,
-    priority = 1000,
-    enabled = false,
-    config = function()
-      vim.g.gruvbox_flat_style = 'hard'
-      vim.g.gruvbox_transparent = true
-      vim.g.gruvbox_dark_float = true
-      vim.g.gruvbox_hide_inactive_statusline = true
-      vim.g.gruvbox_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'lazy', 'telescope' }
-      vim.g.gruvbox_dark_sidebar = true
-      vim.g.gruvbox_dark_float = true
-      -- vim.cmd [[colorscheme gruvbox-flat]]
-    end,
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
-    config = function()
-      ---@diagnostic disable-next-line: missing-parameter
-      require('lualine').setup {
-        options = {
-          theme = 'everforest',
-          fmt = string.lower,
-          section_separators = { left = icons.ui.HalfCircleRight, right = icons.ui.HalfCircleLeft },
-          component_separators = { left = icons.ui.GrowingMoon, right = icons.ui.DecreasingMoon },
-        },
-      }
-    end,
-  },
-  {
-    'stevearc/dressing.nvim',
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require('lazy').load { plugins = { 'dressing.nvim' } }
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require('lazy').load { plugins = { 'dressing.nvim' } }
-        return vim.ui.input(...)
-      end
-    end,
-  },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {},
-    dependencies = {
-      { 'MunifTanjim/nui.nvim', lazy = true },
-      {
-        'rcarriga/nvim-notify',
-        keys = {
-          {
-            '<leader>un',
-            function()
-              require('notify').dismiss { silent = true, pending = true }
-            end,
-            desc = 'Dismiss all Notifications',
-          },
-        },
-        opts = {
-          timeout = 3500,
-          background_colour = '#000000',
-          render = 'compact',
-        },
-      },
+    {
+        'stevearc/dressing.nvim',
+        lazy = true,
+        init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.select = function(...)
+                require('lazy').load { plugins = { 'dressing.nvim' } }
+                return vim.ui.select(...)
+            end
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.input = function(...)
+                require('lazy').load { plugins = { 'dressing.nvim' } }
+                return vim.ui.input(...)
+            end
+        end,
     },
-    config = function()
-      require('noice').setup {
-        lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-            ['vim.lsp.util.stylize_markdown'] = true,
-            ['cmp.entry.get_documentation'] = true,
-          },
-          signature = {
-            enabled = false,
-          },
+    {
+        'folke/noice.nvim',
+        event = 'VeryLazy',
+        opts = {},
+        dependencies = {
+            { 'MunifTanjim/nui.nvim', lazy = true },
+            {
+                'rcarriga/nvim-notify',
+                keys = {
+                    {
+                        '<leader>un',
+                        function()
+                            require('notify').dismiss { silent = true, pending = true }
+                        end,
+                        desc = 'Dismiss all Notifications',
+                    },
+                },
+                opts = {
+                    timeout = 3500,
+                    background_colour = '#000000',
+                    render = 'compact',
+                },
+            },
         },
-        messages = {
-          enabled = true,  -- enables the Noice messages UI
-          view = 'notify', -- default view for messages
-        },
-        routes = {
-          {
-            filter = {
-              event = 'msg_show',
-              any = {
-                { find = '%d+L, %d+B' },
-                { find = '; after #%d+' },
-                { find = '; before #%d+' },
-              },
-            },
-            view = 'mini',
-          },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = false,      -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
-        },
-        views = {
-          cmdline_popup = {
-            border = {
-              style = 'none',
-              padding = { 2, 3 },
-            },
-            filter_options = {},
-            win_options = {
-              winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
-            },
-            position = {
-              row = 10,
-              col = '50%',
-            },
-            size = {
-              width = 100,
-              height = 'auto',
-            },
-          },
-          popupmenu = {
-            relative = 'editor',
-            position = {
-              row = 15,
-              col = '50%',
-            },
-            size = {
-              width = 100,
-              height = 10,
-            },
-            border = {
-              style = 'none',
-              padding = { 2, 3 },
-            },
-            win_options = {
-              winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
-            },
-          },
-        },
-      }
-    end,
-  },
-  {
-    'folke/lsp-colors.nvim',
-    config = function()
-      require('lsp-colors').setup {
-        Error = '#db4b4b',
-        Warning = '#e0af68',
-        Information = '#0db9d7',
-        Hint = '#10B981',
-      }
-    end,
-  },
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup({ '*' }, {
-        RGB = true,      -- #RGB hex codes
-        RRGGBB = true,   -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true,   -- CSS rgb() and rgba() functions
-        hsl_fn = true,   -- CSS hsl() and hsla() functions
-        css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
-    end,
-  },
+        config = function()
+            require('noice').setup {
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+                        ['vim.lsp.util.stylize_markdown'] = true,
+                        ['cmp.entry.get_documentation'] = true,
+                    },
+                    signature = {
+                        enabled = false,
+                    },
+                },
+                messages = {
+                    enabled = true,  -- enables the Noice messages UI
+                    view = 'notify', -- default view for messages
+                },
+                routes = {
+                    {
+                        filter = {
+                            event = 'msg_show',
+                            any = {
+                                { find = '%d+L, %d+B' },
+                                { find = '; after #%d+' },
+                                { find = '; before #%d+' },
+                            },
+                        },
+                        view = 'mini',
+                    },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = true,         -- use a classic bottom cmdline for search
+                    command_palette = false,      -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false,       -- add a border to hover docs and signature help
+                },
+                views = {
+                    cmdline_popup = {
+                        border = {
+                            style = 'none',
+                            padding = { 2, 3 },
+                        },
+                        filter_options = {},
+                        win_options = {
+                            winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+                        },
+                        position = {
+                            row = 10,
+                            col = '50%',
+                        },
+                        size = {
+                            width = 100,
+                            height = 'auto',
+                        },
+                    },
+                    popupmenu = {
+                        relative = 'editor',
+                        position = {
+                            row = 15,
+                            col = '50%',
+                        },
+                        size = {
+                            width = 100,
+                            height = 10,
+                        },
+                        border = {
+                            style = 'none',
+                            padding = { 2, 3 },
+                        },
+                        win_options = {
+                            winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
+                        },
+                    },
+                },
+            }
+        end,
+    },
+    {
+        'folke/lsp-colors.nvim',
+        config = function()
+            require('lsp-colors').setup {
+                Error = '#db4b4b',
+                Warning = '#e0af68',
+                Information = '#0db9d7',
+                Hint = '#10B981',
+            }
+        end,
+    },
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup({ '*' }, {
+                RGB = true,      -- #RGB hex codes
+                RRGGBB = true,   -- #RRGGBB hex codes
+                RRGGBBAA = true, -- #RRGGBBAA hex codes
+                rgb_fn = true,   -- CSS rgb() and rgba() functions
+                hsl_fn = true,   -- CSS hsl() and hsla() functions
+                css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
+            })
+        end,
+    },
 }

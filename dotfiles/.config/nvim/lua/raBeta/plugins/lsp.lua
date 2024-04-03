@@ -1,40 +1,18 @@
 return {
     {
-        "gbprod/phpactor.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- required to update phpactor
-            "neovim/nvim-lspconfig"  -- required to automatically register lsp serveur
-        },
-        config = function()
-            local on_attach = function(_, bufnr)
-            end
-            require("phpactor").setup({
-                install = {
-                    bin = vim.fn.stdpath("data") .. "~/.local/share/nvim/mason/bin/phpactor",
-                    php_bin = "php",
-                },
-                lspconfig = {
-                    enabled = true,
-                    options = {
-                        ["language_server_phpstan.enabled"] = true,
-                        ["language_server_phpstan.bin"] = "~/.local/share/nvim/mason/bin/phpstan",
-                        ["language_server_psalm.enabled"] = false,
-                        ["language_server_php_cs_fixer.enabled"] = false,
-                        ["symfony.enabled"] = true,
-                    },
-                }
-            })
-        end
-    },
-    {
         'Exafunction/codeium.nvim',
+        enabled = true,
         event = 'BufEnter',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'hrsh7th/nvim-cmp',
             'onsails/lspkind.nvim',
         },
-        config = true,
+        config = function()
+            require("codeium").setup({
+                enable_chat = true
+            })
+        end,
     },
     {
         'kosayoda/nvim-lightbulb',

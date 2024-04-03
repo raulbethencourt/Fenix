@@ -12,7 +12,7 @@ harpoon:setup {
 }
 
 vim.keymap.set('n', '<leader>fs', function()
-    harpoon:list():append()
+    harpoon:list():add()
 end, { desc = 'Add file' })
 vim.keymap.set('n', '<leader>fd', function()
     harpoon.ui:toggle_quick_menu(harpoon:list())

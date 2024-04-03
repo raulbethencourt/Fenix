@@ -3,11 +3,6 @@ local icons = require 'icons'
 
 return {
     {
-        'ta-tikoma/php.easy.nvim',
-        event = 'VeryLazy',
-        config = true,
-    },
-    {
         'lewis6991/gitsigns.nvim',
         opts = {
             signs = {
@@ -50,6 +45,7 @@ return {
                 interval = 1000,
                 follow_files = true,
             },
+            auto_attach = false,
             attach_to_untracked = true,
             current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
             current_line_blame_opts = {
@@ -71,7 +67,6 @@ return {
                 row = 0,
                 col = 1,
             },
-            yadm = { enable = false },
         },
     },
     {
