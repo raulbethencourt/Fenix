@@ -62,7 +62,9 @@ vim.opt.shortmess:append 'c'
 local globals = {
     showtabline = 0,
     netrw_banner = 0,
-    netrw_liststyle = 0,
+    netrw_liststyle = 3,
+    netrw_winsize = 15,
+    netrw_keepdir = 0,
     netrw_localcopycmd = 'cp',
     netrw_localcopydircmd = 'cp -r',
     netrw_browsex_viewer = 'setsid xdg-open',
