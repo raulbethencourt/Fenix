@@ -52,19 +52,12 @@ if vim.g.vscode then
     for i, v in ipairs(cmd) do
         vim.cmd(v)
     end
-
-    -- NOTE: load vscode plugins
-    require('lazy').setup({
-        { import = 'vscode.plugins' },
-    }, {})
-
-    require 'vscode.configs'
-else
-    -- NOTE: load plugins
-    require('lazy').setup({
-        { import = 'raBeta.plugins' },
-    }, {})
-
-    -- NOTE: load configs
-    require 'raBeta.configs'
 end
+
+local env_name = vim.g.vscode and 'vscode' or 'raBeta'
+
+require('lazy').setup({
+    { import = env_name .. '.plugins' },
+}, {})
+
+require(env_name .. '.configs')
