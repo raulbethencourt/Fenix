@@ -1,5 +1,3 @@
-require 'raBeta.configs.lsp.cmp'
-require 'raBeta.configs.lsp.none-ls'
 require 'raBeta.configs.lsp.languages.php'
 
 -- NOTE: stop saving lsp logs, change to 'debug' to see them
@@ -31,7 +29,6 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            border = false,
             layout_strategy = 'vertical',
             layout_config = {
                 height = 0.5,
@@ -48,7 +45,6 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            border = false,
             layout_strategy = 'vertical',
             layout_config = {
                 height = 0.5,
@@ -201,7 +197,7 @@ vim.diagnostic.config {
     underline = true,
     severity_sort = false,
     float = {
-        border = 'none',
+        border = 'rounded',
         source = 'always',
         header = '',
         prefix = '',

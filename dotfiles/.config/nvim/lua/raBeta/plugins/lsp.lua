@@ -12,7 +12,6 @@ return {
             require("codeium").setup({
                 enable_chat = true
             })
-
             vim.keymap.set('n', '<leader>c', '<cmd>Codeium Chat<CR>',
                 { noremap = true, silent = true, desc = '[C]odeium Chat' })
         end,
@@ -35,6 +34,9 @@ return {
         'nvimtools/none-ls.nvim',
         event = 'VeryLazy',
         requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require 'raBeta.configs.lsp.none-ls'
+        end,
     },
     {
         'neovim/nvim-lspconfig',
@@ -57,6 +59,9 @@ return {
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'hrsh7th/cmp-vsnip',
         },
+        config = function()
+            require 'raBeta.configs.lsp.cmp'
+        end,
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -66,6 +71,9 @@ return {
             { 'derekstride/tree-sitter-sql', build = ':TSInstall sql' },
         },
         build = ':TSUpdate',
+        config = function()
+            require 'raBeta.configs.treesitter'
+        end,
     },
     {
         'saecki/crates.nvim',
