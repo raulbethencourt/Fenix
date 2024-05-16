@@ -12,6 +12,9 @@ return {
             require("codeium").setup({
                 enable_chat = true
             })
+
+            vim.keymap.set('n', '<leader>c', '<cmd>Codeium Chat<CR>',
+                { noremap = true, silent = true, desc = '[C]odeium Chat' })
         end,
     },
     {
@@ -59,14 +62,10 @@ return {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
-    },
-    {
-        'gbprod/php-enhanced-treesitter.nvim',
-        dependencies = {
+            'gbprod/php-enhanced-treesitter.nvim',
             { 'derekstride/tree-sitter-sql', build = ':TSInstall sql' },
         },
+        build = ':TSUpdate',
     },
     {
         'saecki/crates.nvim',

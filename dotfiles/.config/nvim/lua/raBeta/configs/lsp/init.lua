@@ -150,38 +150,38 @@ local servers = {
         },
     },
     htmx = { filetypes = { 'html', 'twig', 'php' } },
-    phpactor = {
-        init_options = {
-            ["language_server_psalm.enabled"] = false,
-            ["language_server_php_cs_fixer.enabled"] = false,
-            ["language_server_completion.trim_leading_dollar"] = true,
-            ["language_server_phpstan.enabled"] = true,
-            ["language_server_phpstan.bin"] = "/home/rabeta/.local/share/nvim/mason/bin/phpstan",
-            ["symfony.enabled"] = true,
-            ["completion_worse.completor.docblock.enabled"] = true,
-        }
-    },
-    -- intelephense = {
-    --     filetypes = { 'php' },
+    -- phpactor = {
     --     init_options = {
-    --         licenceKey = get_intelephense_license(),
-    --         storagePath = '/home/rabeta/.intelephense',
-    --         clearCache = false,
-    --         files = {
-    --             maxSize = 5000000,
-    --         },
-    --         phpMemoryLimit = '4096M',
-    --     },
-    --     diagnostics = {
-    --         enable = true,
-    --     },
-    --     format = {
-    --         enable = false,
-    --     },
-    --     flags = {
-    --         debounce_text_changes = 150,
-    --     },
+    --         ["language_server_psalm.enabled"] = false,
+    --         ["language_server_php_cs_fixer.enabled"] = false,
+    --         ["language_server_completion.trim_leading_dollar"] = true,
+    --         ["language_server_phpstan.enabled"] = true,
+    --         ["language_server_phpstan.bin"] = "/home/rabeta/.local/share/nvim/mason/bin/phpstan",
+    --         ["symfony.enabled"] = true,
+    --         ["completion_worse.completor.docblock.enabled"] = true,
+    --     }
     -- },
+    intelephense = {
+        filetypes = { 'php' },
+        init_options = {
+            licenceKey = get_intelephense_license(),
+            storagePath = '/home/rabeta/.intelephense',
+            clearCache = false,
+            files = {
+                maxSize = 5000000,
+            },
+            phpMemoryLimit = '4096M',
+        },
+        diagnostics = {
+            enable = true,
+        },
+        format = {
+            enable = false,
+        },
+        flags = {
+            debounce_text_changes = 150,
+        },
+    },
     tsserver = {},
     sqlls = {
         filetypes = { 'sql' },
