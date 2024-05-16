@@ -30,7 +30,7 @@ dap.configurations.php = {
 -- NOTE: Set Xdebug path with keybinding
 vim.keymap.set('n', '<leader>dp', function()
     local path = (dap.configurations.php[1].pathMappings['/var/www/html/'] ~= nil and
-        { ['/shared/httpd/portal/www/'] = "${workspaceFolder}" } or
+        { ['/shared/httpd/portal/portal'] = "${workspaceFolder}" } or
         { ['/var/www/html/'] = "${workspaceFolder}" })
 
     ---@diagnostic disable-next-line: inject-field
