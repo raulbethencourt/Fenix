@@ -1,5 +1,6 @@
 -- NOTE: recover icons
 local icons = require 'icons'
+
 local keymap = function(mode, keys, func, desc)
     if desc then
         desc = desc
@@ -23,7 +24,7 @@ return {
                     padding = 2,
                     max_width = 220,
                     max_height = 60,
-                    border = "none",
+                    border = "rounded",
                     win_options = {
                         winblend = 0,
                     },
@@ -87,7 +88,7 @@ return {
                 },
             },
             preview_config = {
-                border = 'none',
+                border = 'rounded',
                 style = 'minimal',
                 relative = 'cursor',
                 row = 1,
@@ -99,6 +100,47 @@ return {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
         dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local harpoon = require 'harpoon'
+
+            harpoon:setup {
+                settings = {
+                    save_on_toggle = true,
+                    sync_on_ui_close = true,
+                    key = function()
+                        ---@diagnostic disable-next-line: return-type-mismatch
+                        return vim.loop.cwd()
+                    end,
+                },
+            }
+
+            vim.keymap.set('n', '<leader>fs', function()
+                harpoon:list():add()
+            end, { desc = 'Add file' })
+            vim.keymap.set('n', '<leader>fd', function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end, { desc = 'Menu' })
+
+            vim.keymap.set('n', '<leader>fj', function()
+                harpoon:list():select(1)
+            end, { desc = 'File 1' })
+            vim.keymap.set('n', '<leader>fk', function()
+                harpoon:list():select(2)
+            end, { desc = 'File 2' })
+            vim.keymap.set('n', '<leader>fl', function()
+                harpoon:list():select(3)
+            end, { desc = 'File 3' })
+            vim.keymap.set('n', '<leader>fm', function()
+                harpoon:list():select(4)
+            end, { desc = 'File 4' })
+
+            vim.keymap.set('n', '<leader>fp', function()
+                harpoon:list():prev()
+            end)
+            vim.keymap.set('n', '<leader>fn', function()
+                harpoon:list():next()
+            end)
+        end,
     },
     {
         'mbbill/undotree',
@@ -134,6 +176,9 @@ return {
             'nvim-telescope/telescope-ui-select.nvim',
             'nvim-tree/nvim-web-devicons',
         },
+        config = function()
+            require 'raBeta.configs.telescope'
+        end,
     },
     {
         'folke/flash.nvim',
