@@ -5,9 +5,6 @@ require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/sni
 
 luasnip.config.setup {}
 
--- local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
--- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-
 cmp.setup {
   snippet = {
     expand = function(args)

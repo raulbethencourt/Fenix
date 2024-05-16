@@ -34,7 +34,7 @@ return {
         vim.keymap.set('n', '<leader>dt', dapui.toggle, { desc = '[D]ebug [T]oggle Ui' })
         vim.keymap.set({ 'v', 'n' }, '<leader>de', '<Cmd>lua require("dapui").eval()<CR>',
             { desc = '[D]ebug [E]xpression evaluation' })
-        vim.keymap.set('n', '<leader>df', '<Cmd>require("dapui").float_element()<CR>',
+        vim.keymap.set('n', '<leader>df', '<Cmd>lua require("dapui").float_element()<CR>',
             { desc = '[D]ebug [F]loating element' })
 
         ---@diagnostic disable-next-line: missing-fields

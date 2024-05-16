@@ -23,29 +23,11 @@ function Toggle_Hidden_All()
     end
 end
 
--- local toggleExplorer = function()
---     if vim.bo.filetype == 'netrw' then
---         vim.cmd ':q!'
---     else
---         vim.cmd 'Ntree'
---     end
--- end
-
 keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline')
 
 -- NOTE: TAB in general mode will move to text buffer
 keymap('n', '<TAB>', '<cmd>bnext<CR>', 'Bnext')
 keymap('n', '<S-TAB>', '<cmd>bprev<CR>', 'Bprev')
-
--- NOTE: Codeium
-keymap('n', '<leader>c', '<cmd>Codeium Chat<CR>', '[C]odeium Chat')
-
--- NOTE: Gitsigns
-keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
-keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', '[G]itsigns [D]iff this')
-
--- NOTE: UndoTree
-keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', 'Toggle [U]ndoTree')
 
 -- NOTE: Lazy
 keymap('n', '<leader>ps', '<cmd>Lazy sync<CR>', 'Lazy [S]ync')
@@ -67,9 +49,9 @@ keymap('n', '<leader>h', '<cmd>split<CR>', 'Split')
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', 'Comments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', 'Comments')
 
-keymap('n', '<leader>e', function()
-    return vim.bo.filetype == 'netrw' and vim.cmd('q!') or vim.cmd('Lexplore %:p:h')
-end, '[E]xplore')
+-- keymap('n', '<leader>e', function()
+--     return vim.bo.filetype == 'netrw' and vim.cmd([[bp|sp|bn|bd]]) or vim.cmd('Explore')
+-- end, '[E]xplore')
 
 keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')

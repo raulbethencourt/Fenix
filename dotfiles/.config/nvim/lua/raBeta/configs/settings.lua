@@ -46,6 +46,8 @@ local options = {
     timeoutlen = 500,
     ruler = false,
     equalalways = true,
+    -- path = vim.o.path .. '**',
+    -- wildmenu = true,
     guicursor = table.concat({
         'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
         'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon50-blinkoff50',
@@ -62,9 +64,9 @@ vim.opt.shortmess:append 'c'
 local globals = {
     showtabline = 0,
     netrw_banner = 0,
-    netrw_liststyle = 3,
-    netrw_winsize = 15,
-    netrw_keepdir = 0,
+    netrw_liststyle = 0,
+    netrw_winsize = 20,
+    netrw_keepdir = 1,
     netrw_localcopycmd = 'cp',
     netrw_localcopydircmd = 'cp -r',
     netrw_browsex_viewer = 'setsid xdg-open',

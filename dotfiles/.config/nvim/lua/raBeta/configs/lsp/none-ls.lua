@@ -29,7 +29,7 @@ nls.setup {
     },
     -- NOTE: Lintings
     nls.builtins.diagnostics.markdownlint,
-    -- nls.builtins.diagnostics.phpstan,
+    nls.builtins.diagnostics.phpstan,
     nls.builtins.diagnostics.codespell,
   },
   filetypes = {

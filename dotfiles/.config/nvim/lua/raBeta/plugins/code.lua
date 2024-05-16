@@ -1,9 +1,58 @@
 -- NOTE: recover icons
 local icons = require 'icons'
+local keymap = function(mode, keys, func, desc)
+    if desc then
+        desc = desc
+    end
+
+    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
 
 return {
     {
+        'stevearc/oil.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require('oil').setup {
+                view_options = {
+                    show_hidden = true,
+                },
+                float = {
+                    padding = 2,
+                    max_width = 220,
+                    max_height = 60,
+                    border = "none",
+                    win_options = {
+                        winblend = 0,
+                    },
+                },
+            }
+
+            keymap('n', '<leader>e', function()
+                if vim.bo.filetype == 'oil' then
+                    require('oil').close()
+                else
+                    vim.cmd('Oil')
+                end
+            end, '[E]xplore')
+
+            keymap('n', '<leader>ot', require('oil').toggle_float,
+                '[O]il [T]oggle float')
+            keymap('n', '<leader>oc', require('oil').close, '[O]il [C]lose')
+            keymap('n', '<leader>op', function()
+                require('oil').open_preview({ vertical = true })
+            end, '[O]il open [P]review')
+            keymap('n', '<leader>oh', require('oil').toggle_hidden, '[O]il toggle [H]idden')
+        end,
+    },
+    {
         'lewis6991/gitsigns.nvim',
+        config = function()
+            keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
+            keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', '[G]itsigns [D]iff this')
+        end,
         opts = {
             signs = {
                 add = {
@@ -37,34 +86,11 @@ return {
                     linehl = 'GitSignsChangeLn',
                 },
             },
-            signcolumn = true,
-            numhl = false,
-            linehl = false,
-            word_diff = false,
-            watch_gitdir = {
-                interval = 1000,
-                follow_files = true,
-            },
-            auto_attach = false,
-            attach_to_untracked = true,
-            current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-            current_line_blame_opts = {
-                virt_text = true,
-                virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-                delay = 1000,
-                ignore_whitespace = false,
-            },
-            current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-            sign_priority = 6,
-            status_formatter = nil, -- Use default
-            update_debounce = 200,
-            max_file_length = 40000,
             preview_config = {
-                -- Options passed to nvim_open_win
-                border = 'rounded',
+                border = 'none',
                 style = 'minimal',
                 relative = 'cursor',
-                row = 0,
+                row = 1,
                 col = 1,
             },
         },
@@ -74,7 +100,12 @@ return {
         branch = 'harpoon2',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
-    'mbbill/undotree',
+    {
+        'mbbill/undotree',
+        config = function()
+            keymap('n', '<leader>u', '<cmd>UndotreeToggle<CR>', 'Toggle [U]ndoTree')
+        end
+    },
     {
         'folke/which-key.nvim',
         opts = true,
@@ -107,7 +138,13 @@ return {
     {
         'folke/flash.nvim',
         event = 'VeryLazy',
-        opts = {},
+        opts = {
+            modes = {
+                search = {
+                    enabled = true,
+                }
+            }
+        },
         keys = {
             {
                 's',
