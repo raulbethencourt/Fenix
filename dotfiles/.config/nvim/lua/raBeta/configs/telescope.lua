@@ -18,32 +18,31 @@ require('telescope').setup {
         selection_caret = '  ',
         entry_prefix = '  ',
         initial_mode = 'insert',
-        selection_strategy = 'reset',
-        sorting_strategy = 'ascending',
-        layout_strategy = 'horizontal',
-        layout_config = {
-            horizontal = {
-                prompt_position = 'top',
-                preview_width = 0.55,
-                results_width = 0.8,
-            },
-            vertical = {
-                mirror = false,
-            },
-            width = 0.80,
-            height = 0.75,
-            preview_cutoff = 120,
-        },
+        -- sorting_strategy = 'ascending',
+        -- layout_strategy = 'horizontal',
+        -- layout_config = {
+        --     horizontal = {
+        --         prompt_position = 'top',
+        --         preview_width = 0.55,
+        --         results_width = 0.8,
+        --     },
+        --     vertical = {
+        --         mirror = false,
+        --     },
+        --     width = 0.80,
+        --     height = 0.75,
+        --     preview_cutoff = 120,
+        -- },
         file_sorter = require('telescope.sorters').get_fuzzy_file,
         file_ignore_patterns = { 'node_modules', 'vendor', 'upgrades', 'upload', 'cache' },
         generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
         path_display = { 'truncate' },
-        winblend = 0,
-        border = false,
-        previewer = {
-            results_title = false,
-            preview_title = false,
-        },
+        -- winblend = 0,
+        -- border = false,
+        -- previewer = {
+        --     results_title = false,
+        --     preview_title = false,
+        -- },
         preview = {
             filesize_limit = 0.1, -- MB
             treesitter = false,   -- treesitter freezes on big files
@@ -74,7 +73,7 @@ require('telescope').setup {
             require('telescope.themes').get_dropdown {
                 winblend = 0,
                 previewer = false,
-                border = false,
+                border = 'rounded',
                 layout_strategy = 'vertical',
                 layout_config = {
                     height = 0.2,
@@ -88,19 +87,6 @@ require('telescope').setup {
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true,    -- override the file sorter
             case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
-        },
-        ['macros'] = {
-            require('telescope.themes').get_dropdown {
-                winblend = 0,
-                previewer = false,
-                border = false,
-                layout_strategy = 'vertical',
-                layout_config = {
-                    height = 0.2,
-                    prompt_position = 'top',
-                    width = 0.3,
-                },
-            },
         },
     },
 }
@@ -133,15 +119,10 @@ end
 -- Keymaps
 local keymap = vim.keymap.set
 
--- use telescop for references and definitions
-keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', { desc = '[G]o to [R]references' })
-keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', { desc = '[G]o to [D]definitions' })
-
 keymap('n', '<leader><space>', function()
     require('telescope.builtin').buffers(require('telescope.themes').get_dropdown {
         winblend = 0,
         previewer = false,
-        border = false,
         layout_strategy = 'vertical',
         layout_config = {
             height = 0.2,
@@ -150,7 +131,6 @@ keymap('n', '<leader><space>', function()
         },
     })
 end, { desc = 'Buffers' })
-
 keymap('n', '<leader>sl', "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
     { desc = '[S]earch [L]ive Grep Args' })
 keymap('n', '<leader>sa', "<cmd>Telescope macros<cr>", { desc = '[S]earch m[A]cros' })
@@ -173,7 +153,6 @@ keymap('n', '<leader>sb', function()
     require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 0,
         previewer = true,
-        border = false,
         layout_strategy = 'vertical',
         layout_config = {
             height = 0.6,
