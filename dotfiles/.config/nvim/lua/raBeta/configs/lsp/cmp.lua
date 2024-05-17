@@ -1,10 +1,27 @@
-local cmp = require 'cmp'
+local lspkind = require 'lspkind'
+lspkind.init()
+
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/snippets' } }
-
 luasnip.config.setup {}
+vim.keymap.set({ 'i', 's' }, '<c-k>', function()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    end
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<c-j>', function()
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    end
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<c-l>', function()
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    end
+end, { silent = true })
 
+local cmp = require 'cmp'
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -46,6 +63,7 @@ cmp.setup {
         { name = 'codeium' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
+        { name = 'buffer' },
         { name = 'crates' },
         {
             name = 'nvim_lua',
@@ -58,7 +76,7 @@ cmp.setup {
     },
     ---@diagnostic disable-next-line: missing-fields
     formatting = {
-        format = require('lspkind').cmp_format {
+        format = lspkind.cmp_format {
             mode = 'symbol',
             maxwidth = 50,
             ellipsis_char = '...',
