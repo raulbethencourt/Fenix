@@ -1,10 +1,7 @@
 {
     "Bns new bean": {
         "prefix": "bnsnb",
-        "body": [
-            "\\$${1:val} = BeanFactory::newBean('${2:module}');",
-            "$3"
-        ],
+        "body": ["\\$${1:val} = BeanFactory::newBean('${2:module}');", "$3"],
         "description": "New bean for bns"
     },
     "Bns get bean": {
@@ -48,44 +45,32 @@
     },
     "Bns php html echo": {
         "prefix": "bnspeco",
-        "body": [
-            "<?= \\$${1:variable} ?>"
-        ],
+        "body": ["<?= \\$${1:variable} ?>"],
         "description": "Bns for echo in html."
     },
     "Simple var_dump to get queries in screen": {
         "prefix": "vdq",
-        "body": [
-            "var_dump($${1:variable});exit;"
-        ],
+        "body": ["var_dump($${1:variable});exit;"],
         "description": "Var dump to get queries in screen."
     },
     "Simple printf with pre tag": {
         "prefix": "pfv",
-        "body": [
-            "printf('<pre>%s</pre>', var_export(\\$${1:variable}));exit;"
-        ],
+        "body": ["printf('<pre>%s</pre>', var_export(\\$${1:variable}));exit;"],
         "description": "Printf with pre tag and var_export"
     },
     "BnsWebservice var_dump and find": {
         "prefix": "vdwf",
-        "body": [
-            "exit('${1:Hello World} !! =====>>');"
-        ],
+        "body": ["exit('${1:Hello World} !! =====>>');"],
         "description": "Var_dump for the bnsWebService to find position."
     },
     "BnsWebservice var_dump": {
         "prefix": "vdwf",
-        "body": [
-            "exit($${1:varibale});"
-        ],
+        "body": ["exit($${1:varibale});"],
         "description": "Var_dump for the bnsWebService."
     },
     "Var_dump and exit": {
         "prefix": "vdp",
-        "body": [
-            "echo'<pre>';var_dump($${1:varibale});echo'</pre>';exit;"
-        ],
+        "body": ["echo'<pre>';var_dump($${1:varibale});echo'</pre>';exit;"],
         "description": "Var_dump and exit wih pre tag."
     },
     "Var_dump and find": {
@@ -97,16 +82,12 @@
     },
     "Logs": {
         "prefix": "vdl",
-        "body": [
-            "\\$GLOBALS['log']->fatal($${1:varibale});"
-        ],
+        "body": ["\\$GLOBALS['log']->fatal($${1:varibale});"],
         "description": "Var_dump equivalent for logs."
     },
     "Logs and find": {
         "prefix": "vdlf",
-        "body": [
-            "\\$GLOBALS['log']->fatal('${1:Hello World} !! =====>>');"
-        ],
+        "body": ["\\$GLOBALS['log']->fatal('${1:Hello World} !! =====>>');"],
         "description": "Var_dump equivalent to find position inside logs."
     },
     "Bns creates query": {
@@ -141,11 +122,9 @@
     "Bns creates query getOne": {
         "prefix": "bnsqueryone",
         "body": [
-            "\\$query = \"SELECT ${1:val}",
+            "&\\$GLOBALS['db']->getOne(\"SELECT ${1:val}",
             "          FROM ${2:val}",
-            "          WHERE ${3:val}\";",
-            "",
-            "\\$${4:val} = &\\$GLOBALS['db']->getOne(\\$query);"
+            "          WHERE ${3:val}\");"
         ],
         "description": "Snippets pour la creation d'un requete pour recupere un record."
     },
@@ -153,12 +132,15 @@
         "prefix": "bnshook",
         "body": [
             "/**",
-            " * Bluenote-systems - ${1:type} SAVE - ${2:comment...}",
-            " * @param $bean",
-            " * @param $event",
-            " * @param $args",
+            " * ${1:type} - ${2:comment...}",
+            " *",
+            " * @param object $bean",
+            " * @param string $event",
+            " * @param array  $args",
+            " *",
+            " * @return void",
             " */",
-            "public function ${3:fnName}(\\$bean, \\$event, \\$args)",
+            "public function ${3:fnName}(object \\$bean, string \\$event, array \\$args): void",
             "{",
             "    ${4:// code..}",
             "",
