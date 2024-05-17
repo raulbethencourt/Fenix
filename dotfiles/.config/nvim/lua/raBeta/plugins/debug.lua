@@ -3,6 +3,7 @@ return {
     dependencies = {
         'rcarriga/nvim-dap-ui',
         'williamboman/mason.nvim',
+        'theHamsta/nvim-dap-virtual-text',
         'jay-babu/mason-nvim-dap.nvim',
         "nvim-neotest/nvim-nio"
     },
@@ -10,6 +11,8 @@ return {
         local dap = require 'dap'
         local dapui = require 'dapui'
         local icons = require 'icons'
+
+        require('nvim-dap-virtual-text').setup()
 
         ---@diagnostic disable-next-line: missing-fields
         require('mason-nvim-dap').setup {

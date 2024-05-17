@@ -18,31 +18,10 @@ require('telescope').setup {
         selection_caret = '  ',
         entry_prefix = '  ',
         initial_mode = 'insert',
-        -- sorting_strategy = 'ascending',
-        -- layout_strategy = 'horizontal',
-        -- layout_config = {
-        --     horizontal = {
-        --         prompt_position = 'top',
-        --         preview_width = 0.55,
-        --         results_width = 0.8,
-        --     },
-        --     vertical = {
-        --         mirror = false,
-        --     },
-        --     width = 0.80,
-        --     height = 0.75,
-        --     preview_cutoff = 120,
-        -- },
         file_sorter = require('telescope.sorters').get_fuzzy_file,
         file_ignore_patterns = { 'node_modules', 'vendor', 'upgrades', 'upload', 'cache' },
         generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
         path_display = { 'truncate' },
-        -- winblend = 0,
-        -- border = false,
-        -- previewer = {
-        --     results_title = false,
-        --     preview_title = false,
-        -- },
         preview = {
             filesize_limit = 0.1, -- MB
             treesitter = false,   -- treesitter freezes on big files
@@ -73,7 +52,6 @@ require('telescope').setup {
             require('telescope.themes').get_dropdown {
                 winblend = 0,
                 previewer = false,
-                border = 'rounded',
                 layout_strategy = 'vertical',
                 layout_config = {
                     height = 0.2,
