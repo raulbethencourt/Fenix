@@ -3,7 +3,7 @@ require 'raBeta.configs.lsp.languages.php'
 -- NOTE: stop saving lsp logs, change to 'debug' to see them
 vim.lsp.set_log_level 'off'
 local on_attach = function(_, bufnr)
-    local nmap = function(keys, func, desc)
+    local keymap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
         end
@@ -11,21 +11,21 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('gr', '<cmd>Telescope lsp_references<CR>', '[G]oto [R]eferences')
-    nmap('gd', '<cmd>Telescope lsp_definitions<CR>', '[G]oto [D]definition')
-    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-    nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', '[G]oto [L]ine diagnostics')
-    nmap('<leader>ld', vim.lsp.buf.type_definition, '[L]sp Type [D]efinition')
+    keymap('gr', '<cmd>Telescope lsp_references<CR>', '[G]oto [R]eferences')
+    keymap('gd', '<cmd>Telescope lsp_definitions<CR>', '[G]oto [D]definition')
+    keymap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    keymap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    keymap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    keymap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>', '[G]oto [L]ine diagnostics')
+    keymap('<leader>ld', vim.lsp.buf.type_definition, '[L]sp Type [D]efinition')
 
-    nmap('<leader>lf', function()
+    keymap('<leader>lf', function()
         vim.lsp.buf.format { async = true }
     end, '[L]sp [F]ormat')
 
-    nmap('<leader>lD', '<cmd>Telescope diagnostics<CR>', '[L]sp Telescope Workspace [D]iagnostics')
+    keymap('<leader>lD', '<cmd>Telescope diagnostics<CR>', '[L]sp Telescope Workspace [D]iagnostics')
 
-    nmap('<leader>lb', function()
+    keymap('<leader>lb', function()
         require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
@@ -41,7 +41,7 @@ local on_attach = function(_, bufnr)
         })
     end, '[L]sp Telescope [B]uffer Diagnostics')
 
-    nmap('<leader>ls', function()
+    keymap('<leader>ls', function()
         require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
@@ -57,14 +57,14 @@ local on_attach = function(_, bufnr)
         })
     end, '[L]sp Document [S]ymbols')
 
-    nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[L]sp [W]orkspace symbols')
-    nmap('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
-    nmap('<leader>la', vim.lsp.buf.code_action, '[L]sp code [A]ction')
-    nmap('<leader>ln', vim.lsp.buf.add_workspace_folder, '[L]sp [W]orkspace [A]dd Folder')
-    nmap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[L]sp [W]orkspace [R]emove Folder')
-    nmap('<leader>lI', '<cmd>Mason<cr>', '[L]sp [I]nstall with mason')
-    nmap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp [I]nfo')
-    nmap('<leader>ll', function()
+    keymap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[L]sp [W]orkspace symbols')
+    keymap('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
+    keymap('<leader>la', vim.lsp.buf.code_action, '[L]sp code [A]ction')
+    keymap('<leader>ln', vim.lsp.buf.add_workspace_folder, '[L]sp [W]orkspace [A]dd Folder')
+    keymap('<leader>lx', vim.lsp.buf.remove_workspace_folder, '[L]sp [W]orkspace [R]emove Folder')
+    keymap('<leader>lI', '<cmd>Mason<cr>', '[L]sp [I]nstall with mason')
+    keymap('<leader>li', '<cmd>LspInfo<cr>', '[L]sp [I]nfo')
+    keymap('<leader>ll', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, '[L]sp [W]orkspace [L]ist Folders')
 end
