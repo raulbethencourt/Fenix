@@ -54,52 +54,65 @@ return {
         end,
     },
     {
+        'ThePrimeagen/git-worktree.nvim',
+        config = function()
+            require('git-worktree').setup()
+
+            vim.keymap.set('n', '<leader>gs', function()
+                require('telescope').extensions.git_worktree.git_worktrees()
+            end, { desc = '[G]it [S]elect worktree' })
+            vim.keymap.set('n', '<leader>gc', function()
+                require('telescope').extensions.git_worktree.create_git_worktree()
+            end, { desc = '[G]it [C]reates worktree' })
+        end,
+    },
+    {
         'lewis6991/gitsigns.nvim',
         config = function()
+            require('gitsigns').setup {
+                signs = {
+                    add = {
+                        hl = 'GitSignsAdd',
+                        text = icons.ui.BoldLineLeft,
+                        numhl = 'GitSignsAddNr',
+                        linehl = 'GitSignsAddLn',
+                    },
+                    change = {
+                        hl = 'GitSignsChange',
+                        text = icons.ui.BoldLineLeft,
+                        numhl = 'GitSignsChangeNr',
+                        linehl = 'GitSignsChangeLn',
+                    },
+                    delete = {
+                        hl = 'GitSignsDelete',
+                        text = icons.ui.Triangle,
+                        numhl = 'GitSignsDeleteNr',
+                        linehl = 'GitSignsDeleteLn',
+                    },
+                    topdelete = {
+                        hl = 'GitSignsDelete',
+                        text = icons.ui.Triangle,
+                        numhl = 'GitSignsDeleteNr',
+                        linehl = 'GitSignsDeleteLn',
+                    },
+                    changedelete = {
+                        hl = 'GitSignsChange',
+                        text = icons.ui.BoldLineLeft,
+                        numhl = 'GitSignsChangeNr',
+                        linehl = 'GitSignsChangeLn',
+                    },
+                },
+                preview_config = {
+                    border = 'rounded',
+                    style = 'minimal',
+                    relative = 'cursor',
+                    row = 1,
+                    col = 1,
+                },
+            }
             keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
             keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', '[G]itsigns [D]iff this')
         end,
-        opts = {
-            signs = {
-                add = {
-                    hl = 'GitSignsAdd',
-                    text = icons.ui.BoldLineLeft,
-                    numhl = 'GitSignsAddNr',
-                    linehl = 'GitSignsAddLn',
-                },
-                change = {
-                    hl = 'GitSignsChange',
-                    text = icons.ui.BoldLineLeft,
-                    numhl = 'GitSignsChangeNr',
-                    linehl = 'GitSignsChangeLn',
-                },
-                delete = {
-                    hl = 'GitSignsDelete',
-                    text = icons.ui.Triangle,
-                    numhl = 'GitSignsDeleteNr',
-                    linehl = 'GitSignsDeleteLn',
-                },
-                topdelete = {
-                    hl = 'GitSignsDelete',
-                    text = icons.ui.Triangle,
-                    numhl = 'GitSignsDeleteNr',
-                    linehl = 'GitSignsDeleteLn',
-                },
-                changedelete = {
-                    hl = 'GitSignsChange',
-                    text = icons.ui.BoldLineLeft,
-                    numhl = 'GitSignsChangeNr',
-                    linehl = 'GitSignsChangeLn',
-                },
-            },
-            preview_config = {
-                border = 'rounded',
-                style = 'minimal',
-                relative = 'cursor',
-                row = 1,
-                col = 1,
-            },
-        },
     },
     {
         'ThePrimeagen/harpoon',
