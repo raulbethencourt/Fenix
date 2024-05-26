@@ -11,7 +11,44 @@ return {
             vim.g.everforest_cursor = 'orange'
             vim.g.everforest_ui_contrast = 'low'
             vim.g.everforest_float_style = 'dim'
-            vim.cmd [[colorscheme everforest]]
+            -- vim.cmd [[colorscheme everforest]]
+        end,
+    },
+    {
+        'folke/tokyonight.nvim',
+        lazy = false,
+        priority = 1000,
+        enabled = true,
+        config = function()
+            require("tokyonight").setup({
+                style = 'night',
+                transparent = true,
+            })
+            vim.cmd [[colorscheme tokyonight]]
+        end,
+    },
+    {
+        'catppuccin/nvim',
+        lazy = false,
+        priority = 1000,
+        enabled = true,
+        config = function()
+            require("catppuccin").setup({
+                flavour = "mocha",
+                transparent_background = true,
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    nvimtree = false,
+                    treesitter = true,
+                    notify = true,
+                    mini = {
+                        enabled = false,
+                        indentscope_color = "",
+                    },
+                },
+            })
+            -- vim.cmd [[colorscheme catppuccin]]
         end,
     },
     {
