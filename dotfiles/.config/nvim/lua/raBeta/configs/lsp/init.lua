@@ -1,5 +1,24 @@
 require 'raBeta.configs.lsp.languages.php'
 
+local prompt_style_full = function(layout)
+    layout.prompt.title = ''
+    layout.prompt.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
+
+    layout.results.title = ''
+    layout.results.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
+
+    layout.preview.title = ''
+    layout.preview.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
+
+    return layout
+end
+
+require('telescope.pickers.layout_strategies').vertical_merged = function(picker, max_columns, max_lines, layout_config)
+    local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
+        layout_config)
+    return prompt_style_full(layout)
+end
+
 -- NOTE: stop saving lsp logs, change to 'debug' to see them
 vim.lsp.set_log_level 'off'
 local on_attach = function(_, bufnr)
@@ -29,7 +48,7 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            layout_strategy = 'vertical',
+            layout_strategy = 'vertical_merged',
             layout_config = {
                 height = 0.5,
                 prompt_position = 'top',
@@ -45,7 +64,7 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            layout_strategy = 'vertical',
+            layout_strategy = 'vertical_merged',
             layout_config = {
                 height = 0.5,
                 prompt_position = 'top',
@@ -146,38 +165,38 @@ local servers = {
         },
     },
     htmx = { filetypes = { 'html', 'twig', 'php' } },
-    -- phpactor = {
-    --     init_options = {
-    --         ["language_server_psalm.enabled"] = false,
-    --         ["language_server_php_cs_fixer.enabled"] = false,
-    --         ["language_server_completion.trim_leading_dollar"] = true,
-    --         ["language_server_phpstan.enabled"] = true,
-    --         ["language_server_phpstan.bin"] = "/home/rabeta/.local/share/nvim/mason/bin/phpstan",
-    --         ["symfony.enabled"] = true,
-    --         ["completion_worse.completor.docblock.enabled"] = true,
-    --     }
-    -- },
-    intelephense = {
-        filetypes = { 'php' },
+    phpactor = {
         init_options = {
-            licenceKey = get_intelephense_license(),
-            storagePath = '/home/rabeta/.intelephense',
-            clearCache = false,
-            files = {
-                maxSize = 5000000,
-            },
-            phpMemoryLimit = '4096M',
-        },
-        diagnostics = {
-            enable = true,
-        },
-        format = {
-            enable = false,
-        },
-        flags = {
-            debounce_text_changes = 150,
-        },
+            ["language_server_psalm.enabled"] = false,
+            ["language_server_php_cs_fixer.enabled"] = false,
+            ["language_server_completion.trim_leading_dollar"] = true,
+            ["language_server_phpstan.enabled"] = true,
+            ["language_server_phpstan.bin"] = "/home/rabeta/.local/share/nvim/mason/bin/phpstan",
+            ["symfony.enabled"] = true,
+            ["completion_worse.completor.docblock.enabled"] = true,
+        }
     },
+    -- intelephense = {
+    --     filetypes = { 'php' },
+    --     init_options = {
+    --         licenceKey = get_intelephense_license(),
+    --         storagePath = '/home/rabeta/.intelephense',
+    --         clearCache = false,
+    --         files = {
+    --             maxSize = 5000000,
+    --         },
+    --         phpMemoryLimit = '4096M',
+    --     },
+    --     diagnostics = {
+    --         enable = true,
+    --     },
+    --     format = {
+    --         enable = false,
+    --     },
+    --     flags = {
+    --         debounce_text_changes = 150,
+    --     },
+    -- },
     tsserver = {},
     sqlls = {
         filetypes = { 'sql' },
