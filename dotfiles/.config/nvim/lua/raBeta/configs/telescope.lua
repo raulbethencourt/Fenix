@@ -1,55 +1,6 @@
 local action_layout = require 'telescope.actions.layout'
 local icons = require 'icons'
 
-local prompt_style_full = function(layout)
-    layout.prompt.title = ''
-    layout.prompt.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    layout.results.title = ''
-    layout.results.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    layout.preview.title = ''
-    layout.preview.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    return layout
-end
-
-local prompt_style_no_preview = function(layout)
-    layout.prompt.title = ''
-    layout.prompt.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    layout.results.title = ''
-    layout.results.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    return layout
-end
-
-require('telescope.pickers.layout_strategies').horizontal_merged = function(picker, max_columns, max_lines, layout_config)
-    local layout = require('telescope.pickers.layout_strategies').horizontal(picker, max_columns, max_lines,
-        layout_config)
-    return prompt_style_full(layout)
-end
-
-require('telescope.pickers.layout_strategies').vertical_merged = function(picker, max_columns, max_lines, layout_config)
-    local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
-        layout_config)
-    return prompt_style_full(layout)
-end
-
-require('telescope.pickers.layout_strategies').horizontal_merged_no_preview = function(picker, max_columns, max_lines,
-                                                                                       layout_config)
-    local layout = require('telescope.pickers.layout_strategies').horizontal(picker, max_columns, max_lines,
-        layout_config)
-    return prompt_style_no_preview(layout)
-end
-
-require('telescope.pickers.layout_strategies').vertical_merged_no_preview = function(picker, max_columns, max_lines,
-                                                                                       layout_config)
-    local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
-        layout_config)
-    return prompt_style_no_preview(layout)
-end
-
 require('telescope').setup {
     defaults = {
         vimgrep_arguments = {
@@ -68,7 +19,7 @@ require('telescope').setup {
         selection_caret = '  ',
         entry_prefix = '  ',
         initial_mode = 'insert',
-        layout_strategy = 'horizontal_merged',
+        layout_strategy = 'horizontal_no_titles',
         file_sorter = require('telescope.sorters').get_fuzzy_file,
         file_ignore_patterns = { 'node_modules', 'vendor', 'upgrades', 'upload', 'cache' },
         generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
@@ -97,13 +48,13 @@ require('telescope').setup {
     },
     pickers = {
         colorscheme = {
-            layout_strategy = 'horizontal_merged_no_preview',
+            layout_strategy = 'horizontal_no_titles',
         },
         command_history = {
-            layout_strategy = 'horizontal_merged_no_preview',
+            layout_strategy = 'horizontal_no_titles',
         },
         keymaps = {
-            layout_strategy = 'horizontal_merged_no_preview',
+            layout_strategy = 'horizontal_no_titles',
         },
         buffers = {
             sort_lastused = true,
@@ -111,20 +62,20 @@ require('telescope').setup {
             show_all_buffers = true,
             previewer = false,
             initial_mode = 'insert',
-            layout_strategy = 'vertical_merged',
+            layout_strategy = 'vertical_no_titles',
             prompt_title = false,
         },
     },
     extensions = {
         live_grep_args = {
             auto_quoting = true,
-            layout_strategy = 'horizontal_merged'
+            layout_strategy = 'horizontal_no_titles'
         },
         ['ui-select'] = {
             require('telescope.themes').get_dropdown {
                 winblend = 0,
                 previewer = false,
-                layout_strategy = 'vertical_merged_no_preview'
+                layout_strategy = 'vertical_no_titles'
             },
         },
         fzf = {
@@ -196,7 +147,7 @@ keymap('n', '<leader>sb', function()
     require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 0,
         previewer = true,
-        layout_strategy = 'vertical_merged',
+        layout_strategy = 'vertical_no_titles',
         layout_config = {
             height = 0.6,
             prompt_position = 'top',
