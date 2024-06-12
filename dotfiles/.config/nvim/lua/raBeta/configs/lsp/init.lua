@@ -1,24 +1,5 @@
 require 'raBeta.configs.lsp.languages.php'
 
-local prompt_style_full = function(layout)
-    layout.prompt.title = ''
-    layout.prompt.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    layout.results.title = ''
-    layout.results.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    layout.preview.title = ''
-    layout.preview.borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
-
-    return layout
-end
-
-require('telescope.pickers.layout_strategies').vertical_merged = function(picker, max_columns, max_lines, layout_config)
-    local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
-        layout_config)
-    return prompt_style_full(layout)
-end
-
 -- NOTE: stop saving lsp logs, change to 'debug' to see them
 vim.lsp.set_log_level 'off'
 local on_attach = function(_, bufnr)
@@ -48,7 +29,7 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            layout_strategy = 'vertical_merged',
+            layout_strategy = 'vertical_no_titles',
             layout_config = {
                 height = 0.5,
                 prompt_position = 'top',
@@ -64,7 +45,7 @@ local on_attach = function(_, bufnr)
         require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown {
             winblend = 0,
             previewer = true,
-            layout_strategy = 'vertical_merged',
+            layout_strategy = 'vertical_no_titles',
             layout_config = {
                 height = 0.5,
                 prompt_position = 'top',
