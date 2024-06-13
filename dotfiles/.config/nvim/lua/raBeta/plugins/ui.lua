@@ -1,5 +1,32 @@
 return {
     {
+        'eddyekofo94/gruvbox-flat.nvim',
+        lazy = false,
+        priority = 1000,
+        enabled = true,
+        config = function()
+            vim.g.gruvbox_flat_style = "hard"
+            vim.g.gruvbox_transparent = true
+            vim.g.gruvbox_dark_float = true
+            -- vim.cmd([[colorscheme gruvbox-flat]])
+        end,
+    },
+    {
+        'sainnhe/gruvbox-material',
+        lazy = false,
+        priority = 1000,
+        enabled = true,
+        config = function()
+            vim.g.gruvbox_material_background = 'hard'
+            vim.g.gruvbox_material_better_performance = true
+            vim.g.gruvbox_material_transparent_background = 2
+            vim.g.gruvbox_material_cursor = 'orange'
+            vim.g.gruvbox_material_ui_contrast = 'high'
+            vim.g.gruvbox_material_float_style = 'dim'
+            vim.cmd [[colorscheme gruvbox-material]]
+        end,
+    },
+    {
         'sainnhe/everforest',
         lazy = false,
         priority = 1000,
@@ -8,7 +35,7 @@ return {
             vim.g.everforest_background = 'hard'
             vim.g.everforest_better_performance = true
             vim.g.everforest_transparent_background = 2
-            vim.g.everforest_cursor = 'orange'
+            vim.g.everforest_cursor = 'green'
             vim.g.everforest_ui_contrast = 'low'
             vim.g.everforest_float_style = 'dim'
             -- vim.cmd [[colorscheme everforest]]
@@ -48,7 +75,7 @@ return {
                     VertSplit = { bg = "None" },
                 },
             })
-            vim.cmd [[colorscheme ayu-dark]]
+            -- vim.cmd [[colorscheme ayu-dark]]
         end,
     },
     {
