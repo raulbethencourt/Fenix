@@ -1,3 +1,5 @@
+local icons = require 'icons'
+
 return {
     {
         'eddyekofo94/gruvbox-flat.nvim',
@@ -144,6 +146,12 @@ return {
         },
         config = function()
             require('noice').setup {
+                cmdline = {
+                    view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+                    format = {
+                        cmdline = { pattern = "^:", icon = icons.ChevronShortRight, lang = "vim", title = "" },
+                    }
+                },
                 lsp = {
                     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                     override = {
@@ -183,8 +191,8 @@ return {
                 views = {
                     cmdline_popup = {
                         border = {
-                            style = 'none',
-                            padding = { 2, 3 },
+                            style = 'rounded',
+                            padding = { 1, 2 },
                         },
                         filter_options = {},
                         win_options = {
@@ -210,8 +218,8 @@ return {
                             height = 10,
                         },
                         border = {
-                            style = 'none',
-                            padding = { 2, 3 },
+                            style = 'rounded',
+                            padding = { 1, 2 },
                         },
                         win_options = {
                             winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
