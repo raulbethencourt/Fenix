@@ -1,5 +1,31 @@
 return {
     {
+        "epwalsh/obsidian.nvim",
+        version = "*",
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+            "hrsh7/nvim-cmp",
+            "nvim-telescope/telescope.nvim",
+            'nvim-treesitter/nvim-treesitter'
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "vaults",
+                    path = "~/vaults",
+                },
+            },
+            templates = {
+                folder = "templates",
+                date_format = "%Y-%m-%d-%a",
+                time_format = "%H:%M",
+            },
+        },
+    },
+    {
         "chrisgrieser/nvim-recorder",
         dependencies = "rcarriga/nvim-notify",
         keys = {
