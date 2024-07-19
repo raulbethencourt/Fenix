@@ -22,8 +22,8 @@ return {
             vim.g.gruvbox_material_background = 'hard'
             vim.g.gruvbox_material_better_performance = true
             vim.g.gruvbox_material_transparent_background = 2
-            vim.g.gruvbox_material_cursor = 'orange'
-            vim.g.gruvbox_material_ui_contrast = 'high'
+            vim.g.gruvbox_material_cursor = 'green'
+            vim.g.gruvbox_material_ui_contrast = 'low'
             vim.g.gruvbox_material_float_style = 'dim'
             vim.cmd [[colorscheme gruvbox-material]]
         end,
@@ -41,67 +41,6 @@ return {
             vim.g.everforest_ui_contrast = 'low'
             vim.g.everforest_float_style = 'dim'
             -- vim.cmd [[colorscheme everforest]]
-        end,
-    },
-    {
-        'folke/tokyonight.nvim',
-        lazy = false,
-        priority = 1000,
-        enabled = true,
-        config = function()
-            require("tokyonight").setup({
-                style = 'night',
-                transparent = true,
-            })
-            -- vim.cmd [[colorscheme tokyonight]]
-        end,
-    },
-    {
-        'shatur/neovim-ayu',
-        lazy = false,
-        priority = 1000,
-        enabled = true,
-        config = function()
-            require('ayu').setup({
-                mirage = false,
-                terminal = true,
-                overrides = {
-                    Normal = { bg = "None" },
-                    ColorColumn = { bg = "None" },
-                    SignColumn = { bg = "None" },
-                    Folded = { bg = "None" },
-                    FoldColumn = { bg = "None" },
-                    CursorLine = { bg = "None" },
-                    CursorColumn = { bg = "None" },
-                    WhichKeyFloat = { bg = "None" },
-                    VertSplit = { bg = "None" },
-                },
-            })
-            -- vim.cmd [[colorscheme ayu-dark]]
-        end,
-    },
-    {
-        'catppuccin/nvim',
-        lazy = false,
-        priority = 1000,
-        enabled = true,
-        config = function()
-            require("catppuccin").setup({
-                flavour = "mocha",
-                transparent_background = true,
-                integrations = {
-                    cmp = true,
-                    gitsigns = true,
-                    nvimtree = false,
-                    treesitter = true,
-                    notify = true,
-                    mini = {
-                        enabled = false,
-                        indentscope_color = "",
-                    },
-                },
-            })
-            -- vim.cmd [[colorscheme catppuccin]]
         end,
     },
     {
