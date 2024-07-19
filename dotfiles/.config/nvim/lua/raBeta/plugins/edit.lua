@@ -1,29 +1,51 @@
+local keymap = function(mode, keys, func, desc)
+    if desc then
+        desc = desc
+    end
+
+    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
+
 return {
     {
         "epwalsh/obsidian.nvim",
-        version = "*",
+        version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         ft = "markdown",
         dependencies = {
-            -- Required.
             "nvim-lua/plenary.nvim",
-            "hrsh7/nvim-cmp",
             "nvim-telescope/telescope.nvim",
-            'nvim-treesitter/nvim-treesitter'
+            "nvim-treesitter/nvim-treesitter",
         },
-        opts = {
-            workspaces = {
-                {
-                    name = "vaults",
-                    path = "~/vaults",
+        config = function()
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "personal",
+                        path = "~/vaults/personal",
+                    },
+                    {
+                        name = "work",
+                        path = "~/vaults/work",
+                    },
                 },
-            },
-            templates = {
-                folder = "templates",
-                date_format = "%Y-%m-%d-%a",
-                time_format = "%H:%M",
-            },
-        },
+                mappings = {
+                    ["<leader>oh"] = {
+                        action = function()
+                            return require("obsidian").util.toggle_checkbox()
+                        end,
+                        opts = { buffer = true, silent = true, desc = '[O]bsidian toggle c[H]eckbox' },
+                    },
+                },
+            })
+            keymap('n', '<leader>os', '<cmd>ObsidianQuickSwitch<CR>', '[O]bsidian quick [S]witch')
+            keymap('n', '<leader>ob', '<cmd>ObsidianBacklinks<CR>', '[O]bsidian [B]ack links')
+            keymap('n', '<leader>ot', '<cmd>ObsidianTags<CR>', '[O]bsidian [T]ags')
+            keymap('n', '<leader>oi', '<cmd>ObsidianPasteImg<CR>', '[O]bsidian paste [I]mage')
+            keymap('n', '<leader>ow', '<cmd>ObsidianWorkspace<CR>', '[O]bsidian [W]orkspace')
+            keymap('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', '[O]bsidian [O]pen')
+            keymap('n', '<leader>oe', '<cmd>ObsidianTemplate<CR>', '[O]bsidian t[E]mplate')
+        end
     },
     {
         "chrisgrieser/nvim-recorder",

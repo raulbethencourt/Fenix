@@ -12,6 +12,7 @@ return {
         local dapui = require 'dapui'
         local icons = require 'icons'
 
+        ---@diagnostic disable-next-line: missing-parameter
         require('nvim-dap-virtual-text').setup()
 
         ---@diagnostic disable-next-line: missing-fields

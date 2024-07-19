@@ -1,6 +1,3 @@
--- NOTE: recover icons
-local icons = require 'icons'
-
 local keymap = function(mode, keys, func, desc)
     if desc then
         desc = desc
@@ -17,98 +14,49 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require('oil').setup {
-                columns = { 'icon' },
+                skip_confirm_for_simple_edits = true,
                 keymaps = {
                     ['<C-h>'] = false,
-                    ['<C-l>'] = false
+                    ['<C-l>'] = false,
                 },
                 view_options = {
                     show_hidden = true,
                 },
                 float = {
                     padding = 2,
-                    max_width = 220,
-                    max_height = 60,
+                    max_width = 200,
+                    max_height = 55,
                     border = "rounded",
                     win_options = {
                         winblend = 0,
                     },
                 },
+                preview = {
+                    win_options = {
+                        winblend = 0,
+                    },
+                },
+                progress = {
+                    win_options = {
+                        winblend = 0,
+                    },
+                },
             }
-
-            keymap('n', '<leader>e', function()
-                if vim.bo.filetype == 'oil' then
-                    require('oil').close()
-                else
-                    vim.cmd('Oil')
-                end
-            end, '[E]xplore')
-
-            keymap('n', '<leader>ot', require('oil').toggle_float,
+            keymap('n', '<leader>e', require('oil').toggle_float,
                 '[O]il [T]oggle float')
-            keymap('n', '<leader>oc', require('oil').close, '[O]il [C]lose')
-            keymap('n', '<leader>op', function()
-                require('oil').open_preview({ vertical = true })
-            end, '[O]il open [P]review')
-            keymap('n', '<leader>oh', require('oil').toggle_hidden, '[O]il toggle [H]idden')
-        end,
-    },
-    {
-        'ThePrimeagen/git-worktree.nvim',
-        config = function()
-            require('git-worktree').setup()
-
-            vim.keymap.set('n', '<leader>gs', function()
-                require('telescope').extensions.git_worktree.git_worktrees()
-            end, { desc = '[G]it [S]elect worktree' })
-            vim.keymap.set('n', '<leader>gc', function()
-                require('telescope').extensions.git_worktree.create_git_worktree()
-            end, { desc = '[G]it [C]reates worktree' })
         end,
     },
     {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup {
-                signs = {
-                    add = {
-                        hl = 'GitSignsAdd',
-                        text = icons.ui.BoldLineLeft,
-                        numhl = 'GitSignsAddNr',
-                        linehl = 'GitSignsAddLn',
-                    },
-                    change = {
-                        hl = 'GitSignsChange',
-                        text = icons.ui.BoldLineLeft,
-                        numhl = 'GitSignsChangeNr',
-                        linehl = 'GitSignsChangeLn',
-                    },
-                    delete = {
-                        hl = 'GitSignsDelete',
-                        text = icons.ui.Triangle,
-                        numhl = 'GitSignsDeleteNr',
-                        linehl = 'GitSignsDeleteLn',
-                    },
-                    topdelete = {
-                        hl = 'GitSignsDelete',
-                        text = icons.ui.Triangle,
-                        numhl = 'GitSignsDeleteNr',
-                        linehl = 'GitSignsDeleteLn',
-                    },
-                    changedelete = {
-                        hl = 'GitSignsChange',
-                        text = icons.ui.BoldLineLeft,
-                        numhl = 'GitSignsChangeNr',
-                        linehl = 'GitSignsChangeLn',
-                    },
-                },
                 preview_config = {
                     border = 'rounded',
                     style = 'minimal',
                     relative = 'cursor',
                     row = 1,
                     col = 1,
-                },
+                }
             }
             keymap('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', '[G]itsigns [B]lame line')
             keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', '[G]itsigns [D]iff this')
@@ -168,7 +116,13 @@ return {
     },
     {
         'folke/which-key.nvim',
-        opts = true,
+        event = "VeryLazy",
+        opts = {
+            win = {
+                border = 'rounded',
+                title = false
+            }
+        },
     },
     {
         'aserowy/tmux.nvim',
