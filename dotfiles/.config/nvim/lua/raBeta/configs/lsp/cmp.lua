@@ -1,5 +1,5 @@
-local lspkind = require 'lspkind'
-lspkind.init()
+-- local lspkind = require 'lspkind'
+-- lspkind.init()
 
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -60,7 +60,7 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'codeium' },
+        -- { name = 'codeium' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
         { name = 'buffer' },
@@ -75,12 +75,12 @@ cmp.setup {
         },
     },
     ---@diagnostic disable-next-line: missing-fields
-    formatting = {
-        format = lspkind.cmp_format {
-            mode = 'symbol',
-            maxwidth = 50,
-            ellipsis_char = '...',
-            symbol_map = { Codeium = '' },
-        },
-    },
+    -- formatting = {
+    --     format = lspkind.cmp_format {
+    --         mode = 'symbol',
+    --         maxwidth = 50,
+    --         ellipsis_char = '...',
+    --         symbol_map = { Codeium = '' },
+    --     },
+    -- },
 }

@@ -1,21 +1,19 @@
 return {
-    {
-        'Exafunction/codeium.nvim',
-        enabled = true,
-        event = 'BufEnter',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'hrsh7th/nvim-cmp',
-            'onsails/lspkind.nvim',
-        },
-        config = function()
-            require("codeium").setup({
-                enable_chat = true
-            })
-            vim.keymap.set('n', '<leader>c', '<cmd>Codeium Chat<CR>',
-                { noremap = true, silent = true, desc = '[C]odeium Chat' })
-        end,
-    },
+    -- {
+    --     'Exafunction/codeium.nvim',
+    --     enabled = true,
+    --     event = 'BufEnter',
+    --     dependencies = {
+    --         'nvim-lua/plenary.nvim',
+    --         'hrsh7th/nvim-cmp',
+    --         'onsails/lspkind.nvim',
+    --     },
+    --     config = function()
+    --         require("codeium").setup({
+    --             enable_chat = false
+    --         })
+    --     end,
+    -- },
     {
         'kosayoda/nvim-lightbulb',
         event = 'LspAttach',

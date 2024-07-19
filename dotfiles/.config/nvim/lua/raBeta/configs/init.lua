@@ -1,3 +1,4 @@
+require "raBeta.utils.telescope"
 require 'raBeta.configs.settings'
 require 'raBeta.configs.autocommands'
 require 'raBeta.configs.keymaps'
