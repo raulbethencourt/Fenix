@@ -72,18 +72,15 @@ while read -r p; do sudo nala install -y $p; done < <(
 	zsh
 	gpg
 	curl
-	tmux
 	brave-browser
 	vivaldi-stable
 	wget
 	ffmpeg
 	vim
-	neovim
 	gh
 	vlc
 	filezilla
 	steam
-	neofetch
 	bat
 	duf
 	fzf
