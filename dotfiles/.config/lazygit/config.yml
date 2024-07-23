@@ -197,16 +197,16 @@ keybinding:
         update: "u"
         bulkMenu: "b"
 customCommands:
-    - key: "<c-P>"
+    - key: "<c-p>"
       context: "global"
       loadingText: "pushing"
       prompts:
           - type: "input"
             title: "which branch do you want to push to?"
       command: "git push origin {{index .PromptResponses 0}}"
-    - key: '<c-p>'
+    - key: '<c-u>'
       description: "Pull from a specific remote repository"
-      context: 'files'
+      context: 'global'
       loadingText: 'Pulling ...'
       command: git pull {{ .Form.Remote }} {{ .Form.RemoteBranch }}
       prompts:
