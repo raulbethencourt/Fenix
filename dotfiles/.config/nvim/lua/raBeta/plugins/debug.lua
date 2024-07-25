@@ -21,6 +21,8 @@ return {
             handlers = {},
             ensure_installed = {
                 'codelldb',
+                'php-debug-adapter',
+                'bash-debug-adapter',
             },
         }
 
@@ -43,21 +45,6 @@ return {
 
         ---@diagnostic disable-next-line: missing-fields
         dapui.setup {
-            ---@diagnostic disable-next-line: missing-fields
-            icons = {
-                expanded = icons.ui.TriangleShortArrowDown,
-                collapsed = icons.ui.TriangleShortArrowRight,
-                circular = icons.ui.circular,
-            },
-            mappings = {
-                -- Use a table to apply multiple mappings
-                expand = { '<CR>', '<2-LeftMouse>' },
-                open = 'o',
-                remove = 'd',
-                edit = 'e',
-                repl = 'r',
-                toggle = 't',
-            },
             -- Use this to override mappings for specific elements
             element_mappings = {},
             expand_lines = true,
@@ -66,8 +53,8 @@ return {
                     elements = {
                         { id = 'scopes',      size = 0.55 },
                         { id = 'breakpoints', size = 0.10 },
-                        { id = 'stacks',      size = 0.25 },
-                        { id = 'watches',     size = 0.10 },
+                        { id = 'stacks',      size = 0.20 },
+                        { id = 'watches',     size = 0.15 },
                     },
                     size = 0.33,
                     position = 'right',
@@ -77,31 +64,8 @@ return {
                         { id = 'repl',    size = 0.45 },
                         { id = 'console', size = 0.55 },
                     },
-                    size = 0.10,
+                    size = 0.15,
                     position = 'bottom',
-                },
-            },
-            controls = {
-                enabled = true,
-                -- Display controls in this element
-                element = 'repl',
-                icons = {
-                    pause = icons.dap.pause,
-                    play = icons.dap.play,
-                    step_into = icons.dap.step_into,
-                    step_over = icons.dap.step_over,
-                    step_out = icons.dap.step_out,
-                    step_back = icons.dap.step_back,
-                    run_last = icons.dap.run_last,
-                    terminate = icons.dap.terminate,
-                },
-            },
-            floating = {
-                max_height = 0.9,
-                max_width = 0.5, -- Floats will be treated as percentage of your screen.
-                border = 'rounded',
-                mappings = {
-                    close = { 'q', '<Esc>' },
                 },
             },
             windows = { indent = 1 },
@@ -131,6 +95,12 @@ return {
         vim.fn.sign_define('DapBreakpointRejected', {
             text = icons.ui.BoldClose,
             texthl = 'ErrorMsg',
+            linehl = '',
+            numhl = '',
+        })
+        vim.fn.sign_define('DapBreakpointCondition', {
+            text = icons.dap.breakpoint_condition,
+            texthl = 'WarningMsg',
             linehl = '',
             numhl = '',
         })
