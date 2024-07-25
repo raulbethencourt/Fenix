@@ -141,7 +141,8 @@ return {
         step_back = '',
         run_last = '',
         terminate = '',
-        breakpoint = '',
+        breakpoint = '',
+        breakpoint_condition = ''
     },
     diagnostics = {
         BoldError = '',
