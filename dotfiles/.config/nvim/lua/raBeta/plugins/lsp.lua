@@ -1,19 +1,27 @@
+local keymap = function(mode, keys, func, desc)
+    if desc then
+        desc = desc
+    end
+
+    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+end
+
 return {
-    -- {
-    --     'Exafunction/codeium.nvim',
-    --     enabled = true,
-    --     event = 'BufEnter',
-    --     dependencies = {
-    --         'nvim-lua/plenary.nvim',
-    --         'hrsh7th/nvim-cmp',
-    --         'onsails/lspkind.nvim',
-    --     },
-    --     config = function()
-    --         require("codeium").setup({
-    --             enable_chat = false
-    --         })
-    --     end,
-    -- },
+    {
+        "sourcegraph/sg.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+            'onsails/lspkind.nvim',
+        },
+        config = function()
+            ---@diagnostic disable-next-line: missing-parameter
+            require('sg').setup()
+
+            keymap('n', '<leader>ss', [[<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<cr>]],
+                '[S]g [S]earch result')
+        end,
+    },
     {
         'kosayoda/nvim-lightbulb',
         event = 'LspAttach',

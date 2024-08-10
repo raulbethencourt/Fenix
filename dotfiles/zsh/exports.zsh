@@ -5,16 +5,20 @@ export TERM="xterm-256color"
 export GOPATH=$HOME/go
 export BROWSER="brave"
 export GIT_EDITOR="nvim"
+export ATAC_KEY_BINDINGS="$HOME/.config/atac/keybindings.toml"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
-  --height 80% --layout=reverse --info=inline --margin=1 --padding=1
+  --height 50% --info=inline --margin=1 --padding=1
+  --bind=tab:down --bind=btab:up --bind=ctrl-g:first
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
   --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
   --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
 
 # FZF CTRL-R
 export FZF_CTRL_R_OPTS="
-  --border=none -i --bind=tab:down --bind=btab:up --bind=ctrl-g:first
+  --border=none -i --bind=tab:up --bind=btab:down --bind=ctrl-g:first
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
@@ -70,3 +74,6 @@ export _ZO_ECHO='1'
 
 # Icons in terminal
 . ~/.local/share/icons-in-terminal/icons_bash.sh
+
+# NOTE: starship prompt
+eval "$(starship init zsh)"
