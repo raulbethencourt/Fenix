@@ -8,6 +8,23 @@ end
 
 return {
     {
+        "kndndrj/nvim-dbee",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        build = function()
+            require("dbee").install()
+        end,
+        config = function()
+            local dbee = require("dbee")
+            ---@diagnostic disable-next-line: missing-fields
+            dbee.setup({
+                float_options = {},
+            })
+            keymap('n', '<leader>b', require('dbee').toggle, 'D[B]ee')
+        end,
+    },
+    {
         'stevearc/oil.nvim',
         opts = {},
         -- Optional dependencies
