@@ -10,7 +10,7 @@ export ATAC_KEY_BINDINGS="$HOME/.config/atac/keybindings.toml"
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
   --height 50% --info=inline --margin=1 --padding=1
-  --bind=tab:down --bind=btab:up --bind=ctrl-g:first
+  --bind=tab:up --bind=btab:down --bind=ctrl-g:first
   --bind 'ctrl-/:toggle-preview'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
   --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f

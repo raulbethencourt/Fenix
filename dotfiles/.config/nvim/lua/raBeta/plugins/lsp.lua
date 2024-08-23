@@ -20,6 +20,14 @@ return {
 
             keymap('n', '<leader>ss', [[<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<cr>]],
                 '[S]g [S]earch result')
+            keymap('n', '<leader>cc', [[:CodyToggle<cr>]],
+                '[C]ody toggle')
+            keymap({ 'n', 'v' }, '<leader>ct', [[:CodyTask]],
+                '[C]ody [T]ask')
+            keymap({ 'n', 'v' }, '<leader>ca', [[:CodyAsk<cr>]],
+                '[C]ody [A]sk')
+            keymap('v', '<leader>ce', [[:CodyExplain<cr>]],
+                '[C]ody [E]xplain')
         end,
     },
     {
