@@ -39,7 +39,7 @@ keymap('n', '<c-t>', function()
     vim.cmd(termCmd)
 end, 'Terminal')
 
-keymap('n', '<leader>zb', ':bp<bar>sp<bar>bn<bar>bd<cr>', '[B]uffer delete')
+keymap('n', '<leader>zb', ':bp<bar>sp<bar>bn<bar>bd!<cr>', '[B]uffer delete')
 keymap('n', '<leader>ze', ':messages<cr>', 'Messages')
 keymap('n', '<leader>zf', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', 'Full path')
 keymap('n', '<leader>zi', '<C-w>|', 'Maximize')
