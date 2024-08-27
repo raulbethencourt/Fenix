@@ -41,3 +41,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- NOTE: enter insert mode when opening terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+    pattern = '*',
+    command = 'startinsert',
+})
