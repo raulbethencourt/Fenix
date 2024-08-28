@@ -13,7 +13,7 @@ keymap({ 'n', 'v' }, '<Space>', '<Nop>')
 
 -- NOTE: toogle lualine
 local hidden_all = 0
-function Toggle_Hidden_All()
+keymap('n', '<F7>', function()
     if hidden_all == 0 then
         hidden_all = 1
         vim.cmd 'set ls=0'
@@ -21,9 +21,7 @@ function Toggle_Hidden_All()
         hidden_all = 0
         vim.cmd 'set ls=2'
     end
-end
-
-keymap('n', '<F7>', '<cmd>lua Toggle_Hidden_All()<CR>', 'Toggle Hidde Statusline')
+end, 'Toggle Hidde Statusline')
 
 -- NOTE: TAB in general mode will move to text buffer
 keymap('n', '<TAB>', '<cmd>bnext<CR>', 'Bnext')
@@ -36,22 +34,26 @@ keymap('n', '<leader>pu', '<cmd>Lazy update<CR>', 'Lazy [U]update')
 keymap('n', '<leader>pc', '<cmd>Lazy clean<CR>', 'Lazy [C]lean')
 
 -- NOTE: Gnereral
-keymap('n', '<leader>zb', ':bp<bar>sp<bar>bn<bar>bd<cr>', '[B]uffer delete')
+keymap('n', '<c-t>', function()
+    local termCmd = (vim.bo.buftype == 'terminal') and 'bd!' or 'te'
+    vim.cmd(termCmd)
+end, 'Terminal')
+
+keymap('n', '<leader>zb', ':bp<bar>sp<bar>bn<bar>bd!<cr>', '[B]uffer delete')
+keymap('n', '<leader>ze', ':messages<cr>', 'Messages')
 keymap('n', '<leader>zf', ':lua print(vim.api.nvim_buf_get_name(0))<cr>', 'Full path')
-keymap('n', '<leader>zp', ':lua print(unpack(vim.api.nvim_win_get_cursor(0)))<cr>', 'Cursor [P]osition')
 keymap('n', '<leader>zi', '<C-w>|', 'Maximize')
-keymap('n', '<leader>zo', '<C-w>=', 'Equilify')
 keymap('n', '<leader>zn', ':nohlsearch<CR>', '[N]o highlights')
+keymap('n', '<leader>zo', '<C-w>=', 'Equilify')
+keymap('n', '<leader>zp', ':lua print(unpack(vim.api.nvim_win_get_cursor(0)))<cr>', 'Cursor [P]osition')
+keymap('v', '<leader>zs', [[:'<,'>!awk '{s+=$1} END {print s}'<CR>]], 'Visual [S]um')
+keymap('v', '<leader>zm', [[:'<,'>!awk '{s*=$1} END {print s}'<CR>]], 'Visual [M]ultiplication')
 
 keymap('n', '<leader>v', '<cmd>vsplit<CR>', '[V]split')
 keymap('n', '<leader>h', '<cmd>split<CR>', 'Split')
 
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', 'Comments')
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', 'Comments')
-
--- keymap('n', '<leader>e', function()
---     return vim.bo.filetype == 'netrw' and vim.cmd([[bp|sp|bn|bd]]) or vim.cmd('Explore')
--- end, '[E]xplore')
 
 keymap('n', '<C-Up>', ':resize +2<CR>')
 keymap('n', '<C-Down>', ':resize -2<CR>')
