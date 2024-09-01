@@ -108,15 +108,8 @@ return {
                 },
                 routes = {
                     {
-                        filter = {
-                            event = 'msg_show',
-                            any = {
-                                { find = '%d+L, %d+B' },
-                                { find = '; after #%d+' },
-                                { find = '; before #%d+' },
-                            },
-                        },
-                        view = 'mini',
+                        view = "notify",
+                        filter = { event = "msg_showmode" },
                     },
                 },
                 -- you can enable a preset for easier configuration

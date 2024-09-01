@@ -134,6 +134,7 @@ keymap('n', '<leader>sf', "<cmd>lua Git_root('find_files', {})<cr>", { desc = '[
 keymap('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecently opened files' })
 keymap('n', '<leader>sg', require('telescope.builtin').git_files, { desc = '[S]earch [G]it Files' })
 keymap('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+keymap('n', '<leader>si', require('telescope.builtin').registers, { desc = '[S]earch reg[I]sters' })
 keymap('n', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor,
     { desc = '[S]earch current [W]ord' })
 keymap('n', '<leader>sv', require('telescope-live-grep-args.shortcuts').grep_visual_selection,
