@@ -26,3 +26,14 @@ function _nvf() {
 }
 zle -N _nvf
 bindkey '^o' _nvf
+
+# nvim specific file with fzf
+function _pwd() {
+    zle push-input
+    BUFFER="pwd"
+    zle accept-line
+}
+zle -N _pwd
+bindkey '^p' _pwd
+
+# TODO: stty sane OR reset
