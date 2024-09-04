@@ -1,16 +1,10 @@
-#!/usr/bin/bash
+#!/usr/bin/env sh
 
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
 
 # keepass2 package
 sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
-
-# github cli
-type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
 
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
@@ -23,9 +17,6 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 wget -O- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vivaldi.gpg
 echo deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi.gpg] https://repo.vivaldi.com/archive/deb/ stable main | sudo tee /etc/apt/sources.list.d/vivaldi.list
 
-# neovim
-sudo add-apt-repository ppa:neovim-ppa/unstable -y
-
 # keevault
 sudo add-apt-repository ppa:dlech/keepass2-plugins
 
@@ -34,9 +25,6 @@ sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
 echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
 sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-
-# nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # php
 LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
@@ -74,19 +62,14 @@ while read -r p; do sudo nala install -y $p; done < <(
 	curl
 	brave-browser
 	vivaldi-stable
-	wget
 	ffmpeg
 	vim
-	gh
 	vlc
 	filezilla
 	steam
 	bat
-	duf
 	fzf
 	zoxide
-	ripgrep
-	fd-find
 	exa 
 	zathura
 	ascii-image-converter
@@ -142,9 +125,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
-# link fd bin
-ln -s "$(which fdfind)" ~/.local/bin/fd
-
 # composer
 cd ~
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
@@ -161,8 +141,5 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
-
-# install configs
-cp -r Fenix/dotfiles/* "$HOME"/
 
 echo "Finish first install, reboot your system to persiste changes..."
