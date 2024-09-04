@@ -1,5 +1,5 @@
-#!/bin/sh
-dccmd='docker compose'
+# support Compose v2 as docker CLI plugin
+(( ${+commands[docker-compose]} )) && dccmd='docker-compose' || dccmd='docker compose'
 
 alias dco="$dccmd"
 alias dcb="$dccmd build"
