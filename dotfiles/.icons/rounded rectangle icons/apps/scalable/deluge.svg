@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V164.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V143.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<radialGradient id="SVGID_1_" cx="254.5002" cy="254.3335" r="203.7987" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#F074AC"/>
+		<stop  offset="0.5" style="stop-color:#EB008B"/>
+		<stop  offset="1" style="stop-color:#CD118C"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" d="M465.5,362.667c0,48.6-39.399,88-88,88h-246c-48.604,0-88-39.4-88-88V146c0-48.601,39.396-88,88-88
+		h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<g id="layer1" transform="translate(38.119153,-266.89382)" inkscape:label="Capa 1" inkscape:groupmode="layer">
+	<path id="path895" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccsccccssccccc" fill="#2985C9" d="M217.382,361.952
+		c-1.968,5.231-4.183,10.527-6.444,15.587c-0.189,0.439-0.486,0.81-0.679,1.244c-2.087,4.611-4.155,8.934-6.445,13.409
+		c-0.475,0.925-0.874,1.885-1.357,2.8c-2.069,3.954-4.25,7.998-6.445,11.846c-0.762,1.341-1.599,2.733-2.374,4.053
+		c-19.631,32.868-45.427,67.199-65.802,96.011c-16.145,21.678-25.429,45.075-28.152,67.647c0,56.055,52.642,101.62,117.698,101.62
+		c65.055,0,117.697-45.565,117.697-101.62c0-35.318-28.178-71.61-60.715-118.146c-10.299-14.455-20.237-29.658-29.169-43.956
+		c-4.85-7.829-9.59-15.889-14.247-24.313c-1.454-2.629-2.982-5.413-4.409-8.104c-3.083-5.831-6.241-11.949-9.157-18.082
+		L217.382,361.952z"/>
+	
+		<path id="rect3347-1" inkscape:connector-curvature="0" sodipodi:nodetypes="cccccccc" opacity="0.3" enable-background="new    " d="
+		M185.974,492.385v79.601h-17.947l49.354,54.925l49.353-54.925h-17.947v-79.601H185.974z"/>
+	<path id="rect3347" inkscape:connector-curvature="0" sodipodi:nodetypes="cccccccc" fill="#FFFFFF" d="M185.974,485.402v79.602
+		h-17.947l49.354,54.925l49.353-54.925h-17.947v-79.602H185.974z"/>
+	<path id="path895-9" opacity="0.5" enable-background="new    " d="M334.995,571.211c-2.224,54.372-53.976,97.977-117.614,97.977
+		c-62.878,0-114.154-42.566-117.518-96.028c-0.062,0.463-0.124,0.928-0.18,1.391c0,56.055,52.642,101.62,117.698,101.62
+		c65.055,0,117.697-45.565,117.697-101.62C335.078,573.438,335.05,572.325,334.995,571.211z"/>
+</g>
+</svg>

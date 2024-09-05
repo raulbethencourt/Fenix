@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V164.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V143.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="262.8596" cy="-555.2788" r="203.7987" gradientTransform="matrix(1 0 0 -1 -8.3599 -300.9453)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFF7A9"/>
+		<stop  offset="0.5" style="stop-color:#FFF100"/>
+		<stop  offset="1" style="stop-color:#FFD700"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.602,0-88-39.4-88-88V146c0-48.601,39.398-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<path id="path9" inkscape:connector-curvature="0" fill-opacity="0" d="M118.795,183.178h193.937v210.111H118.795V183.178z"/>
+<path id="path11" inkscape:connector-curvature="0" fill="#336699" d="M124.97,263.514L124.97,263.514
+	c0-19.706,16-35.677,35.737-35.671l0,0c9.478,0.003,18.567,3.765,25.269,10.458c6.702,6.694,10.467,15.771,10.467,25.234l0,0
+	c0,19.706-16,35.678-35.736,35.671l0,0C140.97,299.199,124.97,283.221,124.97,263.514L124.97,263.514z"/>
+<path id="path13" inkscape:connector-curvature="0" fill="#0169C9" d="M293.502,268.402L293.502,268.402
+	c0-20.161,16.369-36.5,36.563-36.494l0,0c9.696,0.003,18.997,3.852,25.853,10.699c6.857,6.848,10.708,16.135,10.708,25.816l0,0
+	c0,20.162-16.368,36.501-36.561,36.494l0,0C309.871,304.914,293.502,288.563,293.502,268.402z"/>
+<path id="path15" inkscape:connector-curvature="0" fill-opacity="0" d="M275.553,259.207l45.195,9.422"/>
+<path id="path17" inkscape:connector-curvature="0" fill="none" stroke="#434343" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	M275.553,256.986l45.195,9.422"/>
+<path id="path19" inkscape:connector-curvature="0" fill-opacity="0" d="M171.93,261.961l29.936-2.531"/>
+<path id="path21" inkscape:connector-curvature="0" fill="none" stroke="#434343" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	M171.93,261.961l29.936-2.531"/>
+<path id="path23" inkscape:connector-curvature="0" fill-opacity="0" d="M250.237,181.73l-0.098,54.893"/>
+<path id="path25" inkscape:connector-curvature="0" fill="none" stroke="#434343" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	M243.018,181.067l1.958,52.224"/>
+<path id="path27" inkscape:connector-curvature="0" fill="#AAAAAA" d="M204.339,260.307L204.339,260.307
+	c0-22.833,18.28-41.338,40.83-41.332l0,0c10.829,0.004,21.215,4.362,28.871,12.118c7.658,7.755,11.959,18.273,11.959,29.237l0,0
+	c0,22.833-18.279,41.339-40.83,41.332l0,0C222.618,301.655,204.339,283.141,204.339,260.307L204.339,260.307z"/>
+<path id="path29" inkscape:connector-curvature="0" fill="#D40000" d="M207.194,152.22L207.194,152.22
+	c0-19.478,15.815-35.264,35.324-35.259l0,0c9.369,0.002,18.353,3.721,24.977,10.337c6.626,6.616,10.347,15.588,10.347,24.942l0,0
+	c0,19.479-15.815,35.265-35.324,35.258l0,0C223.01,187.494,207.194,171.699,207.194,152.22L207.194,152.22z"/>
+<path id="path31" inkscape:connector-curvature="0" fill-opacity="0" d="M261.427,289.29l26.349,48.908"/>
+<path id="path33" inkscape:connector-curvature="0" fill="none" stroke="#434343" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	M253.649,277.073l26.349,48.909"/>
+<path id="path35" inkscape:connector-curvature="0" fill="#339900" d="M246.316,337.449L246.316,337.449
+	c0-22.598,18.348-40.912,40.98-40.905l0,0c10.869,0.003,21.293,4.317,28.978,11.993c7.687,7.676,12.003,18.083,12.003,28.936l0,0
+	c0,22.598-18.348,40.912-40.98,40.905l0,0C264.663,378.371,246.316,360.047,246.316,337.449L246.316,337.449z"/>
+</svg>

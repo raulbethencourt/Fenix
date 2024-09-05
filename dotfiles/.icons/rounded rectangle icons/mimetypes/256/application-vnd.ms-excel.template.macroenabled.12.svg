@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{opacity:0.9;}
+	.st2{fill:#B7B7B7;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#FFFFFF;stroke:#7F7F7F;stroke-width:2;stroke-miterlimit:10;}
+	.st5{fill:none;}
+	.st6{opacity:0.75;fill:#23AA07;enable-background:new    ;}
+</style>
+<g id="Layer_1_1_">
+	<g id="Layer_2_1_" class="st0">
+	</g>
+	<g id="shadows">
+		<g class="st1">
+			<g>
+				<path class="st2" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V164.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st3" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V143.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<path class="st4" d="M465.5,362.7c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V146c0-48.6,39.4-88,88-88h246
+		c48.6,0,88,39.4,88,88V362.7z"/>
+</g>
+<rect x="129.5" y="124.5" class="st5" width="255" height="248"/>
+<path image-rendering="auto" color-rendering="auto" text-rendering="auto" shape-rendering="auto" class="st6" d="M139.9,109.9
+	c-6,0-10.9,6.2-10.9,13.9V401c0,7.7,4.8,13.9,10.9,13.9h217.3c6,0,10.9-6.2,10.9-13.9V123.8c0-7.7-4.8-13.9-10.9-13.9H139.9z
+	 M139.9,123.8h217.3V401H139.9V137.6V123.8z M150.7,137.6v27.7H205v-27.7H150.7z M221.3,137.6v27.7h54.3v-27.7H221.3z M292,137.6
+	v27.7h54.3v-27.7H292z M150.7,193.1v27.7H205v-27.7H150.7z M221.3,193.1v27.7h54.3v-27.7H221.3z M292,193.1v27.7h54.3v-27.7H292z
+	 M150.7,248.5v27.7H205v-27.7L150.7,248.5L150.7,248.5z M221.3,248.5v27.7h54.3v-27.7L221.3,248.5L221.3,248.5z M292,248.5v27.7
+	h54.3v-27.7L292,248.5L292,248.5z M150.7,304v27.7H205V304H150.7z M221.3,304v27.7h54.3V304H221.3z M292,304v27.7h54.3V304H292z
+	 M150.7,359.4v27.7H205v-27.7H150.7z M221.3,359.4v27.7h54.3v-27.7H221.3z M292,359.4v27.7h54.3v-27.7H292z"/>
+</svg>
