@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.601,0-88-39.4-88-88V164.833c0-48.601,39.399-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.601,0-88-39.4-88-88V143.833c0-48.601,39.399-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="488" cy="177.3335" r="203.7987" gradientTransform="matrix(1 0 0 1 -233.5 77)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#64BC6B"/>
+		<stop  offset="0.5" style="stop-color:#008837"/>
+		<stop  offset="1" style="stop-color:#006F2D"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.601,0-88-39.4-88-88V146c0-48.601,39.399-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<path fill="#5E6664" d="M145.785,130.193L286.688,126c25.58,0,47.807,20.968,47.807,46.968v166.483
+	c0,25.581-22.227,46.549-47.807,46.549l-140.903-4.193"/>
+<path fill="#FFC114" d="M175.14,126h141.742c26,0,46.967,20.968,46.967,46.968v166.483c0,25.581-20.967,46.549-46.967,46.549H175.14
+	"/>
+<g>
+	<path fill="#FCA12A" d="M175.14,126h141.742c26,0,46.967,20.968,46.967,46.968v166.903"/>
+</g>
+<path fill="#EAEAEA" d="M175.14,155.355h-26c-7.968,0-14.678-6.71-14.678-14.678l0,0c0-7.968,6.71-14.677,14.678-14.677h26"/>
+<polyline fill="#C4C4C4" points="149.979,126 175.14,126 175.14,155.355 "/>
+<path fill="#EAEAEA" d="M175.14,201.484h-26c-7.968,0-14.678-6.709-14.678-14.677l0,0c0-7.968,6.71-14.678,14.678-14.678h26"/>
+<polyline fill="#C4C4C4" points="149.979,172.129 175.14,172.129 175.14,201.484 "/>
+<path fill="#EAEAEA" d="M175.14,247.613h-26c-7.968,0-14.678-6.709-14.678-14.677l0,0c0-7.968,6.71-14.678,14.678-14.678h26"/>
+<polyline fill="#C4C4C4" points="149.979,218.258 175.14,218.258 175.14,247.613 "/>
+<path fill="#EAEAEA" d="M175.14,293.742h-26c-7.968,0-14.678-6.71-14.678-14.678l0,0c0-7.968,6.71-14.678,14.678-14.678h26"/>
+<polyline fill="#C4C4C4" points="149.979,264.387 175.14,264.387 175.14,293.742 "/>
+<path fill="#EAEAEA" d="M175.14,339.871h-26c-7.968,0-14.678-6.71-14.678-14.678l0,0c0-7.968,6.71-14.678,14.678-14.678h26"/>
+<polyline fill="#C4C4C4" points="149.979,310.516 175.14,310.516 175.14,339.871 "/>
+<path fill="#EAEAEA" d="M175.14,386h-26c-7.968,0-14.678-6.709-14.678-14.678l0,0c0-7.967,6.71-14.678,14.678-14.678h26"/>
+<polyline fill="#C4C4C4" points="149.979,356.645 175.14,356.645 175.14,386 "/>
+<rect x="217.075" y="172.129" fill="#FCFAC3" width="104.838" height="67.097"/>
+<rect x="368.042" y="172.129" fill="#8672DE" width="25.162" height="50.323"/>
+<polyline fill="#5E52B5" points="393.204,222.452 368.042,222.452 368.042,172.129 "/>
+<rect x="368.042" y="230.839" fill="#3CC676" width="25.162" height="50.322"/>
+<polyline fill="#0AA06E" points="393.204,281.161 368.042,281.161 368.042,230.839 "/>
+<rect x="368.042" y="289.549" fill="#F15249" width="25.162" height="50.322"/>
+<polyline fill="#C93131" points="393.204,339.871 368.042,339.871 368.042,289.549 "/>
+</svg>

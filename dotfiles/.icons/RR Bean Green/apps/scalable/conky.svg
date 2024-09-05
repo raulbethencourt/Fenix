@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V164.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.604,0-88-39.4-88-88V143.833c0-48.601,39.396-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="279.5803" cy="839.1699" r="203.7985" gradientTransform="matrix(1 0 0 1 -25.0796 -584.8359)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.0056" style="stop-color:#DBF2F7"/>
+		<stop  offset="0.4494" style="stop-color:#B3E2EE"/>
+		<stop  offset="1" style="stop-color:#9FD0E4"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.604,0-88-39.4-88-88V146c0-48.601,39.396-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<g id="layer1" transform="translate(38.119153,-375.26716)" inkscape:label="Capa 1" inkscape:groupmode="layer">
+	<rect id="rect907" x="59.823" y="511.654" fill="#2980B9" width="315.825" height="239.226"/>
+	<rect id="rect920" x="59.823" y="511.654" fill="#37353A" width="315.825" height="28.144"/>
+	<rect id="rect825" x="298.207" y="517.301" fill="#FFFFFF" width="17.187" height="16.847"/>
+	<rect id="rect827" x="329.749" y="517.301" fill="#FFFFFF" width="17.183" height="16.847"/>
+	<ellipse id="path3303" fill="none" cx="361.28" cy="525.726" rx="14.368" ry="14.072"/>
+	<ellipse id="path3305" fill="none" cx="322.565" cy="525.726" rx="7.185" ry="7.037"/>
+	<ellipse id="path3307" fill="none" cx="291.026" cy="525.726" rx="7.182" ry="7.037"/>
+	<rect id="rect3309" x="266.665" y="517.301" fill="#FFFFFF" width="17.186" height="16.847"/>
+	<ellipse id="path3311" fill="none" cx="217.716" cy="775.509" rx="25.142" ry="24.625"/>
+	<ellipse id="path3313" fill="none" cx="217.716" cy="487.027" rx="25.142" ry="24.627"/>
+	<path id="path3317" fill="none" d="M382.816,624.231c3.97,0,7.187,3.149,7.187,7.036c0,3.889-3.217,7.039-7.187,7.039
+		c-3.964,0-7.179-3.15-7.179-7.039C375.637,627.38,378.852,624.231,382.816,624.231z"/>
+	<path id="path4205" inkscape:connector-curvature="0" fill="#CCCCCC" d="M145.071,729.291l54.067-80.18l-55.663-88.158
+		l35.775,0.048l44.354,69.317l-66.316,98.984h-12.217V729.291z"/>
+	<path id="path17-8" inkscape:connector-curvature="0" fill="#CCCCCC" d="M250.894,729.35l-44.047-69.438l66.873-99.03h11.913
+		l-54.289,80.559l55.328,87.91H250.894z"/>
+</g>
+</svg>

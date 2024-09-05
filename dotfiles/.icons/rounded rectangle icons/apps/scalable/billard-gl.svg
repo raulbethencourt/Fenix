@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V164.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V143.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="262.8596" cy="-555.2788" r="203.7987" gradientTransform="matrix(1 0 0 -1 -8.3599 -300.9453)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#A34244"/>
+		<stop  offset="0.0772" style="stop-color:#9D373C"/>
+		<stop  offset="0.5" style="stop-color:#7D0013"/>
+		<stop  offset="0.8104" style="stop-color:#4F0013"/>
+		<stop  offset="1" style="stop-color:#370013"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.602,0-88-39.4-88-88V146c0-48.601,39.398-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+	
+		<g id="svg2" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:docname="amazon.svg" inkscape:version="0.48.4 r9939" display="none">
+		
+			<sodipodi:namedview  inkscape:cx="125.01135" inkscape:cy="331.75675" showgrid="false" borderopacity="1.0" inkscape:zoom="0.51420519" pagecolor="#ffffff" id="base" bordercolor="#666666" inkscape:current-layer="layer1" inkscape:window-x="0" inkscape:pageshadow="2" inkscape:document-units="px" inkscape:window-maximized="1" inkscape:pageopacity="0.0" inkscape:window-width="1360" inkscape:window-y="25" inkscape:window-height="719">
+			</sodipodi:namedview>
+		<path display="inline" fill="#EF3A24" d="M50.502,119.833h409.995c-12.802-32.778-44.688-56-81.997-56h-246
+			C95.188,63.833,63.304,87.055,50.502,119.833z"/>
+		<g display="inline">
+			<g>
+				<rect x="172.5" y="147" fill="none" width="305" height="240"/>
+				<text transform="matrix(1 0 0 1 172.4998 336.999)" fill="#FF9900" font-family="'Tahoma'" font-size="250">A</text>
+			</g>
+		</g>
+	</g>
+	<ellipse display="none" fill="#B4DFF7" cx="147.5" cy="178" rx="63" ry="61.5"/>
+	<circle display="none" fill="#31C4E9" cx="146.5" cy="171.5" r="62"/>
+</g>
+<g id="Layer_3" display="none">
+	<path display="inline" fill="#200A7F" stroke="#18E5EA" stroke-width="20" stroke-miterlimit="10" d="M401.137,212.167
+		c5.104,15.338,7.863,31.744,7.863,48.795c0,85.328-69.173,154.5-154.5,154.5c-85.328,0-154.5-69.172-154.5-154.5
+		s69.172-154.5,154.5-154.5c51.227,0,96.63,24.93,124.738,63.319"/>
+	<path display="inline" fill="#EF0B79" d="M333.363,255.151c0,4.226-3.301,7.651-7.371,7.651H174.872
+		c-4.072,0-7.372-3.425-7.372-7.651l0,0c0-4.226,3.3-7.651,7.372-7.651h151.119C330.063,247.5,333.363,250.925,333.363,255.151
+		L333.363,255.151z"/>
+	<path display="inline" fill="#EF0B79" d="M333.363,284.797c0,4.227-3.301,7.65-7.371,7.65H174.872c-4.072,0-7.372-3.426-7.372-7.65
+		l0,0c0-4.227,3.3-7.65,7.372-7.65h151.119C330.063,277.146,333.363,280.57,333.363,284.797L333.363,284.797z"/>
+	<path display="inline" fill="#EF0B79" d="M333.363,313.008c0,4.227-3.301,7.651-7.371,7.651H174.872
+		c-4.072,0-7.372-3.427-7.372-7.651l0,0c0-4.225,3.3-7.65,7.372-7.65h151.119C330.063,305.357,333.363,308.783,333.363,313.008
+		L333.363,313.008z"/>
+	<path display="inline" fill="#EF0B79" d="M333.363,338.352c0,4.229-3.301,7.651-7.371,7.651H174.872
+		c-4.072,0-7.372-3.426-7.372-7.651l0,0c0-4.225,3.3-7.646,7.372-7.646h151.119C330.063,330.701,333.363,334.127,333.363,338.352
+		L333.363,338.352z"/>
+	<polygon display="inline" fill="#18E5EA" points="394.991,191.49 320.191,165.163 380.392,113.547 	"/>
+	<g display="inline">
+		<g>
+			<g>
+				<path fill="#E9F21C" d="M241.48,239.22c-2.284,0-4.444-1.068-5.833-2.901l-18.76-24.775c-2.44-3.222-1.805-7.81,1.417-10.251
+					c3.229-2.442,7.813-1.803,10.253,1.417l12.338,16.293l31.033-49.826c2.135-3.429,6.646-4.478,10.082-2.344
+					c3.432,2.135,4.479,6.65,2.342,10.08l-36.658,58.857c-1.272,2.047-3.472,3.333-5.879,3.442
+					C241.702,239.217,241.592,239.22,241.48,239.22z"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Layer_2_1_" display="none">
+	<rect x="121" y="171.5" display="inline" fill="none" width="298" height="251"/>
+	
+		<text transform="matrix(1 0 0 1 120.9998 348.998)" display="inline" fill="#EF3A24" font-family="'MyriadPro-Regular'" font-size="250">24</text>
+	<circle display="inline" fill="#FFFFFF" cx="138.25" cy="91.833" r="17.25"/>
+	<circle display="inline" fill="#FFFFFF" cx="185.25" cy="91.833" r="17.25"/>
+	<circle display="inline" fill="#FFFFFF" cx="232.25" cy="91.833" r="17.25"/>
+	<circle display="inline" fill="#FFFFFF" cx="278.25" cy="91.833" r="17.25"/>
+	<circle display="inline" fill="#FFFFFF" cx="323.25" cy="91.833" r="17.25"/>
+	<circle display="inline" fill="#FFFFFF" cx="368.25" cy="91.833" r="17.25"/>
+</g>
+<g>
+	<g>
+		
+			<image overflow="visible" enable-background="new    " width="325" height="326" xlink:href="5919FAC4.png"  transform="matrix(0.9969 0 0 0.9969 98.3206 96.667)">
+		</image>
+		<g>
+			
+				<radialGradient id="SVGID_2_" cx="268.6799" cy="280.0547" r="129" gradientTransform="matrix(1 0 0 -1 -8.3599 536.0547)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FB8160"/>
+				<stop  offset="0.1564" style="stop-color:#FC664A"/>
+				<stop  offset="0.5" style="stop-color:#FD2F1B"/>
+				<stop  offset="0.7306" style="stop-color:#E81710"/>
+				<stop  offset="1" style="stop-color:#D30006"/>
+			</radialGradient>
+			<circle fill="url(#SVGID_2_)" cx="260.321" cy="256" r="129"/>
+		</g>
+	</g>
+	<rect x="228.071" y="214.727" fill="none" width="92.144" height="97.902"/>
+	<text transform="matrix(1 0 0 1 228.0715 298.8066)" fill="#FFFFFF" font-family="'Century'" font-size="115.1786">8</text>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="176.3699" y1="295.7734" x2="384.0295" y2="295.7734" gradientTransform="matrix(1 0 0 -1 -8.3599 536.0547)">
+		<stop  offset="0" style="stop-color:#E6D8EA"/>
+		<stop  offset="0.5" style="stop-color:#D2B9DA"/>
+		<stop  offset="1" style="stop-color:#C3A3CF"/>
+	</linearGradient>
+	<ellipse fill="url(#SVGID_3_)" fill-opacity="0.2" cx="271.84" cy="240.281" rx="103.83" ry="98.648"/>
+</g>
+</svg>
