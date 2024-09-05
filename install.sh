@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# git !!!!
+sudo apt isntall git
+
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
 
@@ -26,6 +29,10 @@ wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sud
 echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
 sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
 
+# youtube-dl
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
 # php
 LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
 
@@ -45,12 +52,15 @@ sudo nala update
 echo installing the must-have pre-requisites
 while read -r p; do sudo nala install -y $p; done < <(
   cat <<"EOF"
+  calibre
 	cmake 
 	libfreetype6-dev 
 	libexif-dev
 	libfontconfig1-dev 
 	xclip
 	wget 
+  tldr
+  jq
 	make
 	gnupg2 
 	flameshot
@@ -132,6 +142,9 @@ HASH=$(curl -sS https://composer.github.io/installer.sig)
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+# symfony
+wget https://get.symfony.com/cli/installer -O - | bash
+
 # delta
 curl https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb -o delta_amb64.deb -s
 sudo dpkg -i delta_amb64.deb
@@ -141,5 +154,8 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
+
+# postman
+sudo snap install postman
 
 echo "Finish first install, reboot your system to persiste changes..."

@@ -25,3 +25,9 @@ cd
 cargo install eza
 
 ## TODO: add nix packages
+###### tmux
+
+## neovim
+## docker
+## devilbox
+## dbeaver
