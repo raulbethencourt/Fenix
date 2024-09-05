@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{opacity:0.9;}
+	.st2{fill:#B7B7B7;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:url(#SVGID_1_);stroke:#E2E2E2;stroke-width:10;stroke-miterlimit:10;}
+	.st5{opacity:0.1;}
+	.st6{fill:#FFB911;}
+	.st7{fill:#00AADD;}
+</style>
+<g id="Layer_1_1_">
+	<g id="Layer_2_1_" class="st0">
+	</g>
+	<g id="shadows">
+		<g class="st1">
+			<g>
+				<path class="st2" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V164.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st3" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V143.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<radialGradient id="SVGID_1_" cx="254.5" cy="254.3335" r="203.7987" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#7D3825"/>
+		<stop  offset="0.5393" style="stop-color:#4F0000"/>
+		<stop  offset="1" style="stop-color:#2D0000"/>
+	</radialGradient>
+	<path class="st4" d="M465.5,362.7c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V146c0-48.6,39.4-88,88-88h246
+		c48.6,0,88,39.4,88,88V362.7z"/>
+</g>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" pagecolor="#ffffff" showgrid="false" showguides="false" units="px">
+	</sodipodi:namedview>
+<g id="g35" transform="matrix(3.5491797,0,0,3.5491797,-21.862575,-22.935851)">
+	<g id="g37">
+		<g id="g39" transform="translate(1,1)">
+			<g id="g41" class="st5">
+				<g id="g43">
+					<path id="path45" d="M80.7,39.7c44.9,54.6,32.5,76.1-37.2,64.5C90.3,102.5,102.7,81,80.7,39.7"/>
+					<path id="path47" d="M77.6,54c-33.1,0.6-39.1,16.7-18.1,48.5c2-0.3,3.9-0.7,5.6-1.2c-8-28.2,7.2-43,45.7-44.3
+						C97.7,54.9,86.6,53.9,77.6,54 M62.1,106.6c3.3,4.7,7,9.7,11.4,15c-2.7-5.2-5-10-6.7-14.6C65.3,106.9,63.8,106.7,62.1,106.6"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="g49" transform="matrix(3.5491797,0,0,3.5491797,-21.862575,-22.935851)">
+	<g id="g51">
+		<g id="g53">
+			<path id="path55" class="st6" d="M79.2,38.2c44.9,54.6,32.5,76.1-37.2,64.5C88.8,101.1,101.2,79.6,79.2,38.2"/>
+			<path id="path57" class="st7" d="M76.1,52.6C43,53.1,37,69.3,58,101.1c2-0.3,3.9-0.7,5.6-1.2c-8-28.2,7.2-43,45.7-44.3
+				C96.2,53.4,85.1,52.4,76.1,52.6 M60.7,105.1c3.3,4.7,7,9.7,11.4,15c-2.7-5.2-5-10-6.7-14.6C63.9,105.4,62.3,105.3,60.7,105.1"/>
+		</g>
+	</g>
+</g>
+</svg>

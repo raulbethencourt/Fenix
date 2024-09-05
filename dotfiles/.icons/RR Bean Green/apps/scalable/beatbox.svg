@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1_1_">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V164.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.602,0-88-39.4-88-88V143.833c0-48.601,39.398-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="262.8596" cy="-555.2788" r="203.7987" gradientTransform="matrix(1 0 0 -1 -8.3599 -300.9453)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFE7A3"/>
+		<stop  offset="0.5" style="stop-color:#FFCA05"/>
+		<stop  offset="1" style="stop-color:#FAAC18"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.602,0-88-39.4-88-88V146c0-48.601,39.398-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+</g>
+<g id="layer1" transform="matrix(0.74491184,0,0,0.74491184,854.10249,-209.93644)" inkscape:label="Layer 1">
+	<circle id="path3888" fill="#333333" cx="-802.763" cy="625.493" r="202.5"/>
+	<circle id="path3888-0" fill="#4D4D4D" cx="-802.763" cy="625.494" r="84.375"/>
+	<circle id="path3888-0-2" fill="#1ABC9C" cx="-802.763" cy="625.494" r="61.876"/>
+	<circle id="path3926" fill="#333333" cx="-802.763" cy="625.494" r="5.625"/>
+	<circle id="path3888-5-6" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="201.797"/>
+	<circle id="path3888-5-6-8-6" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="190.551"/>
+	<circle id="path3888-5-6-8-6-5" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.495" r="184.926"/>
+	<circle id="path3888-5-6-8-6-5-3" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.493" r="179.301"/>
+	<circle id="path3888-5-6-8-6-5-3-7" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="173.677"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="168.052"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7" fill="none" stroke="#4D4D4D" stroke-width="5.625" cx="-802.763" cy="625.495" r="162.427"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.496" r="156.802"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="151.177"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="145.553"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.493" r="139.927"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="134.303"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="128.678"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9" fill="none" stroke="#4D4D4D" stroke-width="5.625" cx="-802.763" cy="625.494" r="123.054"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.493" r="117.428"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7-6" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="111.804"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7-6-7" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.495" r="106.179"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7-6-6" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.493" r="100.561"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7-6-6-3" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.494" r="94.931"/>
+	
+		<circle id="path3888-5-6-8-6-5-3-7-0-7-0-1-0-2-8-8-9-7-6-6-3-4" fill="none" stroke="#4D4D4D" stroke-width="1.125" cx="-802.763" cy="625.493" r="89.305"/>
+	<circle id="path3888-5" fill="none" stroke="#4D4D4D" stroke-width="5.625" cx="-802.763" cy="625.494" r="199.688"/>
+</g>
+</svg>

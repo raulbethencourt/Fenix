@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{opacity:0.9;}
+	.st2{fill:#B7B7B7;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#FFFFFF;stroke:#7F7F7F;stroke-width:2;stroke-miterlimit:10;}
+	.st5{fill:none;}
+	.st6{opacity:0.75;fill:#55FF55;enable-background:new    ;}
+</style>
+<g id="Layer_1_1_">
+	<g id="Layer_2_1_" class="st0">
+	</g>
+	<g id="shadows">
+		<g class="st1">
+			<g>
+				<path class="st2" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V164.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st3" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V143.8c0-48.6,39.4-88,88-88h246
+					c48.6,0,88,39.4,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	<path class="st4" d="M465.5,362.7c0,48.6-39.4,88-88,88h-246c-48.6,0-88-39.4-88-88V146c0-48.6,39.4-88,88-88h246
+		c48.6,0,88,39.4,88,88V362.7z"/>
+</g>
+<rect x="129.5" y="124.5" class="st5" width="255" height="248"/>
+<path image-rendering="auto" color-rendering="auto" text-rendering="auto" shape-rendering="auto" class="st6" d="M150.3,164.1
+	l-0.1,14.8l7.9,0l0.1-14.8L150.3,164.1z M128.3,173.3l-5.6,5.7l10.2,10.5l5.6-5.7L128.3,173.3z M180.2,173.5L170,183.9l5.6,5.7
+	l10.2-10.4L180.2,173.5z M153.8,185.6c-10.9,0-19.8,9-19.8,20.1c0,11.2,8.8,20.2,19.6,20.3s19.8-9,19.8-20.1
+	C173.5,194.7,164.7,185.6,153.8,185.6 M153.8,193.6c6.5,0,11.8,5.5,11.8,12.2c0,6.7-5.3,12.1-11.9,12.1s-11.8-5.5-11.8-12.2
+	C141.9,199,147.2,193.6,153.8,193.6 M113.5,201.6l0,8.1l14.4,0.1l0-8.1L113.5,201.6z M180.4,201.8l0,8.1l14.4,0.1l0-8.1L180.4,201.8
+	z M291.6,242.6l-15.8,16.1l-0.1,0l-68,69.1l0,0.2l-36.2-37.3l-71.3,72.5l11.1,0l48.4-49l11.2-11.3l12.3,11.5l24.4,24.9l31.7-32.2
+	l23.4-23.6l28.9-27.9l28.6,28.5l62.5,63.9l11.1,0L291.6,242.6z M132.7,221.8l-10.2,10.4l5.6,5.7l10.2-10.4L132.7,221.8z M175.4,222
+	l-5.6,5.7l10.2,10.5l5.6-5.7L175.4,222z M150,232.6l-0.1,14.8l7.9,0l0.1-14.8L150,232.6z"/>
+</svg>

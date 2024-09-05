@@ -1,0 +1,125 @@
+gtk_color_scheme = "bg_color:#000000
+fg_color:#55af66
+base_color:#000000
+text_color:#55af66
+selected_bg_color:#005555
+selected_fg_color:#77dd88
+tooltip_bg_color:#000000
+tooltip_fg_color:#55af66"
+
+# gtkRC by delvalle26, GPL'd
+
+style "default"
+{ 
+  GtkWidget::cursor-color = @text_color
+  GtkWidget::secondary-cursor-color = "#ff0000"
+  GtkWidget::cursor-aspect-ratio = 0.10
+  GtkWidget::link-color = "#00ed05"
+  GtkWidget::visited-link-color = "#555555"   
+
+  GtkTreeView::odd-row-color = "#000000"
+  NautilusIconContainer::selection_box_color = @fg_color 
+
+  bg[ACTIVE]      = @bg_color 
+  bg[INSENSITIVE] = "#110000"
+  bg[NORMAL]      = @bg_color
+  bg[PRELIGHT]    = @selected_bg_color
+  bg[SELECTED]    = @selected_bg_color
+
+  fg[ACTIVE]      = @fg_color
+  fg[INSENSITIVE] = "#AA0000"
+  fg[NORMAL]      = @fg_color 
+  fg[PRELIGHT]    = @selected_fg_color
+  fg[SELECTED]    = @fg_color
+
+  base[ACTIVE]      = @selected_bg_color #darker?
+  base[INSENSITIVE] = "#110000"
+  base[NORMAL]      = @base_color
+  base[PRELIGHT]    = @selected_bg_color
+  base[SELECTED]    = @selected_bg_color
+
+  text[ACTIVE]      = @text_color
+  text[INSENSITIVE] = "#AA0000"
+  text[NORMAL]      = @text_color
+  text[PRELIGHT]    = @selected_fg_color
+  text[SELECTED]    = @selected_fg_color
+
+  engine "hcengine"
+  {
+    edge_thickness = 1 
+    cell_indicator_size = 2
+  }
+}
+class "GtkWidget"	style "default"
+
+style "tooltips"
+{
+  fg[NORMAL]    = @tooltip_fg_color
+  bg[NORMAL] 	= @tooltip_bg_color
+}
+widget "gtk-tooltip*" 	style "tooltips"
+
+style "scroll"
+{
+  bg[NORMAL]      = "#55af66"
+  fg[NORMAL]      = "#000000"
+  GtkScrollbar::slider-width        = 7
+}
+class "GtkRange"	style "scroll"
+
+style "button" 
+{
+  fg[NORMAL]      = "#55af66" #gnome panel unselected
+  fg[ACTIVE]      = @selected_fg_color #gnome panel focused  
+}
+class "GtkButton"      	style "button"
+
+style "tab" 
+{
+  fg[NORMAL]      = @selected_fg_color
+  fg[ACTIVE]      = "#55af66" #inactive tab
+}
+class "GtkNotebook"      style "tab"
+
+style "meta-frame"
+{
+  fg[SELECTED]  = @text_color #titlebar
+  bg[SELECTED]  = @selected_bg_color
+
+  fg[NORMAL]      = @text_color
+
+  fg[ACTIVE]      = "#55af66" #unselected titlebar text color (sometimes)
+  fg[INSENSITIVE] = "#55af66" #unselected titlebar controls color (sometimes text color too)
+}
+class "GtkWindow"      style "meta-frame"
+
+style "border" 
+{ fg[NORMAL]      = "#55af66" }
+class "GtkContainer"      style "border"
+
+style "menuborder" 
+{
+  fg[NORMAL]      = @text_color
+}
+class "GtkMenuBar"      style "menuborder"
+class "GtkMenu"      style "menuborder"
+class "GtkFrame"      style "menuborder"
+
+style "menu"
+{
+  fg[NORMAL]      = "#77dd88"
+}
+class "GtkMenuItem"      style "menu"
+class "GtkCheckButton"      style "menu"
+class "GtkRadioButton"      style "menu"
+class "GtkTreeView"   style "menu"
+
+style "sep"
+{
+  fg[NORMAL]      = "#00aaaa"
+}
+class "GtkSeparatorMenuItem" style "sep"
+class "GtkSeparatorToolItem" style "sep"
+
+
+widget "*.nautilus-extra-view-widget" style:highest "tooltips"

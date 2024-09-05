@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
+	 height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<g id="Layer_1">
+	<g id="Layer_2" display="none">
+	</g>
+	<g id="shadows">
+		<g opacity="0.9">
+			<g>
+				<path fill="#B7B7B7" d="M466.5,381.5c0,48.6-39.4,88-88,88h-246c-48.601,0-88-39.4-88-88V164.833c0-48.601,39.399-88,88-88h246
+					c48.6,0,88,39.399,88,88V381.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M466.5,360.5c0,48.6-39.4,88-88,88h-246c-48.601,0-88-39.4-88-88V143.833c0-48.601,39.399-88,88-88h246
+					c48.6,0,88,39.399,88,88V360.5z"/>
+			</g>
+		</g>
+	</g>
+	
+		<radialGradient id="SVGID_1_" cx="261.833" cy="531.335" r="246.4973" fx="231.982" fy="540.1328" gradientTransform="matrix(1 0 0 1 0 -279)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.3837" style="stop-color:#FFFFFF;stop-opacity:0"/>
+		<stop  offset="0.525" style="stop-color:#E9EAEB;stop-opacity:0.0263"/>
+		<stop  offset="0.8169" style="stop-color:#B2B4B6;stop-opacity:0.0807"/>
+		<stop  offset="0.9206" style="stop-color:#9D9FA2;stop-opacity:0.1"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#E2E2E2" stroke-width="10" stroke-miterlimit="10" d="M465.5,362.667c0,48.6-39.399,88-88,88
+		h-246c-48.601,0-88-39.4-88-88V146c0-48.601,39.399-88,88-88h246c48.601,0,88,39.399,88,88V362.667z"/>
+	
+		<g id="svg2" sodipodi:docname="amazon.svg" inkscape:version="0.48.4 r9939" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#">
+		
+			<sodipodi:namedview  id="base" inkscape:cx="125.01135" pagecolor="#ffffff" inkscape:cy="331.75675" inkscape:zoom="0.51420519" bordercolor="#666666" inkscape:window-x="0" inkscape:window-height="719" inkscape:window-width="1360" inkscape:window-maximized="1" inkscape:window-y="25" inkscape:current-layer="layer1" inkscape:pageshadow="2" inkscape:document-units="px" inkscape:pageopacity="0.0" borderopacity="1.0" showgrid="false">
+			</sodipodi:namedview>
+		<path fill="#EF3A24" d="M50.502,119.833h409.996c-12.802-32.778-44.688-56-81.998-56h-246
+			C95.188,63.833,63.304,87.055,50.502,119.833z"/>
+		<g display="none">
+			<g display="inline">
+				<rect x="172.5" y="147" fill="none" width="305" height="240"/>
+				<text transform="matrix(1 0 0 1 172.5 336.999)" fill="#FF9900" font-family="'Tahoma'" font-size="250">A</text>
+			</g>
+		</g>
+	</g>
+	<ellipse display="none" fill="#B4DFF7" cx="147.5" cy="178" rx="63" ry="61.5"/>
+	<circle display="none" fill="#31C4E9" cx="146.5" cy="171.5" r="62"/>
+</g>
+<g id="Layer_2_1_">
+	<rect x="121" y="171.5" fill="none" width="298" height="251"/>
+	<text transform="matrix(1 0 0 1 121 348.998)" fill="#EF3A24" font-family="'MyriadPro-Regular'" font-size="250">24</text>
+	<circle fill="#FFFFFF" cx="138.25" cy="91.833" r="17.25"/>
+	<circle fill="#FFFFFF" cx="185.25" cy="91.833" r="17.25"/>
+	<circle fill="#FFFFFF" cx="232.25" cy="91.833" r="17.25"/>
+	<circle fill="#FFFFFF" cx="278.25" cy="91.833" r="17.25"/>
+	<circle fill="#FFFFFF" cx="323.25" cy="91.833" r="17.25"/>
+	<circle fill="#FFFFFF" cx="368.25" cy="91.833" r="17.25"/>
+</g>
+</svg>
