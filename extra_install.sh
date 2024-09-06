@@ -25,9 +25,16 @@ cd
 cargo install eza
 
 ## TODO: add nix packages
+sh <(curl -L https://nixos.org/nix/install) --daemon
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
 ###### tmux
+nix-env -iA unstable.tmux
+###### fzf
+nix-env -iA unstable.fzf
+###### dbeaver
+nix-env -iA unstable.dbeaver-bin
 
-## neovim
+# MANUAL INSTALLATION
+## neovim 
 ## docker
 ## devilbox
-## dbeaver

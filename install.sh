@@ -8,6 +8,8 @@ echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee
 
 # keepass2 package
 sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
+# keevault
+sudo add-apt-repository ppa:dlech/keepass2-plugins
 
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
@@ -19,9 +21,6 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 # vivaldi
 wget -O- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vivaldi.gpg
 echo deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi.gpg] https://repo.vivaldi.com/archive/deb/ stable main | sudo tee /etc/apt/sources.list.d/vivaldi.list
-
-# keevault
-sudo add-apt-repository ppa:dlech/keepass2-plugins
 
 # eza
 sudo mkdir -p /etc/apt/keyrings
