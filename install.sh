@@ -156,6 +156,8 @@ nix-env -iA unstable.lazygit
 nix-env -iA unstable.xdragon
 ###### sxiv 
 nix-env -iA unstable.sxiv
+###### ccze 
+nix-env -iA unstable.ccze
 
 # bat
 mkdir -p ~/.local/bin
