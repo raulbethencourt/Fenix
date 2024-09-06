@@ -22,12 +22,6 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 wget -O- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vivaldi.gpg
 echo deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi.gpg] https://repo.vivaldi.com/archive/deb/ stable main | sudo tee /etc/apt/sources.list.d/vivaldi.list
 
-# eza
-sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-
 # youtube-dl
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
@@ -76,10 +70,7 @@ while read -r p; do sudo nala install -y $p; done < <(
 	vlc
 	filezilla
 	steam
-	bat
-	fzf
 	zoxide
-	exa 
 	zathura
 	ascii-image-converter
 	gimp
@@ -95,7 +86,6 @@ while read -r p; do sudo nala install -y $p; done < <(
 	fontconfig
 	libgif-dev
 	libexif-gtk5
-	eza
 	golang-go
 	keepass2-plugin-rpc
 	python3-pip
@@ -130,10 +120,6 @@ zsh <(curl -s https:/raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) -
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# bat
-mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat ~/.local/bin/bat
-
 # composer
 cd ~
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
@@ -144,17 +130,35 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 # symfony
 wget https://get.symfony.com/cli/installer -O - | bash
 
-# delta
-curl https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb -o delta_amb64.deb -s
-sudo dpkg -i delta_amb64.deb
-
-# lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin
-
 # postman
 sudo snap install postman
+
+# nix packages
+sh <(curl -L https://nixos.org/nix/install) --daemon
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+###### tmux
+nix-env -iA unstable.tmux
+###### fzf
+nix-env -iA unstable.fzf
+###### dbeaver
+nix-env -iA unstable.dbeaver-bin
+###### neovim 
+nix-env -iA unstable.neovim
+###### eza 
+nix-env -iA unstable.eza
+###### delta 
+nix-env -iA unstable.delta
+###### bat 
+nix-env -iA unstable.bat
+###### lazygit 
+nix-env -iA unstable.lazygit
+###### xdragon 
+nix-env -iA unstable.xdragon
+###### sxiv 
+nix-env -iA unstable.sxiv
+
+# bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
 
 echo "Finish first install, reboot your system to persiste changes..."
