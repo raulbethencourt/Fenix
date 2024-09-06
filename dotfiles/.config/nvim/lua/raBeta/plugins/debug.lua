@@ -42,6 +42,8 @@ return {
             { desc = '[D]ebug [E]xpression evaluation' })
         vim.keymap.set('n', '<leader>df', '<Cmd>lua require("dapui").float_element()<CR>',
             { desc = '[D]ebug [F]loating element' })
+        vim.keymap.set('n', '<leader>ds', '<Cmd>DapDisconnect<CR>',
+            { desc = '[D]ebug [S]top' })
 
         ---@diagnostic disable-next-line: missing-fields
         dapui.setup {
@@ -51,10 +53,10 @@ return {
             layouts = {
                 {
                     elements = {
-                        { id = 'scopes',      size = 0.55 },
-                        { id = 'breakpoints', size = 0.10 },
+                        { id = 'watches',     size = 0.35 },
                         { id = 'stacks',      size = 0.20 },
-                        { id = 'watches',     size = 0.15 },
+                        { id = 'scopes',      size = 0.35 },
+                        { id = 'breakpoints', size = 0.10 },
                     },
                     size = 0.33,
                     position = 'right',
