@@ -158,6 +158,8 @@ nix-env -iA unstable.xdragon
 nix-env -iA unstable.sxiv
 ###### ccze 
 nix-env -iA unstable.ccze
+###### ripgrep 
+nix-env -iA unstable.ripgrep
 
 # bat
 mkdir -p ~/.local/bin
