@@ -1,7 +1,20 @@
 #!/usr/bin/env sh
 
+# nala for beautyfull apt
+sudo apt install nala
+sudo nala update
+
 # git !!!!
-sudo apt isntall git
+sudo nala isntall git curl wget
+
+## regolith
+wget -qO - https://regolith-desktop.org/regolith.key | \
+gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] \
+https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" | \
+sudo tee /etc/apt/sources.list.d/regolith.list
+sudo nala update
+sudo nala install regolith-desktop regolith-session-flashback regolith-look-lascaille
 
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
@@ -38,10 +51,6 @@ set -eu -o pipefail # fail on error and report it, debug all lines
 sudo -n true
 [ $? -eq 0 ] || exit 1 "you should have sudo privilege to run this script"
 
-sudo apt install nala
-
-sudo nala update
-
 echo installing the must-have pre-requisites
 while read -r p; do sudo nala install -y $p; done < <(
   cat <<"EOF"
@@ -51,7 +60,6 @@ while read -r p; do sudo nala install -y $p; done < <(
 	libexif-dev
 	libfontconfig1-dev 
 	xclip
-	wget 
   tldr
   jq
 	make
@@ -62,7 +70,6 @@ while read -r p; do sudo nala install -y $p; done < <(
 	copyq
 	zsh
 	gpg
-	curl
 	brave-browser
 	vivaldi-stable
 	ffmpeg
