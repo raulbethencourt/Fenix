@@ -1,5 +1,4 @@
 # (( $+commands[apt] )) && APT=apt || APT=apt-get
-
 APT=nala
 
 alias acse='apt-cache search'
