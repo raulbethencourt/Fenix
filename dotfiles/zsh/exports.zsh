@@ -8,6 +8,10 @@ export BROWSER="brave"
 export BNS_TOOLS="$HOME/dev/bns/tools"
 export ATAC_KEY_BINDINGS="$HOME/.config/atac/keybindings.toml"
 export ATAC_MAIN_DIR="$HOME/atac"
+export GOPATH=$HOME/go
+export GOOS=linux 
+export GOARCH=amd64
+export PYENV_ROOT="$HOME/.pyenv"
 # export BAT_THEME="gruvbox-dark"
 
 # FZF color theme
@@ -36,10 +40,10 @@ export PATH="$HOME/.local/share/nvim:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="$HOME/dev/bnstools/tools/scripts:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # Nvm
 export NVM_DIR="$HOME/.nvm"
@@ -59,9 +63,7 @@ eval "$(zoxide init zsh)"
 export _ZO_ECHO='1'
 
 # FZF integration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /usr/share/doc/fzf/examples/key-bindings.zsh
-. /usr/share/doc/fzf/examples/completion.zsh
+source <(fzf --zsh)
 
 # Icons in terminal
 . ~/.local/share/icons-in-terminal/icons_bash.sh

@@ -96,6 +96,7 @@ alias gcas='git commit -a -s'
 alias gcasm='git commit -a -s -m'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
+alias gmc="gitmoji -c"
 
 function gccd() {
   command git clone --recurse-submodules "$@"
@@ -327,8 +328,6 @@ alias gamc='git am --continue'
 alias gams='git am --skip'
 alias gama='git am --abort'
 alias gamscp='git am --show-current-patch'
-
-alias gmc="gitmoji -c"
 
 function grename() {
   if [[ -z "$1" || -z "$2" ]]; then
