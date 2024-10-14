@@ -1,0 +1,358 @@
+# Fichier de paramètres utilisateur par défaut de Lynx
+# 
+# Ce fichier contient les options sauvegardées depuis l’écran d’options Lynx
+# (normalement, touche <o>). Pour sauvegarder les options de cet écran,
+# vous devez sélectionner la case à cocher :
+#	Enregistrer les options sur disque
+#
+# Vous devez maintenant enregistrer les réglages à l’aide du lien sur la
+# ligne au-dessus de la case à cocher :
+#	Accepter les changements
+#
+# Vous pouvez aussi utiliser la commande en ligne -forms_options, qui fait
+# apparaître le menu d’options simplifié à la place. Enregistrez ces options en
+# utilisant la touche <>>.
+# Il n’y a normalement pas besoin d’éditer ce fichier à la main, puisque les
+# réglages par défaut se font via l’écran Options, et que la prochaine fois
+# ce fichier sera modifié avec les valeurs de cet écran.
+# Vous êtes prévenu…
+# 
+# Si vous cherchez le fichier de configuration générale il est normalement
+# nommé « lynx.cfg ». Son contenu et son format sont différents.
+# Il ne s’agit pas de ce fichier.
+
+# accept_all_cookies permet à l’utilisateur de dire à Lynx d’accepter
+# automatiquement tous les cookies. « FALSE » (non) par défaut, donc
+# demande pour chaque cookie. Mettre accept_all_cookies à « TRUE »
+# (vrai) pour accepter tous les cookies.
+accept_all_cookies=off
+
+# anonftp_password permet à l’utilisateur de faire utiliser par Lynx l’adresse
+# mail personnelle comme mot de passe FTP anonyme. Si aucune valeur,
+# précisée, Lynx utilise l’adresse personnelle. Fixer anonftp_password
+# à une autre valeur si vous le souhaitez.
+anonftp_password=
+
+# bookmark_file spécifie le nom et l’emplacement du fichier de signets par
+# défaut dans lequel l’utilisateur peut copier des liens pour un accès
+# rapide ultérieurement.
+bookmark_file=lynx_bookmarks.html
+
+# Si case_sensitive_searching est réglé à « on », lors d’une recherche au
+# moyen des touches <s> ou </>, la recherche tient compte de la casse au lieu
+# de prendre tous les caractères. La valeur par défaut est « off ».
+case_sensitive_searching=off
+
+# L’option character_set définit la représentation des caractères 8 bits
+# pour votre terminal. Si de tels caractères 8 bits ne s’affichent pas
+# correctement à l’écran, vous pouvez essayer de changer pour un jeu
+# de caractères 8 bits différent ou utiliser les caractères approximatifs
+# 7 bits. Les jeux de caractères valides sont :
+#    Western (ISO-8859-1)
+#    7 bit approximations (US-ASCII)
+#    Western (ISO-8859-15)
+#    Western (cp850)
+#    Western (windows-1252)
+#    IBM PC US codepage (cp437)
+#    DEC Multinational
+#    Macintosh (8 bit)
+#    NeXT character set
+#    HP Roman8
+#    Chinese
+#    Japanese (EUC-JP)
+#    Japanese (Shift_JIS)
+#    Korean
+#    Taipei (Big5)
+#    Vietnamese (VISCII)
+#    Transparent
+#    Eastern European (ISO-8859-2)
+#    Eastern European (cp852)
+#    Eastern European (windows-1250)
+#    Latin 3 (ISO-8859-3)
+#    Latin 4 (ISO-8859-4)
+#    Baltic Rim (ISO-8859-13)
+#    Baltic Rim (cp775)
+#    Baltic Rim (windows-1257)
+#    Cyrillic (ISO-8859-5)
+#    Cyrillic (cp866)
+#    Cyrillic (windows-1251)
+#    Cyrillic (KOI8-R)
+#    Arabic (ISO-8859-6)
+#    Arabic (cp864)
+#    Arabic (windows-1256)
+#    Celtic (ISO-8859-14)
+#    Greek (ISO-8859-7)
+#    Greek (cp737)
+#    Greek2 (cp869)
+#    Greek (windows-1253)
+#    Hebrew (ISO-8859-8)
+#    Hebrew (cp862)
+#    Hebrew (windows-1255)
+#    Turkish (ISO-8859-9)
+#    Turkish (cp857)
+#    North European (ISO-8859-10)
+#    Latin 10 (ISO-8859-16)
+#    UNICODE (UTF-8)
+#    RFC 1345 w/o Intro
+#    RFC 1345 Mnemonic
+#    Ukrainian Cyrillic (cp866u)
+#    Ukrainian Cyrillic (KOI8-U)
+#    Cyrillic-Asian (PT154)
+character_set=UNICODE (UTF-8)
+
+# cookie_accept_domains et cookie_reject_domains sont des listes de
+# domaines séparés par des virgules dont Lynx accepte ou rejette
+# les cookies. Si un domaine est précisé dans les deux, le rejet
+# prévaut. Le paramètre accept_all_cookies est prioritaire sur les
+# réglages précisés ici.
+cookie_accept_domains=
+
+# cookie_file specifies the file from which to read persistent cookies.
+# The default is ~/.lynx_cookies.
+cookie_file=
+
+# cookie_loose_invalid_domains, cookie_strict_invalid_domains, et
+# cookie_query_invalid_domains sont des listes de domaines séparés
+# par des virgules soumis à divers degrés de validation. Si un domaine
+# est « strict », la stricte conformation à RFC2109 est vérifiée.
+# Un domaine « loose » est autorisé à poster des cookies avec un
+# chemin ou un domaine non valides. Pour les autres domaines
+# l’utilisateur sera prévenu en cas de mauvais chemin ou domaine.
+cookie_loose_invalid_domains=
+
+cookie_query_invalid_domains=
+
+cookie_reject_domains=
+
+cookie_strict_invalid_domains=
+
+# dir_list_order spécifie l’ordre de listage des répertoires sous DIRED_SUPPORT
+# (si implémenté). Par défaut : « ORDER_BY_NAME »
+dir_list_order=ORDER_BY_NAME
+
+# L’option dir_list_styles spécifie le style de liste de répertoires sous
+# DIRED_SUPPORT (si l’option est offerte). La valeur « MIXED_STYLE »
+# (défaut) trie fichiers et répertoires ensemble. La valeur « FILES_FIRST »
+# permet de lister les fichiers d’abord tandis que « DIRECTORIES_FIRST »
+# permet de lister les répertoires d’abord.
+dir_list_style=MIXED_STYLE
+
+# Si emacs_keys est réglé à « on », le jeu de touches EMACS normal :
+#   <^N> = bas     <^P> = haut
+#   <^B> = gauche  <^F> = droite
+# est activé.
+emacs_keys=off
+
+# file_editor spécifie l’éditeur pour l’édition de fichiers locaux ou l’envoi
+# de courrier. Si aucun n’est précisé, l’édition de fichier est désactivée,
+# à moins qu’elle soit activée de la ligne de commande, auquel cas l’éditeur
+# de lignes sera utilisé pour l’envoi de courrier.
+file_editor=
+
+# file_sorting_method spécifie le mode de tri à utiliser pour consulter
+# des listes de fichiers tels que des répertoires FTP. Les options sont :
+#    BY_FILENAME -- tri selon le nom de fichier
+#    BY_TYPE     -- tri selon le type de fichier
+#    BY_VOLUME   -- tri selon la taille du fichier
+#    BY_DATE     -- tri selon la date du fichier
+file_sorting_method=BY_FILENAME
+
+# Si keypad_mode est définit comme « NUMBERS_AS_ARROWS », alors les 
+# chiffres de votre pavé numérique se comporteront comme des flèches
+# lorsque numlock est à on:
+#                 <8> = haut 
+#    <4> = gauche            <6> = droite 
+#                 <2> = bas 
+# et les chiffres correspondants de votre clavier se comporteront
+# comme des flèches, quelque soit l’état du numlock.
+# Si keypad_mode est défini comme « LINKS_ARE_NUMBERED » ; alors des 
+# nombres apparaitront à coté des liens afin de pouvoir les sélectionner.
+# Si keypad_mode est défini comme « LINKS_AND_FORM_FIELDS_ARE_NUMBERED »,
+# alors des nombres apparaîtront à coté de chaque liens et des champs
+# de formulaires. Ces nombres seront utilisés pour sélectionner un lien,
+# ou pour déplacer le « lien courant » vers un champ de formulaire ou 
+# un bouton. En plus, les options des menus popup seront indexées afin que
+# l’utilisateur puisse taper un chiffre pour sélectionner une option de l’un
+# de ces menus,même si cette option n’est pas visible à l’écran. Les listes
+# de référence et les sorties de ces listes de commandes énumèrent aussi les
+# champs de formulaires.
+# NB : certains formats de document peuvent apparaître défigurés
+# lorsque « LINKS_ARE_NUMBERED » ou « LINKS_AND_FORM_FIELDS_ARE_NUMBERED »
+# sont activés.
+keypad_mode=LINKS_ARE_NOT_NUMBERED
+
+# lineedit_mode spécifie l’association de touche utilisée pour 
+# entrer des chaîne de caractères dans les formulaires et les.
+# dialogues. Si lineedit_mode est égal à « Default Binding » alors
+# les caractères de contrôle suivants seront utilisés pour se
+# déplacer et effacer du texte:
+# 
+#                 Précèdent Suivant   Entrée = Accepter les données
+# Déplacer car.     < ←>      < →>     <^G>   = Annuler les données
+# Déplacer mot      <^P>      <^N>     <^U>   = Effacer la ligne.
+# Effacer  car.     <^H>      <^R>     <^A>   = Début de ligne.
+# Effacer  mot      <^B>      <^F>     <^E>   = Fin de ligne.
+# 
+# Les modes d’édition de ligne courants sont :
+#    Default Binding
+#    Alternate Bindings
+#    Bash-like Bindings
+lineedit_mode=Default Binding
+
+# Vous pouvez définir des sous-catégories de signets et de descriptions.
+# Le format est multi_bookmark<lettre_majuscule>=<nom_de_fichier>,<description>
+# vous pouvez définir jusque 26 fichiers de signets (pour les lettres de l’alphabet
+# anglais). Commencez avec « multi_bookmarkB » car <A> est le fichier implicite
+# (voir après).
+multi_bookmarkB=
+multi_bookmarkC=
+multi_bookmarkD=
+multi_bookmarkE=
+multi_bookmarkF=
+multi_bookmarkG=
+multi_bookmarkH=
+multi_bookmarkI=
+multi_bookmarkJ=
+multi_bookmarkK=
+multi_bookmarkL=
+multi_bookmarkM=
+multi_bookmarkN=
+multi_bookmarkO=
+multi_bookmarkP=
+multi_bookmarkQ=
+multi_bookmarkR=
+multi_bookmarkS=
+multi_bookmarkT=
+multi_bookmarkU=
+multi_bookmarkV=
+multi_bookmarkW=
+multi_bookmarkX=
+multi_bookmarkY=
+multi_bookmarkZ=
+
+# personal_mail_address spécifie votre adresse email personnelle. 
+# Cette adresse sera envoyée lors des transferts de fichiers HTTP comme
+# moyen d’autorisation, de logs et pour les commentaires postés par mail.
+# Si vous ne voulez pas que cette information soit communiquée, définissez
+# la variable NO_FROM_HEADER comme étant vraie (TRUE) dans lynx.cfg,
+# ou utilisez l’option -nofrom en ligne de commande. Vous pouvez aussi laisser
+# ce champ vide, mais alors il n’apparaîtra pas dans vos commentaires postés.
+personal_mail_address=
+
+# personal_mail_name spécifie votre nom personnel, pour le courriel.
+# Le nom est envoyé pour les commentaires par courriel. Lors de l’envoi
+# d’un courriel, Lynx demande une valeur et propose celle par défaut.
+# Ce n’est pas nécessairement le même nom que celui fourni par
+# personal_mail_address.
+# Lynx n’enregistre pas vos changements comme valeur par défaut lors de
+# l’envoi de courriel. Pour mettre à jour la valeur par défaut, vous devez
+# utiliser les options du menu ou modifier directement ce fichier.
+personal_mail_name=
+
+# preferred_charset spécifie la jeu de caractères en notation MIME (ç-à-d 
+# ISO-8859-2, ISO-8859-5) que lynx indiquera comme jeu de caractères préféré
+# lors des requêtes http en utilisant l’entête Accept-Charset. Cette valeur
+# ne dois PAS inclure ISO-8859-1 ou US-ASCII car ces valeurs sont toujours
+# prises par défaut. La liste de choix peut être composée de types séparés par
+# des virgules. Si un fichier dans ce jeu de caractères est disponible,
+# le serveur vous l’enverra. Si il n’y a pas d’entête Accept-Charset,
+# le comportement par défaut est d’accepter n’importe quel type de jeu de caractères
+# Si il existe un entête Accept-Charset mais que le serveur ne peut renvoyer une
+# réponse acceptable relativement à votre choix, le serveur DEVRAIT renvoyer un
+# message d’erreur bien que le renvoi d’une réponse inacceptable soit permis.
+preferred_charset=
+
+# preferred_language spécifie la langue selon le code MIME (ex. en,
+# fr : liste de langues séparées par des virgules en ordre décroissant
+# de préférence). Lynx tient compte des préférences lors des requêtes
+# aux serveurs http. Si un fichier est disponible dans la langue précisée,
+# le serveur l’envoie. Sinon, le serveur envoie le fichier dans la langue
+# par défaut.
+preferred_language=en
+
+# select_popups spécifie si les OPTIONS d’un bloc SELECT qui ne
+# contient pas l’attribut MULTIPLE doivent être présentés comme une liste
+# verticale de boutons radio ou comme un menu popup. Notez que si l’attribut
+# MULTIPLE est défini dans le tag SELECT, lynx créera toujours une liste
+# verticale de cases à cocher pour chaque OPTION. Une valeur à « on »
+# sélectionnera les menus popup par défaut alors qu’une valeur à « off »
+# sélectionnera les boutons radio par défaut. Cette option peut être surchargée
+# par l’option -popup en ligne de commande.
+select_popups=on
+
+# show_color permet de paramétrer le mode couleur à l’initialisation. La
+# valeur « never » désactive le mode couleur (ce qui équivaut à un terminal
+# monochrome) même si le terminal est capable d’afficher les couleurs. La
+# valeur « always » active le mode couleur même si le terminal est
+# monochrome, en autant que cette valeur soit incluse dans la librairie
+# utilisée pour créer Lynx. La valeur « default » suppose par défaut un
+# terminal monochrome à moins que la capacité d’afficher les couleurs soit
+# déterminée à l’initialisation en fonction du type de terminal, ou que
+# l’option -color soit entrée à la ligne de commande, ou que la variable
+# d’environnement soit réglée à COLORTERM. La valeur implicite est toujours
+# utilisée dans le cas des connexions anonymes ou si la restriction
+# « option_save » est activée. L’effet de la valeur enregistrée peut être
+# annulé en permutant les options -color et -nocolor sur la ligne de
+# commande.  Le mode attribué à l’initialisation peut être modifié au moyen
+# de l’option « afficher les couleurs » dans le menu Paramètres. Si les
+# paramètres sont enregistrés, les attributs « on » et « off » de l’option
+# « afficher les couleurs » <o> sont interprétés comme étant la valeur « default ».
+show_color=default
+
+# show_cursor permet d’indiquer si le curseur doit être caché à droite
+# (et au bas, si possible) de l’écran, ou s’il doit être placé à la gauche du
+# lien actif dans les documents, ou de l’option active dans les fenêtres
+# flash. Le placement du curseur à la gauche de l’option ou du lien actif
+# est utile dans le cas des interfaces de reconnaissance de la parole ou de
+# braille, et quand le terminal est incapable de distinguer le lien actif au
+# moyen de la surbrillance ou de la couleur. La valeur « on » règle le
+# placement du curseur à la gauche par défaut, tandis que la valeur « off »
+# équivaut à « cacher » le curseur de l’écran. La valeur implicite peut être
+# annulée à la ligne de commande au moyen de l’option -show_cursor.
+show_cursor=on
+
+# Le paramètre show_dotfiles spécifie que la liste des répertoires doit
+# inclure les fichiers et répertoires « cachés ». S’il est réglé à « on »,
+# il n’est pris en compte que s’il est activé dans userdefs.h et/ou lynx.cfg
+# et s’il n’est pas restreint par une option de la ligne de commande. Si
+# l’affichage des fichiers cachés est désactivé, la création de tels fichiers
+# dans Lynx est aussi désactivée.
+show_dotfiles=off
+
+# Si le sub_bookmark n’est pas désactivé « off » et que les signets
+# multiples (cf plus bas) ont étés définis, alors toutes les opérations
+# relatives aux signets déclencheront un dialogue utilisateur afin qu’il
+# puisse sélectionner un fichier de sous signet actif. Si le fichier 
+# de signets par défaut est défini (cf plus haut), il sera utilisé comme
+# la sélection par défaut. Lorsque cette option est fixée à « advanced »
+# et que le mode d’utilisation est avancé, la commande <v> voire les signets
+# invoquera un prompt sur la ligne d’état au lieu du menu qui apparait dans les
+# modes novices et intermédiaires. Lorsque cette option est définie comme 
+# « standard », le menu apparaîtra quelque soit le mode d’utilisation.
+sub_bookmarks=OFF
+
+# Le paramètre user_mode spécifie le niveau de connaissance de Lynx par
+# l’utilisateur. La valeur « NOVICE » (défaut) commande l’affichage de deux
+# lignes supplémentaires d’aide au bas de l’écran pour aider l’utilisateur à
+# apprendre les commandes Lynx de base. Réglez le paramètre user_mode à
+# « INTERMEDIATE » pour éliminer ces lignes. Utilisez l’option « ADVANCED » pour
+# afficher l’URL du lien sélectionné au bas de l’écran.
+user_mode=NOVICE
+
+# Si verbose_images est à « on », lynx affichera les noms des fichiers
+# sources d’images au lieu de [INLINE],[LINK] ou [IMAGE]
+# Voir aussi VERBOSE_IMAGES dans lynx.cfg
+verbose_images=on
+
+# Si vi_keys est réglé à « on », le mouvement de touches VI normal :
+#   <j> = bas     <k> = haut
+#   <h> = gauche  <l> = droite
+# est activé. Ces touches sont en minuscule uniquement.
+# Les majuscules <H>, <J> et <K> activent l’aide, les touches de raccourci
+# et la configuration des touches respectivement.
+vi_keys=on
+
+# L’option visited_links contrôle la façon dont Lynx organise les informations
+# sur la page Liens visités.
+visited_links=LAST_REVERSED
+
