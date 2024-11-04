@@ -54,6 +54,11 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+
+# Symofony completion
+[ -s "$HOME/zsh/symfonyconsole_completion.zsh" ] && source "$HOME/zsh/symfonyconsole_completion.zsh"
+[ -s "$HOME/zsh/symfony_completion.zsh" ] && source "$HOME/zsh/symfony_completion.zsh"
+
 # Pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
