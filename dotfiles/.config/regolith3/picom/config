@@ -8,7 +8,7 @@ rounded-corners-exclude = [
   "class_g = 'eww-powermenu'",
   "class_g = 'code-oss'"
 ];
-round-borders = 1;
+round-borders = 0;
 
 round-borders-rule = [
   "3:class_g      = 'XTerm'",
@@ -43,7 +43,9 @@ opacity-rule = [
   "100:name      = 'Dunst'",             # lemonbar
   "10:class_g    = 'eww-blur_full'",            # maim
   "95:class_g    = 'Alacritty'",
+  "95:class_g    = 'Code'",
   "95:class_g    = 'DBeaver'",
+  "95:class_g    = 'obsidian'",
   "95:class_g    = 'Postman'",
   "95:class_g    = 'Filezilla'",
   "95:class_g    = 'teams-for-linux'",
@@ -52,9 +54,8 @@ opacity-rule = [
   "100:class_g   = 'Tint2'",
   "80:class_g    = 'i3bar'",
   "90:class_g    = 'Ilia'",
-  "95:class_g    = 'thunderbird'",
-  "95:class_g    = 'code'",
-  "95:class_g    = 'obsidian'"
+  "80:class_g    = 'dmenu'",
+  "95:class_g    = 'thunderbird'"
 ];
 
 #################################

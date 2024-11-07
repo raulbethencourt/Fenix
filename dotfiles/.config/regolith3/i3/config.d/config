@@ -1,6 +1,9 @@
 ###############################################################################
 # External programs launched with i3
 ###############################################################################
+bindsym --release $mod+Shift+o exec "flameshot gui --clipboard --path ~/Images"
+bindsym --release $mod+space exec "dmenu_run -nb '#0A0E14' -nf '#ddc7a1' -sb '#a7c080' -sf '#0A0E14' -fn 'CaskaydiaCove-11' -i"
+
 # Start the installed regolith-compositor
 set_from_resource $i3-wm.program.compositor i3-wm.program.compositor /usr/share/regolith-compositor/init
 
@@ -12,5 +15,10 @@ for_window [floating] move position center
 # You can also use any non-zero value if you'd like to have a border
 default_border pixel 0
 
-# Keybindings
-bindsym --release $mod+Shift+o exec "flameshot gui --accept-on-select --clipboard --path ~/Images"
+# Only enable outer gaps when there is exactly one container
+smart_gaps inverse_outer
+
+# defining inner and outer window gaps
+gaps inner 0
+gaps outer 0
+
