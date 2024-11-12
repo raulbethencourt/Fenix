@@ -157,8 +157,6 @@ nix-env -iA unstable.eza
 nix-env -iA unstable.delta
 ###### bat 
 nix-env -iA unstable.bat
-###### lazygit 
-nix-env -iA unstable.lazygit
 ###### xdragon 
 nix-env -iA unstable.xdragon
 ###### sxiv 
