@@ -5,9 +5,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 nvm install stable
 
 # Recover config from Fenix repo
-git clone https://github.com/raulbethencourt/Fenix.git
-cp -fr "$HOME"/Fenix/dotfiles/* "$HOME"/
-cp -fr "$HOME"/Fenix/dotfiles/.config/* "$HOME"/.config/
+cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
 
 # MANUAL INSTALLATION
 ## docker
