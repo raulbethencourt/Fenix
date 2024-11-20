@@ -10,3 +10,5 @@ cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
 # MANUAL INSTALLATION
 ## docker
 ## devilbox
+## keepass
+## steam
