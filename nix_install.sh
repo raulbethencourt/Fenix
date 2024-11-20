@@ -31,4 +31,16 @@ nix-env -iA unstable.ripgrep
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
-echo "Finish nix packeges install, reboot your system to persiste changes..."
+nvm install stable
+
+# Recover config from Fenix repo
+cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
+
+# MANUAL INSTALLATION
+## docker
+## devilbox
+## keepass
+## steam
+## exa
+
+echo "Finish nix packeges install and copying your config, reboot your system to persiste changes..."
