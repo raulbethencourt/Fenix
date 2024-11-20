@@ -122,4 +122,7 @@ wget https://get.symfony.com/cli/installer -O - | bash
 # postman
 sudo snap install postman
 
+# Install nix packages
+sh <(curl -L https://nixos.org/nix/install) --daemon
+
 echo "Finish first install, reboot your system to persiste changes..."

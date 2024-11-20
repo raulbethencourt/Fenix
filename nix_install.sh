@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Install nix packages
-sh <(curl -L https://nixos.org/nix/install) --daemon
-
 # Add unstable channel
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
 nix-channel --update
