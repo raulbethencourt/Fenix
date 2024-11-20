@@ -12,3 +12,4 @@ cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
 ## devilbox
 ## keepass
 ## steam
+## exa

@@ -88,7 +88,6 @@ while read -r p; do sudo apt install -y $p; done < <(
 	golang-go
 	python3-pip
 	ruby-full
-  exa
 	luarocks
 	software-properties-common 
 	ca-certificates 
