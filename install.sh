@@ -119,6 +119,9 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 # symfony
 wget https://get.symfony.com/cli/installer -O - | bash
 
+# starship
+curl -sS https://starship.rs/install.sh | sh
+
 # postman
 sudo snap install postman
 
