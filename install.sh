@@ -33,11 +33,11 @@ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/you
 sudo chmod a+rx /usr/local/bin/youtube-dl
 
 # php
-LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php
+LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php -y
 
 # copyq
 sudo apt install software-properties-common apt-transport-https -y
-sudo add-apt-repository ppa:hluk/copyq
+sudo add-apt-repository ppa:hluk/copyq -y
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
