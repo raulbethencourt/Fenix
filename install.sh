@@ -1,11 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # nala for beautyfull apt
-sudo apt install nala
+sudo apt install -y nala
 sudo nala update
 
 # git !!!!
-sudo nala isntall git curl wget
+sudo nala install -y git curl wget
 
 ## regolith
 wget -qO - https://regolith-desktop.org/regolith.key | \
@@ -14,15 +14,15 @@ echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg
 https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" | \
 sudo tee /etc/apt/sources.list.d/regolith.list
 sudo nala update
-sudo nala install regolith-desktop regolith-session-flashback regolith-look-lascaille
+sudo nala install -y regolith-desktop regolith-session-flashback regolith-look-blackhole
 
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
 
 # keepass2 package
-sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
+sudo add-apt-repository ppa:ubuntuhandbook1/keepass2 -y
 # keevault
-sudo add-apt-repository ppa:dlech/keepass2-plugins
+sudo add-apt-repository ppa:dlech/keepass2-plugins -y
 
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
@@ -43,8 +43,12 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
 
 # copyq
-sudo apt install software-properties-common python-software-properties
+sudo apt install software-properties-common python-software-properties apt-transport-https -y
 sudo add-apt-repository ppa:hluk/copyq
+
+# steam
+sudo apt install apt-transport-https -y
+sudo dpkg --add-architecture i386
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
@@ -76,7 +80,8 @@ while read -r p; do sudo nala install -y $p; done < <(
 	vim
 	vlc
 	filezilla
-	steam
+  steam-installer 
+  steam-devices
 	zoxide
 	zathura
 	ascii-image-converter
@@ -98,6 +103,7 @@ while read -r p; do sudo nala install -y $p; done < <(
 	python3-pip
 	python3.10-venv
 	ruby-full
+  exa
 	luarocks
 	software-properties-common 
 	ca-certificates 
@@ -139,35 +145,5 @@ wget https://get.symfony.com/cli/installer -O - | bash
 
 # postman
 sudo snap install postman
-
-# nix packages
-sh <(curl -L https://nixos.org/nix/install) --daemon
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
-###### tmux
-nix-env -iA unstable.tmux
-###### fzf
-nix-env -iA unstable.fzf
-###### dbeaver
-nix-env -iA unstable.dbeaver-bin
-###### neovim 
-nix-env -iA unstable.neovim
-###### eza 
-nix-env -iA unstable.eza
-###### delta 
-nix-env -iA unstable.delta
-###### bat 
-nix-env -iA unstable.bat
-###### xdragon 
-nix-env -iA unstable.xdragon
-###### sxiv 
-nix-env -iA unstable.sxiv
-###### ccze 
-nix-env -iA unstable.ccze
-###### ripgrep 
-nix-env -iA unstable.ripgrep
-
-# bat
-mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat ~/.local/bin/bat
 
 echo "Finish first install, reboot your system to persiste changes..."
