@@ -36,7 +36,7 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php
 
 # copyq
-sudo apt install software-properties-common python-software-properties apt-transport-https -y
+sudo apt install software-properties-common apt-transport-https -y
 sudo add-apt-repository ppa:hluk/copyq
 
 set -eu -o pipefail # fail on error and report it, debug all lines
@@ -86,16 +86,13 @@ while read -r p; do sudo apt install -y $p; done < <(
 	libgif-dev
 	libexif-gtk5
 	golang-go
-	keepass2-plugin-rpc
 	python3-pip
-	python3.10-venv
 	ruby-full
   exa
 	luarocks
 	software-properties-common 
 	ca-certificates 
 	lsb-release 
-	apt-transport-https 
 	php 
 	php-cli 
 	unzip
