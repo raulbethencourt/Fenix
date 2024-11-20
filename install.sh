@@ -1,28 +1,21 @@
 #!/usr/bin/env bash
 
-# nala for beautyfull apt
-sudo apt install -y nala
-sudo nala update
+sudo apt update
 
 # git !!!!
-sudo nala install -y git curl wget
+sudo apt install -y git curl wget
 
 ## regolith
-wget -qO - https://regolith-desktop.org/regolith.key | \
-gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+wget -qO - https://regolith-desktop.org/regolith.key |
+  gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg >/dev/null
 echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] \
-https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" | \
-sudo tee /etc/apt/sources.list.d/regolith.list
-sudo nala update
-sudo nala install -y regolith-desktop regolith-session-flashback regolith-look-blackhole
+https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" |
+  sudo tee /etc/apt/sources.list.d/regolith.list
+sudo apt update
+sudo apt install -y regolith-desktop regolith-session-flashback regolith-look-blackhole
 
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
-
-# keepass2 package
-sudo add-apt-repository ppa:ubuntuhandbook1/keepass2 -y
-# keevault
-sudo add-apt-repository ppa:dlech/keepass2-plugins -y
 
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
@@ -40,15 +33,11 @@ sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/you
 sudo chmod a+rx /usr/local/bin/youtube-dl
 
 # php
-LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php 
+LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php
 
 # copyq
 sudo apt install software-properties-common python-software-properties apt-transport-https -y
 sudo add-apt-repository ppa:hluk/copyq
-
-# steam
-sudo apt install apt-transport-https -y
-sudo dpkg --add-architecture i386
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
@@ -56,10 +45,11 @@ sudo -n true
 [ $? -eq 0 ] || exit 1 "you should have sudo privilege to run this script"
 
 echo installing the must-have pre-requisites
-while read -r p; do sudo nala install -y $p; done < <(
+while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
   calibre
 	cmake 
+  nala
 	libfreetype6-dev 
 	libexif-dev
 	libfontconfig1-dev 
@@ -80,15 +70,12 @@ while read -r p; do sudo nala install -y $p; done < <(
 	vim
 	vlc
 	filezilla
-  steam-installer 
-  steam-devices
 	zoxide
 	zathura
 	ascii-image-converter
 	gimp
 	libimlib2-dev
 	libxft-dev
-	keepass2
 	gnome-tweaks
 	tig
 	xorg 
@@ -116,13 +103,6 @@ while read -r p; do sudo nala install -y $p; done < <(
 	php-mysql
 EOF
 )
-
-echo installing the nice-to-have pre-requisites
-echo you have 5 seconds to proceed ...
-echo or
-echo hit Ctrl+C to quit
-echo -e "\n"
-sleep 6
 
 # make zsh shell
 chsh -s $(which zsh)
