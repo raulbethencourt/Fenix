@@ -122,6 +122,9 @@ wget https://get.symfony.com/cli/installer -O - | bash
 # postman
 sudo snap install postman
 
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
 # Install nix packages
 sh <(curl -L https://nixos.org/nix/install) --daemon
 
