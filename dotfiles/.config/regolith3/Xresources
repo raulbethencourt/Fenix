@@ -4,13 +4,12 @@ wm.window.border.size: 0
 wm.floatingwindow.border.size: 0
 wm.bar.position: top
 wm.bar.mode: hide
-gtk.theme_name: Material-Black-Pistachio-BE
-gtk.icon_theme_name: Reversal-green-dark
+gtk.theme_name: Aesthetic-Dark
+gtk.icon_theme_name: Gruvbox-Plus-Dark
 gtk.document_font_name: Ubuntu Regular 12
 gtk.font_name: Ubuntu Regular 12
 gtk.monospace_font_name: Ubuntu Mono Regular 12
 regolith.lockscreen.wallpaper.file: /home/rabeta/Images/Wallpapers/wallpapersden.com_linux-retro_1920x1080.jpg.jpg
-regolith.wallpaper.file: /home/rabeta/Images/Wallpapers/jpj2sctxhtj81.jpg
+regolith.wallpaper.file: /home/rabeta/Images/Wallpapers/Studio-Ghibli-Background-Pictures.jpg
 regolith.wallpaper.options: zoom
-!regolith.look.path: /usr/share/regolith-look/ayu-dark
 regolith.look.path: /usr/share/regolith-look/blackhole
