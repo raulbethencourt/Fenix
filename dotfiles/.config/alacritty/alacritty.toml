@@ -6,7 +6,7 @@ general.import = [
 ]
 
 [terminal.shell]
-program = "/nix/store/6v00nfi6785dqz7yymbzdn672chkdlpx-user-environment/bin/tmux"
+program = "/home/rabeta/.nix-profile/bin/tmux"
 
 [env]
 TERM = "xterm-256color"
