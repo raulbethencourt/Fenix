@@ -58,6 +58,7 @@ while read -r p; do sudo apt install -y $p; done < <(
   jq
 	make
 	gnupg2 
+  gh
 	flameshot
 	ubuntu-keyring
 	alacritty

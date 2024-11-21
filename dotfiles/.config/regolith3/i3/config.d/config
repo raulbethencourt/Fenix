@@ -2,7 +2,6 @@
 # External programs launched with i3
 ###############################################################################
 bindsym --release $mod+Shift+o exec "flameshot gui --clipboard --path ~/Images"
-bindsym --release $mod+space exec "dmenu_run -nb '#0A0E14' -nf '#ddc7a1' -sb '#a7c080' -sf '#0A0E14' -fn 'CaskaydiaCove-11' -i"
 
 # Start the installed regolith-compositor
 set_from_resource $i3-wm.program.compositor i3-wm.program.compositor /usr/share/regolith-compositor/init

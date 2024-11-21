@@ -1,0 +1,70 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[colors.indexed_colors]]
+color = "#e78a4e"
+index = 16
+
+[[colors.indexed_colors]]
+color = "#c14a4a"
+index = 17
+
+[colors.bright]
+black = '#475258'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+
+[colors.normal]
+black = '#414b50'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+
+[colors.dim]
+black = '#414b50'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+
+[colors.selection]
+text = "#1E1E2E"       # base
+background = "#F5E0DC" # rosewater
+
+[colors.hints.start]
+foreground = "#1E1E2E" # base
+background = "#F9E2AF" # yellow
+
+[colors.hints.end]
+foreground = "#1E1E2E" # base
+background = "#A6ADC8" # subtext0
+
+[colors.search.matches]
+foreground = "#1E1E2E" # base
+background = "#A6ADC8" # subtext0
+
+[colors.search.focused_match]
+foreground = "#1E1E2E" # base
+background = "#A6E3A1" # green
+
+[colors.cursor]
+text = "#1E1E2E"   # base
+cursor = "#F5E0DC" # rosewater
+
+[colors.primary]
+foreground = '#d3c6aa'
+background = "#0F0F11"        # base
+dim_foreground = "#CDD6F4"    # text
+bright_foreground = "#CDD6F4" # text

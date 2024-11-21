@@ -2,7 +2,7 @@
 
 add_newline = false
 
-command_timeout = 10000
+command_timeout = 100000
 
 format = """
 $os\
@@ -32,9 +32,9 @@ format = '[󱐋 ](color_yellow)'
 
 [directory]
 style = "color_blue"
-format = "[$path]($style)"
-truncation_length = 5
-truncation_symbol = "…/"
+format = "[$path]($style)[$read_only]($read_only_style)"
+truncate_to_repo = false
+truncation_length = 100
 
 [git_branch]
 style = "color_fg0"
