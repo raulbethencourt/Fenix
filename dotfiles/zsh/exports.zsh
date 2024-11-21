@@ -1,18 +1,12 @@
 # General
 export GIT_EDITOR="nvim"
 export EDITOR="nvim"
-# export TERM="alacritty"
 export TERM="xterm-256color"
-export BNS_USER="raul-bns"
 export BROWSER="brave"
-export BNS_TOOLS="$HOME/dev/bns/tools"
-export ATAC_KEY_BINDINGS="$HOME/.config/atac/keybindings.toml"
-export ATAC_MAIN_DIR="$HOME/atac"
 export GOPATH=$HOME/go
 export GOOS=linux 
 export GOARCH=amd64
 export PYENV_ROOT="$HOME/.pyenv"
-# export BAT_THEME="gruvbox-dark"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
@@ -35,11 +29,9 @@ export FZF_CTRL_R_OPTS="
 # PATHS
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
-export PATH="$HOME/dev/bns/tools/bin:$PATH"
 export PATH="$HOME/.local/share/nvim:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-export PATH="$HOME/dev/bnstools/tools/scripts:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/go/bin"
@@ -53,7 +45,6 @@ export NVM_DIR="$HOME/.nvm"
 # Cargo
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-
 
 # Symofony completion
 [ -s "$HOME/zsh/symfonyconsole_completion.zsh" ] && source "$HOME/zsh/symfonyconsole_completion.zsh"
@@ -73,14 +64,8 @@ source <(fzf --zsh)
 # Icons in terminal
 . ~/.local/share/icons-in-terminal/icons_bash.sh
 
-# Change user name in ssh/config file
-export SSH_USER="raul-bns"
-cat ~/.ssh/config.tmp | sed -e "s/\${SSH_USER}/${SSH_USER}/g" >~/.ssh/config
-
 # Man pager in color
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-
-. ~/dev/bns/tools/bin/.autocompletion
 
 # NOTE: starsihp needs to be at the end
 eval "$(starship init zsh)"
