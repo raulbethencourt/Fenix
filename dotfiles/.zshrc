@@ -9,7 +9,7 @@ compinit
 
 # Zap plugins
 plug "zap-zsh/supercharge"
-export VI_MODE_ESC_INSERT="jk" && plug "rabeta/vim"
+export VI_MODE_ESC_INSERT="jk" && plug "raul-bns/vim"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/exa"
 plug "zsh-users/zsh-autosuggestions"

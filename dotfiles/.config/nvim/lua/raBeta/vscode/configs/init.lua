@@ -1,5 +1,0 @@
-require 'vscode.configs.highlightyank'
-require 'vscode.configs.polyglot'
-require 'vscode.configs.flash'
-require 'vscode.configs.nvim-surround'
-require 'vscode.configs.vim-commentary'
