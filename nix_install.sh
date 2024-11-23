@@ -26,21 +26,29 @@ nix-env -iA unstable.sxiv
 nix-env -iA unstable.ccze
 ###### ripgrep 
 nix-env -iA unstable.ripgrep
+###### fd 
+nix-env -iA unstable.fd
+###### dust 
+nix-env -iA unstable.dust
 
 # bat
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
-nvm install stable
-
 # Recover config from Fenix repo
 cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
+source ~/.zshrc
+
+nvm install stable
 
 # MANUAL INSTALLATION
 ## docker
 ## devilbox
+
 ## keepass
-## steam
-## exa
+#sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
+#sudo apt update
+#sudo apt install keepass2 mono-complete xdotool
+# Installer plugin https://github.com/kee-org/keepassrpc/releases into /usr/lib/keepass2/Plugins/
 
 echo "Finish nix packeges install and copying your config, reboot your system to persiste changes..."
