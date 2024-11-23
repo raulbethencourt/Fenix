@@ -49,7 +49,6 @@ while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
   calibre
 	cmake 
-  nala
 	libfreetype6-dev 
 	libexif-dev
 	libfontconfig1-dev 
@@ -125,6 +124,9 @@ curl -sS https://starship.rs/install.sh | sh
 
 # postman
 sudo snap install postman
+
+# steam
+sudo snap install steam
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
