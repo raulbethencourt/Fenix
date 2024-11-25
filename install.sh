@@ -48,12 +48,14 @@ echo installing the must-have pre-requisites
 while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
   calibre
+  clang
 	cmake 
 	libfreetype6-dev 
 	libexif-dev
 	libfontconfig1-dev 
 	xclip
   tldr
+  libreoffice
   jq
 	make
 	gnupg2 
