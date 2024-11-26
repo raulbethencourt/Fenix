@@ -39,6 +39,9 @@ LC_ALL=C.UTF-8 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt install software-properties-common apt-transport-https -y
 sudo add-apt-repository ppa:hluk/copyq -y
 
+# visual codecs
+sudo apt-get install ubuntu-restricted-extras -y
+
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
@@ -54,12 +57,12 @@ while read -r p; do sudo apt install -y $p; done < <(
 	libexif-dev
 	libfontconfig1-dev 
 	xclip
-  tldr
-  libreoffice
-  jq
+    tldr
+    libreoffice
+    jq
 	make
 	gnupg2 
-  gh
+    gh
 	flameshot
 	ubuntu-keyring
 	alacritty
