@@ -1,0 +1,4 @@
+# bnsCreateUpdate
+POST {{HOST}}/bns_api/bnsSessionsRegistration/bnsCreateUpdate?key={{KEY}}&session_id=2029c812-5230-11ee-b00d-005056968f20&contact_id_c=2f09c8de-4ad4-11eb-bfb9-0050569c6b80&presence_status=canceled&id=04378502-521e-11ee-84d3-005056968f20
+
+POST {{HOST}}/bns_api/bnsSessionsRegistration/bnsCreate?key={{KEY}}&contact_id_c=6c3338f8-44ab-11ed-8b26-0050569c6b80&account_id_c=bf9b3f6a-42ec-11ed-bf8c-0050569c6b80&session_id=6b361406-17de-11ed-b76c-0050569c26a7&status=inprogress&bns_sessionreg_numcommande_c=183890&contact_id1_c=cfd7176e-6857-11ee-a241-0050569c26a7&bns_sessionreg_supported_c=&account_id1_c=&bns_analyse_business2_c=Co
