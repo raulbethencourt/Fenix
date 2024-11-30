@@ -1,0 +1,2 @@
+# bnsCreateUpdate
+POST {{HOST}}/bns_api/Opportunities/bnsCreateUpdate?key={{KEY}}&bns_opp_cfestatus_c=closed&account_id_c=ef199d7e-9e45-11eb-988c-0050569c5792&account_id=ffbd2daa-9906-11ec-aab6-0050569c5792&contact_id=1e64e1aa-13d9-11ee-ab43-0050569c5792&bns_opp_cfetypedos_c=imma10&date_closed=2023-09-29&sales_stage=Closed Won&opportunity_type=gue&name=test_real_last

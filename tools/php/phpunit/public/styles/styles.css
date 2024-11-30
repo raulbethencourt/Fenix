@@ -1,0 +1,20 @@
+body {
+    background: hsla(188, 87%, 44%, 1);
+    background: linear-gradient(45deg, hsla(188, 87%, 44%, 1) 0%, hsla(250, 84%, 64%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(188, 87%, 44%, 1) 0%, hsla(250, 84%, 64%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(188, 87%, 44%, 1) 0%, hsla(250, 84%, 64%, 1) 100%);
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+}
+
+.dino-stats-container {
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 12px;
+}
+
+.volcano {
+    background-image: url('/images/volcano.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}

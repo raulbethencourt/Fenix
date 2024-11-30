@@ -1,0 +1,28 @@
+@mixin rotate($rotation: 10deg) {
+    -ms-transform: rotate($rotation);
+    -webkit-transform: rotate($rotation);
+    transform: rotate($rotation);
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -webkit-transform: $transform;
+    -o-transform: $transform;
+    -moz-transform: $transform;
+    transform: $transform;
+}
+
+@mixin triangle($color: #fff, $size: 10px) {
+    &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: $size solid $color;
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        position: absolute;
+        bottom: $size * -1;
+        left: calc(50% - #{$size});
+    }
+    
+}

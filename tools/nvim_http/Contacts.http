@@ -1,0 +1,5 @@
+# bnsDetails
+GET {{HOST}}/bns_api/Contacts/bnsDetails?key={{KEY}}&id=6c3338f8-44ab-11ed-8b26-0050569c6b80
+
+# bnsList
+{{HOST}}bns_api/Contacts/bnsList?key={{KEY}}

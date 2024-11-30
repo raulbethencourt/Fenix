@@ -1,0 +1,14 @@
+#!/bin/sh
+
+languages="$(echo "sh bash rust c markdown php lua nodejs typescript html css javascript" | tr ' ' '\n')"
+core_utils="$(echo "tmux diff git man read xargs find fd mv sed awk rg grep tail df" | tr ' ' '\n')"
+
+selected="$(printf "%s" "$languages\n$core_utils" | fzf)"
+
+query="$(read -r "query?query: ")"
+
+if "$(printf "%s" "$languages" | grep -qs "$selected")"; then
+  tmux neww sh -c "curl cht.sh/$selected/$(echo "$query" | tr ' ' '+') & while [ : ]; do sleep 1; done"
+else
+  tmux neww sh -c "curl cht.sh/$selected~$query & while [ : ]; do sleep 1; done"
+fi
