@@ -44,7 +44,6 @@ set -eu -o pipefail # fail on error and report it, debug all lines
 sudo -n true
 [ $? -eq 0 ] || exit 1 "you should have sudo privilege to run this script"
 
-echo installing the must-have pre-requisites
 while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
   calibre
@@ -124,11 +123,12 @@ wget https://get.symfony.com/cli/installer -O - | bash
 # starship
 curl -sS https://starship.rs/install.sh | sh
 
-# postman
-sudo snap install postman
-
-# steam
-sudo snap install steam
+while read -r p; do sudo snap install $p; done < <(
+  cat <<"EOF"
+  postman
+  steam
+EOF
+)
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
