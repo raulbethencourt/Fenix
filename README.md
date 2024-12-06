@@ -4,19 +4,20 @@
 
 ![fenix image](./fenix-2.png)
 
-This repository it's a system backup and also the objective it's to have fast setup for migration.
+This repository it's a system backup and also fast setup integration.
+
+>[!IMPORTANT] 
+>Here are my own dotfiles. This can change very often, so there
+>are the possiblitiy of breaking changes.
 
 ## Install
 
-You will need to use this command that I haven't created jet 😅 to set everything up
+- You can use next command to start installation.
 
-```
-./install.sh
-```
+```bash ./install.sh ```
 
-## TODO
+- Then you can reboot system and the use this other command.
 
-List of things that I would like to add to this repo:
+```bash ./nix_install.sh ```
 
-- Continue my packages list
-- Get all dotfiles from differents programs
+Enjoy !!
