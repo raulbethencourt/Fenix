@@ -4,7 +4,7 @@ draw_bold_text_with_bright_colors = true
 
 # Default colors
 [colors.primary]
-background = '#0A0E14'
+background = '#02050a'
 foreground = '#d4be98'
 
 # Normal colors
