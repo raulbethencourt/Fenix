@@ -1,8 +1,8 @@
 general.import = [
     # "~/.config/alacritty/everforest.toml",
-    # "~/.config/alacritty/gruvbox_material.toml",
+    "~/.config/alacritty/gruvbox_material.toml",
     # "~/.config/alacritty/ayu.toml",
-    "~/.config/alacritty/gruvbox_material_hard_dark.toml",
+    # "~/.config/alacritty/gruvbox_material_hard_dark.toml",
 ]
 
 [terminal.shell]
@@ -21,7 +21,7 @@ history = 100000
 multiplier = 3
 
 [font]
-size = 10.0
+size = 11.0
 
 [font.normal]
 family = "CaskaydiaCove Nerd Font"

@@ -62,6 +62,6 @@ cursor = "#F5E0DC" # rosewater
 
 [colors.primary]
 foreground = '#ddc7a1'
-background = "#0D0D0E"        # base
+background = '#000000'        # base
 dim_foreground = "#CDD6F4"    # text
 bright_foreground = "#CDD6F4" # text
