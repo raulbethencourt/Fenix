@@ -27,13 +27,20 @@ function _nvf() {
 zle -N _nvf
 bindkey '^o' _nvf
 
-# nvim specific file with fzf
-function _pwd() {
+# Open neovim
+function _nvim() {
     zle push-input
-    BUFFER="pwd"
+    BUFFER="nvim ."
     zle accept-line
 }
-zle -N _pwd
-bindkey '^p' _pwd
+zle -N _nvim
+bindkey '^v' _nvim
 
-# TODO: stty sane OR reset
+# Move job to foreground
+function _fg() {
+    zle push-input
+    BUFFER="fg"
+    zle accept-line
+}
+zle -N _fg
+bindkey '^f' _fg
