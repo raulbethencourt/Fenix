@@ -49,8 +49,10 @@ sudo -n true
 
 while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
-  calibre
-  clang
+    calibre
+    clang
+    luajit
+    libgraphicsmagick1-dev
 	cmake 
 	libfreetype6-dev 
 	libexif-dev
@@ -62,6 +64,8 @@ while read -r p; do sudo apt install -y $p; done < <(
 	make
 	gnupg2 
     gh
+    imagemagick
+    libmagickwand-dev
 	flameshot
 	ubuntu-keyring
 	alacritty
@@ -132,6 +136,7 @@ while read -r p; do sudo snap install $p; done < <(
   steam
 EOF
 )
+sudo snap install obsidian --classic
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
