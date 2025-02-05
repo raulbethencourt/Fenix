@@ -1,0 +1,9 @@
+theme: gruvbox
+layout: horizontal
+animation: none
+editor: nvim
+response:
+  prettify_json: true
+heading:
+  visible: true
+  show_host: true
