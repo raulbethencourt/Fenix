@@ -4,9 +4,10 @@ export EDITOR="nvim"
 export TERM="xterm-256color"
 export BROWSER="brave"
 export GOPATH=$HOME/go
-export GOOS=linux 
+export GOOS=linux
 export GOARCH=amd64
 export PYENV_ROOT="$HOME/.pyenv"
+export SCRIPTSPATH="$HOME/tools/scripts"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
@@ -36,6 +37,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/apps/zig-linux-x86_64-0.13.0/zig"
+export PATH="$PATH:$SCRIPTSPATH/bin"
 
 # Nvm
 export NVM_DIR="$HOME/.nvm"
@@ -49,6 +52,11 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # Symofony completion
 [ -s "$HOME/zsh/symfonyconsole_completion.zsh" ] && source "$HOME/zsh/symfonyconsole_completion.zsh"
 [ -s "$HOME/zsh/symfony_completion.zsh" ] && source "$HOME/zsh/symfony_completion.zsh"
+
+# Ghostty integration for zsh
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
+fi
 
 # Pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -65,7 +73,11 @@ source <(fzf --zsh)
 . ~/.local/share/icons-in-terminal/icons_bash.sh
 
 # Man pager in color
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # NOTE: starsihp needs to be at the end
 eval "$(starship init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
