@@ -51,6 +51,8 @@ while read -r p; do sudo apt install -y $p; done < <(
   cat <<"EOF"
     calibre
     clang
+    figlet
+    libxml2-utils
     luajit
     libgraphicsmagick1-dev
 	cmake 
