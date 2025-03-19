@@ -20,6 +20,7 @@ while read -r p; do nix-env -iA unstable.$p; done < <(
   fd
   dust
   lynx
+  yt-dlp
 EOF
 )
 
