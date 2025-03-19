@@ -27,7 +27,16 @@ function _nvf() {
 zle -N _nvf
 bindkey '^o' _nvf
 
-# Open neovim
+# nvim specific file with fzf
+function _pwd() {
+    zle push-input
+    BUFFER="pwd"
+    zle accept-line
+}
+zle -N _pwd
+bindkey '^p' _pwd
+
+# launch nvim
 function _nvim() {
     zle push-input
     BUFFER="nvim ."
@@ -36,7 +45,7 @@ function _nvim() {
 zle -N _nvim
 bindkey '^v' _nvim
 
-# Move job to foreground
+# recover job
 function _fg() {
     zle push-input
     BUFFER="fg"
