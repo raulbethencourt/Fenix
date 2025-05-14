@@ -1,0 +1,23 @@
+.root_box {
+    margin: 10px 10px 25px 10px;
+}
+
+window {
+    border-style: none;
+}
+
+.filter_entry {
+    border: none;
+    background: none;
+    min-height: 30px;
+    min-width: 320px;
+    margin-bottom: 8px;
+}
+
+.notebook {
+    border: none;
+}
+
+.keybindings {
+    font-family: Ubuntu Mono Regular;
+}
