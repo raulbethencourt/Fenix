@@ -21,3 +21,5 @@ smart_gaps inverse_outer
 gaps inner 0
 gaps outer 0
 
+# Start with alacritty
+exec alacritty
