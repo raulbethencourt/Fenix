@@ -2,21 +2,7 @@
 #             Corners           #
 #################################
 corner-radius = 0;
-rounded-corners-exclude = [
-  "class_g = 'i3bar'",
-  "class_g = 'eww-bar'",
-  "class_g = 'com.mitchellh.ghostty'",
-  "class_g = 'eww-powermenu'",
-  "class_g = 'code-oss'"
-];
 round-borders = 0;
-
-round-borders-rule = [
-  "3:class_g      = 'XTerm'",
-  "3:class_g      = 'URxvt'",
-  "3:class_g     = 'Alacritty'",
-  "3:class_g     = 'com.mitchellh.ghostty'"
-];
 
 #################################
 #             Shadows           #
@@ -37,13 +23,13 @@ active-opacity = 1;
 
 focus-exclude = [
   "class_g = 'Cairo-clock'",
-  "class_g = 'Bar'",                    # lemonbar
-  "class_g = 'slop'"                    # maim
+  "class_g = 'Bar'",
+  "class_g = 'slop'"
 ];
 
 opacity-rule = [
-  "100:name      = 'Dunst'",             # lemonbar
-  "10:class_g    = 'eww-blur_full'",            # maim
+  "100:name      = 'Dunst'",
+  "10:class_g    = 'eww-blur_full'", 
   "98:class_g    = 'Alacritty'",
   "98:class_g    = 'com.mitchellh.ghostty'",
   "95:class_g    = 'Code'",
