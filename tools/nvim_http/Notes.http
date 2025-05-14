@@ -1,3 +1,0 @@
-# bnsDetails
-
-GET {{HOST}}/bns_api/Notes/bnsHelp?key={{KEY}}
