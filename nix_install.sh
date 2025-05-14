@@ -8,7 +8,6 @@ while read -r p; do nix-env -iA unstable.$p; done < <(
   cat <<"EOF"
   tmux
   fzf
-  dbeaver-bin
   neovim
   eza
   delta
@@ -21,6 +20,7 @@ while read -r p; do nix-env -iA unstable.$p; done < <(
   dust
   lynx
   yt-dlp
+  autotiling
 EOF
 )
 
