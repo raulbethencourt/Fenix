@@ -20,6 +20,11 @@ echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
 
+# wezterm
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+
 # brave-browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -44,66 +49,70 @@ sudo apt-get install ubuntu-restricted-extras -y
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
-sudo -n true
-[ $? -eq 0 ] || exit 1 "you should have sudo privilege to run this script"
 
-while read -r p; do sudo apt install -y $p; done < <(
+[ "$(sudo -n true)" -eq 0 ] || {
+  echo "you should have sudo privilege to run this script"
+  exit 1 
+}
+
+while read -r p; do sudo apt install -y "$p"; done < <(
   cat <<"EOF"
+  alacritty
+  ascii-image-converter
+  brave-browser
+  btop
+  ca-certificates 
   calibre
   clang
-  figlet
-  libxml2-utils
-  luajit
-  libgraphicsmagick1-dev
   cmake 
-  libfreetype6-dev 
-  libexif-dev
-  libfontconfig1-dev 
-  xclip
-  tldr
-  libreoffice
-  jq
-  make
-  gnupg2 
-  imagemagick
-  libmagickwand-dev
-  flameshot
-  ubuntu-keyring
-  alacritty
   copyq
-  zsh
-  gpg
-  brave-browser
   ffmpeg
-  vim
-  vlc
-  zoxide
-  zathura
-  ascii-image-converter
-  gimp
-  libimlib2-dev
-  libxft-dev
-  gnome-tweaks
-  tig
-  xorg 
-  btop
-  openbox
-  freetype2-doc
+  figlet
+  flameshot
   fontconfig
-  libgif-dev
-  libexif-gtk5
+  freetype2-doc
+  gimp
+  gnome-tweaks
+  gnupg2 
   golang-go
-  python3-pip
-  ruby-full
-  luarocks
-  software-properties-common 
-  ca-certificates 
+  gpg
+  imagemagick
+  jq
+  libapache2-mod-php 
+  libexif-dev
+  libexif-gtk5
+  libfontconfig1-dev 
+  libfreetype6-dev 
+  libgif-dev
+  libgraphicsmagick1-dev
+  libimlib2-dev
+  libmagickwand-dev
+  libreoffice
+  libxft-dev
+  libxml2-utils
   lsb-release 
+  luajit
+  luarocks
+  make
+  openbox
   php 
   php-cli 
-  unzip
-  libapache2-mod-php 
   php-mysql
+  python3-pip
+  ruby-full
+  software-properties-common 
+  tig
+  tldr
+  ubuntu-keyring
+  unzip
+  vim
+  vlc
+  wezterm
+  xclip
+  xorg 
+  zathura
+  zoxide
+  zsh
 EOF
 )
 

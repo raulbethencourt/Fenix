@@ -22,4 +22,4 @@ gaps inner 0
 gaps outer 0
 
 # Start with alacritty
-exec alacritty
+exec wezterm
