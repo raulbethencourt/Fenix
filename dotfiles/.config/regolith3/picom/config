@@ -30,7 +30,7 @@ focus-exclude = [
 opacity-rule = [
   "100:name      = 'Dunst'",
   "10:class_g    = 'eww-blur_full'", 
-  "98:class_g    = 'Alacritty'",
+  "97:class_g    = 'Alacritty'",
   "98:class_g    = 'com.mitchellh.ghostty'",
   "95:class_g    = 'Code'",
   "95:class_g    = 'DBeaver'",
@@ -51,7 +51,7 @@ opacity-rule = [
 #################################
 #       General Settings        #
 #################################
-experimental-backends = false;
+experimental-backends = true;
 backend = "glx";
 
 vsync = false;
