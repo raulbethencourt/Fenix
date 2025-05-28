@@ -20,11 +20,6 @@ echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee
 # alacritty
 sudo add-apt-repository ppa:aslatter/ppa -y
 
-# wezterm
-curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
-
 # brave-browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -107,7 +102,6 @@ while read -r p; do sudo apt install -y "$p"; done < <(
   unzip
   vim
   vlc
-  wezterm
   xclip
   xorg 
   zathura
