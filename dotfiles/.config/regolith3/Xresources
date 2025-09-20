@@ -1,5 +1,5 @@
 ! Gnome
-gtk.theme_name: Aesthetic-Dark
+gtk.theme_name: Gruvbox-Dark
 gtk.icon_theme_name: Gruvbox-Plus-Dark
 gtk.document_font_name: Ubuntu Regular 12
 gtk.font_name: Ubuntu Regular 12
