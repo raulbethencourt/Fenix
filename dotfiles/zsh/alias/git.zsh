@@ -121,6 +121,7 @@ alias gcss='git commit -S -s'
 alias gcssm='git commit -S -s -m'
 
 alias gd='git diff'
+alias gdn='git diff --no-index'
 alias gdca='git diff --cached'
 alias gdcw='git diff --cached --word-diff'
 alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
@@ -229,6 +230,7 @@ alias glp="_git_log_prettily"
 
 alias gm='git merge'
 alias gmom='git merge origin/$(git_main_branch)'
+alias gmt='git mergetool'
 alias gmtl='git mergetool --no-prompt'
 alias gmtlvim='git mergetool --no-prompt --tool=vimdiff'
 alias gmum='git merge upstream/$(git_main_branch)'

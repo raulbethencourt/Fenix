@@ -5,12 +5,12 @@ sudo apt update
 # git !!!!
 sudo apt install -y git curl wget
 
-## regolith
+## regolith for 22.04
 wget -qO - https://regolith-desktop.org/regolith.key |
   gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg >/dev/null
 echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] \
-https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" |
-  sudo tee /etc/apt/sources.list.d/regolith.list
+https://archive.regolith-desktop.com/ubuntu/stable jammy v3.3" | \
+sudo tee /etc/apt/sources.list.d/regolith.list
 sudo apt update
 sudo apt install -y regolith-desktop regolith-session-flashback regolith-look-blackhole
 
@@ -23,10 +23,6 @@ sudo add-apt-repository ppa:aslatter/ppa -y
 # brave-browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
-# vivaldi
-wget -O- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vivaldi.gpg
-echo deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi.gpg] https://repo.vivaldi.com/archive/deb/ stable main | sudo tee /etc/apt/sources.list.d/vivaldi.list
 
 # youtube-dl
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -43,7 +39,6 @@ sudo add-apt-repository ppa:hluk/copyq -y
 sudo apt-get install ubuntu-restricted-extras -y
 
 set -eu -o pipefail # fail on error and report it, debug all lines
-
 
 [ "$(sudo -n true)" -eq 0 ] || {
   echo "you should have sudo privilege to run this script"
@@ -134,7 +129,6 @@ curl -sS https://starship.rs/install.sh | sh
 
 while read -r p; do sudo snap install $p; done < <(
   cat <<"EOF"
-  postman
   steam
 EOF
 )
