@@ -2,8 +2,7 @@
 
 sudo apt update
 
-# git !!!!
-sudo apt install -y git curl wget
+sudo apt install -y curl wget
 
 ## regolith for 22.04
 wget -qO - https://regolith-desktop.org/regolith.key |
@@ -12,7 +11,7 @@ echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg
 https://archive.regolith-desktop.com/ubuntu/stable jammy v3.3" | \
 sudo tee /etc/apt/sources.list.d/regolith.list
 sudo apt update
-sudo apt install -y regolith-desktop regolith-session-flashback regolith-look-blackhole
+sudo apt install -y regolith-desktop regolith-session-flashback regolith-look-gruvbox
 
 # pre packeg install
 echo 'deb [trusted=yes] https://apt.fury.io/ascii-image-converter/ /' | sudo tee /etc/apt/sources.list.d/ascii-image-converter.list
