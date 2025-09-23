@@ -29,6 +29,7 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 
 # PATHS
+source prefix/etc/profile.d/nix.sh # nix paths
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
 export PATH="$HOME/.local/share/nvim:$PATH"
