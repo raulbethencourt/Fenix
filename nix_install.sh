@@ -32,7 +32,7 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
 source ~/.zshrc
 
-nvm install stable
+nvm install --lts
 
 # MANUAL INSTALLATION
 ## docker
