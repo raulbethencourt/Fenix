@@ -8,7 +8,6 @@ while read -r p; do nix-env -iA unstable.$p; done < <(
   cat <<"EOF"
   tmux
   fzf
-  neovim
   eza
   delta
   bat
