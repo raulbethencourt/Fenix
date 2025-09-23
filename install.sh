@@ -40,11 +40,6 @@ sudo apt-get install ubuntu-restricted-extras -y
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
-[ "$(sudo -n true)" -eq 0 ] || {
-  echo "you should have sudo privilege to run this script"
-  exit 1 
-}
-
 while read -r p; do sudo apt install -y "$p"; done < <(
   cat <<"EOF"
   alacritty
@@ -138,6 +133,6 @@ sudo snap install obsidian --classic
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # Install nix packages
-sh <(curl -L https://nixos.org/nix/install) --daemon
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 
 echo "Finish first install, reboot your system to persiste changes..."
