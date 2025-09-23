@@ -9,6 +9,7 @@ export GOOS=linux
 export GOARCH=amd64
 export PYENV_ROOT="$HOME/.pyenv"
 export SCRIPTSPATH="$HOME/tools/scripts"
+export NIX_REMOTE=daemon
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
