@@ -133,6 +133,10 @@ sudo snap install nvim --edge --classic
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # Install nix packages
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
+
+# Recover config from Fenix repo
+cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
+source ~/.zshrc
 
 echo "Finish first install, reboot your system to persiste changes..."
