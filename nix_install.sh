@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Add unstable channel
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
-nix-channel --update
+sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+sudo nix-channel --update
 
-while read -r p; do nix-env -iA unstable.$p; done < <(
+while read -r p; do sudo nix-env -iA unstable.$p; done < <(
   cat <<"EOF"
   tmux
   fzf
@@ -26,10 +26,6 @@ EOF
 # bat
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
-
-# Recover config from Fenix repo
-cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
-source ~/.zshrc
 
 nvm install --lts
 
