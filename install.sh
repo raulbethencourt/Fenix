@@ -134,10 +134,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # Install nix packages
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
-groupadd -r nixbld
- for n in $(seq 1 10); do useradd -c "Nix build user $n" \
-    -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
-    nixbld$n; done
  
 # Recover config from Fenix repo
 cp -fr "$HOME"/Fenix/dotfiles/. "$HOME"/
