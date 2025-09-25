@@ -1,5 +1,3 @@
-nix-daemon
-
 # ZAP !!!
 # shellcheck disable=SC1094
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
