@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Add unstable channel
-sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
-sudo nix-channel --update
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+nix-channel --update
 
-while read -r p; do sudo nix-env -iA unstable.$p; done < <(
+while read -r p; do nix-env -iA unstable.$p; done < <(
   cat <<"EOF"
   tmux
   fzf

@@ -27,7 +27,7 @@ color_red = '#e67e80'
 color_yellow = '#dbbc7f'
 
 [os]
-disabled = false
+disabled = true
 format = '[󱐋 ](color_yellow)'
 
 [directory]
