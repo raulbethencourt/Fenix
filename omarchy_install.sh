@@ -11,18 +11,19 @@ while read -r p; do sudo pacman --noconfirm -S "$p"; done < <(
   git-delta
   jq
   lynx
+  shfmt
   sxiv
   tmux
-  yt-dlp
-  zathura
-  zsh
-  tree
-  transmission-gtk
   vlc
   vlc-plugin-ffmpeg
   vlc-plugin-x264
   vlc-plugin-x265
   vlc-cli
+  yt-dlp
+  zathura
+  zsh
+  tree
+  transmission-gtk
 EOF
 )
 
