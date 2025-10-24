@@ -33,6 +33,8 @@ chsh -s $(which zsh)
 # zap !!!
 zsh <(curl -s https:/raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
+omarchy-theme-install https://github.com/JaxonWright/omarchy-midnight-theme.git
+
 # Omarchy manual development installation
 #  php
 #  go
