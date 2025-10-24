@@ -7,7 +7,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'CaskaydiaMono Nerd Font';
+  font-family: 'FiraCode Nerd Font Mono';
   font-size: 12px;
 }
 
@@ -30,8 +30,11 @@
   opacity: 0.5;
 }
 
+#tray,
 #cpu,
 #battery,
+#network,
+#bluetooth,
 #pulseaudio,
 #custom-omarchy,
 #custom-screenrecording-indicator,
@@ -40,20 +43,8 @@
   margin: 0 7.5px;
 }
 
-#tray {
-  margin-right: 16px;
-}
-
-#bluetooth {
-  margin-right: 17px;
-}
-
-#network {
-  margin-right: 13px;
-}
-
 #custom-expand-icon {
-  margin-right: 20px;
+  margin-right: 7px;
 }
 
 tooltip {
