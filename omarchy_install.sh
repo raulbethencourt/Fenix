@@ -38,7 +38,7 @@ omarchy-theme-install https://github.com/JaxonWright/omarchy-midnight-theme.git
 
 # Install my nvim config
 mv $HOME/.config/nvim{,.bak}
-gh repo clone raulbethencourt/nvim $HOME/.config/nvim_test
+gh repo clone raulbethencourt/nvim $HOME/.config/nvim
 
 # Tools
 gh repo clone raulbethencourt/tools $HOME/tools
