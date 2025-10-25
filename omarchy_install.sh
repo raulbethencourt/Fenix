@@ -68,3 +68,4 @@ cp -rf $HOME/Fenix/dotfiles/.fonts/* $HOME/.local/share/fonts/
 # Omarchy manual AUR installation
 #  ccze
 #  clipse
+#  teams-for-linux
