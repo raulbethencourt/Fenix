@@ -13,6 +13,7 @@ while read -r p; do sudo pacman --noconfirm -S "$p"; done < <(
   lynx
   shfmt
   sxiv
+  unrar
   tmux
   vlc
   vlc-plugin-ffmpeg
