@@ -1,0 +1,219 @@
+{
+    "$schema": "https://opencode.ai/theme.json",
+    "defs": {
+        "gruvbox_bg": "#000000",
+        "gruvbox_fg": "#d4be98",
+        "gruvbox_black": "#32302f",
+        "gruvbox_red": "#ea6962",
+        "gruvbox_green": "#a9b665",
+        "gruvbox_yellow": "#d8a657",
+        "gruvbox_blue": "#7daea3",
+        "gruvbox_magenta": "#d3869b",
+        "gruvbox_cyan": "#89b482",
+        "gruvbox_white": "#d4be98",
+        "gruvbox_dark_gray": "#1d2021",
+        "gruvbox_light_gray": "#665c54"
+    },
+    "theme": {
+        "primary": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_cyan"
+        },
+        "secondary": {
+            "dark": "gruvbox_magenta",
+            "light": "gruvbox_magenta"
+        },
+        "accent": {
+            "dark": "gruvbox_cyan",
+            "light": "gruvbox_cyan"
+        },
+        "error": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "warning": {
+            "dark": "gruvbox_yellow",
+            "light": "gruvbox_yellow"
+        },
+        "success": {
+            "dark": "gruvbox_green",
+            "light": "gruvbox_green"
+        },
+        "info": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_cyan"
+        },
+        "text": {
+            "dark": "gruvbox_fg",
+            "light": "gruvbox_black"
+        },
+        "textMuted": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "background": {
+            "dark": "gruvbox_bg",
+            "light": "gruvbox_white"
+        },
+        "backgroundPanel": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_fg"
+        },
+        "backgroundElement": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_white"
+        },
+        "border": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "borderActive": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_blue"
+        },
+        "borderSubtle": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_black"
+        },
+        "diffAdded": {
+            "dark": "gruvbox_green",
+            "light": "gruvbox_green"
+        },
+        "diffRemoved": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "diffContext": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "diffHunkHeader": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "diffHighlightAdded": {
+            "dark": "gruvbox_green",
+            "light": "gruvbox_green"
+        },
+        "diffHighlightRemoved": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "diffAddedBg": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_fg"
+        },
+        "diffRemovedBg": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_fg"
+        },
+        "diffContextBg": {
+            "dark": "gruvbox_bg",
+            "light": "gruvbox_white"
+        },
+        "diffLineNumber": {
+            "dark": "gruvbox_light_gray",
+            "light": "gruvbox_black"
+        },
+        "diffAddedLineNumberBg": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_fg"
+        },
+        "diffRemovedLineNumberBg": {
+            "dark": "gruvbox_dark_gray",
+            "light": "gruvbox_fg"
+        },
+        "markdownText": {
+            "dark": "gruvbox_fg",
+            "light": "gruvbox_black"
+        },
+        "markdownHeading": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_blue"
+        },
+        "markdownLink": {
+            "dark": "gruvbox_magenta",
+            "light": "gruvbox_magenta"
+        },
+        "markdownLinkText": {
+            "dark": "gruvbox_cyan",
+            "light": "gruvbox_cyan"
+        },
+        "markdownCode": {
+            "dark": "gruvbox_green",
+            "light": "gruvbox_green"
+        },
+        "markdownBlockQuote": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "markdownEmph": {
+            "dark": "gruvbox_yellow",
+            "light": "gruvbox_yellow"
+        },
+        "markdownStrong": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "markdownHorizontalRule": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "markdownListItem": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_blue"
+        },
+        "markdownListEnumeration": {
+            "dark": "gruvbox_cyan",
+            "light": "gruvbox_cyan"
+        },
+        "markdownImage": {
+            "dark": "gruvbox_magenta",
+            "light": "gruvbox_magenta"
+        },
+        "markdownImageText": {
+            "dark": "gruvbox_cyan",
+            "light": "gruvbox_cyan"
+        },
+        "markdownCodeBlock": {
+            "dark": "gruvbox_fg",
+            "light": "gruvbox_black"
+        },
+        "syntaxComment": {
+            "dark": "gruvbox_black",
+            "light": "gruvbox_light_gray"
+        },
+        "syntaxKeyword": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "syntaxFunction": {
+            "dark": "gruvbox_blue",
+            "light": "gruvbox_blue"
+        },
+        "syntaxVariable": {
+            "dark": "gruvbox_fg",
+            "light": "gruvbox_black"
+        },
+        "syntaxString": {
+            "dark": "gruvbox_green",
+            "light": "gruvbox_green"
+        },
+        "syntaxNumber": {
+            "dark": "gruvbox_magenta",
+            "light": "gruvbox_magenta"
+        },
+        "syntaxType": {
+            "dark": "gruvbox_yellow",
+            "light": "gruvbox_yellow"
+        },
+        "syntaxOperator": {
+            "dark": "gruvbox_red",
+            "light": "gruvbox_red"
+        },
+        "syntaxPunctuation": {
+            "dark": "gruvbox_fg",
+            "light": "gruvbox_black"
+        }
+    }
+}
