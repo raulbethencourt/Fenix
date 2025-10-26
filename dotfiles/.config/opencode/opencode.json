@@ -1,6 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "theme": "system",
+    "theme": "gruvbox_dark",
     "autoupdate": true,
     "tools": {
         "write": true,
