@@ -15,6 +15,7 @@ while read -r p; do sudo pacman --noconfirm -S "$p"; done < <(
   sxiv
   unrar
   tmux
+  vi
   vlc
   vlc-plugin-ffmpeg
   vlc-plugin-x264
