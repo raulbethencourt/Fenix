@@ -1,12 +1,13 @@
-general.import = [
+﻿general.import = [
     # "~/.config/alacritty/everforest.toml",
+    # "~/.config/alacritty/aamis.toml",
     "~/.config/alacritty/gruvbox_material.toml",
     # "~/.config/alacritty/ayu.toml",
     # "~/.config/alacritty/gruvbox_material_hard_dark.toml",
 ]
 
 [terminal.shell]
-program = "/home/rabeta/.nix-profile/bin/tmux"
+program = "/usr/bin/tmux"
 
 [env]
 TERM = "xterm-256color"
@@ -24,15 +25,15 @@ multiplier = 3
 size = 11.0
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "Victor Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Italic"
 
 [font.glyph_offset]
