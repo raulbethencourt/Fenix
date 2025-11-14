@@ -9,6 +9,7 @@ export GOOS=linux
 export GOARCH=amd64
 export PYENV_ROOT="$HOME/.pyenv"
 export SCRIPTSPATH="$HOME/tools/scripts"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
@@ -40,8 +41,10 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/apps/zig-linux-x86_64-0.13.0/zig"
 export PATH="$PATH:$SCRIPTSPATH/bin"
+export PATH="$PATH:$HOME/.opencode/bin"
 
 # Nvm
+source /usr/share/nvm/init-nvm.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
