@@ -1,0 +1,15 @@
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+
+# Add my 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+# Search hidden files / directories (e.g. dotfiles) by default
+--hidden
+
+# Don't search into the git files by default
+--glob=!.git/*
+
+--smart-case
