@@ -11,3 +11,4 @@ alias tldr="tldr -t ocean"
 alias vim='nvim'
 alias grep='grep --color=auto'
 alias lynx='lynx -accept_all_cookies'
+alias oc='opencode --hostname=127.0.0.1 --port=4096'
