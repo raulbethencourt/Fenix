@@ -11,6 +11,7 @@ while read -r p; do sudo pacman --noconfirm -S "$p"; done < <(
   git-delta
   jq
   lynx
+  shellcheck
   shfmt
   sxiv
   unrar
