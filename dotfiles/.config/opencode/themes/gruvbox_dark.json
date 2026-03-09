@@ -3,7 +3,7 @@
     "defs": {
         "gruvbox_bg": "#141617",
         "gruvbox_fg": "#d4be98",
-        "gruvbox_black": "#32302f",
+        "gruvbox_black": "#665c54",
         "gruvbox_red": "#ea6962",
         "gruvbox_green": "#a9b665",
         "gruvbox_yellow": "#d8a657",
@@ -11,7 +11,7 @@
         "gruvbox_magenta": "#d3869b",
         "gruvbox_cyan": "#89b482",
         "gruvbox_white": "#d4be98",
-        "gruvbox_dark_gray": "#1d2021",
+        "gruvbox_dark_gray": "#1d2020",
         "gruvbox_light_gray": "#665c54"
     },
     "theme": {
