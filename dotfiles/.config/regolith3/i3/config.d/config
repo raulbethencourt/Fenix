@@ -1,7 +1,13 @@
 ###############################################################################
 # External programs launched with i3
 ###############################################################################
+# always-nvim: floating editor
+bindsym $mod+e exec "always-nvim"
+for_window [class="always-nvim"] floating enable, sticky enable, resize set 1200 800, move position center
+
 bindsym --release $mod+Shift+o exec "flameshot gui --clipboard --path ~/Images"
+# Bind floating shell with TUI selection to clipse
+bindsym --release $mod+Shift+c exec ghostty -e "$SHELL" -c "i3-msg 'floating enable' && clipse"
 
 # Start the installed regolith-compositor
 set_from_resource $i3-wm.program.compositor i3-wm.program.compositor /usr/share/regolith-compositor/init
@@ -21,5 +27,6 @@ smart_gaps inverse_outer
 gaps inner 0
 gaps outer 0
 
-# Start with alacritty
-exec alacritty
+# Start with ghostty
+exec ghostty
+exec --no-startup-id clipse -listen                                                           # run listener on startup
