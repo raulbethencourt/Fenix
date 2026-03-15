@@ -1,0 +1,27 @@
+# always-nvim configuration
+# Uncomment and edit variables to override defaults
+
+# Terminal command (must accept -e flag for command execution)
+NA_TERMINAL_CMD="alacritty --class always-nvim --title always-nvim -e"
+
+# Force backend: auto, x11, or wayland
+NA_BACKEND="auto"
+
+# Clear primary selection after each run
+NA_CLEAR_PRIMARY="true"
+
+# Temp file extension / Neovim filetype
+NA_FILETYPE="md"
+
+# Additional args passed to Neovim
+#NA_NVIM_ARGS=""
+
+# Seconds to wait after paste before clipboard restore
+NA_PASTE_DELAY="0.2"
+
+# Seconds to wait after refocus before paste
+NA_FOCUS_DELAY="0.1"
+
+# Neovim APPNAME (uses ~/.config/<appname>/ for config, empty = normal config)
+# Tip: set to "always-nvim/nvim" for isolated config (~/.config/always-nvim/nvim/)
+NA_NVIM_APPNAME="always-nvim/nvim"
