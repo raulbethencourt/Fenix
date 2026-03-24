@@ -8,36 +8,36 @@
     "presets": {
         "openai": {
             "orchestrator": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "skills": ["*"],
                 "mcps": ["websearch"]
             },
             "oracle": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "variant": "high",
                 "skills": [],
                 "mcps": []
             },
             "librarian": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "variant": "low",
                 "skills": [],
                 "mcps": ["websearch", "context7", "grep_app"]
             },
             "explorer": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "variant": "low",
                 "skills": [],
                 "mcps": []
             },
             "designer": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "variant": "medium",
                 "skills": ["agent-browser"],
                 "mcps": []
             },
             "fixer": {
-                "model": "opencode/minimax-m2.5-free",
+                "model": "github-copilot/claude-sonnet-4.5",
                 "variant": "low",
                 "skills": [],
                 "mcps": []

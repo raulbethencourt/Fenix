@@ -1,29 +1,31 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "plugin": ["oh-my-opencode-slim"],
-    "permission": {
-        "bash": {
-            "*": "allow",
-            "git push *": "deny",
-            "git add *": "deny",
-            "git commit *": "deny",
-            "git pull *": "deny",
-            "npm *": "ask",
-            "rm *": "ask",
-            "rm -rf ~/": "deny",
-            "rm -rf /home/rabeta": "deny"
-        }
-    },
-    "tools": {
-        "write": true,
-        "bash": true
-    },
-    "agent": {
-        "explore": {
-            "disable": true
-        },
-        "general": {
-            "disable": true
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-opencode-slim"
+  ],
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "git push *": "deny",
+      "git add *": "deny",
+      "git commit *": "deny",
+      "git pull *": "deny",
+      "npm *": "ask",
+      "rm *": "ask",
+      "rm -rf ~/": "deny",
+      "rm -rf /home/rabeta": "deny"
     }
+  },
+  "tools": {
+    "write": true,
+    "bash": true
+  },
+  "agent": {
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    }
+  }
 }
