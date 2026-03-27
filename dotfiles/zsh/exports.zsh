@@ -1,4 +1,5 @@
 # General
+
 # export LANG=C # Terminal in english
 export GIT_EDITOR="nvim"
 export EDITOR="nvim"
@@ -8,26 +9,26 @@ export GOPATH=$HOME/go
 export GOOS=linux
 export GOARCH=amd64
 export PYENV_ROOT="$HOME/.pyenv"
-export SCRIPTSPATH="$HOME/tools/scripts"
+export SCRIPTSPATH="$HOME/shelltools"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export OPENCODE_PORT=4096
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
   --height 50% --info=inline --margin=1 --padding=1
   --bind=tab:up --bind=btab:down --bind=ctrl-g:first
   --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --prompt '󰀘  ' --info=hidden
   --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
-  --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
+  --color info:#83a598,prompt:#ea6962,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
 
 # FZF CTRL-R
-export FZF_CTRL_R_OPTS="
-  --border=none -i --bind=tab:up --bind=btab:down --bind=ctrl-g:first
-  --preview 'echo {}' --preview-window up:3:hidden:wrap
-  --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+export FZF_CTRL_R_OPTS=" \
+  --layout reverse --height 70% --style minimal -i --bind=tab:down --bind=btab:up --bind=ctrl-g:first
+  --prompt '󰀘  ' --info=hidden
+  --header ' '
+  --color fg:#ebdbb2,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+  --color info:#83a598,prompt:#ea6962,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
 
 # PATHS
 export PATH="$HOME/.local/bin:$PATH"
@@ -40,11 +41,13 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/apps/zig-linux-x86_64-0.13.0/zig"
+export PATH="$PATH:$HOME/apps/nerd-dictation"
 export PATH="$PATH:$SCRIPTSPATH/bin"
 export PATH="$PATH:$HOME/.opencode/bin"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Nvm
-source /usr/share/nvm/init-nvm.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
@@ -85,3 +88,6 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# bun completions
+[ -s "/home/rabeta/.bun/_bun" ] && source "/home/rabeta/.bun/_bun"
