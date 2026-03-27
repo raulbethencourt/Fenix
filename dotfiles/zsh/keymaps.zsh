@@ -36,6 +36,15 @@ function _nvim() {
 zle -N _nvim
 bindkey '^v' _nvim
 
+# launch opencode
+function _opencode() {
+  zle push-input
+  BUFFER="opencode --port 4096 ."
+  zle accept-line
+}
+zle -N _opencode
+bindkey '^a' _opencode
+
 # recover job
 function _fg() {
   zle push-input
