@@ -1,0 +1,5 @@
+alias bdd='bns dockerize deploy'
+alias bdu='bns dockerize up'
+alias bdw='bns dockerize down'
+alias bxs='bns xdebug start'
+alias baa='sudo /home/rabeta/dev/bns/tools/bin/bns applogs'

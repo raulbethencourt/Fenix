@@ -1,0 +1,5 @@
+connections:
+  - driver: mysql
+    dataSourceName: 'root:root@tcp(127.0.0.1:8085)/certif25'
+  - driver: mysql
+    dataSourceName: 'root:root@tcp(127.0.0.1:8085)/modele25'
