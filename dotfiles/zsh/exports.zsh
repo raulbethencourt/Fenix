@@ -15,7 +15,7 @@ export OPENCODE_PORT=4096
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
-  --height 50% --info=inline --margin=1 --padding=1
+  --height 50% --info=inline --margin=1 --padding=0
   --bind=tab:up --bind=btab:down --bind=ctrl-g:first
   --bind 'ctrl-/:toggle-preview'
   --prompt '󰀘  ' --info=hidden
