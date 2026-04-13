@@ -1,31 +1,67 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "plugin": [
-    "oh-my-opencode-slim"
-  ],
-  "permission": {
-    "bash": {
-      "*": "allow",
-      "git push *": "deny",
-      "git add *": "deny",
-      "git commit *": "deny",
-      "git pull *": "deny",
-      "npm *": "ask",
-      "rm *": "ask",
-      "rm -rf ~/": "deny",
-      "rm -rf /home/rabeta": "deny"
-    }
-  },
-  "tools": {
-    "write": true,
-    "bash": true
-  },
-  "agent": {
-    "explore": {
-      "disable": true
+    "$schema": "https://opencode.ai/config.json",
+    "instructions": [
+        "~/.config/opencode/system/code-philosophy.md",
+        "~/.config/opencode/system/token-efficiency.md"
+    ],
+    "plugin": ["oh-my-openagent@latest"],
+    "agent": {
+        "build": {
+            "disable": true
+        },
+        "plan": {
+            "disable": true
+        },
+        "code-reviewer": {
+            "disable": false
+        }
     },
-    "general": {
-      "disable": true
+    "permission": {
+        "bash": {
+            "*": "allow",
+            "cat ~/.ssh/": "deny",
+            "git push *": "deny",
+            "git add *": "ask",
+            "git commit *": "ask",
+            "git pull *": "deny",
+            "git restore *": "deny",
+            "git reset *": "deny",
+            "npm *": "ask",
+            "ssh *": "deny",
+            "rm *": "ask",
+            "rm -rf /": "deny",
+            "rm -rf ~/": "deny",
+            "rm -rf /home/rabeta": "deny"
+        },
+        "read": {
+            "/home/rabeta/secure/": "deny",
+            "/home/rabeta/.ssh/": "deny",
+            "/home/rabeta/vpn/": "deny",
+            "/home/rabeta/personal/": "deny"
+        },
+        "edit": {
+            "/home/rabeta/secure/": "deny",
+            "/home/rabeta/.ssh/": "deny",
+            "/home/rabeta/vpn/": "deny",
+            "/home/rabeta/personal/": "deny"
+        },
+        "glob": {
+            "/home/rabeta/secure/": "deny",
+            "/home/rabeta/.ssh/": "deny",
+            "/home/rabeta/vpn/": "deny",
+            "/home/rabeta/personal/": "deny"
+        },
+        "grep": {
+            "/home/rabeta/secure/": "deny",
+            "/home/rabeta/.ssh/": "deny",
+            "/home/rabeta/vpn/": "deny",
+            "/home/rabeta/personal/": "deny"
+        },
+        "list": {
+            "/home/rabeta/secure/": "deny",
+            "/home/rabeta/.ssh/": "deny",
+            "/home/rabeta/vpn/": "deny",
+            "/home/rabeta/personal/": "deny"
+        }
     }
-  }
 }

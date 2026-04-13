@@ -5,7 +5,9 @@ Global rules for the OpenCode agent. These apply to all projects.
 ## Restrictions
 
 - Never remove or overwrite .env, .env* files
+- Never remove or overwrite or read, the ~/.ssh folder. Never read it
 - Never read, remove, write, or execute anything in ~/personal
+- Never connect to a remote server in ssh, never
 - Never commit files that contain secrets, credentials, API keys, or tokens
 - Never run destructive commands (rm -rf, DROP DATABASE, etc.) without
 explicit user confirmation
@@ -23,6 +25,10 @@ explicit user confirmation
 - Prefer editing existing files over creating new ones
 - Prefer concise responses; skip unnecessary explanations unless asked
 - When unsure about intent, ask before acting
+- **In non-interactive or background execution contexts** (e.g., async agents, automated pipelines):
+  do NOT block waiting for input. Instead, choose the most conservative/minimal valid interpretation,
+  log the ambiguity as a structured JSON-lines entry to stderr, and continue. Surface the ambiguity
+  in the final output so the human can review it.
 
 ## Workflows
 

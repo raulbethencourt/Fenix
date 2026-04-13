@@ -39,7 +39,7 @@ bindkey '^v' _nvim
 # launch opencode
 function _opencode() {
   zle push-input
-  BUFFER="opencode --port 4096 ."
+  BUFFER="opencode ."
   zle accept-line
 }
 zle -N _opencode
