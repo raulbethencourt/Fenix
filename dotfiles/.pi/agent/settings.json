@@ -1,0 +1,18 @@
+{
+  "lastChangelogVersion": "0.70.2",
+  "defaultProvider": "github-copilot",
+  "defaultModel": "claude-sonnet-4.6",
+  "editorPaddingX": 3,
+  "hideThinkingBlock": true,
+  "quietStartup": true,
+  "enableInstallTelemetry": false,
+  "theme": "everforest-dark",
+  "extensions": [
+    "~/.pi/agent/extensions/"
+  ],
+  "packages": [
+    "npm:pi-powerline-footer"
+  ],
+  "powerline": "default",
+  "defaultThinkingLevel": "medium"
+}
