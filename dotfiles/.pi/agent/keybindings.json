@@ -1,4 +1,5 @@
 {
+  "app.session.rename": "ctrl+shift+r",
   "tui.editor.pageUp": ["up", "ctrl+u"],
   "tui.editor.pageDown": ["down", "ctrl+d"]
 }

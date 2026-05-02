@@ -1,9 +1,9 @@
 {
-  "lastChangelogVersion": "0.70.2",
+  "lastChangelogVersion": "0.72.1",
   "defaultProvider": "github-copilot",
-  "defaultModel": "claude-sonnet-4.6",
+  "defaultModel": "claude-opus-4.6",
   "editorPaddingX": 3,
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "quietStartup": true,
   "enableInstallTelemetry": false,
   "theme": "everforest-dark",
@@ -11,8 +11,9 @@
     "~/.pi/agent/extensions/"
   ],
   "packages": [
-    "npm:pi-powerline-footer"
+    "npm:context-mode",
+    "npm:pi-mcp-adapter"
   ],
-  "powerline": "default",
-  "defaultThinkingLevel": "medium"
+  "defaultThinkingLevel": "medium",
+  "shellPath": "/home/rabeta/.local/bin/pi-zsh"
 }

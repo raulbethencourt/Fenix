@@ -49,8 +49,9 @@ Import everything you need from this package::
     attachments.delete_attachment(client, att["id"])
 """
 
-from . import attachments, comments, epics, stories, tasks
+from . import attachments, comments, epics, stories, summarize, tasks
 from .client import WrikeClient
+from .config import get_me_id, get_me_info
 from .exceptions import (
     AuthenticationError,
     PermissionError,
@@ -68,8 +69,12 @@ __all__ = [
     "tasks",
     "comments",
     "attachments",
+    "summarize",
     # Client
     "WrikeClient",
+    # Identity helpers
+    "get_me_id",
+    "get_me_info",
     # Exceptions
     "WrikeAPIError",
     "AuthenticationError",

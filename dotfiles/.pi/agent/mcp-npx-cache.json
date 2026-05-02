@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "entries": {
+    "[\"npx\",\"-y\",\"@modelcontextprotocol/server-github\"]": {
+      "resolvedBin": "/home/rabeta/.npm/_npx/3dfbf5a9eea4a1b3/node_modules/@modelcontextprotocol/server-github/dist/index.js",
+      "resolvedAt": 1777756792838,
+      "packageVersion": "2025.4.8",
+      "isJs": true
+    },
+    "[\"npx\",\"-y\",\"chrome-devtools-mcp@latest\"]": {
+      "resolvedBin": "/home/rabeta/.npm/_npx/15c61037b1978c83/node_modules/chrome-devtools-mcp/build/src/bin/chrome-devtools-mcp.js",
+      "resolvedAt": 1777756793596,
+      "packageVersion": "0.23.0",
+      "isJs": true
+    }
+  }
+}

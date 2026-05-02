@@ -181,7 +181,11 @@ def list_stories(
     if not include_completed:
         params["status"] = "Active"
 
-    return client.get(f"folders/{epic_id}/tasks", params=params)
+    # The folders/{id}/tasks endpoint silently strips responsibleIds.
+    # Fetch IDs first, then batch-resolve full details.
+    stub_tasks = client.get(f"folders/{epic_id}/tasks", params=params)
+    task_ids = [t["id"] for t in stub_tasks]
+    return client.get_tasks_batch(task_ids)
 
 
 def find_story(

@@ -166,16 +166,13 @@ def list_tasks(
     if not include_completed:
         params["status"] = "Active"
 
-    all_tasks = client.get(f"tasks/{story_id}/subtasks", params=params)
-
-    # Fallback: if the /subtasks endpoint is not available, query by super task
-    if not all_tasks:
-        all_tasks = client.get(
-            "tasks",
-            params={**params, "superTasks": story_id},
-        )
-
-    return all_tasks
+    # The folders/{id}/tasks endpoint silently strips responsibleIds.
+    # Fetch IDs via subtasks endpoint, then batch-resolve full details.
+    stub_tasks = client.get(f"tasks/{story_id}/subtasks", params=params)
+    if not stub_tasks:
+        stub_tasks = client.get("tasks", params={**params, "superTasks": story_id})
+    task_ids = [t["id"] for t in stub_tasks]
+    return client.get_tasks_batch(task_ids)
 
 
 def update_task(

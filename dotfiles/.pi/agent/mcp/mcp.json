@@ -1,0 +1,21 @@
+{
+    "mcpServers": {
+        "chrome-devtools": {
+            "command": "npx",
+            "args": ["-y", "chrome-devtools-mcp@latest"],
+            "directTools": true
+        },
+        "github": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-github"],
+            "directTools": ["search_repositories", "get_file_contents"]
+        },
+        "huge-server": {
+            "command": "npx",
+            "args": ["-y", "mega-mcp@latest"]
+        },
+        "context-mode": {
+            "command": "context-mode"
+        }
+    }
+}

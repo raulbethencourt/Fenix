@@ -212,6 +212,37 @@ class WrikeClient:
 
         return self._parse_response(response)
 
+    def get_tasks_batch(self, task_ids: list[str]) -> list[dict[str, Any]]:
+        """Fetch full task details for a list of IDs using the batch endpoint.
+
+        The ``folders/{id}/tasks`` endpoint silently strips ``responsibleIds``
+        from its response regardless of the ``fields`` parameter.  The only
+        reliable way to get correct assignee data is to fetch tasks
+        individually or via the batch ``tasks/{id1,id2,...}`` endpoint.
+
+        This method splits ``task_ids`` into chunks of 100 (Wrike's batch
+        limit) and returns the fully-hydrated task dicts.
+
+        Args:
+            task_ids: List of Wrike task IDs to fetch.
+
+        Returns:
+            List of fully-hydrated task dicts with correct ``responsibleIds``.
+
+        Example::
+
+            ids = [t["id"] for t in client.get("folders/XYZ/tasks")]
+            tasks = client.get_tasks_batch(ids)
+        """
+        if not task_ids:
+            return []
+        result: list[dict[str, Any]] = []
+        for i in range(0, len(task_ids), 100):
+            chunk = task_ids[i : i + 100]
+            batch = self.get(f"tasks/{','.join(chunk)}")
+            result.extend(batch if isinstance(batch, list) else batch.get("data", []))
+        return result
+
     def close(self) -> None:
         """Close the underlying HTTP session."""
         self._session.close()
