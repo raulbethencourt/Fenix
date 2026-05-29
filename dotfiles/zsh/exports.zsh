@@ -3,7 +3,7 @@
 # export LANG=C # Terminal in english
 export GIT_EDITOR="nvim"
 export EDITOR="nvim"
-export TERM="xterm-256color"
+export TERM="ghostty"
 export BROWSER="brave"
 export GOPATH=$HOME/go
 export GOOS=linux
@@ -12,6 +12,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export SCRIPTSPATH="$HOME/shelltools"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export OPENCODE_PORT=4096
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # FZF color theme
 export FZF_DEFAULT_OPTS=" \
@@ -44,13 +45,9 @@ export PATH="$PATH:$HOME/apps/zig-linux-x86_64-0.13.0/zig"
 export PATH="$PATH:$HOME/apps/nerd-dictation"
 export PATH="$PATH:$SCRIPTSPATH/bin"
 export PATH="$PATH:$HOME/.opencode/bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # Cargo
 . "$HOME/.cargo/env"

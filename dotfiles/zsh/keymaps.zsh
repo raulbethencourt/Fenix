@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 # cd with fzf
 function _cdf() {
   zle push-input
@@ -34,7 +33,7 @@ function _nvim() {
   zle accept-line
 }
 zle -N _nvim
-bindkey '^v' _nvim
+bindkey '^n' _nvim
 
 # launch opencode
 function _opencode() {
