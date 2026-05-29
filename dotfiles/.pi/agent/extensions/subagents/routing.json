@@ -1,0 +1,21 @@
+{
+	"worker": {
+		"simple": "github-copilot/gpt-5.4-mini",
+		"complex": "github-copilot/gpt-5.4"
+	},
+	"tester": {
+		"complex": "github-copilot/claude-sonnet-4.6"
+	},
+	"refactorer": {
+		"simple": "github-copilot/gpt-5.4",
+		"complex": "github-copilot/claude-sonnet-4.6"
+	},
+	"scout": {
+		"complex": "github-copilot/gpt-5.4"
+	},
+	"fallback": {
+		"simple": "opencode/minimax-m2.5-free",
+		"standard": "opencode/deepseek-v4-flash-free",
+		"complex": "opencode/nemotron-3-super-free"
+	}
+}

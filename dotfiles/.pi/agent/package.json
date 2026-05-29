@@ -1,0 +1,14 @@
+{
+  "name": "pi-agent-extensions-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0",
+    "typescript": "^5.8.0",
+    "@types/node": "^24.0.0"
+  }
+}

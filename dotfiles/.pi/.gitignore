@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+package-lock.json
+/**/npm/
+
+# Security / credentials
+auth.json
+
+# Logs
+*.log
+pi-crash.log
+pi-debug.log
+
+# Sessions (runtime state, large)
+sessions/
+
+# MCP caches (auto-generated)
+mcp-cache.json
+mcp-npx-cache.json
+
+# Context-mode (runtime data, databases, session state)
+context-mode/
+
+# Runtime analytics DB (SQLite)
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files with secrets (keep .env.example)
+.env*
+!.env.example
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+*~
+
+agent/.pi
+agent/settings.json
