@@ -1,1 +1,3 @@
 /dotfiles/.config/lvim/lazy-lock.json
+/.env*
+/**/.env*
