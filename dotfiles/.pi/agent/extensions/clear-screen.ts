@@ -9,7 +9,7 @@ import type {
     ExtensionAPI,
     ExtensionCommandContext,
     ExtensionShortcut,
-} from "@mariozechner/pi-coding-agent";
+} from "@earendil-works/pi-coding-agent";
 
 type Ctx = ExtensionCommandContext;
 

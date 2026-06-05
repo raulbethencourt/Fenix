@@ -7,15 +7,490 @@
  * Inspired by Claude Code's /context command.
  */
 
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { DynamicBorder } from "@mariozechner/pi-coding-agent";
-import { Container, Text, Spacer, matchesKey, Key, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { matchesKey, Key, truncateToWidth } from "@mariozechner/pi-tui";
 import { formatTokens } from "../shared/format.ts";
 
 interface SkillInfo {
     name: string;
     description?: string;
     path?: string;
+}
+
+interface ToolInfo {
+    name?: string;
+    description?: string;
+    parameters?: unknown;
+}
+
+interface BranchEntryInfo {
+    type?: string;
+    message?: any;
+    summary?: string;
+    content?: unknown;
+}
+
+interface CompactionSettingsInfo {
+    enabled?: boolean;
+    reserveTokens?: number;
+}
+
+interface ModelInfo {
+    provider?: string;
+    id?: string;
+    name?: string;
+    contextWindow?: number;
+}
+
+interface TokenBreakdownCategory {
+    id: "systemPrompt" | "systemTools" | "skills" | "messages" | "buffer" | "free";
+    label: string;
+    tokens: number;
+    color: string;
+    glyph: string;
+}
+
+interface TokenBreakdown {
+    model?: ModelInfo | null;
+    contextWindow: number;
+    categories: TokenBreakdownCategory[];
+    systemPromptTokens: number;
+    systemToolTokens: number;
+    skillTokens: number;
+    messageTokens: number;
+    autoCompactBufferTokens: number;
+    bufferTokens: number;
+    usedTokens: number;
+    freeTokens: number;
+}
+
+interface ComputeTokenBreakdownOptions {
+    model?: ModelInfo | null;
+    contextWindow?: number;
+    usedTokens?: number | null;
+    systemPrompt?: string;
+    tools?: ToolInfo[];
+    skills?: SkillInfo[];
+    branchEntries?: BranchEntryInfo[];
+    compaction?: CompactionSettingsInfo | null;
+    includeVisualCategories?: boolean;
+}
+
+interface ThemeLike {
+    fg: (color: string, text: string) => string;
+    bold?: (text: string) => string;
+}
+
+interface CellSpec {
+    glyph: string;
+    color: string;
+}
+
+const DEFAULT_AUTO_COMPACT_BUFFER_TOKENS = 16_384;
+const ESTIMATED_IMAGE_CHARS = 4_800;
+
+const GRID_COLS = 20;
+const GRID_ROWS = 10;
+const GRID_CELLS = GRID_COLS * GRID_ROWS;
+const GRID_GUTTER = "   ";
+
+const CELL_FILLED = "⛁";
+const CELL_FILLED_MESSAGES = "⛃";
+const CELL_FREE = "⛶";
+const CELL_BUFFER = "⛝";
+
+function safeJsonStringify(value: unknown): string {
+    try {
+        return JSON.stringify(value) ?? "";
+    } catch {
+        return "";
+    }
+}
+
+function estimateTextTokens(text?: string): number {
+    return text ? Math.ceil(text.length / 4) : 0;
+}
+
+function estimateContentTokens(content: unknown): number {
+    if (typeof content === "string") {
+        return estimateTextTokens(content);
+    }
+    if (!Array.isArray(content)) {
+        return estimateTextTokens(typeof content === "undefined" ? "" : safeJsonStringify(content));
+    }
+
+    let chars = 0;
+    for (const block of content) {
+        if (!block || typeof block !== "object") continue;
+        const item = block as any;
+        if (item.type === "text") {
+            chars += String(item.text ?? "").length;
+        } else if (item.type === "thinking") {
+            chars += String(item.thinking ?? "").length;
+        } else if (item.type === "toolCall") {
+            chars += String(item.name ?? "").length + safeJsonStringify(item.arguments).length;
+        } else if (item.type === "image") {
+            chars += ESTIMATED_IMAGE_CHARS;
+        } else if (typeof item.text === "string") {
+            chars += item.text.length;
+        } else {
+            chars += safeJsonStringify(item).length;
+        }
+    }
+
+    return Math.ceil(chars / 4);
+}
+
+function estimateMessageTokens(message: any): number {
+    if (!message || typeof message !== "object") return 0;
+
+    switch (message.role) {
+        case "user":
+            return estimateContentTokens(message.content);
+        case "assistant":
+            return estimateContentTokens(message.content);
+        case "toolResult":
+        case "custom":
+            return estimateContentTokens(message.content);
+        case "bashExecution":
+            return estimateTextTokens(String(message.command ?? "") + String(message.output ?? ""));
+        case "branchSummary":
+        case "compactionSummary":
+            return estimateTextTokens(String(message.summary ?? ""));
+        default:
+            return estimateContentTokens((message as any).content ?? safeJsonStringify(message));
+    }
+}
+
+function estimateBranchEntryTokens(entry: BranchEntryInfo): number {
+    switch (entry.type) {
+        case "message":
+            return estimateMessageTokens(entry.message);
+        case "branch_summary":
+        case "compaction":
+            return estimateTextTokens(entry.summary ?? "");
+        case "custom_message":
+            return estimateContentTokens(entry.content);
+        default:
+            return 0;
+    }
+}
+
+function estimateToolTokens(tools: ToolInfo[] = []): number {
+    return tools.reduce((total, tool) => {
+        const schema = safeJsonStringify(tool.parameters ?? {});
+        return total + estimateTextTokens(`${tool.name ?? ""}${tool.description ?? ""}${schema}${" ".repeat(100)}`);
+    }, 0);
+}
+
+function estimateSkillTokens(skills: SkillInfo[] = []): number {
+    return skills.reduce((total, skill) => total + estimateTextTokens(`${skill.name} ${skill.description ?? ""}`.trim()), 0);
+}
+
+function fitCategoryTotals(values: number[], maxTotal: number): number[] {
+    const total = values.reduce((sum, value) => sum + value, 0);
+    if (total <= maxTotal) return values;
+    if (maxTotal <= 0) return values.map(() => 0);
+
+    const scaled = values.map((value) => Math.floor((value * maxTotal) / total));
+    let remainder = maxTotal - scaled.reduce((sum, value) => sum + value, 0);
+    const order = values
+        .map((value, index) => ({
+            index,
+            fraction: (value * maxTotal) / total - scaled[index],
+        }))
+        .sort((a, b) => b.fraction - a.fraction);
+
+    for (const { index } of order) {
+        if (remainder <= 0) break;
+        scaled[index]++;
+        remainder--;
+    }
+
+    return scaled;
+}
+
+function resolveBufferTokens(
+    contextWindow: number,
+    usedTokens: number,
+    compaction?: CompactionSettingsInfo | null,
+): number {
+    if (contextWindow <= 0 || !compaction || compaction.enabled === false) return 0;
+    const reserveTokens = typeof compaction.reserveTokens === "number"
+        ? compaction.reserveTokens
+        : DEFAULT_AUTO_COMPACT_BUFFER_TOKENS;
+    return Math.max(0, Math.min(reserveTokens, contextWindow - usedTokens));
+}
+
+function formatTokenCount(n: number): string {
+    return Math.max(0, Math.round(n)).toLocaleString("en-US");
+}
+
+function percentString(part: number, whole: number, fractionDigits = 1): string {
+    if (whole <= 0) return "0%";
+    const pct = (part / whole) * 100;
+    if (pct > 0 && pct < 0.05) return "<0.1%";
+    return `${pct.toFixed(fractionDigits)}%`;
+}
+
+function applyThemeColor(theme: ThemeLike, color: string, text: string, fallback = "text"): string {
+    try {
+        return theme.fg(color, text);
+    } catch {
+        if (color !== fallback) {
+            try {
+                return theme.fg(fallback, text);
+            } catch {
+                return text;
+            }
+        }
+        return text;
+    }
+}
+
+function buildBreakdownCategories(
+    systemPromptTokens: number,
+    systemToolTokens: number,
+    skillTokens: number,
+    messageTokens: number,
+    autoCompactBufferTokens: number,
+    freeTokens: number,
+    includeVisualCategories = false,
+): TokenBreakdownCategory[] {
+    const categories: TokenBreakdownCategory[] = [
+        { id: "systemPrompt", label: "System prompt", tokens: systemPromptTokens, color: "accent", glyph: CELL_FILLED },
+        { id: "systemTools", label: "System tools", tokens: systemToolTokens, color: "warning", glyph: CELL_FILLED },
+        { id: "skills", label: "Skills", tokens: skillTokens, color: "success", glyph: CELL_FILLED },
+        {
+            id: "messages",
+            label: "Messages",
+            tokens: messageTokens,
+            color: includeVisualCategories ? "text" : "userMessageText",
+            glyph: CELL_FILLED_MESSAGES,
+        },
+    ];
+
+    if (includeVisualCategories) {
+        categories.push(
+            { id: "buffer", label: "Buffer", tokens: autoCompactBufferTokens, color: "warning", glyph: CELL_BUFFER },
+            { id: "free", label: "Free", tokens: freeTokens, color: "dim", glyph: CELL_FREE },
+        );
+    }
+
+    return categories;
+}
+
+function getVisualCategories(breakdown: TokenBreakdown): TokenBreakdownCategory[] {
+    const categories = breakdown.categories.map((category) =>
+        category.id === "messages" ? { ...category, color: "text" } : category
+    );
+
+    const hasBuffer = categories.some((category) => category.id === "buffer");
+    const hasFree = categories.some((category) => category.id === "free");
+
+    if (!hasBuffer) {
+        categories.push({
+            id: "buffer",
+            label: "Buffer",
+            tokens: breakdown.autoCompactBufferTokens,
+            color: "warning",
+            glyph: CELL_BUFFER,
+        });
+    }
+    if (!hasFree) {
+        categories.push({
+            id: "free",
+            label: "Free",
+            tokens: breakdown.freeTokens,
+            color: "dim",
+            glyph: CELL_FREE,
+        });
+    }
+
+    return categories;
+}
+
+function planCells(breakdown: TokenBreakdown): CellSpec[] {
+    const cells: CellSpec[] = [];
+    const window = breakdown.contextWindow;
+
+    if (window <= 0) {
+        for (let i = 0; i < GRID_CELLS; i++) {
+            cells.push({ glyph: CELL_FREE, color: "dim" });
+        }
+        return cells;
+    }
+
+    const categories = getVisualCategories(breakdown);
+    const bufferCategory = categories.find((category) => category.id === "buffer")
+        ?? { id: "buffer", label: "Buffer", tokens: 0, color: "warning", glyph: CELL_BUFFER };
+    const freeCategory = categories.find((category) => category.id === "free")
+        ?? { id: "free", label: "Free", tokens: 0, color: "dim", glyph: CELL_FREE };
+    const filledCategories = categories.filter((category) => category.id !== "buffer" && category.id !== "free");
+
+    const tokensPerCell = window / GRID_CELLS;
+    const ratioCells = (tokens: number): number => {
+        if (tokens <= 0) return 0;
+        return Math.max(1, Math.round(tokens / tokensPerCell));
+    };
+
+    const categoryCounts = filledCategories.map((category) => ({
+        category,
+        count: ratioCells(category.tokens),
+    }));
+
+    let bufferCount = ratioCells(bufferCategory.tokens);
+    let usedCount = categoryCounts.reduce((sum, entry) => sum + entry.count, 0);
+
+    const maxUsable = GRID_CELLS - bufferCount;
+    if (usedCount > maxUsable) {
+        let overflow = usedCount - maxUsable;
+        const order = [...categoryCounts].sort((a, b) => b.count - a.count);
+        for (const entry of order) {
+            while (overflow > 0 && entry.count > 1) {
+                entry.count--;
+                overflow--;
+            }
+        }
+        usedCount = categoryCounts.reduce((sum, entry) => sum + entry.count, 0);
+        if (usedCount + bufferCount > GRID_CELLS) {
+            bufferCount = Math.max(0, GRID_CELLS - usedCount);
+        }
+    }
+
+    for (const { category, count } of categoryCounts) {
+        for (let i = 0; i < count; i++) {
+            cells.push({ glyph: category.glyph, color: category.color });
+        }
+    }
+
+    const freeCount = Math.max(0, GRID_CELLS - cells.length - bufferCount);
+    for (let i = 0; i < freeCount; i++) {
+        cells.push({ glyph: freeCategory.glyph, color: freeCategory.color });
+    }
+    for (let i = 0; i < bufferCount; i++) {
+        cells.push({ glyph: bufferCategory.glyph, color: bufferCategory.color });
+    }
+
+    while (cells.length < GRID_CELLS) {
+        cells.push({ glyph: freeCategory.glyph, color: freeCategory.color });
+    }
+
+    return cells.slice(0, GRID_CELLS);
+}
+
+function buildLegendLines(breakdown: TokenBreakdown, theme: ThemeLike): string[] {
+    const lines: string[] = [];
+    const bold = theme.bold ?? ((text: string) => text);
+    const { model, contextWindow, usedTokens } = breakdown;
+    const categories = getVisualCategories(breakdown);
+
+    const modelRef = [model?.provider, model?.id].filter(Boolean).join("/") || model?.id || "unknown";
+    const modelName = model?.name ?? modelRef ?? "no model";
+    const windowLabel = formatTokenCount(contextWindow);
+
+    lines.push(`${bold(modelName)}${applyThemeColor(theme, "dim", ` (${windowLabel} context)`)}`);
+    lines.push(applyThemeColor(theme, "muted", `${modelRef}[${windowLabel}]`));
+    lines.push(
+        `${bold(formatTokenCount(usedTokens))}${applyThemeColor(theme, "dim", `/${windowLabel} tokens`)}`
+        + applyThemeColor(theme, "muted", ` (${percentString(usedTokens, contextWindow)})`),
+    );
+    lines.push("");
+    lines.push(applyThemeColor(theme, "muted", "Estimated usage by category"));
+
+    for (const category of categories) {
+        const dot = applyThemeColor(theme, category.color, category.glyph, "text");
+        lines.push(
+            `${dot} ${category.label}: ${bold(formatTokenCount(category.tokens))} `
+            + applyThemeColor(theme, "dim", `tokens (${percentString(category.tokens, contextWindow)})`),
+        );
+    }
+
+    return lines;
+}
+
+export function renderContextUsage(breakdown: TokenBreakdown, theme: ThemeLike): string {
+    if (breakdown.contextWindow <= 0) {
+        return applyThemeColor(theme, "muted", "Context usage is unavailable: no model is selected for this session.");
+    }
+
+    const cells = planCells(breakdown);
+    const legend = buildLegendLines(breakdown, theme);
+    const totalLines = Math.max(GRID_ROWS, legend.length);
+    const lines: string[] = [];
+
+    for (let row = 0; row < totalLines; row++) {
+        let gridSegment = "";
+        if (row < GRID_ROWS) {
+            const rowCells: string[] = [];
+            for (let col = 0; col < GRID_COLS; col++) {
+                const cell = cells[row * GRID_COLS + col];
+                rowCells.push(applyThemeColor(theme, cell.color, cell.glyph, "text"));
+            }
+            gridSegment = rowCells.join(" ");
+        } else {
+            gridSegment = " ".repeat(GRID_COLS * 2 - 1);
+        }
+
+        const legendSegment = legend[row] ?? "";
+        lines.push(legendSegment ? `${gridSegment}${GRID_GUTTER}${legendSegment}` : gridSegment);
+    }
+
+    return lines.join("\n");
+}
+
+export function computeTokenBreakdown(options: ComputeTokenBreakdownOptions): TokenBreakdown {
+    const contextWindow = Math.max(0, options.contextWindow ?? options.model?.contextWindow ?? 0);
+    const skillTokens = estimateSkillTokens(options.skills);
+    let systemPromptTokens = Math.max(0, estimateTextTokens(options.systemPrompt ?? "") - skillTokens);
+    let systemToolTokens = estimateToolTokens(options.tools);
+
+    let messageTokens: number;
+    let usedTokens: number;
+    let resolvedSkillTokens = skillTokens;
+
+    if (typeof options.usedTokens === "number" && Number.isFinite(options.usedTokens)) {
+        const fitted = fitCategoryTotals([systemPromptTokens, systemToolTokens, skillTokens], Math.max(0, options.usedTokens));
+        [systemPromptTokens, systemToolTokens] = fitted;
+        resolvedSkillTokens = fitted[2] ?? 0;
+        messageTokens = Math.max(0, Math.round(options.usedTokens) - (fitted[0] + fitted[1] + resolvedSkillTokens));
+        usedTokens = fitted[0] + fitted[1] + resolvedSkillTokens + messageTokens;
+    } else {
+        messageTokens = (options.branchEntries ?? []).reduce((sum, entry) => sum + estimateBranchEntryTokens(entry), 0);
+        usedTokens = systemPromptTokens + systemToolTokens + resolvedSkillTokens + messageTokens;
+    }
+
+    const autoCompactBufferTokens = resolveBufferTokens(contextWindow, usedTokens, options.compaction);
+    const freeTokens = Math.max(0, contextWindow - usedTokens - autoCompactBufferTokens);
+
+    return {
+        model: options.model ?? null,
+        contextWindow,
+        categories: buildBreakdownCategories(
+            systemPromptTokens,
+            systemToolTokens,
+            resolvedSkillTokens,
+            messageTokens,
+            autoCompactBufferTokens,
+            freeTokens,
+            options.includeVisualCategories === true,
+        ),
+        systemPromptTokens,
+        systemToolTokens,
+        skillTokens: resolvedSkillTokens,
+        messageTokens,
+        autoCompactBufferTokens,
+        bufferTokens: autoCompactBufferTokens,
+        usedTokens,
+        freeTokens,
+    };
+}
+
+function getCompactionSettings(ctx: any): CompactionSettingsInfo | null {
+    return ctx?.settingsManager?.getCompactionSettings?.()
+        ?? ctx?.session?.settingsManager?.getCompactionSettings?.()
+        ?? ctx?.agentSession?.settingsManager?.getCompactionSettings?.()
+        ?? null;
 }
 
 export default function (pi: ExtensionAPI) {
@@ -86,6 +561,17 @@ export default function (pi: ExtensionAPI) {
             const allTools = pi.getAllTools();
             const activeTools = pi.getActiveTools();
             const commands = pi.getCommands();
+            const tokenBreakdown = computeTokenBreakdown({
+                model,
+                contextWindow: usage?.contextWindow ?? model?.contextWindow ?? 0,
+                usedTokens: typeof usage?.tokens === "number" ? usage.tokens : null,
+                systemPrompt: ctx.getSystemPrompt(),
+                tools: allTools,
+                skills: cachedSkills,
+                branchEntries: ctx.sessionManager.getBranch() as BranchEntryInfo[],
+                compaction: getCompactionSettings(ctx),
+                includeVisualCategories: true,
+            });
 
             // Token breakdown from branch
             let totalInput = 0;
@@ -164,25 +650,13 @@ export default function (pi: ExtensionAPI) {
             const label = (text: string) => theme.fg("muted", text);
             const value = (text: string) => theme.fg("text", text);
             const success = (text: string) => theme.fg("success", text);
-            const warn = (text: string) => theme.fg("warning", text);
             const dim = (text: string) => theme.fg("dim", text);
 
-            // ── Context Window ──
-            lines.push(heading("  Context Window"));
+            // ── Context Usage ──
+            lines.push(heading("  Context Usage"));
             lines.push("");
-
-            if (usage) {
-                const pct = usage.percent ?? 0;
-                const barWidth = 30;
-                const filled = Math.round((pct / 100) * barWidth);
-                const empty = barWidth - filled;
-                const barColor = pct > 90 ? "error" : pct > 70 ? "warning" : "success";
-                const bar = theme.fg(barColor, "█".repeat(filled)) + dim("░".repeat(empty));
-                const tokensStr = usage.tokens != null ? formatTokens(usage.tokens) : "?";
-                const ctxStr = formatTokens(usage.contextWindow);
-                lines.push(`  ${bar}  ${value(`${tokensStr} / ${ctxStr}`)}  ${dim(`(${pct.toFixed(1)}%)`)}`);
-            } else {
-                lines.push(`  ${dim("No context usage data available")}`);
+            for (const line of renderContextUsage(tokenBreakdown, theme).split("\n")) {
+                lines.push(line ? `  ${line}` : "");
             }
             lines.push("");
 

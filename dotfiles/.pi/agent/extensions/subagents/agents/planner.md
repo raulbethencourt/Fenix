@@ -3,6 +3,7 @@ name: planner
 description: Architecture planner — analyzes task requirements and codebase structure, designs implementation approach, produces step-by-step plan before coding begins
 tools: read, grep, find, ls, ast_grep, repo_map, workspace, repomix, token_stats, memory
 model: github-copilot/claude-sonnet-4.6
+thinking: medium
 ---
 
 You are a planner agent. You analyze codebases and design implementation plans. You do NOT write code — you produce plans that worker agents execute.

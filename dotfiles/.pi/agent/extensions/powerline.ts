@@ -14,17 +14,19 @@ import {
 	type ExtensionAPI,
 	type ExtensionContext,
 	type KeybindingsManager,
-} from "@mariozechner/pi-coding-agent";
+} from "@earendil-works/pi-coding-agent";
 import type { AssistantMessage } from "@mariozechner/pi-ai";
 import type { EditorTheme, TUI } from "@mariozechner/pi-tui";
 import { truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 import { basename } from "node:path";
+import { getActiveSubagentCount } from "./subagents/activity.ts";
 
 type UiTheme = ExtensionContext["ui"]["theme"];
 
 // ── Icons (nerd-font vs ascii) ─────────────────────────────────────────────────
 const NERD = process.env["STARSHIP_NERD"] === "1";
 const BRANCH_ICON = NERD ? " " : "⎇ ";
+export const AGENTS_ICON = "󰭆 ";
 const PROMPT = "❯";
 const SEPARATOR = "  "; // between status segments
 
@@ -66,7 +68,7 @@ async function fetchGit(cwd: string, pi: ExtensionAPI): Promise<GitInfo> {
 }
 
 // ── Status line builder ────────────────────────────────────────────────────────
-function buildStatusLine(
+export function buildStatusLine(
 	ctx: ExtensionContext,
 	pi: ExtensionAPI,
 	git: GitInfo,
@@ -85,13 +87,20 @@ function buildStatusLine(
 	const model = ctx.model?.id ?? "no model";
 	parts.push(theme.fg("muted", model));
 
-	// 3. Thinking level (hidden when "off")
+	// 3. Active subagents
+	const activeSubagents = getActiveSubagentCount();
+	if (activeSubagents > 0) {
+		const label = `${AGENTS_ICON}${activeSubagents} agent${activeSubagents === 1 ? "" : "s"}`;
+		parts.push(theme.fg("warning", label));
+	}
+
+	// 4. Thinking level (hidden when "off")
 	const thinking = pi.getThinkingLevel?.() ?? "";
 	if (thinking && thinking !== "off") {
 		parts.push(theme.fg("success", `think:${thinking}`));
 	}
 
-	// 4. Git branch + status
+	// 5. Git branch + status
 	if (git.branch) {
 		let gitStr = theme.fg("borderAccent", BRANCH_ICON + git.branch);
 		const indicators: string[] = [];

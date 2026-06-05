@@ -2,7 +2,7 @@
  * git_inspect tool — read-only git operations for codebase investigation.
  * Whitelists safe commands and rejects dangerous flags.
  */
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { execSync } from "node:child_process";
 
 const Type = {

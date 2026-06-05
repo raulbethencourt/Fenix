@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 // Only these tools are allowed for the orchestrator — everything else is blocked
 const ALLOWED_TOOLS = new Set([

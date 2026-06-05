@@ -7,7 +7,7 @@
  * Requires: libnotify (install via `pacman -S libnotify` or `apt install libnotify-bin`)
  */
 
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Markdown, type MarkdownTheme } from "@mariozechner/pi-tui";
 import { execFile } from "node:child_process";
 

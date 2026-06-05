@@ -3,6 +3,7 @@ name: security-auditor-deep
 description: Deep security auditor (escalation tier) — performs thorough security analysis on code flagged as high-risk by the initial scan. Uses maximum reasoning depth.
 tools: read, grep, find, safe_bash, ast_grep, workspace
 model: github-copilot/claude-opus-4.7
+thinking: high
 ---
 # Deep Security Auditor Agent
 

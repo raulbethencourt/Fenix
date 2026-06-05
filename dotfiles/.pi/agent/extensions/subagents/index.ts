@@ -7,16 +7,23 @@
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
-import { getMarkdownTheme, parseFrontmatter, truncateHead, withFileMutationQueue, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES } from "@mariozechner/pi-coding-agent";
-import { Container, Markdown, Spacer, Text, visibleWidth } from "@mariozechner/pi-tui";
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import { getMarkdownTheme, parseFrontmatter, truncateHead, withFileMutationQueue, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES } from "@earendil-works/pi-coding-agent";
+import { Container, Markdown, Text, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 import { Type } from "typebox";
 import * as formatUtils from "../shared/format.ts";
 import { extractTextContent } from "../shared/content.ts";
 import { registerFallbackCommand } from "./fallback.ts";
+import { applyAgentOverrides } from "./agent-overrides.ts";
 import { resolveModel, resolveFallbackModel, loadRoutingConfig, type ComplexityTier } from "./routing.ts";
-import { spawnPiProcess } from "./runner.ts";
+import { decrementActiveSubagentCount, incrementActiveSubagentCount } from "./activity.ts";
+import { hasRateLimitSignal, spawnPiProcess } from "./runner.ts";
 import { initTelemetryDb, logRun, logToolCalls } from "./telemetry.ts";
+import { closeTranscript, dim, displayTranscriptPath, openTranscript, writeOutput, writeToolEvent } from "./transcript.ts";
+import { shouldBlockSugarTester } from "./sugar-guard.ts";
+import { filterChildTools } from "./filter-child-tools.ts";
+import { stripChildPromptHook } from "./strip-child-prompt-hook.ts";
+import { stripParentOrchestrationContent } from "./strip-orchestration.ts";
 
 // ── Types ──────────────────────────────────────────────────────────────
 
@@ -26,6 +33,7 @@ export interface AgentConfig {
 	tools: string[];
 	skills: string[];
 	model: string;
+	thinking?: string;
 	systemPrompt: string;
 	filePath: string;
 }
@@ -47,6 +55,7 @@ export interface AgentProgress {
 	durationMs: number;
 	lastMessage: string;
 	error?: string;
+	retryState?: string;
 }
 
 export interface AgentResult {
@@ -57,6 +66,7 @@ export interface AgentResult {
 	progress: AgentProgress;
 	model?: string;
 	usedFallback?: boolean;
+	transcriptPath?: string;
 	usage: { input: number; output: number; cacheRead: number; cacheWrite: number; cost: number; turns: number };
 }
 
@@ -88,7 +98,7 @@ function loadConfig(): ExtensionConfig {
 }
 
 // Built-in tools that pi provides natively (no extension needed)
-const BUILTIN_TOOLS = new Set(["read", "write", "edit", "bash", "grep", "find", "ls"]);
+const BUILTIN_TOOLS = new Set(["read", "write", "edit", "bash", "grep", "find", "ls", "rg"]);
 
 // Custom tools that require loading an extension into the subagent process
 const EXT_BASE = path.join(process.env.HOME || "~", ".pi", "agent", "extensions");
@@ -111,11 +121,15 @@ function resolveContextModeExtension(): string | null {
 }
 
 const CONTEXT_MODE_EXTENSION = resolveContextModeExtension();
+const HASHLINE_EXTENSION = path.resolve(EXT_DIR, "../hashline/index.ts");
 const { routing: ROUTING_CONFIG, fallback: FALLBACK_CONFIG } = loadRoutingConfig(path.dirname(AGENTS_DIR));
 
 const CUSTOM_TOOL_EXTENSIONS: Record<string, string> = {
-	web_search: path.join(EXT_BASE, "web-search", "index.ts"),
+	web_search: path.join(EXT_BASE, "..", "..", "npm", "node_modules", "pi-web-access", "index.ts"),
 	web_fetch: path.join(EXT_BASE, "web-fetch", "index.ts"),
+	fetch_content: path.join(EXT_BASE, "..", "..", "npm", "node_modules", "pi-web-access", "index.ts"),
+	get_search_content: path.join(EXT_BASE, "..", "..", "npm", "node_modules", "pi-web-access", "index.ts"),
+	code_search: path.join(EXT_BASE, "..", "..", "npm", "node_modules", "pi-web-access", "index.ts"),
 	safe_bash: path.join(TOOLS_DIR, "safe-bash.ts"),
 	ast_grep: path.join(TOOLS_DIR, "ast-grep.ts"),
 	repo_map: path.join(TOOLS_DIR, "repo-map.ts"),
@@ -172,6 +186,7 @@ function loadAgents(): AgentConfig[] {
 			tools,
 			skills,
 			model: frontmatter.model || "anthropic/claude-sonnet-4-6",
+			thinking: frontmatter.thinking,
 			systemPrompt: body,
 			filePath,
 		});
@@ -236,60 +251,56 @@ export function formatToolPreview(name: string, args: Record<string, unknown>): 
 }
 
 export function truncLine(text: string, maxWidth: number): string {
+	if (maxWidth <= 0) return "";
 	if (visibleWidth(text) <= maxWidth) return text;
-	// Simple truncation - strip to fit
+	if (text.includes("\x1b")) {
+		return truncateToWidth(text, maxWidth);
+	}
+
 	let result = "";
 	let width = 0;
-	for (let i = 0; i < text.length; i++) {
-		const ch = text[i];
-		// Skip ANSI escape sequences
-		if (ch === "\x1b") {
-			const match = text.slice(i).match(/^\x1b\[[0-9;]*m/);
-			if (match) {
-				result += match[0];
-				i += match[0].length - 1;
-				continue;
-			}
-		}
-		if (width >= maxWidth - 1) {
+	for (const ch of text) {
+		const chWidth = visibleWidth(ch);
+		if (width + chWidth > maxWidth - 1) {
 			return result + "…";
 		}
 		result += ch;
-		width++;
+		width += chWidth;
 	}
 	return result;
 }
 
-// ── Subagent Execution ────────────────────────────────────────────────
-
-// Quota exhaustion detection for auto-retry
-function isQuotaExhausted(stderr: string, exitCode: number): boolean {
-	if (exitCode === 429 || exitCode === 403) return true;
-	const patterns = [
-		/quota.*exhausted/i,
-		/rate.*limit/i,
-		/429/i,
-		/too.*many.*requests/i,
-		/billing.*quota/i,
-		/insufficient.*quota/i,
-		/monthly.*limit/i,
-		/daily.*limit/i,
-	];
-	return patterns.some((p) => p.test(stderr));
+function normalizeInlinePreview(text: string): string {
+	return text.replace(/\s+/g, " ").trim();
 }
 
+function fitInlinePreview(text: string, maxWidth: number): string {
+	return truncLine(normalizeInlinePreview(text), Math.max(1, maxWidth));
+}
+
+function addTreeLine(container: Container, prefix: string, content: string, maxWidth: number): void {
+	container.addChild(new Text(truncLine(`${prefix}${content}`, maxWidth), 0, 0));
+}
+
+// ── Subagent Execution ────────────────────────────────────────────────
+
 async function buildPiArgs(
-	agent: AgentConfig,
+	baseAgent: AgentConfig,
 	task: string,
 	cwd: string,
-): Promise<{ piArgs: string[]; tempDir: string; tier: string; usedFallback: boolean }> {
+): Promise<{ piArgs: string[]; tempDir: string; tier: string; usedFallback: boolean; routedModel: string }> {
+	const agent = applyAgentOverrides(baseAgent, ROUTING_CONFIG.agentOverrides);
 	const piBin = resolvePiBinary();
 	const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "pi-sub-"));
+
+	const parentDepth = Number(process.env.PI_SUBAGENT_DEPTH ?? "0");
+	const childDepth = Number.isFinite(parentDepth) ? parentDepth + 1 : 1;
+	const systemPrompt = stripParentOrchestrationContent(agent.systemPrompt);
 
 	// Write system prompt to temp file
 	const promptPath = path.join(tempDir, `${agent.name}.md`);
 	await withFileMutationQueue(promptPath, async () => {
-		await fs.promises.writeFile(promptPath, agent.systemPrompt, { encoding: "utf-8", mode: 0o600 });
+		await fs.promises.writeFile(promptPath, systemPrompt, { encoding: "utf-8", mode: 0o600 });
 	});
 
 	const args = [...piBin.baseArgs, "--mode", "json", "-p", "--no-session"];
@@ -307,10 +318,11 @@ async function buildPiArgs(
 	}
 
 	// Separate builtin tools from custom tools
+	const childTools = filterChildTools(agent.tools, agent.name, childDepth);
 	const builtinTools: string[] = [];
 	const extensionPaths = new Set<string>();
 
-	for (const tool of agent.tools) {
+	for (const tool of childTools) {
 		if (BUILTIN_TOOLS.has(tool)) {
 			builtinTools.push(tool);
 		} else if (CUSTOM_TOOL_EXTENSIONS[tool]) {
@@ -322,7 +334,7 @@ async function buildPiArgs(
 	args.push("--no-extensions");
 
 	// Include custom tool names in the allowlist so extension-registered tools aren't blocked
-	const customToolNames = Object.keys(CUSTOM_TOOL_EXTENSIONS).filter(t => agent.tools.includes(t));
+	const customToolNames = Object.keys(CUSTOM_TOOL_EXTENSIONS).filter(t => childTools.includes(t));
 	const allToolNames = [...builtinTools, ...customToolNames];
 	if (allToolNames.length > 0) {
 		args.push("--tools", allToolNames.join(","));
@@ -340,6 +352,11 @@ async function buildPiArgs(
 		args.push("--extension", CONTEXT_MODE_EXTENSION);
 	}
 
+	// Always load hashline extension for consistent edit tool behavior
+	if (fs.existsSync(HASHLINE_EXTENSION)) {
+		args.push("--extension", HASHLINE_EXTENSION);
+	}
+
 	const { model: routedModel, tier: complexityTier, usedFallback } = resolveModel(
 		agent.model,
 		agent.name,
@@ -348,6 +365,9 @@ async function buildPiArgs(
 		FALLBACK_CONFIG,
 	);
 	args.push("--models", routedModel);
+	if (agent.thinking) {
+		args.push("--thinking", agent.thinking);
+	}
 	args.push("--append-system-prompt", promptPath);
 
 	// Handle long tasks by writing to file
@@ -362,7 +382,7 @@ async function buildPiArgs(
 		args.push(`Task: ${task}`);
 	}
 
-	return { piArgs: [piBin.command, ...args], tempDir, usedFallback, tier: complexityTier };
+	return { piArgs: [piBin.command, ...args], tempDir, usedFallback, tier: complexityTier, routedModel };
 }
 
 // Re-export for backward compatibility (tests import from here)
@@ -385,7 +405,7 @@ async function runSubagent(
 	signal: AbortSignal | undefined,
 	onUpdate?: (progress: AgentProgress) => void,
 ): Promise<AgentResult> {
-	const { piArgs, tempDir, usedFallback: initialUsedFallback, tier } = await buildPiArgs(agent, task, cwd);
+	const { piArgs, tempDir, usedFallback: initialUsedFallback, tier, routedModel } = await buildPiArgs(agent, task, cwd);
 	const command = piArgs[0];
 	const spawnArgs = piArgs.slice(1);
 
@@ -394,7 +414,7 @@ async function runSubagent(
 		task,
 		output: "",
 		exitCode: 0,
-		model: agent.model,
+		model: routedModel,
 		usedFallback: initialUsedFallback,
 		usage: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, cost: 0, turns: 0 },
 		progress: {
@@ -409,12 +429,30 @@ async function runSubagent(
 		},
 	};
 
+	const transcript = openTranscript(agent.name, task, routedModel);
+	result.transcriptPath = transcript.logPath;
+
+	incrementActiveSubagentCount();
 	const startTime = Date.now();
 	const progress = result.progress;
-	const fireUpdate = throttle(() => {
+	let transcriptToolCount = 0;
+	const flushTranscriptTools = () => {
+		const completedToolCount = progress.currentTool ? Math.max(progress.toolCount - 1, 0) : progress.toolCount;
+		const newToolCount = completedToolCount - transcriptToolCount;
+		if (newToolCount <= 0 || progress.recentTools.length === 0) return;
+		for (const tool of progress.recentTools.slice(-newToolCount)) {
+			writeToolEvent(transcript, tool.tool, tool.args);
+		}
+		transcriptToolCount = completedToolCount;
+	};
+	const emitUpdate = throttle(() => {
 		progress.durationMs = Date.now() - startTime;
 		onUpdate?.(progress);
 	}, 150);
+	const fireUpdate = () => {
+		flushTranscriptTools();
+		emitUpdate();
+	};
 
 	try {
 		const { exitCode, stderrBuf } = await spawnPiProcess({
@@ -432,13 +470,19 @@ async function runSubagent(
 
 		result.exitCode = exitCode;
 
-		if (exitCode !== 0 && !initialUsedFallback && isQuotaExhausted(stderrBuf, exitCode)) {
+		if (exitCode !== 0 && !initialUsedFallback && hasRateLimitSignal(stderrBuf, exitCode)) {
 			const fallbackModel = resolveFallbackModel(tier as ComplexityTier, FALLBACK_CONFIG);
 			const fallbackPiArgs = [...piArgs];
 			const modelIdx = fallbackPiArgs.indexOf("--models");
 			if (modelIdx !== -1) fallbackPiArgs[modelIdx + 1] = fallbackModel;
 
+			if (!progress.retryState) {
+				progress.retryState = "rate-limited";
+				fireUpdate();
+			}
 			progress.error = undefined;
+			progress.retryState = "retrying";
+			fireUpdate();
 			const { exitCode: retryExitCode } = await spawnPiProcess({
 				command,
 				spawnArgs: fallbackPiArgs.slice(1),
@@ -455,9 +499,14 @@ async function runSubagent(
 			result.exitCode = retryExitCode;
 			result.model = fallbackModel;
 			result.usedFallback = true;
+			if (progress.retryState === "retrying") {
+				progress.retryState = retryExitCode === 0 ? "retried" : "retry-failed";
+			}
+			fireUpdate();
 			console.error(`[fallback] Quota exhausted, retried with ${fallbackModel}`);
 		}
 	} finally {
+		decrementActiveSubagentCount();
 		try {
 			fs.rmSync(tempDir, { recursive: true, force: true });
 		} catch {}
@@ -475,6 +524,11 @@ async function runSubagent(
 			result.output += "\n\n[Output truncated]";
 		}
 	}
+
+	flushTranscriptTools();
+	writeOutput(transcript, result.output || "(no output)");
+	closeTranscript(transcript, progress.status, progress.tokens, progress.durationMs, result.usage.cost);
+	console.error(dim(`📄 Transcript: ${displayTranscriptPath(transcript.logPath)}`));
 
 	return result;
 }
@@ -526,6 +580,11 @@ export async function mapConcurrent<T, R>(
 // ── Rendering ─────────────────────────────────────────────────────────
 
 type Theme = ExtensionContext["ui"]["theme"];
+export type ThemeColor = Parameters<Theme["fg"]>[0];
+
+export function formatBadge(label: string, color: ThemeColor, theme: Theme): string {
+	return theme.fg(color, `[${label}]`);
+}
 
 export function getTermWidth(): number {
 	return process.stdout.columns || 120;
@@ -536,6 +595,7 @@ function renderAgentProgress(
 	theme: Theme,
 	expanded: boolean,
 	w: number,
+	isLast: boolean,
 ): Container {
 	const c = new Container();
 	const prog = r.progress;
@@ -543,6 +603,9 @@ function renderAgentProgress(
 	const isPending = prog.status === "pending";
 	const isFailed = prog.status === "failed" || r.exitCode !== 0;
 	const isDone = prog.status === "completed" && r.exitCode === 0;
+	const headPrefix = isLast ? "└─ " : "├─ ";
+	const bodyPrefix = isLast ? "   " : "│  ";
+	const bodyWidth = Math.max(1, w - visibleWidth(bodyPrefix));
 
 	// ── Status icon ──
 	const icon = isRunning
@@ -557,7 +620,6 @@ function renderAgentProgress(
 	const barWidth = 12;
 	let progressBar = "";
 	if (isRunning || isDone || isFailed) {
-		// Estimate progress based on tool count (cap at 95% while running)
 		const toolProgress = Math.min(prog.toolCount / Math.max(prog.toolCount + 2, 5), 0.95);
 		const pct = isDone ? 1 : toolProgress;
 		const filled = Math.round(pct * barWidth);
@@ -576,64 +638,70 @@ function renderAgentProgress(
 	stats.push(formatUtils.formatDuration(prog.durationMs));
 	const statsStr = theme.fg("dim", stats.join(" · "));
 
-	// ── Line 1: icon + bar + agent name + model + stats ──
+	const badgeParts: string[] = [];
+	if (prog.retryState) {
+		const badgeColor: ThemeColor = prog.retryState === "rate-limited"
+			? "error"
+			: prog.retryState === "retry-failed"
+				? "error"
+				: "warning";
+		badgeParts.push(formatBadge(prog.retryState, badgeColor, theme));
+	}
+	const badges = badgeParts.length > 0 ? ` ${badgeParts.join(" ")}` : "";
 	const modelShort = r.model ? r.model.split("/").pop() || "" : "";
-	const line1 = `${icon} ${progressBar} ${theme.fg("toolTitle", theme.bold(r.agent))} ${theme.fg("dim", modelShort)} ${statsStr}`;
-	c.addChild(new Text(truncLine(line1, w), 0, 0));
+	const line1 = `${icon} ${progressBar} ${theme.fg("toolTitle", theme.bold(r.agent))} ${theme.fg("dim", modelShort)}${badges} ${statsStr}`;
+	addTreeLine(c, headPrefix, line1, w);
 
-	// ── Line 2: current action or result summary ──
 	if (isRunning && prog.currentTool) {
-		const toolLine = prog.currentToolArgs
-			? `${prog.currentTool}: ${prog.currentToolArgs}`
-			: prog.currentTool;
-		c.addChild(new Text(truncLine(`  ${theme.fg("warning", "▸")} ${theme.fg("text", toolLine)}`, w), 0, 0));
+		const argsPreview = prog.currentToolArgs
+			? fitInlinePreview(prog.currentToolArgs, bodyWidth - visibleWidth(`${prog.currentTool}: `) - 2)
+			: "";
+		const toolLine = argsPreview ? `${prog.currentTool}: ${argsPreview}` : prog.currentTool;
+		addTreeLine(c, bodyPrefix, `${theme.fg("warning", "▸")} ${theme.fg("text", toolLine)}`, w);
 	} else if (isRunning && prog.lastMessage) {
-		c.addChild(new Text(truncLine(`  ${theme.fg("dim", prog.lastMessage)}`, w), 0, 0));
+		addTreeLine(c, bodyPrefix, theme.fg("dim", fitInlinePreview(prog.lastMessage, bodyWidth)), w);
 	} else if (isPending) {
-		c.addChild(new Text(`  ${theme.fg("dim", "waiting...")}`, 0, 0));
+		addTreeLine(c, bodyPrefix, theme.fg("dim", "waiting..."), w);
 	} else if (isFailed && prog.error) {
-		const errLine = prog.error.split("\n")[0].slice(0, 100);
-		c.addChild(new Text(truncLine(`  ${theme.fg("error", errLine)}`, w), 0, 0));
+		const errLine = fitInlinePreview(prog.error.split("\n")[0], bodyWidth);
+		addTreeLine(c, bodyPrefix, theme.fg("error", errLine), w);
 	} else if (isDone) {
-		// Show first line of output or last message
-		const summary = prog.lastMessage || (r.output ? r.output.split("\n")[0].slice(0, 100) : "done");
-		c.addChild(new Text(truncLine(`  ${theme.fg("success", summary)}`, w), 0, 0));
+		const summarySource = prog.lastMessage || (r.output ? r.output.split("\n")[0] : "done");
+		addTreeLine(c, bodyPrefix, theme.fg("success", fitInlinePreview(summarySource, bodyWidth)), w);
 	}
 
-	// ── Line 3 (collapsed): usage summary ──
 	if (!expanded) {
 		const usageParts: string[] = [];
 		if (r.usage.turns) usageParts.push(`${r.usage.turns} turn${r.usage.turns > 1 ? "s" : ""}`);
 		if (r.usage.cost) usageParts.push(`$${r.usage.cost.toFixed(4)}`);
 		if (usageParts.length) {
-			c.addChild(new Text(`  ${theme.fg("dim", usageParts.join(" · "))}`, 0, 0));
+			addTreeLine(c, bodyPrefix, theme.fg("dim", usageParts.join(" · ")), w);
 		}
 	}
 
-	// ── Expanded: full detail ──
 	if (expanded) {
-		c.addChild(new Spacer(1));
+		addTreeLine(c, bodyPrefix, theme.fg("dim", `Task: ${fitInlinePreview(r.task, bodyWidth - visibleWidth("Task: "))}`), w);
 
-		// Task
-		c.addChild(new Text(theme.fg("dim", `Task: ${r.task}`), 0, 0));
-		c.addChild(new Spacer(1));
-
-		// Recent tools
 		if (prog.recentTools.length > 0) {
-			for (const t of prog.recentTools) {
-				c.addChild(new Text(truncLine(theme.fg("muted", `  ${t.tool}: ${t.args}`), w), 0, 0));
+			for (let i = 0; i < prog.recentTools.length; i++) {
+				const t = prog.recentTools[i];
+				const toolPrefix = i === prog.recentTools.length - 1 ? "└─ " : "├─ ";
+				const argsPreview = t.args
+					? fitInlinePreview(t.args, bodyWidth - visibleWidth(toolPrefix) - visibleWidth(`${t.tool}()`))
+					: "";
+				const toolLine = argsPreview ? `${t.tool}(${argsPreview})` : `${t.tool}()`;
+				addTreeLine(c, `${bodyPrefix}${toolPrefix}`, theme.fg("muted", toolLine), w);
 			}
-			c.addChild(new Spacer(1));
 		}
 
-		// Full output
 		if (!isRunning && r.output) {
 			const mdTheme = getMarkdownTheme();
-			c.addChild(new Markdown(r.output, 0, 0, mdTheme));
-			c.addChild(new Spacer(1));
+			const markdown = new Markdown(r.output, 0, 0, mdTheme);
+			for (const line of markdown.render(bodyWidth)) {
+				addTreeLine(c, bodyPrefix, line, w);
+			}
 		}
 
-		// Full usage breakdown
 		const usageParts: string[] = [];
 		if (r.usage.turns) usageParts.push(`${r.usage.turns} turn${r.usage.turns > 1 ? "s" : ""}`);
 		if (r.usage.input) usageParts.push(`in:${formatUtils.formatTokens(r.usage.input)}`);
@@ -642,7 +710,7 @@ function renderAgentProgress(
 		if (r.usage.cacheWrite) usageParts.push(`cW:${formatUtils.formatTokens(r.usage.cacheWrite)}`);
 		if (r.usage.cost) usageParts.push(`$${r.usage.cost.toFixed(4)}`);
 		if (usageParts.length) {
-			c.addChild(new Text(theme.fg("dim", usageParts.join(" · ")), 0, 0));
+			addTreeLine(c, bodyPrefix, theme.fg("dim", usageParts.join(" · ")), w);
 		}
 	}
 
@@ -658,6 +726,35 @@ export default function (pi: ExtensionAPI) {
 	agents = loadAgents();
 	initTelemetryDb();
 	const sessionId = `${process.pid}-${Date.now()}`;
+
+	pi.on("before_agent_start", async (event: { systemPrompt: string }) => {
+		const depth = Number(process.env.PI_SUBAGENT_DEPTH ?? "0");
+		const safeDepth = Number.isFinite(depth) ? depth : 0;
+		return stripChildPromptHook(event, safeDepth);
+	});
+
+	// Block misrouted Sugar test work before the subagent tool executes.
+	pi.on("tool_call", async (event, ctx) => {
+		if (event.toolName !== "subagent") return undefined;
+
+		const baseCwd = ctx.cwd;
+		const input = event.input as {
+			agent?: string;
+			cwd?: string;
+			tasks?: Array<{ agent?: string; cwd?: string }>;
+		};
+
+		if (typeof input.agent === "string") {
+			const result = shouldBlockSugarTester(input.agent, input.cwd ?? baseCwd);
+			if (result.block) return { block: true, reason: result.message };
+		}
+
+		for (const task of input.tasks ?? []) {
+			if (typeof task.agent !== "string") continue;
+			const result = shouldBlockSugarTester(task.agent, task.cwd ?? baseCwd);
+			if (result.block) return { block: true, reason: result.message };
+		}
+	});
 
 	pi.registerTool({
 		name: "subagent",
@@ -864,17 +961,14 @@ export default function (pi: ExtensionAPI) {
 						0, 0,
 					),
 				);
-				c.addChild(new Spacer(1));
-
 				for (let i = 0; i < details.results.length; i++) {
 					const r = details.results[i];
-					c.addChild(renderAgentProgress(r, theme, expanded, w));
-					if (i < details.results.length - 1) c.addChild(new Spacer(1));
+					c.addChild(renderAgentProgress(r, theme, expanded, w, i === details.results.length - 1));
 				}
 			} else {
 				// Single agent
 				const r = details.results[0];
-				c.addChild(renderAgentProgress(r, theme, expanded, w));
+				c.addChild(renderAgentProgress(r, theme, expanded, w, true));
 			}
 
 			return c;

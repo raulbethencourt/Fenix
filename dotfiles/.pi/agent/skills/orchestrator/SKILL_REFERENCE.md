@@ -17,7 +17,7 @@ Never start implementing until you are **100% certain** of what needs to be done
 
 **Fill knowledge gaps with:**
 - **`ask_user_question`** — ambiguous requirements, preference between approaches, any detail that would materially change the implementation. One question per call. Never guess what the user wants.
-- **`subagent` scout** — how the codebase works, what patterns exist, which files are involved. Tools: `read`, `grep`, `find`, `ls`. Fast and cheap (Haiku).
+- **`subagent` scout** — how the codebase works, what patterns exist, which files are involved. Uses recon tools such as `repo_map`, `ast_grep`, `rg`, `read`, `repomix`, `git_inspect`, and `memory`.
 - **`subagent` researcher** — API docs, library behavior, migration guides, external knowledge. Tools: `web_search`, `web_fetch`.
 - **`subagent` worker** — isolated code changes. Tools: `read`, `write`, `edit`, `safe_bash`. Use when the change is well-specified and doesn't need back-and-forth.
 
@@ -66,10 +66,10 @@ If any of those are fuzzy, you're not ready to implement.
 ### Two-Stage Escalation Protocol
 
 **When**: Security audits or code reviews where the initial (cheaper) pass flags low confidence.
-**Applies to**: `security-auditor` → `security-auditor-deep`, `code-reviewer` → `code-reviewer-deep`
+**Applies to**: `security-auditor` → `security-auditor-deep`, `codereviewer` → `codereviewer-deep`
 
 **Flow**:
-1. Dispatch the standard agent (`security-auditor` or `code-reviewer`) with the task
+1. Dispatch the standard agent (`security-auditor` or `codereviewer`) with the task
 2. Check the output for `CONFIDENCE: LOW`
 3. If confidence is HIGH or MEDIUM → accept the result as final
 4. If confidence is LOW → dispatch the `-deep` variant with the original task/files + stage-1 findings
@@ -81,18 +81,18 @@ If any of those are fuzzy, you're not ready to implement.
 - If stage-1 returns FAIL with HIGH confidence, do NOT escalate — the failure is already confirmed
 - Only escalate on LOW confidence
 
-### Worker → Code-Reviewer Loop
+### Worker → Code Reviewer Loop
 **When**: Making non-trivial code changes that need validation.
-**Flow**: worker → code-reviewer → if REJECT: worker (with reviewer feedback) → code-reviewer
+**Flow**: worker → codereviewer → if REJECT: worker (with reviewer feedback) → codereviewer
 
 **Auto-retry protocol:**
 1. Dispatch **worker** with the implementation task
-2. Dispatch **code-reviewer** with the diff or changed files
-3. If code-reviewer returns **APPROVE** → done
-4. If code-reviewer returns **REJECT**:
+2. Dispatch **codereviewer** with the diff or changed files
+3. If codereviewer returns **APPROVE** → done
+4. If codereviewer returns **REJECT**:
    - Extract Critical and Important issues
    - Dispatch **worker** again with original context + reviewer's specific feedback
-   - Dispatch **code-reviewer** again on the new changes
+   - Dispatch **codereviewer** again on the new changes
 5. **Max retries: 2** — if still REJECT after 2 fix attempts, stop and report to user
 6. Each retry must reference the previous reviewer feedback
 
@@ -103,66 +103,82 @@ If any of those are fuzzy, you're not ready to implement.
 
 ### Planner → Worker Pipeline
 **When**: Non-trivial code change that requires design decisions.
-**Flow**: planner → orchestrator reviews plan → tester (RED: write failing tests) → worker (GREEN: make tests pass) → tester (verify GREEN)
+**Flow**: planner → orchestrator reviews plan → test suitability assessment → sugar-tester (for SugarCRM) or tester (non-Sugar) for RED first if suitable, otherwise explicit legacy bypass → worker (GREEN: make tests pass, or smallest safe change under bypass) → sugar-tester (for SugarCRM) or tester (non-Sugar) to verify GREEN when tests exist
 
 ### TDD Loop (Default Development Flow)
 
-**When**: Any feature or bug fix (default unless user bypasses).
+**When**: Any feature or bug fix that changes source logic (default unless user bypasses or legacy exemption applies).
 **Agent selection**:
-- SugarCRM project (has `custom/`, bns tools, Sugar structure) → **sugar-tester**
+- SugarCRM/SuiteCRM project (`sugar_version.php` exists at the project root; fallback signal: `bns` tools) → **sugar-tester**
+- Do not classify a project as Sugar from `custom/` alone.
 - Everything else → **tester**
 
-**Flow**:
+**Step 0 — Test Suitability Assessment**:
+1. Detect test infrastructure/config first.
+2. Assess whether the target change has a practical test path using existing patterns, seams, and runtime support.
+3. If tests are practical → continue with normal RED → GREEN flow.
+4. If the change is in tightly coupled legacy code and writing a meaningful test would require broad unrelated refactoring, risky seam creation, or heavy environment setup, treat it as a **Legacy Code Exemption** case.
+5. In interactive contexts, ask the user to confirm the bypass. In non-interactive contexts, log the reason and proceed with the smallest safe implementation.
+
+**Flow when suitable**:
 1. Run existing test suite → report status
-2. Dispatch sugar-tester/tester: "Write failing tests for [feature/fix]. Confirm RED."
-3. Verify RED — test agent runs tests, confirms new tests fail for the right reason
+2. Dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar): "Write failing tests for [feature/fix]. Confirm RED."
+3. Verify RED — the selected test agent runs tests and confirms the new tests fail for the right reason
 4. Dispatch worker: "Make these tests pass. Minimal code only."
-5. Dispatch sugar-tester/tester: "Run full relevant suite. Confirm GREEN."
+5. Dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar): "Run full relevant suite. Confirm GREEN."
 6. If FAIL → worker gets diagnostics → fix → re-run (max 2 retries)
 
-**Bypass**: User explicitly says "skip tests", "spike", "prototype", or "no tests" → go straight to worker.
+**Bypass**:
+- User explicitly says "skip tests", "spike", "prototype", or "no tests" → go straight to worker.
+- **Legacy Code Exemption**: if Step 0 shows no practical test path, do not force TDD; document the reason and proceed with worker.
 
-### Tester → Debugger → Tester Loop
+### Sugar-Tester/Tester → Debugger → Sugar-Tester/Tester Loop
 **When**: Tests fail and the failure requires root cause analysis beyond simple diagnostics.
-**Flow**: tester (reports FAIL with diagnostics) → debugger (analyzes, fixes root cause) → tester (re-validates) → max 2 retries
+**Flow**: sugar-tester (for SugarCRM) or tester (non-Sugar) reports FAIL with diagnostics → debugger (analyzes, fixes root cause) → sugar-tester (for SugarCRM) or tester (non-Sugar) re-validates → max 2 retries
 
 ### Full Reconnaissance
 **When**: Complex unfamiliar task (new codebase, large refactor, migration).
-**Flow**: parallel [scout + researcher] → planner (with findings) → orchestrator reviews plan → workers (sequential or parallel) → tester → code-reviewer → security-auditor
+**Flow**: parallel [scout + researcher] → planner (with findings) → orchestrator reviews plan → workers (sequential or parallel) → sugar-tester (for SugarCRM) or tester (non-Sugar) → codereviewer → security-auditor
 
 ## Test Enforcement
 
-Every code change must be backed by tests. This is non-negotiable.
+Every code change that has a practical test path must be backed by tests. **Legacy Code Exemption** is the only exception, and it must be explicitly justified.
 
 ### Detection Flow (first task in a project)
 
-1. Before any implementation, check if test config exists by dispatching **tester** with: "Run test_config op='detect' and report results"
-2. If detected but not confirmed → ask user to confirm or adjust
-3. If not detected → ask user about test runner, test dir, run command
-4. Store confirmed config via test_config op='update' with confirmedByUser=true
+1. Detect project type first: if `sugar_version.php` exists at the project root, treat the project as SugarCRM/SuiteCRM; if `sugar_version.php` is absent but `bns` tools are present, use `bns` as a fallback Sugar signal; do not use `custom/` alone.
+2. Before any implementation, check if test config exists by dispatching **sugar-tester** (for SugarCRM) or **tester** (non-Sugar) with: "Run test_config op='detect' and report results"
+3. If detected but not confirmed → ask user to confirm or adjust
+4. If not detected → run a Test Suitability Assessment for the requested change
+5. If the change is test-suitable but config is missing → ask user about test runner, test dir, run command
+6. If the change is not practically testable because the target is tightly coupled legacy code → record a **Legacy Code Exemption** reason and proceed with the smallest safe change
+7. Store confirmed config via test_config op='update' with confirmedByUser=true
 
 ### Enforcement Rules
 
-**NEW EXTENSION/MODULE = TESTS FIRST (no exceptions)**
+**NEW EXTENSION/MODULE = TESTS FIRST unless Legacy Code Exemption applies**
 
 Before dispatching a worker to create any new `.ts`, `.js`, `.py`, or `.php` source file that contains logic:
 1. **STOP** — ask yourself: "Do tests exist for this new code?"
-2. If NO → dispatch **tester** first to write failing tests based on the planned behavior
-3. Only THEN dispatch **worker** to implement
-4. After worker completes → dispatch **tester** to verify GREEN
+2. Run a Test Suitability Assessment
+3. If the change is test-suitable and tests do not exist → dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar) first to write failing tests based on the planned behavior
+4. Only THEN dispatch **worker** to implement
+5. After worker completes → dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar) to verify GREEN
 
 After **any worker creates or modifies source files**:
-1. Check if the modified files have corresponding test files
-2. If tests are missing → dispatch **tester** with the list of modified/created files + test config
-3. If tests exist → dispatch **tester**: "Run existing tests that cover these files. Report pass/fail."
+1. Check if the modified files have corresponding test files or existing coverage
+2. If tests are missing and the change is test-suitable → dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar) with the list of modified/created files + test config
+3. If tests exist → dispatch **sugar-tester** (for SugarCRM) or **tester** (non-Sugar): "Run existing tests that cover these files. Report pass/fail."
+4. If the change qualifies for **Legacy Code Exemption** → document the reason; do not force synthetic tests that require unrelated refactors
 
 **Skip test enforcement when:**
 - Change is documentation-only (*.md, *.txt)
 - Change is configuration-only (*.json, *.yml, *.yaml, *.toml)
 - Change is to test files themselves
 - User explicitly says "no tests" or "skip tests"
+- Change has an explicit **Legacy Code Exemption**
 
-### Test Creation Guidelines (passed to tester)
+### Test Creation Guidelines (passed to sugar-tester for SugarCRM or tester for non-Sugar)
 
 - Follow existing test patterns in the project
 - Cover: happy path, edge cases, error cases

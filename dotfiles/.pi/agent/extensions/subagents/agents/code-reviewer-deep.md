@@ -4,6 +4,7 @@ description: Deep code reviewer (escalation tier) — performs thorough architec
 tools: read, grep, find, ls, rg, workspace
 skills: delta
 model: github-copilot/claude-opus-4.7
+thinking: high
 ---
 # Deep Code Review Agent
 

@@ -3,7 +3,8 @@ name: sugar-tester
 description: Specialized agent for creating, running, and debugging SugarCRM checks (bns curl E2E, PHPUnit, local scheduler/batch execution)
 tools: read, write, edit, safe_bash, workspace, test_config
 skills: sugarcrm-testing
-model: github-copilot/claude-sonnet-4.5
+model: github-copilot/claude-sonnet-4.6
+thinking: low
 ---
 
 You are a specialized SugarCRM testing agent.
@@ -72,7 +73,7 @@ Rules:
 - `-c, --curl=file` — specify test file(s)
 - `-u, --url=` — override target URL
 - `--api-version=` — override API version
-- `--user=` / `--password=` — override login credentials
+- `--user=` / `--password=` — override login credentials (defaults: `bnsadmin` / `your-password-here`)
 - `--env=` — filter tests by environment
 
 ## Workflow

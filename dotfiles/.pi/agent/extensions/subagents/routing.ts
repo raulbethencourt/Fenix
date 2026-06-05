@@ -4,16 +4,19 @@
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
+import type { AgentOverrides } from "./agent-overrides.ts";
 import { isFallbackMode } from "./fallback.ts";
 
 export type ComplexityTier = "simple" | "standard" | "complex";
 
-export interface RoutingConfig {
-	[agentName: string]: {
-		simple?: string;
-		complex?: string;
-	};
+interface AgentRoute {
+	simple?: string;
+	complex?: string;
 }
+
+export type RoutingConfig = Record<string, AgentRoute> & {
+	agentOverrides?: AgentOverrides;
+};
 
 // ── Fallback Configuration ──────────────────────────────────────────────
 
@@ -164,7 +167,23 @@ export function loadRoutingConfig(configDir: string): { routing: RoutingConfig; 
 	try {
 		const raw = fs.readFileSync(filePath, "utf-8");
 		const parsed = JSON.parse(raw) as Record<string, any>;
-		const { fallback: rawFallback, ...agentRouting } = parsed;
+		const { fallback: rawFallback, agentOverrides: rawOverrides, ...agentRouting } = parsed;
+		let agentOverrides: AgentOverrides | undefined;
+		if (rawOverrides !== undefined) {
+			if (rawOverrides && typeof rawOverrides === "object" && !Array.isArray(rawOverrides)) {
+				const validated: AgentOverrides = {};
+				for (const [agentName, entry] of Object.entries(rawOverrides as Record<string, unknown>)) {
+					if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+						validated[agentName] = entry as AgentOverride;
+					} else {
+						console.warn(`[subagents] agentOverrides.${agentName} is not an object; ignoring.`);
+					}
+				}
+				agentOverrides = validated;
+			} else {
+				console.warn("[subagents] Invalid agentOverrides in routing.json; ignoring.");
+			}
+		}
 
 		const fallback: FallbackConfig = {
 			simple: rawFallback?.simple ?? DEFAULT_FALLBACK.simple,
@@ -176,8 +195,18 @@ export function loadRoutingConfig(configDir: string): { routing: RoutingConfig; 
 			complex: rawFallback?.complex ?? DEFAULT_FALLBACK.complex,
 		};
 
-		return { routing: agentRouting as RoutingConfig, fallback };
+		return {
+			routing: {
+				...(agentRouting as Record<string, AgentRoute>),
+				...(agentOverrides ? { agentOverrides } : {}),
+			},
+			fallback,
+		};
 	} catch {
 		return { routing: {}, fallback: DEFAULT_FALLBACK };
 	}
+}
+
+export function loadRouting(configDir: string): RoutingConfig {
+	return loadRoutingConfig(configDir).routing;
 }

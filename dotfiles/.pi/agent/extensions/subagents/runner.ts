@@ -4,6 +4,38 @@
 import { spawn } from "node:child_process";
 import type { AgentResult, AgentProgress } from "./index.ts";
 
+const RATE_LIMIT_PATTERNS = [
+	/\b429\b/i,
+	/rate[ -]?limit(?:ed|ing)?/i,
+	/quota(?:\s+|[-_])exceeded/i,
+	/exhausted\s+quota/i,
+	/insufficient\s+quota/i,
+	/too\s+many\s+requests/i,
+	/billing\s+quota/i,
+	/monthly\s+limit/i,
+	/daily\s+limit/i,
+];
+
+const RETRYING_PATTERNS = [
+	/retrying/i,
+	/retry\s+attempt/i,
+	/will\s+retry/i,
+	/back(?:ing)?\s+off/i,
+	/after\s+retry/i,
+];
+
+export function detectRetryState(stderr: string): AgentProgress["retryState"] {
+	if (!stderr.trim()) return undefined;
+	if (RATE_LIMIT_PATTERNS.some((pattern) => pattern.test(stderr))) return "rate-limited";
+	if (RETRYING_PATTERNS.some((pattern) => pattern.test(stderr))) return "retrying";
+	return undefined;
+}
+
+export function hasRateLimitSignal(stderr: string, exitCode?: number): boolean {
+	if (exitCode === 429 || exitCode === 403) return true;
+	return detectRetryState(stderr) === "rate-limited";
+}
+
 export async function spawnPiProcess(opts: {
 	command: string;
 	spawnArgs: string[];
@@ -92,7 +124,15 @@ export async function spawnPiProcess(opts: {
 			lines.forEach(processLine);
 		});
 
-		proc.stderr.on("data", (d: Buffer) => { stderrBuf += d.toString(); });
+		proc.stderr.on("data", (d: Buffer) => {
+			const chunk = d.toString();
+			stderrBuf += chunk;
+			const retryState = detectRetryState(stderrBuf);
+			if (retryState && retryState !== progress.retryState) {
+				progress.retryState = retryState;
+				fireUpdate();
+			}
+		});
 
 		proc.on("close", (code) => {
 			if (buf.trim()) processLine(buf);

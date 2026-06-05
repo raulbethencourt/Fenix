@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
@@ -78,9 +78,9 @@ export default function memory(pi: ExtensionAPI) {
             ),
         }),
 
-        async execute(_toolCallId, params) {
+        async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
             const op = (params.op || "").trim().toLowerCase();
-            const cwd = params.cwd || process.cwd();
+            const cwd = params.cwd || ctx?.cwd || process.cwd();
             const filePath = getMemoryFile(cwd);
 
             if (op === "remember") {
@@ -190,5 +190,20 @@ export default function memory(pi: ExtensionAPI) {
                 ],
             };
         },
+    });
+
+    pi.on("before_agent_start", async (event, _ctx) => {
+        const cwd = process.cwd();
+        const filePath = getMemoryFile(cwd);
+        try {
+            const content = fs.readFileSync(filePath, "utf-8");
+            if (content.trim()) {
+                return {
+                    systemPrompt: event.systemPrompt + "\n\n## Project Memory\n\n" + content.trim(),
+                };
+            }
+        } catch {
+            // file missing or unreadable — no-op
+        }
     });
 }

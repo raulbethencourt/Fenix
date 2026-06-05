@@ -29,7 +29,7 @@ __pycache__/
 *.pyc
 
 # Environment files with secrets (keep .env.example)
-.env*
+.env
 !.env.example
 
 # OS / editor
@@ -40,3 +40,6 @@ __pycache__/
 
 agent/.pi
 agent/settings.json
+agent/docs/
+runs/
+agent/fallback-mode.json

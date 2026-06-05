@@ -11,6 +11,12 @@ description: >
 Connect to a Wrike workspace and manage the full Agile hierarchy:
 **Epics → Stories → Tasks**, plus comments and file attachments.
 
+## Language Requirement
+
+- The Wrike instance used with this skill is **French (FR)**.
+- Any agent using this skill must write titles, descriptions, comments, status notes, and any other content sent to Wrike in **French**.
+- Any communication performed inside Wrike or intended for Wrike updates must be written in **French**, even if the surrounding task or conversation uses another language.
+
 ---
 
 ## Prerequisites
@@ -463,6 +469,7 @@ result = client.post(
 
 ## Guardrails & Limitations
 
+- **Language:** The Wrike workspace language is French (FR). All content created or updated in Wrike must be written in French.
 - **Rate limit:** 400 requests per 60-second window. `WrikeClient` applies a proactive sliding-window limiter and retries on 429 (up to 3×) before raising `RateLimitError`.
 - **Batch GET limit:** Wrike allows up to 100 comma-separated IDs per request (e.g. `/tasks/id1,id2,...id100`).
 - **ID format:** The Wrike UI shows v2 IDs; the API requires v4 IDs. If an ID from the UI returns 404, it may need conversion — copy IDs from API responses, not the browser URL.

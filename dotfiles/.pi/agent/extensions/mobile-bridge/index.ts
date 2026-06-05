@@ -14,7 +14,7 @@ import type {
     AgentEndEvent,
     ExtensionAPI,
     ExtensionCommandContext,
-} from "@mariozechner/pi-coding-agent";
+} from "@earendil-works/pi-coding-agent";
 
 const SMOKE_TOKEN = "MOBILE_BRIDGE_SMOKE_OK";
 const SMOKE_PROMPT = `Reply exactly: ${SMOKE_TOKEN}`;

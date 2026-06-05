@@ -2,8 +2,8 @@
  * AST-grep (sg) tool extension for subagents.
  * Provides structural code search using AST pattern matching.
  */
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { createBashTool } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { createBashTool } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 
 function shellEscape(s: string): string {

@@ -9,8 +9,8 @@
  * Also tracks `!cd` user commands so the AI and user share the same cwd.
  */
 
-import { createBashTool, createBashToolDefinition } from "@mariozechner/pi-coding-agent";
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import { createBashTool, createBashToolDefinition } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 export default function(pi: ExtensionAPI) {
     let trackedCwd: string | null = null;
