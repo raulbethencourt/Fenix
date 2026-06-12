@@ -1,0 +1,24 @@
+{
+  "disabledServers": [
+    "pyright",
+    "ruff",
+    "rubocop",
+    "ktlint",
+    "rust-analyzer",
+    "clangd",
+    "powershell-editor-services",
+    "prisma-language-server",
+    "omnisharp",
+    "fsautocomplete",
+    "jdtls",
+    "sourcekit-lsp",
+    "dart",
+    "haskell-language-server-wrapper",
+    "elixir-ls",
+    "gleam",
+    "ocamllsp",
+    "clojure-lsp",
+    "terraform-ls",
+    "nil"
+  ]
+}
