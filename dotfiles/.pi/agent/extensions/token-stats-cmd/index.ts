@@ -90,6 +90,24 @@ export default function (pi: ExtensionAPI) {
                     ORDER BY cost DESC
                 `).all(...where.params);
 
+                const byProvider = db.prepare(`
+                    SELECT
+                        CASE
+                            WHEN provider IS NOT NULL AND provider != '' THEN provider
+                            WHEN model LIKE '%/%' THEN substr(model, 1, instr(model, '/') - 1)
+                            ELSE 'unknown'
+                        END AS provider,
+                        COUNT(*) AS runs,
+                        COALESCE(SUM(cost_usd), 0) AS cost,
+                        COALESCE(SUM(input_tokens + output_tokens), 0) AS tokens,
+                        COALESCE(AVG(duration_ms), 0) AS avg_duration,
+                        SUM(CASE WHEN exit_code = 0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS success_pct
+                    FROM runs
+                    ${where.sql}
+                    GROUP BY provider
+                    ORDER BY cost DESC
+                `).all(...where.params);
+
                 const byProjectRaw = db.prepare(`
                     SELECT
                         COALESCE(cwd, '') AS cwd,
@@ -156,6 +174,18 @@ export default function (pi: ExtensionAPI) {
                 for (const row of byModel) {
                     lines.push(
                         `  ${value(padRight(String(row.model || "unknown"), 22))} ${value(padLeft(String(row.runs), 5))} ${value(padLeft(formatCost(Number(row.cost)), 10))} ${value(padLeft(formatTokens(Number(row.tokens)), 10))} ${value(padLeft(formatDuration(Number(row.avg_duration)), 7))} ${success(padLeft(`${Number(row.success_pct).toFixed(0)}%`, 8))}`,
+                    );
+                }
+                lines.push("");
+
+                // By Provider
+                lines.push(heading("  By Provider"));
+                lines.push("");
+                lines.push(`  ${label(padRight("Provider", 22))} ${label(padLeft("Runs", 5))} ${label(padLeft("Cost", 10))} ${label(padLeft("Tokens", 10))} ${label(padLeft("Avg", 7))} ${label(padLeft("Success", 8))}`);
+                lines.push(`  ${dim("─".repeat(68))}`);
+                for (const row of byProvider) {
+                    lines.push(
+                        `  ${value(padRight(String(row.provider || "unknown"), 22))} ${value(padLeft(String(row.runs), 5))} ${value(padLeft(formatCost(Number(row.cost)), 10))} ${value(padLeft(formatTokens(Number(row.tokens)), 10))} ${value(padLeft(formatDuration(Number(row.avg_duration)), 7))} ${success(padLeft(`${Number(row.success_pct).toFixed(0)}%`, 8))}`,
                     );
                 }
                 lines.push("");
